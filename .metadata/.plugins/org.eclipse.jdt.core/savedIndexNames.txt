@@ -1,0 +1,11 @@
+INDEX VERSION 1.130+D:\ATIPL\itAssets\.metadata\.plugins\org.eclipse.jdt.core
+2407850888.index
+3489389184.index
+2937183360.index
+231719910.index
+1732029172.index
+1591170991.index
+2451754805.index
+2696541020.index
+3614895483.index
+626139431.index

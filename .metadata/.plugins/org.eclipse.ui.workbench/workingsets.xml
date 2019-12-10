@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workingSetManager>
+<workingSet editPageId="org.eclipse.ui.resourceWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1575966388915_0" label="itAssets" name="itAssets">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/itAssets" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/itAssets-core" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/itAssets-endpoint" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/itAssets-bussinessprocess" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/itAssets-services" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/itAssets-persistence" type="4"/>
+</workingSet>
+</workingSetManager>
