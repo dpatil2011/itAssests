@@ -33,17 +33,9 @@ public class Skills extends TypicalGenericModel {
 	    @Column(name = "description")
 	    private String description;
 
-	    @ManyToOne(fetch = FetchType.EAGER)
-	    @JoinColumn(name = "user_id")
+	    @ManyToOne(fetch = FetchType.LAZY)
+	    @JoinColumn(name = "user_id",referencedColumnName="id")
 	    private Users users;
-
-		public Users getUsers() {
-			return users;
-		}
-
-		public void setUsers(Users users) {
-			this.users = users;
-		}
 
 		public Long getId() {
 			return id;
@@ -77,12 +69,75 @@ public class Skills extends TypicalGenericModel {
 			this.description = description;
 		}
 
+		public Users getUsers() {
+			return users;
+		}
+
+		public void setUsers(Users users) {
+			this.users = users;
+		}
+
+		public static long getSerialversionuid() {
+			return serialVersionUID;
+		}
+
+		@Override
+		public int hashCode() {
+			final int prime = 31;
+			int result = 1;
+			result = prime * result + ((category == null) ? 0 : category.hashCode());
+			result = prime * result + ((description == null) ? 0 : description.hashCode());
+			result = prime * result + ((id == null) ? 0 : id.hashCode());
+			result = prime * result + ((skill == null) ? 0 : skill.hashCode());
+			result = prime * result + ((users == null) ? 0 : users.hashCode());
+			return result;
+		}
+
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj)
+				return true;
+			if (obj == null)
+				return false;
+			if (getClass() != obj.getClass())
+				return false;
+			Skills other = (Skills) obj;
+			if (category == null) {
+				if (other.category != null)
+					return false;
+			} else if (!category.equals(other.category))
+				return false;
+			if (description == null) {
+				if (other.description != null)
+					return false;
+			} else if (!description.equals(other.description))
+				return false;
+			if (id == null) {
+				if (other.id != null)
+					return false;
+			} else if (!id.equals(other.id))
+				return false;
+			if (skill == null) {
+				if (other.skill != null)
+					return false;
+			} else if (!skill.equals(other.skill))
+				return false;
+			if (users == null) {
+				if (other.users != null)
+					return false;
+			} else if (!users.equals(other.users))
+				return false;
+			return true;
+		}
 
 		@Override
 		public String toString() {
 			return "Skills [id=" + id + ", category=" + category + ", skill=" + skill + ", description=" + description
-					+ ", users=" +  "]";
+					+ ", users=" + users + "]";
 		}
+
+	  
+
 	        
 	    
 	    
