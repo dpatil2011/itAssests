@@ -77,9 +77,47 @@ public class Users extends TypicalGenericModel {
 	    
 	    @Column(name = "personal_email")
 	    private String personal_email;
+	    
+	    
+	    @Column(name = "Offical Email")
+	    private String officalEmail;
+	    
+	    
+	    @Column(name = "reporting_manager")
+	    private String reportingManager;
+	    
+	    @Column(name = "department")
+	    private String department;
+	    
+	    @Column(name = "job_title")
+	    private String jobTitle;
+	    
+	    @Column(name = "date_Of_ Join")
+	    private Date dateOfJoin;
 	 
+	    @Column(name = "permanet_address")
+	    private String permanetAddress;
 	    
+	    @Column(name = "photo")
+	    private String photo;
 	    
+	    @Column(name = "blood_group")
+	    private String bloodGroup;
 	    
+	    @Column(name = "dl_group")
+	    private String dlGroup;
+	    
+	    @Column(name = "corp_Id")
+	    private String corpId;
+	    
+	    @Column(name = "atipl_Id")
+	    private String atiplId;	    
+	    
+	    @Column(name = "password")
+	    private String password;
+	    
+	    @Column(name = "hr_password")
+	    private String hrPassword;
+	        
 	
 }
