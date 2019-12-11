@@ -16,10 +16,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.anabatic.generic.persistence.model.TypicalGenericModel;
+
 
 @Entity
 @Table(name = "users")
-public class Users {
+public class Users extends TypicalGenericModel{
  
 	private static final long serialVersionUID = 1L;
 

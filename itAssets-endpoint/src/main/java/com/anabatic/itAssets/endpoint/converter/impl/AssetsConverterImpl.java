@@ -45,3 +45,4 @@ public class AssetsConverterImpl implements AssetsConverter {
     }
 
 }
+
