@@ -1,8 +1,6 @@
 package com.anabatic.itAssets.persistence.model;
 
-import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -11,7 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.anabatic.generic.persistence.model.TypicalGenericModel;
@@ -20,7 +17,9 @@ import com.anabatic.generic.persistence.model.TypicalGenericModel;
 @Table(name = "skills")
 public class Skills extends TypicalGenericModel {
 
-	    @Id
+	private static final long serialVersionUID = 1L;
+
+		@Id
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	    @Column(name = "id")
 	    private Long id;
@@ -33,11 +32,7 @@ public class Skills extends TypicalGenericModel {
 	    
 	    @Column(name = "description")
 	    private String description;
-	    
-//	    @ManyToOne(fetch = FetchType.EAGER)
-//	    @JoinColumn(name = "user_id")
-//	    private Users users;
-	    
+
 	    @ManyToOne(fetch = FetchType.EAGER)
 	    @JoinColumn(name = "user_id")
 	    private Users users;
@@ -82,13 +77,6 @@ public class Skills extends TypicalGenericModel {
 			this.description = description;
 		}
 
-//		public Users getUsers() {
-//			return users;
-//		}
-//
-//		public void setUsers(Users users) {
-//			this.users = users;
-//		}
 
 		@Override
 		public String toString() {

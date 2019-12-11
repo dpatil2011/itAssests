@@ -12,14 +12,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
 import com.anabatic.generic.persistence.model.TypicalGenericModel;
 
 @Entity
 @Table(name = "users")
 public class Users extends TypicalGenericModel {
  
-	    @Id
+    	private static final long serialVersionUID = 1L;
+
+		@Id
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	    @Column(name = "id")
 	    private Long id;
@@ -169,7 +170,7 @@ public class Users extends TypicalGenericModel {
 	    private String postGraduationMajor;
 	    
 	    @Column( name = "post_graduation_grade" )
-	    private String post_GraduationGrade;
+	    private String postGraduationGrade;
 	    
 	    
 	    @OneToMany(mappedBy = "users", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
