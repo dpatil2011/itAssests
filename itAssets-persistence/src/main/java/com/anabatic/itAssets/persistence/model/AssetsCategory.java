@@ -23,16 +23,33 @@ import com.anabatic.generic.persistence.model.TypicalGenericModel;
 @Table(name = "assets_category")
 public class AssetsCategory extends TypicalGenericModel {
 
+    /**
+     * !place your description! 
+     *
+     * long 
+     * serialVersionUID 
+     */
+    private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "category_id")
+    @Column(name = "id")
     private Long id;
 
     @Column(name = "cat_name")
     private String catName;
+    
+    @Column(name = "fields")
+    private short fields;
+    
+    @Column(name = "belongs_to")
+    private String belongsTo;
+    
+    @Column(name = "stock")
+    private Integer stock;
 
     @OneToMany(mappedBy = "assetsCategory", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<Assets> assets;
+    private List<AssetsForm> assetsForm;
 
     public Long getId() {
         return id;
@@ -50,12 +67,37 @@ public class AssetsCategory extends TypicalGenericModel {
         this.catName = catName;
     }
 
-    public List<Assets> getAssets() {
-        return assets;
+    public short getFields() {
+        return fields;
     }
 
-    public void setAssets(List<Assets> assets) {
-        this.assets = assets;
+    public void setFields(short fields) {
+        this.fields = fields;
     }
+
+    public String getBelongsTo() {
+        return belongsTo;
+    }
+
+    public void setBelongsTo(String belongsTo) {
+        this.belongsTo = belongsTo;
+    }
+
+    public Integer getStock() {
+        return stock;
+    }
+
+    public void setStock(Integer stock) {
+        this.stock = stock;
+    }
+
+    public List<AssetsForm> getAssetsForm() {
+        return assetsForm;
+    }
+
+    public void setAssetsForm(List<AssetsForm> assetsForm) {
+        this.assetsForm = assetsForm;
+    }
+
 
 }

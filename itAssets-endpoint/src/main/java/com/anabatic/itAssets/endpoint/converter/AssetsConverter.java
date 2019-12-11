@@ -4,7 +4,7 @@ import com.anabatic.generic.service.converter.ToContractConverter;
 import com.anabatic.generic.service.converter.ToModelConverter;
 import com.anabatic.itAssets.endpoint.Request.AssetsRequest;
 import com.anabatic.itAssets.endpoint.Response.AssetsResponse;
-import com.anabatic.itAssets.persistence.model.Assets;
+import com.anabatic.itAssets.persistence.model.AssetsForm;
 
 /**
  * !place your description here!
@@ -12,7 +12,7 @@ import com.anabatic.itAssets.persistence.model.Assets;
  * @author yeshwantk (&copy;25-Jul-2019) 
  */
 public interface AssetsConverter
-        extends ToModelConverter<AssetsRequest, Assets>,
-        ToContractConverter<Assets, AssetsResponse> {
+        extends ToModelConverter<AssetsRequest, AssetsForm>,
+        ToContractConverter<AssetsForm, AssetsResponse> {
 
 }
