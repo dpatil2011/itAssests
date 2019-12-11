@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.anabatic.generic.service.impl.TypicalGenericServiceImpl;
 import com.anabatic.itAssets.persistence.dao.AssetsDao;
-import com.anabatic.itAssets.persistence.model.Assets;
+import com.anabatic.itAssets.persistence.model.AssetsForm;
 import com.anabatic.itAssets.services.service.AssetsService;
 
 /**
@@ -14,7 +14,7 @@ import com.anabatic.itAssets.services.service.AssetsService;
  *
  * @author yeshwantk (&copy;25-Jul-2019)
  */
-public class AssetsServiceImpl extends TypicalGenericServiceImpl<Assets, Long>
+public class AssetsServiceImpl extends TypicalGenericServiceImpl<AssetsForm, Long>
         implements AssetsService {
 
     @Autowired
@@ -33,13 +33,13 @@ public class AssetsServiceImpl extends TypicalGenericServiceImpl<Assets, Long>
     }
 
     @Override
-    public Assets insert(Assets assets) {
+    public AssetsForm insert(AssetsForm assets) {
         // TODO Auto-generated method stub
         return assetsDao.save(assets);
     }
 
     @Override
-    public Assets getById(Long id) {
+    public AssetsForm getById(Long id) {
         // TODO Auto-generated method stub
         return assetsDao.get(id);
     }
@@ -51,7 +51,7 @@ public class AssetsServiceImpl extends TypicalGenericServiceImpl<Assets, Long>
     }
 
     @Override
-    public List<Assets> getAllData() {
+    public List<AssetsForm> getAllData() {
         return assetsDao.getAll();
     }
 

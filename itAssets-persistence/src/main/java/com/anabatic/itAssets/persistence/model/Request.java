@@ -50,10 +50,10 @@ public class Request extends TypicalGenericModel {
 
 	@Column(name = "closingDate")
 	private Date closingDate;
-
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "userId")
-	private Assets userId;
+//
+//	@ManyToOne(fetch = FetchType.EAGER)
+//	@JoinColumn(name = "userId")
+//	private Assets userId;
 
 	public Long getId() {
 		return id;
@@ -127,98 +127,13 @@ public class Request extends TypicalGenericModel {
 		this.closingDate = closingDate;
 	}
 
-	public Assets getUserId() {
-		return userId;
-	}
+//	public Assets getUserId() {
+//		return userId;
+//	}
+//
+//	public void setUserId(Assets userId) {
+//		this.userId = userId;
+//	}
 
-	public void setUserId(Assets userId) {
-		this.userId = userId;
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((closingDate == null) ? 0 : closingDate.hashCode());
-		result = prime * result + ((department == null) ? 0 : department.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((quantity == null) ? 0 : quantity.hashCode());
-		result = prime * result + ((reason == null) ? 0 : reason.hashCode());
-		result = prime * result + ((request == null) ? 0 : request.hashCode());
-		result = prime * result + ((requestTo == null) ? 0 : requestTo.hashCode());
-		result = prime * result + ((requestType == null) ? 0 : requestType.hashCode());
-		result = prime * result + ((requestedDate == null) ? 0 : requestedDate.hashCode());
-		result = prime * result + ((userId == null) ? 0 : userId.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Request other = (Request) obj;
-		if (closingDate == null) {
-			if (other.closingDate != null)
-				return false;
-		} else if (!closingDate.equals(other.closingDate))
-			return false;
-		if (department == null) {
-			if (other.department != null)
-				return false;
-		} else if (!department.equals(other.department))
-			return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		if (quantity == null) {
-			if (other.quantity != null)
-				return false;
-		} else if (!quantity.equals(other.quantity))
-			return false;
-		if (reason == null) {
-			if (other.reason != null)
-				return false;
-		} else if (!reason.equals(other.reason))
-			return false;
-		if (request == null) {
-			if (other.request != null)
-				return false;
-		} else if (!request.equals(other.request))
-			return false;
-		if (requestTo == null) {
-			if (other.requestTo != null)
-				return false;
-		} else if (!requestTo.equals(other.requestTo))
-			return false;
-		if (requestType == null) {
-			if (other.requestType != null)
-				return false;
-		} else if (!requestType.equals(other.requestType))
-			return false;
-		if (requestedDate == null) {
-			if (other.requestedDate != null)
-				return false;
-		} else if (!requestedDate.equals(other.requestedDate))
-			return false;
-		if (userId == null) {
-			if (other.userId != null)
-				return false;
-		} else if (!userId.equals(other.userId))
-			return false;
-		return true;
-	}
-
-	@Override
-	public String toString() {
-		return "Request [id=" + id + ", reason=" + reason + ", requestTo=" + requestTo + ", department=" + department
-				+ ", request=" + request + ", quantity=" + quantity + ", requestType=" + requestType
-				+ ", requestedDate=" + requestedDate + ", closingDate=" + closingDate + ", userId=" + userId + "]";
-	}
-
+	
 }
