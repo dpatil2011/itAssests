@@ -9,9 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.anabatic.generic.endpoint.contract.BaseResponse;
-import com.anabatic.itAssets.endpoint.Request.AssetsRequest;
 import com.anabatic.itAssets.endpoint.Request.UsersRequest;
 import com.anabatic.itAssets.endpoint.converter.UsersConverter;
 import com.anabatic.itAssets.services.service.UsersService;
@@ -30,9 +28,7 @@ public class UsersController {
     
     @PostMapping(value = "/insert", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<BaseResponse> insert(
-            @Valid @RequestBody UsersRequest usersRequest) {
-
-       
+            @Valid @RequestBody UsersRequest usersRequest) {    
         return ResponseEntity.ok().body(baseResponse);
 
     }
