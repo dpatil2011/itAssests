@@ -1,10 +1,15 @@
 package com.anabatic.itAssets.persistence.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -21,6 +26,18 @@ public class Privilege {
 
 	@Column(name = "status")
 	private Integer status;
+	
+    @OneToMany(mappedBy = "privilege", fetch = FetchType.LAZY)
+	private List<Users> users;
+
+
+	public List<Users> getUsers() {
+		return users;
+	}
+
+	public void setUsers(List<Users> users) {
+		this.users = users;
+	}
 
 	public Long getId() {
 		return id;
