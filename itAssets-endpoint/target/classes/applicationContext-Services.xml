@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 
 <beans xmlns="http://www.springframework.org/schema/beans"
@@ -8,9 +9,40 @@
 	   		http://www.springframework.org/schema/context
 	   		http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 
+	    <bean id="assetsCategoryService"
+	     class="com.anabatic.itAssets.services.service.impl.AssetsCategoryServiceImpl" />
+
+	    <bean id="assetsService"
+		 class="com.anabatic.itAssets.services.service.impl.AssetsServiceImpl" />
+		
+		<bean id="usersService"
+		 class="com.anabatic.itAssets.services.service.impl.UsersServiceImpl" />
+		 
+		 
+		
+		
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	   		http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+	   		http://www.springframework.org/schema/context
+	   		http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+
 	<bean id="assetsCategoryService"
 		class="com.anabatic.itAssets.services.service.impl.AssetsCategoryServiceImpl" />
+<bean id="usersService"
+		class="com.anabatic.itAssets.services.service.impl.UsersServiceImpl" />
+	
 
-	<bean id="assetsService"
-		class="com.anabatic.itAssets.services.service.impl.AssetsServiceImpl" />
+	<bean id="assetFormService"
+		class="com.anabatic.itAssets.services.service.impl.AssetFormServiceImpl" />
+	<bean id="requestService"
+		class="com.anabatic.itAssets.services.service.impl.RequestServiceImpl">
+	</bean>
+>>>>>>> master
 </beans>
