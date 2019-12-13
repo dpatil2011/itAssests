@@ -16,7 +16,7 @@ import com.anabatic.generic.persistence.model.TypicalGenericModel;
 
 @Entity
 @Table(name = "request")
-public class Request extends TypicalGenericModel {
+public class Request {
 	/**
 	 * 
 	 */
@@ -36,8 +36,8 @@ public class Request extends TypicalGenericModel {
 	@Column(name = "department")
 	private String department;
 
-	@Column(name = "requestItem")
-	private String request;
+	@Column(name = "request_Item")
+	private String requestItem;
 
 	@Column(name = "quantity")
 	private Integer quantity;
@@ -50,10 +50,13 @@ public class Request extends TypicalGenericModel {
 
 	@Column(name = "closingDate")
 	private Date closingDate;
-//
-//	@ManyToOne(fetch = FetchType.EAGER)
-//	@JoinColumn(name = "userId")
-//	private Assets userId;
+
+	@Column(name = "request_id")
+	private String requestId;
+
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "userId")
+	private Users userId;
 
 	public Long getId() {
 		return id;
@@ -87,12 +90,12 @@ public class Request extends TypicalGenericModel {
 		this.department = department;
 	}
 
-	public String getRequest() {
-		return request;
+	public String getRequestItem() {
+		return requestItem;
 	}
 
-	public void setRequest(String request) {
-		this.request = request;
+	public void setrequestItem(String request) {
+		this.requestItem = request;
 	}
 
 	public Integer getQuantity() {
@@ -127,13 +130,20 @@ public class Request extends TypicalGenericModel {
 		this.closingDate = closingDate;
 	}
 
-//	public Assets getUserId() {
-//		return userId;
-//	}
-//
-//	public void setUserId(Assets userId) {
-//		this.userId = userId;
-//	}
+	public String getRequestId() {
+		return requestId;
+	}
 
-	
+	public void setRequestId(String requestId) {
+		this.requestId = requestId;
+	}
+
+	public Users getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Users userId) {
+		this.userId = userId;
+	}
+
 }

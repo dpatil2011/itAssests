@@ -11,6 +11,15 @@
 	<bean id="assetsCategoryConverter"
 		class="com.anabatic.itAssets.endpoint.converter.impl.AssetsCategoryConverterImpl" />
 
-	<bean id="assetsConverter"
-		class="com.anabatic.itAssets.endpoint.converter.impl.AssetsConverterImpl" />
+	<bean id="requestConverter"
+		class="com.anabatic.itAssets.endpoint.converter.impl.InsertRequestConverterImpl" />
+<bean id="GetByIdConverter"
+		class="com.anabatic.itAssets.endpoint.converter.impl.GetByIdRequestConverterImpl" />
+	<bean id="assetFormConverter"
+		class="com.anabatic.itAssets.endpoint.converter.impl.AssetFormConverterImpl" />
+<bean id="usersConverter"
+		class="com.anabatic.itAssets.endpoint.converter.impl.UsersConverterImpl" />
+		
+
+
 </beans>
