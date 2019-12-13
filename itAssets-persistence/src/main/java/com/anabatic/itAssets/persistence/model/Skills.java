@@ -15,9 +15,9 @@ import com.anabatic.generic.persistence.model.TypicalGenericModel;
 
 @Entity
 @Table(name = "skills")
-public class Skills extends TypicalGenericModel {
+public class Skills  {
 
-	private static final long serialVersionUID = 1L;
+	
 
 		@Id
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -77,9 +77,7 @@ public class Skills extends TypicalGenericModel {
 			this.users = users;
 		}
 
-		public static long getSerialversionuid() {
-			return serialVersionUID;
-		}
+	
 
 		@Override
 		public int hashCode() {

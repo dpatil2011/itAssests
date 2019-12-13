@@ -21,9 +21,9 @@ import com.anabatic.generic.persistence.model.TypicalGenericModel;
 
 @Entity
 @Table(name = "users")
-public class Users extends TypicalGenericModel{
+public class Users {
  
-	private static final long serialVersionUID = 1L;
+	
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -68,7 +68,7 @@ public class Users extends TypicalGenericModel{
 	    
 	    
 	    @Column(name = "date_of_marriage")
-	    private String dateOfMarriage;
+	    private Date dateOfMarriage;
 	    
 	    @Column(name = "phonenumber")
 	    private String phoneNumber;
@@ -176,8 +176,19 @@ public class Users extends TypicalGenericModel{
 	    
 	    @Column( name = "post_graduation_grade" )
 	    private String postGraduationGrade;
+	    
+	    @Column( name= "status" )
+	    private Integer status;
 	    	    
-	    @OneToMany(mappedBy = "users", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	    public Integer getStatus() {
+			return status;
+		}
+
+		public void setStatus(Integer status) {
+			this.status = status;
+		}
+
+		@OneToMany(mappedBy = "users", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	    private List<Skills> skills;
 	    
 	    @ManyToOne(fetch = FetchType.EAGER)
@@ -288,11 +299,11 @@ public class Users extends TypicalGenericModel{
 			this.maritalStatus = maritalStatus;
 		}
 
-		public String getDateOfMarriage() {
+		public Date getDateOfMarriage() {
 			return dateOfMarriage;
 		}
 
-		public void setDateOfMarriage(String dateOfMarriage) {
+		public void setDateOfMarriage(Date dateOfMarriage) {
 			this.dateOfMarriage = dateOfMarriage;
 		}
 
@@ -592,10 +603,7 @@ public class Users extends TypicalGenericModel{
 			this.privilege = privilege;
 		}
 
-		public static long getSerialversionuid() {
-			return serialVersionUID;
-		}
-
+		
 		@Override
 		public int hashCode() {
 			final int prime = 31;

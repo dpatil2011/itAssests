@@ -8,9 +8,16 @@
 	   		http://www.springframework.org/schema/context
 	   		http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 
-	<bean id="assetsCategoryService"
-		class="com.anabatic.itAssets.services.service.impl.AssetsCategoryServiceImpl" />
+	    <bean id="assetsCategoryService"
+	     class="com.anabatic.itAssets.services.service.impl.AssetsCategoryServiceImpl" />
 
-	<bean id="assetsService"
-		class="com.anabatic.itAssets.services.service.impl.AssetsServiceImpl" />
+	    <bean id="assetsService"
+		 class="com.anabatic.itAssets.services.service.impl.AssetsServiceImpl" />
+		
+		<bean id="usersService"
+		 class="com.anabatic.itAssets.services.service.impl.UsersServiceImpl" />
+		 
+		 
+		
+		
 </beans>

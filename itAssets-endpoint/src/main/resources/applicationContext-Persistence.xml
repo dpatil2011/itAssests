@@ -12,5 +12,8 @@
 		class="com.anabatic.itAssets.persistence.dao.impl.AssetsCategoryDaoImpl" />
 
 	<bean id="assetsDao"
-		class="com.anabatic.itAssets.persistence.dao.impl.AssetsDaoImpl" />	 
+		class="com.anabatic.itAssets.persistence.dao.impl.AssetsDaoImpl" />
+		
+		<bean id="userssDao"
+		class="com.anabatic.itAssets.persistence.dao.impl.UsersDaoImpl" />	 
 </beans>

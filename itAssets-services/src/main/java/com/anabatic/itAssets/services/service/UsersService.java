@@ -1,14 +1,18 @@
 package com.anabatic.itAssets.services.service;
 
+import javax.transaction.Transactional;
+
+import org.springframework.stereotype.Service;
+
 import com.anabatic.generic.service.TypicalGenericService;
 import com.anabatic.itAssets.persistence.model.AssetsForm;
 import com.anabatic.itAssets.persistence.model.Users;
 
-public interface UsersService extends TypicalGenericService<Users, Long>{
+@Transactional
+public interface UsersService {
 
-	static Object insert(Object model) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	Users insert(Users model);
+
+
 
 }

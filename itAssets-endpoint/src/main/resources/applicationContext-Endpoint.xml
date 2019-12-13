@@ -13,4 +13,7 @@
 
 	<bean id="assetsConverter"
 		class="com.anabatic.itAssets.endpoint.converter.impl.AssetsConverterImpl" />
+		
+		<bean id="usersConverter"
+		class="com.anabatic.itAssets.endpoint.converter.impl.UsersConverterImpl" />
 </beans>
