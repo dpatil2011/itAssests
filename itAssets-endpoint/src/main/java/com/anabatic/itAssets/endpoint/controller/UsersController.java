@@ -31,11 +31,7 @@ public class UsersController {
     public ResponseEntity<BaseResponse> insert(
             @Valid @RequestBody UsersRequest usersRequest) {
     	   baseResponse.setResponse(usersConverter.toContract(
-    			   usersService.insert(usersConverter.toModel(usersRequest))));
-
-    	//baseResponse.setResponse(response);
-    	//baseResponse.setResponse(usersConverter.toContract(usersRequest));
-       
+    			   usersService.insert(usersConverter.toModel(usersRequest))));       
         return ResponseEntity.ok().body(baseResponse);
 
     }

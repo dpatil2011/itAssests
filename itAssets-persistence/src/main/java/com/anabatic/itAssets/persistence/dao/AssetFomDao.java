@@ -8,6 +8,6 @@ import com.anabatic.itAssets.persistence.model.AssetsForm;
  *
  * @author yeshwantk (&copy;25-Jul-2019) 
  */
-public interface AssetsDao extends TypicalGenericDao<AssetsForm, Long>{
+public interface AssetFomDao extends TypicalGenericDao<AssetsForm, Long>{
 
 }

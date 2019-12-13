@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 
 <beans xmlns="http://www.springframework.org/schema/beans"
@@ -16,4 +17,30 @@
 		
 		<bean id="usersConverter"
 		class="com.anabatic.itAssets.endpoint.converter.impl.UsersConverterImpl" />
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	   		http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+	   		http://www.springframework.org/schema/context
+	   		http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+
+	<bean id="assetsCategoryConverter"
+		class="com.anabatic.itAssets.endpoint.converter.impl.AssetsCategoryConverterImpl" />
+
+	<bean id="requestConverter"
+		class="com.anabatic.itAssets.endpoint.converter.impl.InsertRequestConverterImpl" />
+<bean id="GetByIdConverter"
+		class="com.anabatic.itAssets.endpoint.converter.impl.GetByIdRequestConverterImpl" />
+	<bean id="assetFormConverter"
+		class="com.anabatic.itAssets.endpoint.converter.impl.AssetFormConverterImpl" />
+<bean id="usersConverter"
+		class="com.anabatic.itAssets.endpoint.converter.impl.UsersConverterImpl" />
+		
+
+
+>>>>>>> master
 </beans>

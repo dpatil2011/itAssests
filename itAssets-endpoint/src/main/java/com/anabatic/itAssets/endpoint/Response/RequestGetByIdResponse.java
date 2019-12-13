@@ -1,62 +1,19 @@
-package com.anabatic.itAssets.persistence.model;
+package com.anabatic.itAssets.endpoint.Response;
 
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-
-import com.anabatic.generic.persistence.model.TypicalGenericModel;
-
-@Entity
-@Table(name = "request")
-public class Request {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
+public class RequestGetByIdResponse {
 	private Long id;
-
-	@Column(name = "reason")
 	private String reason;
-
-	@Column(name = "requestTo")
 	private String requestTo;
-
-	@Column(name = "department")
 	private String department;
-
-	@Column(name = "request_Item")
 	private String requestItem;
-
-	@Column(name = "quantity")
 	private Integer quantity;
-
-	@Column(name = "requestType")
 	private String requestType;
-
-	@Column(name = "requestedDate")
 	private Date requestedDate;
-
-	@Column(name = "closingDate")
 	private Date closingDate;
-
-	@Column(name = "request_id")
 	private String requestId;
-
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "userId")
-	private Users userId;
+	private Long userId;
 
 	public Long getId() {
 		return id;
@@ -94,8 +51,8 @@ public class Request {
 		return requestItem;
 	}
 
-	public void setrequestItem(String request) {
-		this.requestItem = request;
+	public void setRequestItem(String requestItem) {
+		this.requestItem = requestItem;
 	}
 
 	public Integer getQuantity() {
@@ -138,12 +95,11 @@ public class Request {
 		this.requestId = requestId;
 	}
 
-	public Users getUserId() {
+	public Long getUserId() {
 		return userId;
 	}
 
-	public void setUserId(Users userId) {
+	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
-
 }

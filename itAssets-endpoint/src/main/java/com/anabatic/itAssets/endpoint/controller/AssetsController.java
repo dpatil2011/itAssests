@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.anabatic.generic.endpoint.contract.BaseResponse;
-import com.anabatic.itAssets.endpoint.Request.AssetsRequest;
+import com.anabatic.itAssets.endpoint.Request.AssetFormRequest;
 import com.anabatic.itAssets.endpoint.Request.RequestId;
-import com.anabatic.itAssets.endpoint.converter.AssetsConverter;
-import com.anabatic.itAssets.services.service.AssetsService;
+import com.anabatic.itAssets.endpoint.converter.AssetFormConverter;
+import com.anabatic.itAssets.services.service.AssetFormService;
 
 /**
  * !place your description here!
@@ -28,14 +28,14 @@ public class AssetsController {
     private BaseResponse baseResponse = new BaseResponse();
 
     @Autowired
-    private AssetsService assetsService;
+    private AssetFormService assetsService;
 
     @Autowired
-    private AssetsConverter assetsConverter;
+    private AssetFormConverter assetsConverter;
 
     @PostMapping(value = "/insert", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<BaseResponse> insert(
-            @Valid @RequestBody AssetsRequest assetsRequest) {
+            @Valid @RequestBody AssetFormRequest assetsRequest) {
 
         baseResponse.setResponse(assetsConverter.toContract(
                 assetsService.insert(assetsConverter.toModel(assetsRequest))));

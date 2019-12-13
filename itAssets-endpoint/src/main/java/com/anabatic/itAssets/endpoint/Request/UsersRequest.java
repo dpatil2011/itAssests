@@ -8,8 +8,6 @@ import com.anabatic.itAssets.persistence.model.Privilege;
 import com.anabatic.itAssets.persistence.model.Skills;
 
 public class UsersRequest {	
-	//String date = jsonparser.getText();
-	
 	
 	private Long id;
 	private String firstName;

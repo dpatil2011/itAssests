@@ -2,8 +2,8 @@ package com.anabatic.itAssets.endpoint.converter;
 
 import com.anabatic.generic.service.converter.ToContractConverter;
 import com.anabatic.generic.service.converter.ToModelConverter;
-import com.anabatic.itAssets.endpoint.Request.AssetsRequest;
-import com.anabatic.itAssets.endpoint.Response.AssetsResponse;
+import com.anabatic.itAssets.endpoint.Request.AssetFormRequest;
+import com.anabatic.itAssets.endpoint.Response.AssetFormResponse;
 import com.anabatic.itAssets.persistence.model.AssetsForm;
 
 /**
@@ -11,8 +11,8 @@ import com.anabatic.itAssets.persistence.model.AssetsForm;
  *
  * @author yeshwantk (&copy;25-Jul-2019) 
  */
-public interface AssetsConverter
-        extends ToModelConverter<AssetsRequest, AssetsForm>,
-        ToContractConverter<AssetsForm, AssetsResponse> {
+public interface AssetFormConverter
+        extends ToModelConverter<AssetFormRequest, AssetsForm>,
+        ToContractConverter<AssetsForm, AssetFormResponse> {
 
 }

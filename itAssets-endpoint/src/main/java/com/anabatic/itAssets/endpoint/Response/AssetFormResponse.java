@@ -5,41 +5,30 @@ package com.anabatic.itAssets.endpoint.Response;
  *
  * @author yeshwantk (&copy;25-Jul-2019) 
  */
-public class AssetsCategoryResponse {
+public class AssetFormResponse {
 
     private Long id;
     private String catName;
-    private short fields;
-    private String belongsTo;
-    private Integer stock;
+    private String fields;
     public Long getId() {
         return id;
     }
     public void setId(Long id) {
         this.id = id;
     }
+    
     public String getCatName() {
         return catName;
     }
     public void setCatName(String catName) {
         this.catName = catName;
     }
-    public short getFields() {
+    public String getFields() {
         return fields;
     }
-    public void setFields(short fields) {
+    public void setFields(String fields) {
         this.fields = fields;
     }
-    public String getBelongsTo() {
-        return belongsTo;
-    }
-    public void setBelongsTo(String belongsTo) {
-        this.belongsTo = belongsTo;
-    }
-    public Integer getStock() {
-        return stock;
-    }
-    public void setStock(Integer stock) {
-        this.stock = stock;
-    } 
+    
+    
 }

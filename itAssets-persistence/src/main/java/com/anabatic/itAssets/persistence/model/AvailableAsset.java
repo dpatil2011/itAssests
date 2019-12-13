@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.anabatic.generic.persistence.model.TypicalGenericModel;
+
 /**
  * !place your description here!
  *
@@ -17,7 +19,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "available_asset")
-public class AvailableAsset {
+public class AvailableAsset extends TypicalGenericModel{
 
 
     /**
