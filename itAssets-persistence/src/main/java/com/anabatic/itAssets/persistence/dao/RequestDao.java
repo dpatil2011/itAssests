@@ -1,5 +1,7 @@
 package com.anabatic.itAssets.persistence.dao;
 
+import java.util.List;
+
 import com.anabatic.itAssets.persistence.model.Request;
 
 public interface RequestDao {
@@ -9,5 +11,9 @@ public interface RequestDao {
 	public Request getById(Request req);
 
 	public Request update(Request req);
+
+	public void delete(Request req);
+
+	public List<Request> getall();
 
 }

@@ -1,0 +1,59 @@
+package com.anabatic.itAssets.endpoint.Request;
+
+public class InsertFaqRequest {
+	private String question;
+	private String answer;
+	private Integer status;
+	private Integer identifier;
+	private Long userId;
+	private Long repliedBy;
+
+	public String getQuestion() {
+		return question;
+	}
+
+	public void setQuestion(String question) {
+		this.question = question;
+	}
+
+	public String getAnswer() {
+		return answer;
+	}
+
+	public void setAnswer(String answer) {
+		this.answer = answer;
+	}
+
+	public Integer getStatus() {
+		return status;
+	}
+
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
+
+	public Integer getIdentifier() {
+		return identifier;
+	}
+
+	public void setIdentifier(Integer identifier) {
+		this.identifier = identifier;
+	}
+
+	public Long getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Long userId) {
+		this.userId = userId;
+	}
+
+	public Long getRepliedBy() {
+		return repliedBy;
+	}
+
+	public void setRepliedBy(Long repliedBy) {
+		this.repliedBy = repliedBy;
+	}
+
+}

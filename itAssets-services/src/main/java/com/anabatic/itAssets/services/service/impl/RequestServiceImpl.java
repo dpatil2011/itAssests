@@ -1,5 +1,8 @@
 package com.anabatic.itAssets.services.service.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.anabatic.itAssets.persistence.dao.RequestDao;
@@ -27,5 +30,16 @@ public class RequestServiceImpl implements RequestService {
 	public Request update(Request request) {
 		Request req = requestDao.update(request);
 		return req;
+	}
+
+	@Override
+	public void delete(Request request) {
+		requestDao.delete(request);
+	}
+	@Override
+	public List<Request> getAll(){
+		List<Request> list=new ArrayList<>();
+		list=requestDao.getall();
+		return list;
 	}
 }

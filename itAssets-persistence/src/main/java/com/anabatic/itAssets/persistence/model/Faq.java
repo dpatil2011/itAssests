@@ -1,5 +1,6 @@
 package com.anabatic.itAssets.persistence.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -15,7 +16,7 @@ import javax.persistence.Table;
 public class Faq {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private Long id;
 
@@ -31,13 +32,13 @@ public class Faq {
 	@Column(name = "identifier")
 	private Integer identifier;
 
-//	@ManyToOne(fetch = FetchType.EAGER)
-//	@JoinColumn(name = "userId")
-//	private Assets userId;
-//
-//	@ManyToOne(fetch = FetchType.EAGER)
-//	@JoinColumn(name = "reqpliedBy")
-//	private Assets repliedBy;
+	@ManyToOne(fetch = FetchType.EAGER,cascade= {CascadeType.ALL})
+	@JoinColumn(name = "userId")
+	private Users userId;
+
+	@ManyToOne(cascade= {CascadeType.ALL},fetch=FetchType.EAGER)
+	@JoinColumn(name = "repliedBy", referencedColumnName = "id")
+	private Users repliedBy;
 
 	public Long getId() {
 		return id;
@@ -79,20 +80,20 @@ public class Faq {
 		this.identifier = identifier;
 	}
 
-//	public Assets getUserId() {
-//		return userId;
-//	}
-//
-//	public void setUserId(Assets userId) {
-//		this.userId = userId;
-//	}
-//
-//	public Assets getRepliedBy() {
-//		return repliedBy;
-//	}
-//
-//	public void setRepliedBy(Assets repliedBy) {
-//		this.repliedBy = repliedBy;
-//	}
+	public Users getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Users userId) {
+		this.userId = userId;
+	}
+
+	public Users getRepliedBy() {
+		return repliedBy;
+	}
+
+	public void setRepliedBy(Users repliedBy) {
+		this.repliedBy = repliedBy;
+	}
 
 }

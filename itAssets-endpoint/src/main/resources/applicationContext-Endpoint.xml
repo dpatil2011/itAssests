@@ -1,23 +1,3 @@
-<<<<<<< HEAD
-<?xml version="1.0" encoding="UTF-8"?>
-
-<beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:p="http://www.springframework.org/schema/p"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans
-	   		http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
-	   		http://www.springframework.org/schema/context
-	   		http://www.springframework.org/schema/context/spring-context-3.1.xsd">
-
-	<bean id="assetsCategoryConverter"
-		class="com.anabatic.itAssets.endpoint.converter.impl.AssetsCategoryConverterImpl" />
-
-	<bean id="assetsConverter"
-		class="com.anabatic.itAssets.endpoint.converter.impl.AssetsConverterImpl" />
-		
-		<bean id="usersConverter"
-		class="com.anabatic.itAssets.endpoint.converter.impl.UsersConverterImpl" />
-=======
 <?xml version="1.0" encoding="UTF-8"?>
 
 <beans xmlns="http://www.springframework.org/schema/beans"
@@ -33,14 +13,29 @@
 
 	<bean id="requestConverter"
 		class="com.anabatic.itAssets.endpoint.converter.impl.InsertRequestConverterImpl" />
-<bean id="GetByIdConverter"
+	<bean id="GetByIdRequestConverter"
 		class="com.anabatic.itAssets.endpoint.converter.impl.GetByIdRequestConverterImpl" />
+	<bean id="UpdateRequestConverter"
+		class="com.anabatic.itAssets.endpoint.converter.impl.UpdateRequestConverterImpl" />
+	<bean id="deleteRequestConverter"
+		class="com.anabatic.itAssets.endpoint.converter.impl.DeleteRequestConverterImpl" />
+	<bean id="GetAllRequestConverter"
+		class="com.anabatic.itAssets.endpoint.converter.impl.GetAllRequestConverterImpl" />
 	<bean id="assetFormConverter"
 		class="com.anabatic.itAssets.endpoint.converter.impl.AssetFormConverterImpl" />
-<bean id="usersConverter"
+	<bean id="usersConverter"
 		class="com.anabatic.itAssets.endpoint.converter.impl.UsersConverterImpl" />
-		
+	<bean id="insertFaqConverter"
+		class="com.anabatic.itAssets.endpoint.converter.impl.InsertFaqConverterImpl" />
+	<bean id="GetByIdFaqConverter"
+		class="com.anabatic.itAssets.endpoint.converter.impl.GetByIdFaqConverterImpl" />
+	<bean id="UpdateFaqConverter"
+		class="com.anabatic.itAssets.endpoint.converter.impl.UpdateFaqConverterImpl" />
+	<bean id="deleteFaqConverter"
+		class="com.anabatic.itAssets.endpoint.converter.impl.DeleteFaqConverterImpl" />
+	<bean id="GetAllFaqConverter"
+		class="com.anabatic.itAssets.endpoint.converter.impl.GetAllFaqConverterImpl" />
 
 
->>>>>>> master
+
 </beans>

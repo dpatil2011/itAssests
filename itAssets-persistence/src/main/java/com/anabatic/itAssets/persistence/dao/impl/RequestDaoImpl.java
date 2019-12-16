@@ -1,7 +1,10 @@
 package com.anabatic.itAssets.persistence.dao.impl;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.transaction.Transactional;
 
 import com.anabatic.itAssets.persistence.dao.RequestDao;
@@ -28,5 +31,19 @@ public class RequestDaoImpl implements RequestDao {
 	public Request update(Request req) {
 		Request request = manager.merge(req);
 		return request;
+	}
+
+	@Override
+	public void delete(Request req) {
+		manager.remove(req);
+	}
+
+	@Override
+	public List<Request> getall() {
+		try {
+			return manager.createNativeQuery("SELECT * FROM request", Request.class).getResultList();
+		} catch (Exception e) {
+			throw e;
+		}
 	}
 }
