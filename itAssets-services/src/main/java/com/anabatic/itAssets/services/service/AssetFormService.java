@@ -2,7 +2,6 @@ package com.anabatic.itAssets.services.service;
 
 import java.util.List;
 
-import com.anabatic.generic.service.TypicalGenericService;
 import com.anabatic.itAssets.persistence.model.AssetsForm;
 
 /**
@@ -10,13 +9,14 @@ import com.anabatic.itAssets.persistence.model.AssetsForm;
  *
  * @author yeshwantk (&copy;25-Jul-2019)
  */
-public interface AssetFormService extends TypicalGenericService<AssetsForm, Long> {
+public interface AssetFormService {
 
-    public AssetsForm insert(AssetsForm assets);
+    public AssetsForm insert(AssetsForm request);
 
-    public AssetsForm getById(Long id);
+    public AssetsForm getById(Long request);
 
-    public List<AssetsForm> getAllData();
+    public List<AssetsForm> getAll();
+    
+    public AssetsForm delete(Long request);
 
-    public void delete(Long id);
 }

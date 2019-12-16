@@ -2,7 +2,6 @@ package com.anabatic.itAssets.services.service;
 
 import java.util.List;
 
-import com.anabatic.generic.service.TypicalGenericService;
 import com.anabatic.itAssets.persistence.model.AssetsCategory;
 
 /**
@@ -10,14 +9,13 @@ import com.anabatic.itAssets.persistence.model.AssetsCategory;
  *
  * @author yeshwantk (&copy;25-Jul-2019)
  */
-public interface AssetsCategoryService
-        extends TypicalGenericService<AssetsCategory, Long> {
+public interface AssetsCategoryService {
 
-    public AssetsCategory insert(AssetsCategory assetsCat);
+    public AssetsCategory insert(AssetsCategory request);
 
-    public AssetsCategory getById(Long id);
+    public AssetsCategory getById(Long request);
 
-    public List<AssetsCategory> getAllData();
+    public List<AssetsCategory> getAll();
 
-    public void delete(Long id);
+    public AssetsCategory delete(Long request);
 }

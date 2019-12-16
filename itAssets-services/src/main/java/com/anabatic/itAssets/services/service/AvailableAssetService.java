@@ -2,7 +2,6 @@ package com.anabatic.itAssets.services.service;
 
 import java.util.List;
 
-import com.anabatic.generic.service.TypicalGenericService;
 import com.anabatic.itAssets.persistence.model.AvailableAsset;
 
 /**
@@ -10,13 +9,14 @@ import com.anabatic.itAssets.persistence.model.AvailableAsset;
  *
  * @author yeshwantk (&copy;11-Dec-2019) 
  */
-public interface AvailableAssetService extends TypicalGenericService<AvailableAsset, Long> {
+public interface AvailableAssetService {
 
-    public AvailableAsset insert(AvailableAsset availableAsset);
+    public AvailableAsset insert(AvailableAsset request);
 
-    public AvailableAsset getById(Long id);
+    public AvailableAsset getById(Long request);
 
-    public List<AvailableAsset> getAllData();
+    public List<AvailableAsset> getAll();
 
-    public void delete(Long id);
+    public AvailableAsset delete(Long request);
+
 }

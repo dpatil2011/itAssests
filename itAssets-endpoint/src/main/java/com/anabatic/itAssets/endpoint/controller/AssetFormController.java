@@ -1,10 +1,10 @@
 package com.anabatic.itAssets.endpoint.controller;
 
-import javax.validation.Valid;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +14,7 @@ import com.anabatic.generic.endpoint.contract.BaseResponse;
 import com.anabatic.itAssets.endpoint.Request.AssetFormRequest;
 import com.anabatic.itAssets.endpoint.Request.RequestId;
 import com.anabatic.itAssets.endpoint.converter.AssetFormConverter;
+import com.anabatic.itAssets.persistence.model.AssetsForm;
 import com.anabatic.itAssets.services.service.AssetFormService;
 
 /**
@@ -22,8 +23,8 @@ import com.anabatic.itAssets.services.service.AssetFormService;
  * @author yeshwantk (&copy;25-Jul-2019)
  */
 @RestController
-@RequestMapping("/assets")
-public class AssetsController {
+@RequestMapping("/assets-form")
+public class AssetFormController {
 
     private BaseResponse baseResponse = new BaseResponse();
 
@@ -33,47 +34,42 @@ public class AssetsController {
     @Autowired
     private AssetFormConverter assetsConverter;
 
-    @PostMapping(value = "/insert", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping("/insert")
     public ResponseEntity<BaseResponse> insert(
-            @Valid @RequestBody AssetFormRequest assetsRequest) {
-
-        baseResponse.setResponse(assetsConverter.toContract(
-                assetsService.insert(assetsConverter.toModel(assetsRequest))));
-
+            @RequestBody AssetFormRequest request) {
+        AssetsForm insert = assetsConverter.toModel(request);
+        AssetsForm response = assetsService.insert(insert);
+        BaseResponse baseResponse = new BaseResponse();
+        baseResponse.setResponse(assetsConverter.toContract(response));
         return ResponseEntity.ok().body(baseResponse);
-
     }
 
-    @PostMapping(value = "/get", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<BaseResponse> get(
-            @Valid @RequestBody RequestId request) {
-
-        baseResponse.setResponse(assetsConverter
-                .toContract(assetsService.getById(request.getId())));
-
+    @PostMapping("/get-by-id")
+    public ResponseEntity<BaseResponse> getById(
+            @RequestBody RequestId request) {
+        AssetsForm response = assetsService.getById(request.getId());
+        BaseResponse baseResponse = new BaseResponse();
+        baseResponse.setResponse(assetsConverter.toContract(response));
         return ResponseEntity.ok().body(baseResponse);
-
     }
-
-    @PostMapping(value = "/getall", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<BaseResponse> getall() {
-
-        baseResponse.setResponse(
-                assetsConverter.toContracts(assetsService.getAllData()));
-
+    
+    @GetMapping("/get-all")
+    public ResponseEntity<BaseResponse> getAll(
+            @RequestBody RequestId request) {
+        List<AssetsForm> response = assetsService.getAll();
+        BaseResponse baseResponse = new BaseResponse();
+        baseResponse.setResponse(assetsConverter.toContracts(response));
         return ResponseEntity.ok().body(baseResponse);
-
     }
-
-    @PostMapping(value = "/delete", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    
+    @PostMapping("/delete")
     public ResponseEntity<BaseResponse> delete(
-            @Valid @RequestBody RequestId request) {
-
+            @RequestBody RequestId request) {
         assetsService.delete(request.getId());
-        baseResponse.setResponse("Operation Performed successfully");
-
+        BaseResponse baseResponse = new BaseResponse();
+        baseResponse.setResponse("Operation performed Successfully");
         return ResponseEntity.ok().body(baseResponse);
-
     }
+       
 
 }

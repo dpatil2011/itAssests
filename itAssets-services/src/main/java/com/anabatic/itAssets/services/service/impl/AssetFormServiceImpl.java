@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.anabatic.generic.service.impl.TypicalGenericServiceImpl;
 import com.anabatic.itAssets.persistence.dao.AssetFomDao;
 import com.anabatic.itAssets.persistence.model.AssetsForm;
 import com.anabatic.itAssets.services.service.AssetFormService;
@@ -14,45 +13,31 @@ import com.anabatic.itAssets.services.service.AssetFormService;
  *
  * @author yeshwantk (&copy;25-Jul-2019)
  */
-public class AssetFormServiceImpl extends TypicalGenericServiceImpl<AssetsForm, Long>
-        implements AssetFormService {
+public class AssetFormServiceImpl implements AssetFormService {
 
     @Autowired
     private AssetFomDao assetsDao;
 
-    @Autowired
-    public AssetFormServiceImpl(AssetFomDao assetsDao) {
-        super();
-        this.assetsDao = assetsDao;
-    }
-
-    public void setAssetsDao(AssetFomDao assetsDao) {
-        this.assetsDao = assetsDao;
-        this.typicalGenericDao = assetsDao;
-        this.genericDao = assetsDao;
+    @Override
+    public AssetsForm insert(AssetsForm request) {
+        AssetsForm response = assetsDao.insert(request);
+        return response;
     }
 
     @Override
-    public AssetsForm insert(AssetsForm assets) {
-        // TODO Auto-generated method stub
-        return assetsDao.save(assets);
+    public AssetsForm getById(Long request) {
+        AssetsForm response = assetsDao.getById(request);
+        return response;
     }
 
     @Override
-    public AssetsForm getById(Long id) {
-        // TODO Auto-generated method stub
-        return assetsDao.get(id);
-    }
-
-    @Override
-    public void delete(Long id) {
-        assetsDao.remove(id);
-
-    }
-
-    @Override
-    public List<AssetsForm> getAllData() {
+    public List<AssetsForm> getAll() {
         return assetsDao.getAll();
+    }
+
+    @Override
+    public AssetsForm delete(Long request) {
+        return assetsDao.delete(request);
     }
 
 }

@@ -1,6 +1,7 @@
 package com.anabatic.itAssets.persistence.dao;
 
-import com.anabatic.generic.persistence.dao.TypicalGenericDao;
+import java.util.List;
+
 import com.anabatic.itAssets.persistence.model.AssetsCategory;
 
 /**
@@ -8,6 +9,14 @@ import com.anabatic.itAssets.persistence.model.AssetsCategory;
  *
  * @author yeshwantk (&copy;25-Jul-2019) 
  */
-public interface AssetsCategoryDao extends TypicalGenericDao<AssetsCategory, Long>{
+public interface AssetsCategoryDao{
 
+    public AssetsCategory insert(AssetsCategory request);
+
+    public AssetsCategory getById(Long request);
+
+    public List<AssetsCategory> getAll();
+
+    public AssetsCategory delete(Long request);
+    
 }

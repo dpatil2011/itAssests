@@ -10,9 +10,16 @@
 
 	<bean id="assetsCategoryDao"
 		class="com.anabatic.itAssets.persistence.dao.impl.AssetsCategoryDaoImpl" />
-
+		
+	<bean id="assetFormDao"
+		class="com.anabatic.itAssets.persistence.dao.impl.AssetFormDaoImpl" />
+		
+	<bean id="availableAssetDao"
+		class="com.anabatic.itAssets.persistence.dao.impl.AvailableAssetDaoImpl" />
+		
 	<bean id="requestDao"
 		class="com.anabatic.itAssets.persistence.dao.impl.RequestDaoImpl" />
+<<<<<<< Updated upstream
 	<bean id="faqDao" class="com.anabatic.itAssets.persistence.dao.impl.FaqDaoImpl" />
 
 	<bean id="assetFormdao"
@@ -20,4 +27,10 @@
 	<bean id="usersdao" class="com.anabatic.itAssets.persistence.dao.impl.UsersDaoImpl" />
 
 
+=======
+		
+	<bean id="usersDao"
+		class="com.anabatic.itAssets.persistence.dao.impl.UsersDaoImpl" />
+	
+>>>>>>> Stashed changes
 </beans>

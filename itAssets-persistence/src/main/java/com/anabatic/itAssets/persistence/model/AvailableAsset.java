@@ -10,8 +10,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.anabatic.generic.persistence.model.TypicalGenericModel;
-
 /**
  * !place your description here!
  *
@@ -19,16 +17,7 @@ import com.anabatic.generic.persistence.model.TypicalGenericModel;
  */
 @Entity
 @Table(name = "available_asset")
-public class AvailableAsset extends TypicalGenericModel{
-
-
-    /**
-     * !place your description! 
-     *
-     * long 
-     * serialVersionUID 
-     */
-    private static final long serialVersionUID = 1L;
+public class AvailableAsset{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,9 +25,11 @@ public class AvailableAsset extends TypicalGenericModel{
     private Long id;
 
     @Column(name = "data")
-    private String fields;
+    private String data;
 
-   
+    @Column(name = "status")
+    private short status;
+    
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "cat_id")
     private AssetsForm assetsForm;
@@ -54,13 +45,15 @@ public class AvailableAsset extends TypicalGenericModel{
     }
 
 
-    public String getFields() {
-        return fields;
+   
+
+    public String getData() {
+        return data;
     }
 
 
-    public void setFields(String fields) {
-        this.fields = fields;
+    public void setData(String data) {
+        this.data = data;
     }
 
 
@@ -73,6 +66,15 @@ public class AvailableAsset extends TypicalGenericModel{
         this.assetsForm = assetsForm;
     }
 
+
+    public short getStatus() {
+        return status;
+    }
+
+
+    public void setStatus(short status) {
+        this.status = status;
+    }
 
    
 }

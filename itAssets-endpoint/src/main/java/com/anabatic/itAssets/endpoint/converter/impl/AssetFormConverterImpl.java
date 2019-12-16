@@ -1,5 +1,6 @@
 package com.anabatic.itAssets.endpoint.converter.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.anabatic.itAssets.endpoint.Request.AssetFormRequest;
@@ -43,8 +44,9 @@ public class AssetFormConverterImpl implements AssetFormConverter {
 
     @Override
     public List<AssetFormResponse> toContracts(List<AssetsForm> objects) {
-        // TODO Auto-generated method stub
-        return null;
+        List<AssetFormResponse> list = new ArrayList<>();
+        objects.forEach(x -> list.add(toContract(x)));
+        return list;
     }
 
 }

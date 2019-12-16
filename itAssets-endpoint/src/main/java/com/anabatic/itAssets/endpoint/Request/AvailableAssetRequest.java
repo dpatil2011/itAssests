@@ -8,25 +8,35 @@ package com.anabatic.itAssets.endpoint.Request;
 public class AvailableAssetRequest {
 
     private Long id;
-    private Long catId;
-    private String fields;
+    private Long formId;
+    private String data;
+    private short status;
     public Long getId() {
         return id;
     }
     public void setId(Long id) {
         this.id = id;
     }
-    public Long getCatId() {
-        return catId;
+   
+    public Long getFormId() {
+        return formId;
     }
-    public void setCatId(Long catId) {
-        this.catId = catId;
+    public void setFormId(Long formId) {
+        this.formId = formId;
     }
-    public String getFields() {
-        return fields;
+    
+    public String getData() {
+        return data;
     }
-    public void setFields(String fields) {
-        this.fields = fields;
+    public void setData(String data) {
+        this.data = data;
     }
+    public short getStatus() {
+        return status;
+    }
+    public void setStatus(short status) {
+        this.status = status;
+    }
+    
     
 }

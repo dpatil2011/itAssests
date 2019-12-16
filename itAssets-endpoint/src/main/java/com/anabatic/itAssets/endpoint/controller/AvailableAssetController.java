@@ -11,60 +11,56 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.anabatic.generic.endpoint.contract.BaseResponse;
-import com.anabatic.itAssets.endpoint.Request.AssetsCategoryRequest;
+import com.anabatic.itAssets.endpoint.Request.AvailableAssetRequest;
 import com.anabatic.itAssets.endpoint.Request.RequestId;
-import com.anabatic.itAssets.endpoint.converter.AssetsCategoryConverter;
-import com.anabatic.itAssets.persistence.model.AssetsCategory;
-import com.anabatic.itAssets.services.service.AssetsCategoryService;
+import com.anabatic.itAssets.endpoint.converter.AvailableAssetsConverter;
+import com.anabatic.itAssets.persistence.model.AvailableAsset;
+import com.anabatic.itAssets.services.service.AvailableAssetService;
 
-/**
- * !place your description here!
- *
- * @author yeshwantk (&copy;25-Jul-2019)
- */
 @RestController
-@RequestMapping("/assets-category")
-public class AssetsCategoryController {
+@RequestMapping("/available-assets")
+public class AvailableAssetController {
 
     private BaseResponse baseResponse = new BaseResponse();
 
     @Autowired
-    private AssetsCategoryService assetsCategoryService;
+    private AvailableAssetService availableAssetService;
 
     @Autowired
-    private AssetsCategoryConverter assetsCategoryConverter;
+    private AvailableAssetsConverter availableAssetsConverter;
 
     @PostMapping("/insert")
-    public ResponseEntity<BaseResponse> insert(@RequestBody AssetsCategoryRequest request) {
-        AssetsCategory insert = assetsCategoryConverter.toModel(request);
-        AssetsCategory response = assetsCategoryService.insert(insert);
+    public ResponseEntity<BaseResponse> insert(
+            @RequestBody AvailableAssetRequest request) {
+        AvailableAsset insert = availableAssetsConverter.toModel(request);
+        AvailableAsset response = availableAssetService.insert(insert);
         BaseResponse baseResponse = new BaseResponse();
-        baseResponse.setResponse(assetsCategoryConverter.toContract(response));
+        baseResponse.setResponse(availableAssetsConverter.toContract(response));
         return ResponseEntity.ok().body(baseResponse);
     }
 
     @PostMapping("/get-by-id")
     public ResponseEntity<BaseResponse> getById(
             @RequestBody RequestId request) {
-        AssetsCategory response = assetsCategoryService.getById(request.getId());
+        AvailableAsset response = availableAssetService.getById(request.getId());
         BaseResponse baseResponse = new BaseResponse();
-        baseResponse.setResponse(assetsCategoryConverter.toContract(response));
+        baseResponse.setResponse(availableAssetsConverter.toContract(response));
         return ResponseEntity.ok().body(baseResponse);
     }
     
     @GetMapping("/get-all")
     public ResponseEntity<BaseResponse> getAll(
             @RequestBody RequestId request) {
-        List<AssetsCategory> response = assetsCategoryService.getAll();
+        List<AvailableAsset> response = availableAssetService.getAll();
         BaseResponse baseResponse = new BaseResponse();
-        baseResponse.setResponse(assetsCategoryConverter.toContracts(response));
+        baseResponse.setResponse(availableAssetsConverter.toContracts(response));
         return ResponseEntity.ok().body(baseResponse);
     }
     
     @PostMapping("/delete")
     public ResponseEntity<BaseResponse> delete(
             @RequestBody RequestId request) {
-        assetsCategoryService.delete(request.getId());
+        availableAssetService.delete(request.getId());
         BaseResponse baseResponse = new BaseResponse();
         baseResponse.setResponse("Operation performed Successfully");
         return ResponseEntity.ok().body(baseResponse);

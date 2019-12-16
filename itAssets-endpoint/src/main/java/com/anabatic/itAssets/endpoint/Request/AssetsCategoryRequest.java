@@ -12,6 +12,7 @@ public class AssetsCategoryRequest {
     private short fields;
     private String belongsTo;
     private Integer stock;
+    private short status;
     public Long getId() {
         return id;
     }
@@ -41,5 +42,12 @@ public class AssetsCategoryRequest {
     }
     public void setStock(Integer stock) {
         this.stock = stock;
+    }
+    public short getStatus() {
+        return status;
+    }
+    public void setStatus(short status) {
+        this.status = status;
     } 
+    
 }

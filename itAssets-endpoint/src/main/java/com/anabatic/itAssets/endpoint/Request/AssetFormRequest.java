@@ -8,7 +8,6 @@ package com.anabatic.itAssets.endpoint.Request;
 public class AssetFormRequest {
 
     private Long id;
-    private Long catId;
     private String fields;
     private Long assetCatId;
     public Long getId() {
@@ -17,12 +16,7 @@ public class AssetFormRequest {
     public void setId(Long id) {
         this.id = id;
     }
-    public Long getCatId() {
-        return catId;
-    }
-    public void setCatId(Long catId) {
-        this.catId = catId;
-    }
+   
     public String getFields() {
         return fields;
     }

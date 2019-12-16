@@ -14,8 +14,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.anabatic.generic.persistence.model.TypicalGenericModel;
-
 /**
  * !place your description here!
  *
@@ -23,19 +21,11 @@ import com.anabatic.generic.persistence.model.TypicalGenericModel;
  */
 @Entity
 @Table(name = "asset_form")
-public class AssetsForm extends TypicalGenericModel {
-
-    /**
-     * !place your description! 
-     *
-     * long 
-     * serialVersionUID 
-     */
-    private static final long serialVersionUID = 1L;
+public class AssetsForm{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "cat_id")
+    @Column(name = "id")
     private Long id;
 
     @Column(name = "fields",columnDefinition="text")
@@ -46,6 +36,9 @@ public class AssetsForm extends TypicalGenericModel {
     @JoinColumn(name = "category_id")
     private AssetsCategory assetsCategory;
 
+    @Column(name = "status")
+    private short status;
+    
     @OneToMany(mappedBy = "assetsForm", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<AvailableAsset> availableAsset;
 
@@ -86,6 +79,16 @@ public class AssetsForm extends TypicalGenericModel {
 
     public void setAvailableAsset(List<AvailableAsset> availableAsset) {
         this.availableAsset = availableAsset;
+    }
+
+
+    public short getStatus() {
+        return status;
+    }
+
+
+    public void setStatus(short status) {
+        this.status = status;
     }
 
    

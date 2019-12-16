@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.anabatic.generic.service.impl.TypicalGenericServiceImpl;
 import com.anabatic.itAssets.persistence.dao.AvailableAssetDao;
 import com.anabatic.itAssets.persistence.model.AvailableAsset;
 import com.anabatic.itAssets.services.service.AvailableAssetService;
@@ -14,45 +13,34 @@ import com.anabatic.itAssets.services.service.AvailableAssetService;
  *
  * @author yeshwantk (&copy;11-Dec-2019)
  */
-public class AvailableAssetServiceImpl
-        extends TypicalGenericServiceImpl<AvailableAsset, Long>
-        implements AvailableAssetService {
+public class AvailableAssetServiceImpl implements AvailableAssetService {
 
     @Autowired
     private AvailableAssetDao availableAssetDao;
 
-    @Autowired
-    public AvailableAssetServiceImpl(AvailableAssetDao availableAssetDao) {
-        super();
-        this.availableAssetDao = availableAssetDao;
-    }
-
-    public void setAssetsCategoryDao(AvailableAssetDao availableAssetDao) {
-        this.availableAssetDao = availableAssetDao;
-        this.typicalGenericDao = availableAssetDao;
-        this.genericDao = availableAssetDao;
+    @Override
+    public AvailableAsset insert(AvailableAsset request) {
+        AvailableAsset response = availableAssetDao.insert(request);
+        return response;
     }
 
     @Override
-    public AvailableAsset insert(AvailableAsset availableAsset) {
-        return availableAssetDao.save(availableAsset);
+    public AvailableAsset getById(Long request) {
+        AvailableAsset response = availableAssetDao.getById(request);
+        return response;
     }
 
     @Override
-    public AvailableAsset getById(Long id) {
-        return availableAssetDao.get(id);
-    }
-
-    @Override
-    public void delete(Long id) {
-        availableAssetDao.remove(id);
-
-    }
-
-    @Override
-    public List<AvailableAsset> getAllData() {
-
+    public List<AvailableAsset> getAll() {
+        
         return availableAssetDao.getAll();
     }
 
+    @Override
+    public AvailableAsset delete(Long request) {
+       
+        return availableAssetDao.delete(request);
+    }
+
+   
 }

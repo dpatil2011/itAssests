@@ -20,9 +20,11 @@ public class AssetsCategoryConverterImpl implements AssetsCategoryConverter {
         AssetsCategory request = new AssetsCategory();
 
         request.setId(object.getId());
+        request.setFields(object.getFields());
         request.setCatName(object.getCatName());
-        request.setClientId("1");
-
+        request.setBelongsTo(object.getBelongsTo());
+        request.setStock(object.getStock());
+        request.setStatus(object.getStatus());
         return request;
     }
 
@@ -36,20 +38,20 @@ public class AssetsCategoryConverterImpl implements AssetsCategoryConverter {
     public AssetsCategoryResponse toContract(AssetsCategory object) {
         AssetsCategoryResponse assetsCategoryResponse = new AssetsCategoryResponse();
 
-        assetsCategoryResponse.setCatName(object.getCatName());
         assetsCategoryResponse.setId(object.getId());
+        assetsCategoryResponse.setFields(object.getFields());
+        assetsCategoryResponse.setCatName(object.getCatName());
+        assetsCategoryResponse.setBelongsTo(object.getBelongsTo());
+        assetsCategoryResponse.setStock(object.getStock());
+        assetsCategoryResponse.setStatus(object.getStatus());
 
         return assetsCategoryResponse;
     }
 
     @Override
-    public List<AssetsCategoryResponse> toContracts(
-            List<AssetsCategory> objects) {
-        List<AssetsCategoryResponse> assetsCat = new ArrayList<>();
-        for (AssetsCategory cat : objects) {
-            assetsCat.add(toContract(cat));
-        }
-        return assetsCat;
+    public List<AssetsCategoryResponse> toContracts(List<AssetsCategory> objects) {
+        List<AssetsCategoryResponse> list = new ArrayList<>();
+        objects.forEach(x -> list.add(toContract(x)));
+        return list;
     }
-
 }

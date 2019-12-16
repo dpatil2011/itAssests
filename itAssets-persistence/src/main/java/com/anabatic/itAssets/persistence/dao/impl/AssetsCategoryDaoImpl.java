@@ -1,6 +1,11 @@
 package com.anabatic.itAssets.persistence.dao.impl;
 
-import com.anabatic.generic.persistence.dao.impl.TypicalGenericDaoImpl;
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
+
 import com.anabatic.itAssets.persistence.dao.AssetsCategoryDao;
 import com.anabatic.itAssets.persistence.model.AssetsCategory;
 
@@ -9,8 +14,39 @@ import com.anabatic.itAssets.persistence.model.AssetsCategory;
  *
  * @author yeshwantk (&copy;25-Jul-2019)
  */
-public class AssetsCategoryDaoImpl
-        extends TypicalGenericDaoImpl<AssetsCategory, Long>
-        implements AssetsCategoryDao {
+@Transactional
+public class AssetsCategoryDaoImpl implements AssetsCategoryDao {
+
+    @PersistenceContext
+    EntityManager manager;
+
+    @Override
+    public AssetsCategory insert(AssetsCategory request) {
+        AssetsCategory response = manager.merge(request);
+        return response;
+    }
+
+    @Override
+    public AssetsCategory getById(Long request) {
+        AssetsCategory response = manager.find(AssetsCategory.class, request);
+        return response;
+    }
+
+    @Override
+    public List<AssetsCategory>getAll() {
+    
+        try {
+            return manager.createNativeQuery("SELECT * FROM assets_category", AssetsCategory.class).getResultList();
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+
+    @Override
+    public AssetsCategory delete(Long request) {
+        AssetsCategory response = manager.find(AssetsCategory.class, request);
+        manager.remove(response);
+        return null;
+    }
 
 }

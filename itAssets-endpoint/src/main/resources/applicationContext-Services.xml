@@ -8,8 +8,15 @@
 	   		http://www.springframework.org/schema/context
 	   		http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 
+	<bean id="assetFormService"
+		class="com.anabatic.itAssets.services.service.impl.AssetFormServiceImpl" />
+		
+	<bean id="availableAssetService"
+		class="com.anabatic.itAssets.services.service.impl.AvailableAssetServiceImpl" />
+	
 	<bean id="assetsCategoryService"
 		class="com.anabatic.itAssets.services.service.impl.AssetsCategoryServiceImpl" />
+<<<<<<< Updated upstream
 	<bean id="usersService"
 		class="com.anabatic.itAssets.services.service.impl.UsersServiceImpl" />
 	<bean id="assetFormService"
@@ -19,4 +26,14 @@
 	<bean id="faqService"
 		class="com.anabatic.itAssets.services.service.impl.FaqServiceImpl" />
 
+=======
+		
+	<bean id="usersService"
+			class="com.anabatic.itAssets.services.service.impl.UsersServiceImpl" />
+	
+	<bean id="requestService"
+		class="com.anabatic.itAssets.services.service.impl.RequestServiceImpl">
+	</bean>
+	
+>>>>>>> Stashed changes
 </beans>
