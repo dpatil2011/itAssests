@@ -16,24 +16,13 @@
 	
 	<bean id="assetsCategoryService"
 		class="com.anabatic.itAssets.services.service.impl.AssetsCategoryServiceImpl" />
-<<<<<<< Updated upstream
+
 	<bean id="usersService"
 		class="com.anabatic.itAssets.services.service.impl.UsersServiceImpl" />
-	<bean id="assetFormService"
-		class="com.anabatic.itAssets.services.service.impl.AssetFormServiceImpl" />
 	<bean id="requestService"
 		class="com.anabatic.itAssets.services.service.impl.RequestServiceImpl" />
 	<bean id="faqService"
 		class="com.anabatic.itAssets.services.service.impl.FaqServiceImpl" />
 
-=======
-		
-	<bean id="usersService"
-			class="com.anabatic.itAssets.services.service.impl.UsersServiceImpl" />
-	
-	<bean id="requestService"
-		class="com.anabatic.itAssets.services.service.impl.RequestServiceImpl">
-	</bean>
-	
->>>>>>> Stashed changes
+
 </beans>

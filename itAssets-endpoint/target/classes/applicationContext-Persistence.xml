@@ -19,18 +19,10 @@
 		
 	<bean id="requestDao"
 		class="com.anabatic.itAssets.persistence.dao.impl.RequestDaoImpl" />
-<<<<<<< Updated upstream
 	<bean id="faqDao" class="com.anabatic.itAssets.persistence.dao.impl.FaqDaoImpl" />
 
-	<bean id="assetFormdao"
-		class="com.anabatic.itAssets.persistence.dao.impl.AssetFormDaoImpl" />
 	<bean id="usersdao" class="com.anabatic.itAssets.persistence.dao.impl.UsersDaoImpl" />
 
 
-=======
-		
-	<bean id="usersDao"
-		class="com.anabatic.itAssets.persistence.dao.impl.UsersDaoImpl" />
-	
->>>>>>> Stashed changes
+
 </beans>
