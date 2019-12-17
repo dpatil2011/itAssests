@@ -1,6 +1,5 @@
 package com.anabatic.itAssets.endpoint.converter.impl;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
 
 import java.util.List;
 
