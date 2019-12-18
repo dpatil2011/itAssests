@@ -16,4 +16,6 @@ public interface RequestService {
 
 	public List<Request> getAll();
 
+	public Request insertUserRequest(Request model);
+
 }

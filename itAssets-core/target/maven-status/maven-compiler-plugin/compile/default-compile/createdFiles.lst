@@ -1,1 +1,3 @@
+org\itAssests\core\constant\UsersErrorConstant.class
 org\itAssets\core\App.class
+org\itAssests\core\exception\UsersException.class

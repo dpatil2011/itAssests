@@ -11,10 +11,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.anabatic.generic.persistence.model.TypicalGenericModel;
+import org.hibernate.annotations.DynamicUpdate;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name = "skills")
+@DynamicUpdate
 public class Skills  {
 
 	
@@ -32,10 +35,22 @@ public class Skills  {
 	    
 	    @Column(name = "description")
 	    private String description;
+	    
+	    @Column(name = "experience")
+	    private String experience;
 
+	  
 	    @ManyToOne(fetch = FetchType.LAZY)
-	    @JoinColumn(name = "user_id",referencedColumnName="id")
+	    @JoinColumn(name = "user_id", referencedColumnName = "id")
 	    private Users users;
+
+		public String getExperience() {
+			return experience;
+		}
+
+		public void setExperience(String experience) {
+			this.experience = experience;
+		}
 
 		public Long getId() {
 			return id;

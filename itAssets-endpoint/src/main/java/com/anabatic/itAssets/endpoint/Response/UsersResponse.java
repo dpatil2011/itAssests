@@ -3,6 +3,7 @@ package com.anabatic.itAssets.endpoint.Response;
 import java.util.Date;
 import java.util.List;
 
+import com.anabatic.itAssets.endpoint.Request.SkillBean;
 import com.anabatic.itAssets.persistence.model.Privilege;
 import com.anabatic.itAssets.persistence.model.Skills;
 
@@ -56,7 +57,7 @@ public class UsersResponse {
 	private String postGraduationEndYear;
 	private String postGraduationMajor;
 	private String postGraduationGrade;
-	private List<Skills> skills;
+	private List<SkillBean> skills;
 	private Privilege privilege;
 	public Long getId() {
 		return id;
@@ -352,10 +353,10 @@ public class UsersResponse {
 	public void setPostGraduationGrade(String postGraduationGrade) {
 		this.postGraduationGrade = postGraduationGrade;
 	}
-	public List<Skills> getSkills() {
+	public List<SkillBean> getSkills() {
 		return skills;
 	}
-	public void setSkills(List<Skills> skills) {
+	public void setSkills(List<SkillBean> skills) {
 		this.skills = skills;
 	}
 	public Privilege getPrivilege() {

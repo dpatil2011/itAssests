@@ -44,10 +44,18 @@ public class RequestServiceImpl implements RequestService {
 		return list;
 	}
 
+
 	public List<Request> getByRequest(String requestTo) {
 		List<Request> list = new ArrayList<>();
 		list = requestDao.getByRequest(requestTo);
 		return list;
+	}
+
+	@Override
+	public Request insertUserRequest(Request model) {
+		Request request2 = requestDao.insert(model);
+		return request2;
+
 	}
 
 }
