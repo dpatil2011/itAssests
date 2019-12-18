@@ -40,5 +40,16 @@
 		class="com.anabatic.itAssets.endpoint.converter.impl.DeleteFaqConverterImpl" />
 	<bean id="GetAllFaqConverter"
 		class="com.anabatic.itAssets.endpoint.converter.impl.GetAllFaqConverterImpl" />
-
+    <bean id="getAllUsersConverter"
+		class="com.anabatic.itAssets.endpoint.converter.impl.GetAllUsersConverterImpl" />
+		<bean id="getByIdUsersConverter"
+		class="com.anabatic.itAssets.endpoint.converter.impl.GetByIdUsersConverterImpl" />
+		<bean id="usersUpdateConverter"
+		class="com.anabatic.itAssets.endpoint.converter.impl.UsersUpdateConverterImpl" />
+		<bean id="deleteByIdUserConverter"
+		class="com.anabatic.itAssets.endpoint.converter.impl.DeleteByIdUserConverterImpl" />
+		<bean id="userLoginConverter"
+		class="com.anabatic.itAssets.endpoint.converter.impl.UserLoginConverterImpl" />
+		<bean id="usersRequestConverter"
+		class="com.anabatic.itAssets.endpoint.converter.impl.UsersRequestConverterImpl" />
 </beans>

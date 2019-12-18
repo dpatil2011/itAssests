@@ -55,8 +55,7 @@ public class AssetsCategoryController {
         return ResponseEntity.ok().body(baseResponse);
     }
     @RequestMapping(value="/getall", method=RequestMethod.GET)
-    public List<AssetsCategory> getAll(
-            @RequestBody RequestId request) {
+    public List<AssetsCategory> getAll() {
         List<AssetsCategory> response = assetsCategoryService.getAll();
         BaseResponse baseResponse = new BaseResponse();
         baseResponse.setResponse(assetsCategoryConverter.toContracts(response));

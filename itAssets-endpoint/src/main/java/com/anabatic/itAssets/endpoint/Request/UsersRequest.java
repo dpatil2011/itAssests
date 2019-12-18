@@ -61,7 +61,15 @@ public class UsersRequest {
 	private List<Skills> skills;
 	private Privilege privilege;
 	private Long status;
+	private String experience;
 	
+	
+	public String getExperience() {
+		return experience;
+	}
+	public void setExperience(String experience) {
+		this.experience = experience;
+	}
 	public Long getStatus() {
 		return status;
 	}

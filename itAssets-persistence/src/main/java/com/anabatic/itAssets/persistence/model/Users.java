@@ -16,11 +16,14 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.anabatic.generic.persistence.model.TypicalGenericModel;
+import org.hibernate.annotations.DynamicUpdate;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 
 @Entity
 @Table(name = "users")
+@DynamicUpdate
 public class Users {
  
 	
@@ -35,6 +38,9 @@ public class Users {
 	    
 	    @Column(name = "last_name")
 	    private String lastName;
+	    
+	    @Column(name = "full_name")
+	    private String fullName;
 	    
 	    @Column(name = "employee_id")
 	    private String employeeId;
@@ -180,7 +186,15 @@ public class Users {
 	    @Column( name= "status" )
 	    private Integer status;
 	    	    
-	    public Integer getStatus() {
+	    public String getFullName() {
+			return fullName;
+		}
+
+		public void setFullName(String fullName) {
+			this.fullName = fullName;
+		}
+
+		public Integer getStatus() {
 			return status;
 		}
 
@@ -188,12 +202,16 @@ public class Users {
 			this.status = status;
 		}
 
-		@OneToMany(mappedBy = "users", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+
+		@OneToMany(mappedBy = "users", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	    private List<Skills> skills;
 	    
 	    @ManyToOne(fetch = FetchType.EAGER)
 	    @JoinColumn(name = "privilege_id")
 	    private Privilege privilege;
+	    
+	    @OneToMany(mappedBy = "userId", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	    private List<Request> request;
 
 		public Long getId() {
 			return id;

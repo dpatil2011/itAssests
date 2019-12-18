@@ -42,4 +42,11 @@ public class RequestServiceImpl implements RequestService {
 		list=requestDao.getall();
 		return list;
 	}
+
+	@Override
+	public Request insertUserRequest(Request model) {
+		Request request2 = requestDao.insert(model);
+		return request2;
+
+	}
 }
