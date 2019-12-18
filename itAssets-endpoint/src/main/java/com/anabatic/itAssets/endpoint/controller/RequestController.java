@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,6 +24,7 @@ import com.anabatic.itAssets.endpoint.converter.UpdateRequestConverter;
 import com.anabatic.itAssets.persistence.model.Request;
 import com.anabatic.itAssets.services.service.RequestService;
 
+@CrossOrigin(origins="http://localhost:3000")
 @RestController
 @RequestMapping("/request")
 public class RequestController {

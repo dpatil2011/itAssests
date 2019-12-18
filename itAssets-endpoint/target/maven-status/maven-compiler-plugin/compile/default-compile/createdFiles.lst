@@ -51,6 +51,7 @@ com\anabatic\itAssets\endpoint\converter\GetByIdFaqConverter.class
 com\anabatic\itAssets\endpoint\converter\UpdateRequestConverter.class
 com\anabatic\itAssets\endpoint\Response\GetAllRequestResponse.class
 com\anabatic\itAssets\endpoint\Request\GetByIdFaqRequest.class
+com\anabatic\itAssets\endpoint\AppStarter$1.class
 com\anabatic\itAssets\endpoint\converter\InsertFaqConverter.class
 com\anabatic\itAssets\endpoint\Request\DeleteFaqRequest.class
 com\anabatic\itAssets\endpoint\Response\GetAllFaqResponse.class
