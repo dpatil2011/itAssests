@@ -46,4 +46,14 @@ public class RequestDaoImpl implements RequestDao {
 			throw e;
 		}
 	}
+
+	@Override
+	public List<Request> getByRequest(String requestTo) {
+		try {
+			return manager.createNativeQuery("SELECT * FROM request WHERE request_to=:" + requestTo, Request.class)
+					.getResultList();
+		} catch (Exception e) {
+			throw e;
+		}
+	}
 }

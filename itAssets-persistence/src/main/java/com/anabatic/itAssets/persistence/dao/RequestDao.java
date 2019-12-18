@@ -16,4 +16,6 @@ public interface RequestDao {
 
 	public List<Request> getall();
 
+	public List<Request> getByRequest(String requestTo);
+
 }

@@ -3,6 +3,7 @@ package com.anabatic.itAssets.endpoint.Request;
 public class UpdateFaqRequest {
 	private Long id;
 	private String question;
+	private String questionTo;
 	private String answer;
 	private Integer status;
 	private Integer identifier;
@@ -63,6 +64,14 @@ public class UpdateFaqRequest {
 
 	public void setRepliedBy(Long repliedBy) {
 		this.repliedBy = repliedBy;
+	}
+
+	public String getQuestionTo() {
+		return questionTo;
+	}
+
+	public void setQuestionTo(String questionTo) {
+		this.questionTo = questionTo;
 	}
 
 }

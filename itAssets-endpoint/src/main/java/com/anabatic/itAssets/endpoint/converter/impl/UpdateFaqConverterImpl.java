@@ -16,6 +16,7 @@ public class UpdateFaqConverterImpl implements UpdateFaqConverter {
 		Faq faq = new Faq();
 		faq.setId(object.getId());
 		faq.setQuestion(object.getQuestion());
+		faq.setQuestionTo(object.getQuestionTo());
 		faq.setAnswer(object.getAnswer());
 		Users users = new Users();
 		users.setId(object.getUserId());
@@ -38,6 +39,7 @@ public class UpdateFaqConverterImpl implements UpdateFaqConverter {
 		UpdateFaqResponse response = new UpdateFaqResponse();
 		response.setId(object.getId());
 		response.setQuestion(object.getQuestion());
+		response.setQuestionTo(object.getQuestionTo());
 		response.setAnswer(object.getAnswer());
 		response.setIdentifier(object.getIdentifier());
 		response.setUserId(object.getUserId().getId());
