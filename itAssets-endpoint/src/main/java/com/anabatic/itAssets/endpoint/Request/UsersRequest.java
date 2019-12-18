@@ -4,30 +4,45 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import com.anabatic.generic.persistence.annotation.IsRequired;
 import com.anabatic.itAssets.persistence.model.Privilege;
 import com.anabatic.itAssets.persistence.model.Skills;
 
 public class UsersRequest {	
 	
 	private Long id;
+	@IsRequired
 	private String firstName;
 	private String lastName;
 	private String employeeId;
+	@IsRequired
 	private String gender;
+	@IsRequired
 	private String dateofbirth;
+	@IsRequired
 	private String birthPlace;
+	@IsRequired
 	private String nationality;
 	private String currentAddress;
+	@IsRequired
 	private String city;
+	@IsRequired
 	private String pincode;
+	@IsRequired
 	private String religion;
+	@IsRequired
 	private String maritalStatus;
 	private String dateOfMarriage;
+	@IsRequired
 	private String phoneNumber;
 	private String drivingLicense;
+	@IsRequired
 	private String passportNumber;
+	@IsRequired
 	private String pan;
+	@IsRequired
 	private String aadhar;
+	@IsRequired
 	private String personalEmail;
 	private String officalEmail;
 	private String reportingManager;
@@ -36,6 +51,7 @@ public class UsersRequest {
 	private String dateOfJoin;
 	private String permanetAddress;
 	private String photo;
+	@IsRequired
 	private String bloodGroup;
 	private String dlGroup;
 	private String corpId;

@@ -13,6 +13,8 @@ public interface UsersDao {
 	List<Users> getAll();
 
 	Users getById(Long long1);
+	
+	Users getEmpId(String empId);
 
 	Users update(Users user);
 

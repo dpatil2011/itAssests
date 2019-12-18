@@ -78,6 +78,8 @@ public class UsersController {
     @PostMapping(value = "/insert", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<BaseResponse> insert(
             @Valid @RequestBody UsersRequest usersRequest) {
+    	 logging.INFO("inside user insert");
+         ValidationCheck.hasValidate(usersRequest);
     	   baseResponse.setResponse(usersConverter.toContract(
     			   usersService.insert(usersConverter.toModel(usersRequest))));       
         return ResponseEntity.ok().body(baseResponse);

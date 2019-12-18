@@ -24,8 +24,17 @@ public class UsersDaoImpl implements UsersDao {
 
 	@Override
 	public Users insert(Users model) {
-		Users user = manager.merge(model);
-		return user;
+		Users x = getEmpId(model.getEmployeeId());
+		if(x == null) {
+			Users user = manager.merge(model);
+			return user;
+		}else {
+			UsersException u = new UsersException(UsersErrorConstant.EMPLOYEE_ID);
+			u.getError().getField().clear();
+			u.getError().addField("employeId");			
+			throw u;
+		}
+		
 	}
 
 	@Override
@@ -79,6 +88,19 @@ public class UsersDaoImpl implements UsersDao {
 			u.getError().addField("employeId");
 			u.getError().addField("password");
 			throw u;
+		}
+	}
+
+	@Override
+	public Users getEmpId(String employeeId) {
+		try {
+			Query query = manager
+					.createQuery("select u from Users u where u.employeeId =:employeeId");
+			query.setParameter("employeeId", employeeId);
+			
+			return (Users) query.getSingleResult();
+		} catch (Exception e) {
+			return null;
 		}
 	}
 
