@@ -19,12 +19,13 @@ import com.anabatic.itAssets.endpoint.Request.RequestUpdateRequest;
 import com.anabatic.itAssets.endpoint.converter.DeleteRequestConverter;
 import com.anabatic.itAssets.endpoint.converter.GetAllRequestConverter;
 import com.anabatic.itAssets.endpoint.converter.GetByIdRequestConverter;
+import com.anabatic.itAssets.endpoint.converter.GetByRequestToRequestController;
 import com.anabatic.itAssets.endpoint.converter.InsertRequestConverter;
 import com.anabatic.itAssets.endpoint.converter.UpdateRequestConverter;
 import com.anabatic.itAssets.persistence.model.Request;
 import com.anabatic.itAssets.services.service.RequestService;
 
-@CrossOrigin(origins="http://localhost:3000")
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/request")
 public class RequestController {
@@ -46,6 +47,9 @@ public class RequestController {
 
 	@Autowired
 	private GetAllRequestConverter getAllRequestConverter;
+
+	@Autowired
+	private GetByRequestToRequestController getByRequestToRequestController;
 
 	@PostMapping("/insertRequest")
 	public ResponseEntity<BaseResponse> insert(@RequestBody InsertRequestRequest requestRequest) {
@@ -91,5 +95,14 @@ public class RequestController {
 		return ResponseEntity.ok().body(baseResponse);
 	}
 	
+
+	@GetMapping("getByRequestTo")
+	public ResponseEntity<BaseResponse> getByRequestTo(String requestTo) {
+		List<Request> list = requestService.getByRequest(requestTo);
+		BaseResponse baseResponse = new BaseResponse();
+		baseResponse.setResponse(getByRequestToRequestController.toContracts(list));
+		return ResponseEntity.ok().body(baseResponse);
+
+	}
 
 }

@@ -11,7 +11,7 @@
 
 	<bean id="assetsCategoryConverter"
 		class="com.anabatic.itAssets.endpoint.converter.impl.AssetsCategoryConverterImpl" />
-		
+
 	<bean id="availableAssetConverter"
 		class="com.anabatic.itAssets.endpoint.converter.impl.AvailableAssetConverterImpl" />
 
@@ -19,6 +19,8 @@
 		class="com.anabatic.itAssets.endpoint.converter.impl.InsertRequestConverterImpl" />
 	<bean id="GetByIdRequestConverter"
 		class="com.anabatic.itAssets.endpoint.converter.impl.GetByIdRequestConverterImpl" />
+	<bean id="GetByRequestToRequestConverter"
+		class="com.anabatic.itAssets.endpoint.converter.impl.GetByRequestToRequestConverterImpl" />
 	<bean id="UpdateRequestConverter"
 		class="com.anabatic.itAssets.endpoint.converter.impl.UpdateRequestConverterImpl" />
 	<bean id="deleteRequestConverter"
@@ -40,16 +42,16 @@
 		class="com.anabatic.itAssets.endpoint.converter.impl.DeleteFaqConverterImpl" />
 	<bean id="GetAllFaqConverter"
 		class="com.anabatic.itAssets.endpoint.converter.impl.GetAllFaqConverterImpl" />
-    <bean id="getAllUsersConverter"
+	<bean id="getAllUsersConverter"
 		class="com.anabatic.itAssets.endpoint.converter.impl.GetAllUsersConverterImpl" />
-		<bean id="getByIdUsersConverter"
+	<bean id="getByIdUsersConverter"
 		class="com.anabatic.itAssets.endpoint.converter.impl.GetByIdUsersConverterImpl" />
-		<bean id="usersUpdateConverter"
+	<bean id="usersUpdateConverter"
 		class="com.anabatic.itAssets.endpoint.converter.impl.UsersUpdateConverterImpl" />
-		<bean id="deleteByIdUserConverter"
+	<bean id="deleteByIdUserConverter"
 		class="com.anabatic.itAssets.endpoint.converter.impl.DeleteByIdUserConverterImpl" />
-		<bean id="userLoginConverter"
+	<bean id="userLoginConverter"
 		class="com.anabatic.itAssets.endpoint.converter.impl.UserLoginConverterImpl" />
-		<bean id="usersRequestConverter"
+	<bean id="usersRequestConverter"
 		class="com.anabatic.itAssets.endpoint.converter.impl.UsersRequestConverterImpl" />
 </beans>

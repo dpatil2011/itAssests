@@ -18,6 +18,7 @@ com\anabatic\itAssets\endpoint\converter\AssetFormConverter.class
 com\anabatic\itAssets\endpoint\Request\AssetFormRequest.class
 com\anabatic\itAssets\endpoint\Response\UpdateFaqResponse.class
 com\anabatic\itAssets\endpoint\Request\UsersRequest.class
+com\anabatic\itAssets\endpoint\converter\GetByRequestToRequestController.class
 com\anabatic\itAssets\endpoint\converter\impl\GetAllUsersConverterImpl.class
 com\anabatic\itAssets\endpoint\converter\AvailableAssetsConverter.class
 com\anabatic\itAssets\endpoint\converter\GetAllFaqConverter.class
@@ -35,6 +36,7 @@ com\anabatic\itAssets\endpoint\converter\UserLoginConverter.class
 com\anabatic\itAssets\endpoint\Request\UsersUpdateRequest.class
 com\anabatic\itAssets\endpoint\Request\InsertRequestRequest.class
 com\anabatic\itAssets\endpoint\Response\InsertFaqResponse.class
+com\anabatic\itAssets\endpoint\converter\impl\GetByRequestToRequestControllerImpl.class
 com\anabatic\itAssets\endpoint\converter\GetByIdRequestConverter.class
 com\anabatic\itAssets\endpoint\Request\RequestGetByIdRequest.class
 com\anabatic\itAssets\endpoint\converter\impl\DeleteFaqConverterImpl.class
