@@ -15,6 +15,7 @@ public class GetAllFaqConverterImpl implements GetAllFaqConverter {
 		response.setId(object.getId());
 		response.setQuestion(object.getQuestion());
 		response.setAnswer(object.getAnswer());
+		response.setQuestionTo(object.getQuestionTo());
 		response.setIdentifier(object.getIdentifier());
 		response.setUserId(object.getUserId().getId());
 		response.setRepliedBy(object.getUserId().getId());

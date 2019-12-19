@@ -27,6 +27,7 @@ public class GetByIdFaqConverterImpl implements GetByIdFaqConverter {
 		GetByIdFaqResponse response = new GetByIdFaqResponse();
 		response.setId(object.getId());
 		response.setQuestion(object.getQuestion());
+		response.setQuestionTo(object.getQuestionTo());
 		response.setAnswer(object.getAnswer());
 		response.setIdentifier(object.getIdentifier());
 		response.setUserId(object.getUserId().getId());

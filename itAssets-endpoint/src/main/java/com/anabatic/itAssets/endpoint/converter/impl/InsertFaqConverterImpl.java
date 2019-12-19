@@ -14,6 +14,7 @@ public class InsertFaqConverterImpl implements InsertFaqConverter {
 	public Faq toModel(InsertFaqRequest object) {
 		Faq faq = new Faq();
 		faq.setQuestion(object.getQuestion());
+		faq.setQuestionTo(object.getQuestionTo());
 		faq.setAnswer(object.getAnswer());
 		Users users = new Users();
 		users.setId(object.getUserId());

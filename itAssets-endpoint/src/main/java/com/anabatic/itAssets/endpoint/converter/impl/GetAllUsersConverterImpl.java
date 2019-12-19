@@ -3,6 +3,7 @@ package com.anabatic.itAssets.endpoint.converter.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.anabatic.itAssets.endpoint.Request.SkillBean;
 import com.anabatic.itAssets.endpoint.Request.UsersRequest;
 import com.anabatic.itAssets.endpoint.Response.GetAllUsersResponse;
 import com.anabatic.itAssets.persistence.model.Skills;
@@ -85,46 +86,19 @@ public class GetAllUsersConverterImpl implements com.anabatic.itAssets.endpoint.
 			user.setSecondaryStartYear(object.getSecondaryStartYear());
 			user.setSecondaryEndYear(object.getSecondaryEndYear());	
 			user.setStatus(0);
-			List<Skills> skillList = new ArrayList<>();
+			List<SkillBean> skillList = new ArrayList<>();
 			for (Skills skill : object.getSkills()) {
-				Skills skObj = new Skills();
+				SkillBean skObj = new SkillBean();
+				skObj.setId(skill.getId());
+				skObj.setSkill(skill.getSkill());
+				skObj.setUserId(skill.getUsers().getId());
+			    skObj.setExperience(skill.getExperience());
 				skObj.setCategory(skill.getCategory());
 				skillList.add(skObj);
 			}		
 			user.setSkills(skillList);	
 			list.add(user);
-//			user.setAadhar(u.getAadhar());
-//			user.setAtiplId(u.getAtiplId());
-//			user.setBirthPlace(u.getBirthPlace());
-//			user.setBloodGroup(u.getBloodGroup());
-//			user.setCity(u.getCity());
-//			user.setCorpId(u.getCorpId());
-//			user.setCurrentAddress(u.getCurrentAddress());
-//			user.setDateofbirth(u.getDateofbirth());
-//			user.setDateOfJoin(u.getDateOfJoin());
-//			user.setDateOfMarriage(u.getDateOfMarriage());
-//			user.setDepartment(u.getDepartment());
-//			user.setDlGroup(u.getDlGroup());
-//			user.setDrivingLicense(u.getDrivingLicense());
-//			user.setEmployeeId(u.getEmployeeId());
-//			user.setFirstName(u.getFirstName());
-//			user.setGender(u.getGender());
-//			user.setGraduation(u.getGraduation());
-//			user.setGraduationEndYear(u.getGraduationEndYear());
-//			user.setGraduationStartYear(u.getGraduationStartYear());
-//			user.setGraduationMajor(u.getGraduationMajor());
-//			user.setGraduationgrade(u.getGraduationgrade());
-//			user.setMatricgrade(u.getMatricgrade());
-//			user.setMatricStartYear(u.getMatricStartYear());
-//			user.setMatricEndYear(u.getMatricEndYear());
-//			user.setMaritalStatus(u.getMaritalStatus());
-//			user.setSecondarygrade(u.getSecondarygrade());
-//			user.setSecondaryStartYear(u.getSecondaryStartYear());
-//			user.setSecondaryEndYear(u.getSecondaryEndYear());
-//			user.setJobTitle(u.getJobTitle());
-//			user.setLastName(u.getLastName());
-//			user.setMaritalStatus(u.getMaritalStatus());
-//			user.setNationality(u.getNationality());
+
 			
 		}
 		

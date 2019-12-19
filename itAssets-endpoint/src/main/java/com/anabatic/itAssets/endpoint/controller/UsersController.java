@@ -149,7 +149,6 @@ public class UsersController {
     	   baseResponse.setResponse(usersRequestConverter.toContract(
     			   requestService.insertUserRequest(usersRequestConverter.toModel(usersRequest))));       
         return ResponseEntity.ok().body(baseResponse);
-
     }
 
 }

@@ -22,6 +22,9 @@ public class Faq {
 
 	@Column(name = "question")
 	private String question;
+	
+	@Column(name="questionTo")
+	private String questionTo;
 
 	@Column(name = "answer")
 	private String answer;
@@ -94,6 +97,14 @@ public class Faq {
 
 	public void setRepliedBy(Users repliedBy) {
 		this.repliedBy = repliedBy;
+	}
+
+	public String getQuestionTo() {
+		return questionTo;
+	}
+
+	public void setQuestionTo(String questionTo) {
+		this.questionTo = questionTo;
 	}
 
 }

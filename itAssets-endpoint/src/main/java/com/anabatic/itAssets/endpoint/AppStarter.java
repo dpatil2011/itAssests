@@ -38,13 +38,13 @@ public class AppStarter extends SpringBootServletInitializer{
     public static void main(String[] args) {
         SpringApplication.run(AppStarter.class, args);
     }
-    @Bean
-    public WebMvcConfigurer corsConfigurer() {
-       return new WebMvcConfigurerAdapter() {
-          @Override
-          public void addCorsMappings(CorsRegistry registry) {
-             registry.addMapping("/itserv").allowedOrigins("http://192.168.0.150:8080");
-          }
-       };
-    }
+//    @Bean
+//    public WebMvcConfigurer corsConfigurer() {
+//       return new WebMvcConfigurerAdapter() {
+//          @Override
+//          public void addCorsMappings(CorsRegistry registry) {
+//             registry.addMapping("/itserv").allowedOrigins("http://192.168.0.150:8080");
+//          }
+//       };
+//    }
 }

@@ -36,10 +36,18 @@ public class RequestServiceImpl implements RequestService {
 	public void delete(Request request) {
 		requestDao.delete(request);
 	}
+
 	@Override
-	public List<Request> getAll(){
-		List<Request> list=new ArrayList<>();
-		list=requestDao.getall();
+	public List<Request> getAll() {
+		List<Request> list = new ArrayList<>();
+		list = requestDao.getall();
+		return list;
+	}
+
+
+	public List<Request> getByRequest(String requestTo) {
+		List<Request> list = new ArrayList<>();
+		list = requestDao.getByRequest(requestTo);
 		return list;
 	}
 
@@ -49,4 +57,5 @@ public class RequestServiceImpl implements RequestService {
 		return request2;
 
 	}
+
 }

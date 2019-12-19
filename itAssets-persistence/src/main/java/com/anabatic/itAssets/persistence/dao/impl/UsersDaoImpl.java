@@ -25,15 +25,21 @@ public class UsersDaoImpl implements UsersDao {
 	@Override
 	public Users insert(Users model) {
 		Users x = getEmpId(model.getEmployeeId());
-		if(x == null) {
+		if(model.getEmployeeId()!=null) {
+			if(x == null) {
+				Users user = manager.merge(model);
+				return user;
+			}else {
+				UsersException u = new UsersException(UsersErrorConstant.EMPLOYEE_ID);
+				u.getError().getField().clear();
+				u.getError().addField("employeId");			
+				throw u;
+			}
+		} else {
 			Users user = manager.merge(model);
 			return user;
-		}else {
-			UsersException u = new UsersException(UsersErrorConstant.EMPLOYEE_ID);
-			u.getError().getField().clear();
-			u.getError().addField("employeId");			
-			throw u;
 		}
+		
 		
 	}
 
