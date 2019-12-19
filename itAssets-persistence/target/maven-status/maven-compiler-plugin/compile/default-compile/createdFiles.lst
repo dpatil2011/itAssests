@@ -10,6 +10,7 @@ com\anabatic\itAssets\persistence\dao\UsersDao.class
 com\anabatic\itAssets\persistence\dao\impl\UsersDaoImpl.class
 com\anabatic\itAssets\persistence\model\AssetsCategory.class
 com\anabatic\itAssets\persistence\model\Privilege.class
+com\anabatic\itAssets\persistence\model\Login.class
 com\anabatic\itAssets\persistence\dao\impl\AssetsCategoryDaoImpl.class
 com\anabatic\itAssets\persistence\dao\AvailableAssetDao.class
 com\anabatic\itAssets\persistence\model\Users.class

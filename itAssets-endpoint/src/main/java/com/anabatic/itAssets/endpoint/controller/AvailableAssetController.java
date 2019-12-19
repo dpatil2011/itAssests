@@ -52,7 +52,7 @@ public class AvailableAssetController {
     
     @GetMapping("/get-all")
     public ResponseEntity<BaseResponse> getAll(
-            @RequestBody RequestId request) {
+            ) {
         List<AvailableAsset> response = availableAssetService.getAll();
         BaseResponse baseResponse = new BaseResponse();
         baseResponse.setResponse(availableAssetsConverter.toContracts(response));
