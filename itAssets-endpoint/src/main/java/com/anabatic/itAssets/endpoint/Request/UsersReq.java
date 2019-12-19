@@ -12,7 +12,7 @@ public class UsersReq {
 	private Integer quantity;
 	private String requestType;
 	private String requestId;
-	private Users userId;
+	private Long userId;
 
 	public String getReason() {
 		return reason;
@@ -70,11 +70,11 @@ public class UsersReq {
 		this.requestId = requestId;
 	}
 
-	public Users getUserId() {
+	public Long getUserId() {
 		return userId;
 	}
 
-	public void setUserId(Users userId) {
+	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
 

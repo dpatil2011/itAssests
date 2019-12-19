@@ -14,6 +14,7 @@ public class UsersRequest {
 	@IsRequired
 	private String firstName;
 	private String lastName;
+	private String fullName;
 	private String employeeId;
 	@IsRequired
 	private String gender;
@@ -77,6 +78,13 @@ public class UsersRequest {
 	private List<Skills> skills;
 	private Privilege privilege;
 	private Long status;
+	
+	public String getFullName() {
+		return fullName;
+	}
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
+	}
 	private String experience;
 	
 	

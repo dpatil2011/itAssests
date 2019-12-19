@@ -2,6 +2,8 @@ package com.anabatic.itAssets.endpoint.converter.impl;
 
 import java.util.List;
 
+import org.apache.catalina.User;
+
 import com.anabatic.itAssets.endpoint.Request.UsersReq;
 import com.anabatic.itAssets.endpoint.Response.UsersReqRes;
 import com.anabatic.itAssets.endpoint.converter.UsersRequestConverter;
@@ -20,8 +22,10 @@ public class UsersRequestConverterImpl implements UsersRequestConverter {
 		req.setrequestItem(object.getRequestItem());
 		req.setRequestTo(object.getRequestTo());
 		req.setRequestType(object.getRequestType());
-		req.setUserId(object.getUserId());
-		return null;
+		Users user = new Users();
+		user.setId(object.getUserId());
+		req.setUserId(user);
+		return req;
 	}
 
 	@Override
@@ -31,7 +35,16 @@ public class UsersRequestConverterImpl implements UsersRequestConverter {
 
 	@Override
 	public UsersReqRes toContract(Request object) {
-		return null;
+		UsersReqRes res = new UsersReqRes();
+		res.setDepartment(object.getDepartment());
+		res.setQuantity(object.getQuantity());
+		res.setReason(object.getReason());
+		res.setRequestId(object.getRequestId());
+		res.setRequestItem(object.getRequestItem());
+		res.setRequestTo(object.getRequestTo());
+		res.setRequestType(object.getRequestType());
+		res.setUserId(object.getUserId());
+		return res;
 	}
 
 	@Override

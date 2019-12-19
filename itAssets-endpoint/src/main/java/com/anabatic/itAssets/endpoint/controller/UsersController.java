@@ -121,7 +121,7 @@ public class UsersController {
     }
     
     @PostMapping(path = "/delete", consumes = "application/json", produces = "application/json")
-    @Log(message = "post method delete CoreRole with " + "CoreRoleApi")
+    @Log(message = "post method delete Users with " + "Users")
     public ResponseEntity<BaseResponse> deleteUser(
             @RequestBody DeleteByIdUserRequest request) {
     	usersService.deleteById(request.getId());
@@ -143,9 +143,9 @@ public class UsersController {
         baseResponse.setResponse(response);
         return new ResponseEntity<>(baseResponse, HttpStatus.OK);
     }    
-    @PostMapping(value = "/request", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/usersrequest", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<BaseResponse> request(
-            @Valid @RequestBody UsersReq usersRequest) {
+             @RequestBody UsersReq usersRequest) {
     	   baseResponse.setResponse(usersRequestConverter.toContract(
     			   requestService.insertUserRequest(usersRequestConverter.toModel(usersRequest))));       
         return ResponseEntity.ok().body(baseResponse);

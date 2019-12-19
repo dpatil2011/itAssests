@@ -42,8 +42,44 @@ public class Users {
 	    @Column(name = "full_name")
 	    private String fullName;
 	    
+	    @Column(name = "father_name")
+	    private String fatherName;
+	    
+	    @Column(name = "father_dateOfBirth")
+	    private Date fatherDateOfBirth;
+	    
+	    @Column(name = "mother_name")
+	    private String motherName;
+	    
+	    @Column(name = "mother_dateOfBirth")
+	    private String motherDateOfBirth;
+	    
+	    @Column(name = "sibling1")
+	    private String sibling1;
+	    
+	    @Column(name = "sibling1_dateOfBirth")
+	    private Date sibling1DateOfBirth;
+	    
+	    @Column(name = "sibling2")
+	    private String sibling2;
+	    
+	    @Column(name = "sibling2_dateOfBirth")
+	    private Date sibling2DateOfBirth;
+	    
+	    @Column(name = "sibling3")
+	    private String sibling3;
+	    
+	    @Column(name = "sibling3_dateOfBirth")
+	    private Date sibling3DateOfBirth;
+	    
 	    @Column(name = "employee_id")
 	    private String employeeId;
+	    
+	    @Column(name = "spouce_name")
+	    private String spouceName;
+	    
+	    @Column(name = "spouce_adhar")
+	    private String spouceAdhar;
 	    
 	    @Column(name = "gender")
 	    private String gender;
