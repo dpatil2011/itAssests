@@ -56,8 +56,7 @@ public class AssetFormController {
     }
     
     @GetMapping("/get-all")
-    public ResponseEntity<BaseResponse> getAll(
-            @RequestBody RequestId request) {
+    public ResponseEntity<BaseResponse> getAll() {
         List<AssetsForm> response = assetsService.getAll();
         BaseResponse baseResponse = new BaseResponse();
         baseResponse.setResponse(assetsConverter.toContracts(response));

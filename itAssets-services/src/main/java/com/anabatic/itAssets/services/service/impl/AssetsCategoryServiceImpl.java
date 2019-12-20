@@ -43,6 +43,12 @@ public class AssetsCategoryServiceImpl
         return assetsCategoryDao.delete(request);
     }
 
+    @Override
+    public List<AssetsCategory> belongsTo(String belongsTo) {
+        
+        return assetsCategoryDao.belongsTo(belongsTo);
+    }
+
    
    
 }

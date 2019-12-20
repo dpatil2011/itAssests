@@ -18,4 +18,6 @@ public interface AssetsCategoryService {
     public List<AssetsCategory> getAll();
 
     public AssetsCategory delete(Long request);
+    
+    public List<AssetsCategory> belongsTo(String belongsTo);
 }

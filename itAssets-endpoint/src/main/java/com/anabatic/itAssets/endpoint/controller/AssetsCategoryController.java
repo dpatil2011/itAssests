@@ -5,16 +5,16 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.anabatic.generic.endpoint.contract.BaseResponse;
+import com.anabatic.generic.persistence.validator.field.ValidationCheck;
 import com.anabatic.itAssets.endpoint.Request.AssetsCategoryRequest;
+import com.anabatic.itAssets.endpoint.Request.BelongsToRequest;
 import com.anabatic.itAssets.endpoint.Request.RequestId;
 import com.anabatic.itAssets.endpoint.converter.AssetsCategoryConverter;
 import com.anabatic.itAssets.persistence.model.AssetsCategory;
@@ -46,7 +46,6 @@ public class AssetsCategoryController {
     }
     
     @RequestMapping(value="/get-by-id", method=RequestMethod.POST)
-    @ResponseBody
     public ResponseEntity<BaseResponse> getById(
             @RequestBody RequestId request) {
         AssetsCategory response = assetsCategoryService.getById(request.getId());
@@ -54,7 +53,7 @@ public class AssetsCategoryController {
         baseResponse.setResponse(assetsCategoryConverter.toContract(response));
         return ResponseEntity.ok().body(baseResponse);
     }
-    @RequestMapping(value="/getall", method=RequestMethod.GET)
+    @RequestMapping(value="/get-all", method=RequestMethod.GET)
     public ResponseEntity<BaseResponse> getAll() {
         List<AssetsCategory> response = assetsCategoryService.getAll();
         BaseResponse baseResponse = new BaseResponse();
@@ -62,11 +61,6 @@ public class AssetsCategoryController {
         return ResponseEntity.ok().body(baseResponse);
     }
     
-    @RequestMapping(value="/welcome", method=RequestMethod.GET)
-    public String welcome() {
-        
-        return "Welcome";
-    }
     
     @PostMapping("/delete")
     public ResponseEntity<BaseResponse> delete(
@@ -74,6 +68,16 @@ public class AssetsCategoryController {
         assetsCategoryService.delete(request.getId());
         BaseResponse baseResponse = new BaseResponse();
         baseResponse.setResponse("Operation performed Successfully");
+        return ResponseEntity.ok().body(baseResponse);
+    }
+    
+    @RequestMapping(value="/belongs-to", method=RequestMethod.POST)
+    public ResponseEntity<BaseResponse> belongsTo(
+            @RequestBody BelongsToRequest request) {
+        ValidationCheck.hasValidate(request);
+        List<AssetsCategory> response = assetsCategoryService.belongsTo(request.getBelongsTo());
+        BaseResponse baseResponse = new BaseResponse();
+        baseResponse.setResponse(assetsCategoryConverter.toContracts(response));
         return ResponseEntity.ok().body(baseResponse);
     }
 }

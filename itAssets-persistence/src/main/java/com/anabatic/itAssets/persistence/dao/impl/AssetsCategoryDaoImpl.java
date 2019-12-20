@@ -4,10 +4,15 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.transaction.Transactional;
+
+import org.itAssests.core.constant.UsersErrorConstant;
+import org.itAssests.core.exception.UsersException;
 
 import com.anabatic.itAssets.persistence.dao.AssetsCategoryDao;
 import com.anabatic.itAssets.persistence.model.AssetsCategory;
+import com.anabatic.itAssets.persistence.model.Users;
 
 /**
  * !place your description here!
@@ -49,4 +54,16 @@ public class AssetsCategoryDaoImpl implements AssetsCategoryDao {
         return null;
     }
 
+    @Override
+    public List<AssetsCategory> belongsTo(String belongsTo) {
+        try {
+            Query query = manager
+                    .createQuery("select k from AssetsCategory k where k.belongsTo =:belongsTo");
+            query.setParameter("belongsTo", belongsTo);
+            return (List<AssetsCategory>) query.getResultList();
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+    
 }

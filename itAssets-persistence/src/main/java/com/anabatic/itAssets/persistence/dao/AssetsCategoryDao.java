@@ -19,4 +19,6 @@ public interface AssetsCategoryDao{
 
     public AssetsCategory delete(Long request);
     
+    public List<AssetsCategory> belongsTo(String belongsTo);
+    
 }
