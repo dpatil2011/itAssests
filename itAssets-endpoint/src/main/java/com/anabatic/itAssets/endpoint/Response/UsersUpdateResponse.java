@@ -59,7 +59,7 @@ public class UsersUpdateResponse {
 	private String postGraduationGrade;
 	private List<Skills> skills;
 	private Privilege privilege;
-	private Long status;
+	private Integer status;
 	public Long getId() {
 		return id;
 	}
@@ -351,10 +351,10 @@ public class UsersUpdateResponse {
 	public void setPrivilege(Privilege privilege) {
 		this.privilege = privilege;
 	}
-	public Long getStatus() {
+	public Integer getStatus() {
 		return status;
 	}
-	public void setStatus(Long status) {
+	public void setStatus(Integer status) {
 		this.status = status;
 	}
 	public Date getDateofbirth() {

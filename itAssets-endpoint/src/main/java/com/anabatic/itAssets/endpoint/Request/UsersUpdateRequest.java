@@ -2,6 +2,7 @@ package com.anabatic.itAssets.endpoint.Request;
 
 import java.util.List;
 
+import com.anabatic.generic.persistence.annotation.IsRequired;
 import com.anabatic.itAssets.persistence.model.Privilege;
 import com.anabatic.itAssets.persistence.model.Skills;
 
@@ -11,9 +12,24 @@ public class UsersUpdateRequest {
 	private Long id;
 	private String firstName;
 	private String lastName;
+	private String fullName;
+	private String fatherName;
+	private String fatherDateOfBirth;
+	private String motherName;
+	private String motherDateOfBirth;
+	private String sibling1;
+	private String sibling1DateOfBirth;
+	private String sibling2;
+	private String sibling2DateOfBirth;
+	private String sibling3;
+	private String sibling3DateOfBirth;
+	private String spouceName;
+	private String spouceAdhar;
+	private String fatherAddar;
+	private String motherAddar;
 	private String employeeId;
 	private String gender;
-	private String dateofbirth;
+	private String dateofbirth;	
 	private String birthPlace;
 	private String nationality;
 	private String currentAddress;
@@ -59,7 +75,8 @@ public class UsersUpdateRequest {
 	private String postGraduationGrade;
 	private List<Skills> skills;
 	private Privilege privilege;
-	private Long status;
+	private Integer status;
+	
 	public Long getId() {
 		return id;
 	}
@@ -77,6 +94,96 @@ public class UsersUpdateRequest {
 	}
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
+	}
+	public String getFullName() {
+		return fullName;
+	}
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
+	}
+	public String getFatherName() {
+		return fatherName;
+	}
+	public void setFatherName(String fatherName) {
+		this.fatherName = fatherName;
+	}
+	public String getFatherDateOfBirth() {
+		return fatherDateOfBirth;
+	}
+	public void setFatherDateOfBirth(String fatherDateOfBirth) {
+		this.fatherDateOfBirth = fatherDateOfBirth;
+	}
+	public String getMotherName() {
+		return motherName;
+	}
+	public void setMotherName(String motherName) {
+		this.motherName = motherName;
+	}
+	public String getMotherDateOfBirth() {
+		return motherDateOfBirth;
+	}
+	public void setMotherDateOfBirth(String motherDateOfBirth) {
+		this.motherDateOfBirth = motherDateOfBirth;
+	}
+	public String getSibling1() {
+		return sibling1;
+	}
+	public void setSibling1(String sibling1) {
+		this.sibling1 = sibling1;
+	}
+	public String getSibling1DateOfBirth() {
+		return sibling1DateOfBirth;
+	}
+	public void setSibling1DateOfBirth(String sibling1DateOfBirth) {
+		this.sibling1DateOfBirth = sibling1DateOfBirth;
+	}
+	public String getSibling2() {
+		return sibling2;
+	}
+	public void setSibling2(String sibling2) {
+		this.sibling2 = sibling2;
+	}
+	public String getSibling2DateOfBirth() {
+		return sibling2DateOfBirth;
+	}
+	public void setSibling2DateOfBirth(String sibling2DateOfBirth) {
+		this.sibling2DateOfBirth = sibling2DateOfBirth;
+	}
+	public String getSibling3() {
+		return sibling3;
+	}
+	public void setSibling3(String sibling3) {
+		this.sibling3 = sibling3;
+	}
+	public String getSibling3DateOfBirth() {
+		return sibling3DateOfBirth;
+	}
+	public void setSibling3DateOfBirth(String sibling3DateOfBirth) {
+		this.sibling3DateOfBirth = sibling3DateOfBirth;
+	}
+	public String getSpouceName() {
+		return spouceName;
+	}
+	public void setSpouceName(String spouceName) {
+		this.spouceName = spouceName;
+	}
+	public String getSpouceAdhar() {
+		return spouceAdhar;
+	}
+	public void setSpouceAdhar(String spouceAdhar) {
+		this.spouceAdhar = spouceAdhar;
+	}
+	public String getFatherAddar() {
+		return fatherAddar;
+	}
+	public void setFatherAddar(String fatherAddar) {
+		this.fatherAddar = fatherAddar;
+	}
+	public String getMotherAddar() {
+		return motherAddar;
+	}
+	public void setMotherAddar(String motherAddar) {
+		this.motherAddar = motherAddar;
 	}
 	public String getEmployeeId() {
 		return employeeId;
@@ -366,12 +473,11 @@ public class UsersUpdateRequest {
 	public void setPrivilege(Privilege privilege) {
 		this.privilege = privilege;
 	}
-	public Long getStatus() {
+	public Integer getStatus() {
 		return status;
 	}
-	public void setStatus(Long status) {
+	public void setStatus(Integer status) {
 		this.status = status;
 	}
 	
-
 }

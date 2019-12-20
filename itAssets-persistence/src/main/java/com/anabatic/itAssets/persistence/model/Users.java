@@ -42,8 +42,50 @@ public class Users {
 	    @Column(name = "full_name")
 	    private String fullName;
 	    
+	    @Column(name = "father_name")
+	    private String fatherName;
+	    
+	    @Column(name = "father_addar")
+	    private String fatherAddar;
+	    
+	    @Column(name = "father_dateOfBirth")
+	    private Date fatherDateOfBirth;
+	    
+	    @Column(name = "mother_name")
+	    private String motherName;
+	    
+	    @Column(name = "mother_addar")
+	    private String motherAddar;
+	    
+	    @Column(name = "mother_dateOfBirth")
+	    private Date motherDateOfBirth;
+	    
+	    @Column(name = "sibling1")
+	    private String sibling1;
+	    
+	    @Column(name = "sibling1_dateOfBirth")
+	    private Date sibling1DateOfBirth;
+	    
+	    @Column(name = "sibling2")
+	    private String sibling2;
+	    
+	    @Column(name = "sibling2_dateOfBirth")
+	    private Date sibling2DateOfBirth;
+	    
+	    @Column(name = "sibling3")
+	    private String sibling3;
+	    
+	    @Column(name = "sibling3_dateOfBirth")
+	    private Date sibling3DateOfBirth;
+	    
 	    @Column(name = "employee_id")
 	    private String employeeId;
+	    
+	    @Column(name = "spouce_name")
+	    private String spouceName;
+	    
+	    @Column(name = "spouce_adhar")
+	    private String spouceAdhar;
 	    
 	    @Column(name = "gender")
 	    private String gender;
@@ -186,7 +228,127 @@ public class Users {
 	    @Column( name= "status" )
 	    private Integer status;
 	    	    
-	    public String getFullName() {
+	    public String getFatherName() {
+			return fatherName;
+		}
+
+		public void setFatherName(String fatherName) {
+			this.fatherName = fatherName;
+		}
+
+		public String getFatherAddar() {
+			return fatherAddar;
+		}
+
+		public void setFatherAddar(String fatherAddar) {
+			this.fatherAddar = fatherAddar;
+		}
+
+		public Date getFatherDateOfBirth() {
+			return fatherDateOfBirth;
+		}
+
+		public void setFatherDateOfBirth(Date fatherDateOfBirth) {
+			this.fatherDateOfBirth = fatherDateOfBirth;
+		}
+
+		public String getMotherName() {
+			return motherName;
+		}
+
+		public void setMotherName(String motherName) {
+			this.motherName = motherName;
+		}
+
+		public String getMotherAddar() {
+			return motherAddar;
+		}
+
+		public void setMotherAddar(String motherAddar) {
+			this.motherAddar = motherAddar;
+		}
+
+		public Date getMotherDateOfBirth() {
+			return motherDateOfBirth;
+		}
+
+		public void setMotherDateOfBirth(Date motherDateOfBirth) {
+			this.motherDateOfBirth = motherDateOfBirth;
+		}
+
+		public String getSibling1() {
+			return sibling1;
+		}
+
+		public void setSibling1(String sibling1) {
+			this.sibling1 = sibling1;
+		}
+
+		public Date getSibling1DateOfBirth() {
+			return sibling1DateOfBirth;
+		}
+
+		public void setSibling1DateOfBirth(Date sibling1DateOfBirth) {
+			this.sibling1DateOfBirth = sibling1DateOfBirth;
+		}
+
+		public String getSibling2() {
+			return sibling2;
+		}
+
+		public void setSibling2(String sibling2) {
+			this.sibling2 = sibling2;
+		}
+
+		public Date getSibling2DateOfBirth() {
+			return sibling2DateOfBirth;
+		}
+
+		public void setSibling2DateOfBirth(Date sibling2DateOfBirth) {
+			this.sibling2DateOfBirth = sibling2DateOfBirth;
+		}
+
+		public String getSibling3() {
+			return sibling3;
+		}
+
+		public void setSibling3(String sibling3) {
+			this.sibling3 = sibling3;
+		}
+
+		public Date getSibling3DateOfBirth() {
+			return sibling3DateOfBirth;
+		}
+
+		public void setSibling3DateOfBirth(Date sibling3DateOfBirth) {
+			this.sibling3DateOfBirth = sibling3DateOfBirth;
+		}
+
+		public String getSpouceName() {
+			return spouceName;
+		}
+
+		public void setSpouceName(String spouceName) {
+			this.spouceName = spouceName;
+		}
+
+		public String getSpouceAdhar() {
+			return spouceAdhar;
+		}
+
+		public void setSpouceAdhar(String spouceAdhar) {
+			this.spouceAdhar = spouceAdhar;
+		}
+
+		public List<Request> getRequest() {
+			return request;
+		}
+
+		public void setRequest(List<Request> request) {
+			this.request = request;
+		}
+
+		public String getFullName() {
 			return fullName;
 		}
 
