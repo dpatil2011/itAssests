@@ -26,6 +26,11 @@ public class UsersConverterImpl implements UsersConverter{
 		   Date date1 = null;
 		   Date date2 = null;
 		   Date date3 = null;
+		   Date date4 = null;
+		   Date date5 = null;
+		   Date date6 = null;
+		   Date date7 = null;
+		   Date date8 = null;
 		try {
 			if(object.getDateOfMarriage()!=null) {	
 				date3 = new SimpleDateFormat("dd-MM-yyyy").parse(object.getDateOfJoin());
@@ -35,6 +40,22 @@ public class UsersConverterImpl implements UsersConverter{
 				date3 = new SimpleDateFormat("dd-MM-yyyy").parse(object.getDateOfJoin());
 				date1 = new SimpleDateFormat("dd-MM-yyyy").parse(object.getDateofbirth());
 			}
+			if(object.getFatherDateOfBirth()!=null) {
+				date4 = new SimpleDateFormat("dd-MM-yyyy").parse(object.getFatherDateOfBirth());
+			} 
+			if(object.getMotherDateOfBirth()!=null) {
+				date5 = new SimpleDateFormat("dd-MM-yyyy").parse(object.getMotherDateOfBirth());
+			}
+			if(object.getSibling1DateOfBirth()!=null) {
+				date6 = new SimpleDateFormat("dd-MM-yyyy").parse(object.getSibling1DateOfBirth());
+			}
+			if(object.getSibling2DateOfBirth()!=null) {
+				date7 = new SimpleDateFormat("dd-MM-yyyy").parse(object.getSibling1DateOfBirth());
+			}
+			if(object.getSibling3DateOfBirth()!=null) {
+				date8 = new SimpleDateFormat("dd-MM-yyyy").parse(object.getSibling1DateOfBirth());
+			}
+			
 		
 		} catch (ParseException e) {
 			e.printStackTrace();
@@ -90,7 +111,22 @@ public class UsersConverterImpl implements UsersConverter{
 		user.setReportingManager(object.getReportingManager());
 		user.setSecondarygrade(object.getSecondarygrade());
 		user.setSecondaryStartYear(object.getSecondaryStartYear());
-		user.setSecondaryEndYear(object.getSecondaryEndYear());	
+		user.setSecondaryEndYear(object.getSecondaryEndYear());
+		user.setMotherName(object.getMotherName());
+		user.setFatherName(object.getFatherName());
+		user.setMotherDateOfBirth(date5);
+		user.setFatherDateOfBirth(date4);
+		user.setMotherAddar(object.getMotherAddar());
+		user.setFatherAddar(object.getFatherAddar());
+		user.setSibling1(object.getSibling1());
+		user.setSibling2(object.getSibling2());
+		user.setSibling3(object.getSibling3());
+		user.setSibling1DateOfBirth(date6);
+		user.setSibling2DateOfBirth(date7);
+		user.setSibling3DateOfBirth(date8);
+		user.setSpouceAdhar(object.getSpouceAdhar());
+		user.setSpouceName(object.getSpouceName());
+		
 		user.setStatus(0);
 		List<Skills> skillList = new ArrayList<>(object.getSkills().size());
 		for (Skills skill : object.getSkills()) {
@@ -163,6 +199,21 @@ public class UsersConverterImpl implements UsersConverter{
 		user.setSecondarygrade(object.getSecondarygrade());
 		user.setSecondaryStartYear(object.getSecondaryStartYear());
 		user.setSecondaryEndYear(object.getSecondaryEndYear());	
+		user.setMotherName(object.getMotherName());
+		user.setFatherName(object.getFatherName());
+		user.setMotherDateOfBirth(object.getMotherDateOfBirth());
+		user.setFatherDateOfBirth(object.getFatherDateOfBirth());
+		user.setMotherAddar(object.getMotherAddar());
+		user.setFatherAddar(object.getFatherAddar());
+		user.setSibling1(object.getSibling1());
+		user.setSibling2(object.getSibling2());
+		user.setSibling3(object.getSibling3());
+		user.setSibling1DateOfBirth(object.getSibling1DateOfBirth());
+		user.setSibling2DateOfBirth(object.getSibling2DateOfBirth());
+		user.setSibling3DateOfBirth(object.getSibling3DateOfBirth());
+		user.setSpouceAdhar(object.getSpouceAdhar());
+		user.setSpouceName(object.getSpouceName());
+		
 		List<SkillBean> skillList = new ArrayList<>();
 		for (Skills skill : object.getSkills()) {
 			SkillBean skObj = new SkillBean();

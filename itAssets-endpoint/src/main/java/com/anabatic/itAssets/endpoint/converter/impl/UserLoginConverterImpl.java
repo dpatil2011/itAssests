@@ -81,6 +81,20 @@ public class UserLoginConverterImpl implements UserLoginConverter {
 		user.setSecondarygrade(object.getSecondarygrade());
 		user.setSecondaryStartYear(object.getSecondaryStartYear());
 		user.setSecondaryEndYear(object.getSecondaryEndYear());	
+		user.setMotherName(object.getMotherName());
+		user.setFatherName(object.getFatherName());
+		user.setMotherDateOfBirth(object.getMotherDateOfBirth());
+		user.setFatherDateOfBirth(object.getFatherDateOfBirth());
+		user.setMotherAddar(object.getMotherAddar());
+		user.setFatherAddar(object.getFatherAddar());
+		user.setSibling1(object.getSibling1());
+		user.setSibling2(object.getSibling2());
+		user.setSibling3(object.getSibling3());
+		user.setSibling1DateOfBirth(object.getSibling1DateOfBirth());
+		user.setSibling2DateOfBirth(object.getSibling2DateOfBirth());
+		user.setSibling3DateOfBirth(object.getSibling3DateOfBirth());
+		user.setSpouceAdhar(object.getSpouceAdhar());
+		user.setSpouceName(object.getSpouceName());
 		user.setStatus(0);
 		List<SkillBean> skillList = new ArrayList<>();
 		for (Skills skill : object.getSkills()) {
