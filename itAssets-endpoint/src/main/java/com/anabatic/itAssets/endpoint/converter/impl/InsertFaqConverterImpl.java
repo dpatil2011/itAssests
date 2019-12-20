@@ -19,9 +19,6 @@ public class InsertFaqConverterImpl implements InsertFaqConverter {
 		Users users = new Users();
 		users.setId(object.getUserId());
 		faq.setUserId(users);
-		Users users2 = new Users();
-		users2.setId(object.getRepliedBy());
-		faq.setRepliedBy(users2);
 		faq.setStatus(object.getStatus());
 		faq.setIdentifier(object.getIdentifier());
 		return faq;

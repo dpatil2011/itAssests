@@ -18,4 +18,10 @@ public interface RequestService {
 
 	public Request insertUserRequest(Request model);
 
+
+	public List<Request> getByRequest(String requestTo);
+
+	public List<Request> getByRequestToUserId(String requestTo, Long userId);
+
+
 }
