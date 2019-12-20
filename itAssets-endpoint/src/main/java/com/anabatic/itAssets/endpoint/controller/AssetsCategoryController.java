@@ -30,6 +30,7 @@ import com.anabatic.itAssets.services.service.AssetsCategoryService;
 @RequestMapping("/assets-category")
 public class AssetsCategoryController {
 
+    
     @Autowired
     private AssetsCategoryService assetsCategoryService;
 
