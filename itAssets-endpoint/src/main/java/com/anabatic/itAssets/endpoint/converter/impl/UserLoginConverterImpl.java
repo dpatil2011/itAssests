@@ -95,7 +95,7 @@ public class UserLoginConverterImpl implements UserLoginConverter {
 		user.setSibling3DateOfBirth(object.getSibling3DateOfBirth());
 		user.setSpouceAdhar(object.getSpouceAdhar());
 		user.setSpouceName(object.getSpouceName());
-		user.setStatus(0);
+		user.setStatus(object.getStatus());
 		List<SkillBean> skillList = new ArrayList<>();
 		for (Skills skill : object.getSkills()) {
 			SkillBean skObj = new SkillBean();

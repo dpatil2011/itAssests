@@ -127,7 +127,7 @@ public class UsersConverterImpl implements UsersConverter{
 		user.setSpouceAdhar(object.getSpouceAdhar());
 		user.setSpouceName(object.getSpouceName());
 		
-		user.setStatus(0);
+		user.setStatus(object.getStatus());
 		List<Skills> skillList = new ArrayList<>(object.getSkills().size());
 		for (Skills skill : object.getSkills()) {
 			Skills skObj = new Skills();
@@ -213,6 +213,8 @@ public class UsersConverterImpl implements UsersConverter{
 		user.setSibling3DateOfBirth(object.getSibling3DateOfBirth());
 		user.setSpouceAdhar(object.getSpouceAdhar());
 		user.setSpouceName(object.getSpouceName());
+		user.setStatus(object.getStatus());
+		
 		
 		List<SkillBean> skillList = new ArrayList<>();
 		for (Skills skill : object.getSkills()) {

@@ -74,6 +74,7 @@ public class UserLoginResponse {
 	private String spouceAdhar;
 	private String fatherAddar;
 	private String motherAddar;
+	
 	public String getFatherName() {
 		return fatherName;
 	}

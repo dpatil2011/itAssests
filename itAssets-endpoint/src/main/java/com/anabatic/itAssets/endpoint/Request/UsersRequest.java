@@ -91,7 +91,7 @@ public class UsersRequest {
 	private String postGraduationGrade;
 	private List<Skills> skills;
 	private Privilege privilege;
-	private Long status;
+	private Integer status;
 	
 	public String getFatherDateOfBirth() {
 		return fatherDateOfBirth;
@@ -193,10 +193,10 @@ public class UsersRequest {
 	public void setExperience(String experience) {
 		this.experience = experience;
 	}
-	public Long getStatus() {
+	public Integer getStatus() {
 		return status;
 	}
-	public void setStatus(Long status) {
+	public void setStatus(Integer status) {
 		this.status = status;
 	}
 
