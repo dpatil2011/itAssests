@@ -70,6 +70,7 @@ D:\Projects\MasterWorkspace\itAssests\itAssets-endpoint\src\main\java\com\anabat
 D:\Projects\MasterWorkspace\itAssests\itAssets-endpoint\src\main\java\com\anabatic\itAssets\endpoint\controller\FrontEndController.java
 D:\Projects\MasterWorkspace\itAssests\itAssets-endpoint\src\main\java\com\anabatic\itAssets\endpoint\converter\GetAllRequestConverter.java
 D:\Projects\MasterWorkspace\itAssests\itAssets-endpoint\src\main\java\com\anabatic\itAssets\endpoint\AppStarter.java
+D:\Projects\MasterWorkspace\itAssests\itAssets-endpoint\src\main\java\com\anabatic\itAssets\endpoint\Request\BelongsToRequest.java
 D:\Projects\MasterWorkspace\itAssests\itAssets-endpoint\src\main\java\com\anabatic\itAssets\endpoint\converter\impl\UserLoginConverterImpl.java
 D:\Projects\MasterWorkspace\itAssests\itAssets-endpoint\src\main\java\com\anabatic\itAssets\endpoint\converter\DeleteByIdUserConverter.java
 D:\Projects\MasterWorkspace\itAssests\itAssets-endpoint\src\main\java\com\anabatic\itAssets\endpoint\Request\GetByIdUsersRequest.java

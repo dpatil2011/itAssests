@@ -70,6 +70,7 @@ com\anabatic\itAssets\endpoint\Response\GetAllRequestResponse.class
 com\anabatic\itAssets\endpoint\converter\impl\UsersRequestConverterImpl.class
 com\anabatic\itAssets\endpoint\Request\GetByIdFaqRequest.class
 com\anabatic\itAssets\endpoint\Response\GetAllUsersResponse.class
+com\anabatic\itAssets\endpoint\Request\BelongsToRequest.class
 com\anabatic\itAssets\endpoint\converter\impl\UserLoginConverterImpl.class
 com\anabatic\itAssets\endpoint\converter\impl\DeleteByIdUserConverterImpl.class
 com\anabatic\itAssets\endpoint\converter\InsertFaqConverter.class
