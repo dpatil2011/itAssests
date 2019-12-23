@@ -52,4 +52,13 @@
 		class="com.anabatic.itAssets.endpoint.converter.impl.UserLoginConverterImpl" />
 		<bean id="usersRequestConverter"
 		class="com.anabatic.itAssets.endpoint.converter.impl.UsersRequestConverterImpl" />
+      <bean id="changePasswordConverter"
+		class="com.anabatic.itAssets.endpoint.converter.impl.ChangePasswordConverterImpl" />
+      
+       <bean id="loginConverter"
+		class="com.anabatic.itAssets.endpoint.converter.impl.LoginConverterImpl" />
+      
+       <bean id="getByStatusUserConverter"
+		class="com.anabatic.itAssets.endpoint.converter.impl.GetByStatusUsersConverterImpl" />
+      
 </beans>

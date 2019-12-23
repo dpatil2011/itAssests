@@ -23,6 +23,10 @@
 		class="com.anabatic.itAssets.services.service.impl.RequestServiceImpl" />
 	<bean id="faqService"
 		class="com.anabatic.itAssets.services.service.impl.FaqServiceImpl" />
+		
+		<bean id="loginService"
+		class="com.anabatic.itAssets.services.service.impl.LoginServiceImpl" />
+		
 
 
 </beans>

@@ -23,6 +23,7 @@
 
 	<bean id="usersdao" class="com.anabatic.itAssets.persistence.dao.impl.UsersDaoImpl" />
 
+	<bean id="loginDao" class="com.anabatic.itAssets.persistence.dao.impl.LoginDaoImpl" />
 
 
 </beans>
