@@ -28,6 +28,8 @@ public interface UsersService {
 
 	Request insertRequest(Request model);
 
+	List<Users> getByStatus(Integer status);
+
 
 
 

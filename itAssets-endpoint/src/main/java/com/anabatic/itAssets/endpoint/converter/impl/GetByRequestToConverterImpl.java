@@ -23,6 +23,7 @@ public class GetByRequestToConverterImpl implements GetByRequestToConverter {
 		response.setRequestedDate(object.getRequestedDate());
 		response.setClosingDate(object.getClosingDate());
 		response.setUserId(object.getUserId().getId());
+		response.setStatus(object.getStatus());
 		return response;
 	}
 

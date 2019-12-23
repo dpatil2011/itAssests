@@ -1,3 +1,4 @@
+
 package com.anabatic.itAssets.persistence.model;
 
 import javax.persistence.Column;

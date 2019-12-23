@@ -12,7 +12,7 @@ public class GetByIdRequestConverterImpl implements GetByIdRequestConverter {
 
 	@Override
 	public Request toModel(RequestGetByIdRequest object) {
-		Request request=new Request();
+		Request request = new Request();
 		request.setId(object.getId());
 		return request;
 	}
@@ -25,7 +25,7 @@ public class GetByIdRequestConverterImpl implements GetByIdRequestConverter {
 
 	@Override
 	public RequestGetByIdResponse toContract(Request object) {
-		RequestGetByIdResponse response=new RequestGetByIdResponse();
+		RequestGetByIdResponse response = new RequestGetByIdResponse();
 		response.setId(object.getId());
 		response.setReason(object.getReason());
 		response.setRequestTo(object.getRequestTo());
@@ -35,7 +35,8 @@ public class GetByIdRequestConverterImpl implements GetByIdRequestConverter {
 		response.setDepartment(object.getDepartment());
 		response.setRequestedDate(object.getRequestedDate());
 		response.setClosingDate(object.getClosingDate());
-		Users users=object.getUserId();
+		response.setStatus(object.getStatus());
+		Users users = object.getUserId();
 		response.setUserId(users.getId());
 		return response;
 	}

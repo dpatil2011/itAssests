@@ -6,6 +6,8 @@ import com.anabatic.itAssets.endpoint.Request.InsertRequestRequest;
 import com.anabatic.itAssets.endpoint.Response.InsertRequestResponse;
 import com.anabatic.itAssets.persistence.model.Request;
 
-public interface InsertRequestConverter extends ToModelConverter<InsertRequestRequest, Request>,ToContractConverter<Request, InsertRequestResponse>{
+public interface InsertRequestConverter extends 
+ToModelConverter<InsertRequestRequest, Request>,
+ToContractConverter<Request, InsertRequestResponse>{
 
 }
