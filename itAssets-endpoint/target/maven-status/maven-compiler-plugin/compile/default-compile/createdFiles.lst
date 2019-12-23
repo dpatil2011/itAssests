@@ -11,12 +11,16 @@ com\anabatic\itAssets\endpoint\controller\FrontEndController.class
 com\anabatic\itAssets\endpoint\converter\UpdateFaqConverter.class
 com\anabatic\itAssets\endpoint\Request\RequestUpdateRequest.class
 com\anabatic\itAssets\endpoint\Request\SkillBean.class
+com\anabatic\itAssets\endpoint\converter\GetByIdCandidateConverter.class
+com\anabatic\itAssets\endpoint\converter\impl\GetAllCandidateConverterImpl.class
 com\anabatic\itAssets\endpoint\Response\UpdateFaqResponse.class
 com\anabatic\itAssets\endpoint\converter\impl\LoginConverterImpl.class
 com\anabatic\itAssets\endpoint\Request\UsersRequest.class
+com\anabatic\itAssets\endpoint\Response\UpdateCandidateResponse.class
 com\anabatic\itAssets\endpoint\converter\impl\GetByStatusUsersConverterImpl.class
 com\anabatic\itAssets\endpoint\converter\AvailableAssetsConverter.class
 com\anabatic\itAssets\endpoint\converter\GetAllRequestConverter.class
+com\anabatic\itAssets\endpoint\converter\impl\UpdateCandidateConverterImpl.class
 com\anabatic\itAssets\endpoint\Response\GetByStatusResponse.class
 com\anabatic\itAssets\endpoint\converter\DeleteRequestConverter.class
 com\anabatic\itAssets\endpoint\controller\UsersController.class
@@ -41,6 +45,7 @@ com\anabatic\itAssets\endpoint\converter\impl\AvailableAssetConverterImpl.class
 com\anabatic\itAssets\endpoint\controller\LoginController.class
 com\anabatic\itAssets\endpoint\converter\AssetsCategoryConverter.class
 com\anabatic\itAssets\endpoint\Request\GetByRequestToRequest.class
+com\anabatic\itAssets\endpoint\converter\impl\GetByIdCandidateConverterImpl.class
 com\anabatic\itAssets\endpoint\controller\AvailableAssetController.class
 com\anabatic\itAssets\endpoint\converter\impl\GetByIdRequestConverterImpl.class
 com\anabatic\itAssets\endpoint\Request\GetByIdUsersRequest.class
@@ -57,6 +62,7 @@ com\anabatic\itAssets\endpoint\Response\ChangePasswordResponse.class
 com\anabatic\itAssets\endpoint\Response\GetByIdUsersResponse.class
 com\anabatic\itAssets\endpoint\converter\impl\AssetFormConverterImpl.class
 com\anabatic\itAssets\endpoint\converter\DeleteByIdUserConverter.class
+com\anabatic\itAssets\endpoint\Response\GetByIdCandidateResponse.class
 com\anabatic\itAssets\endpoint\Request\AssetsCategoryRequest.class
 com\anabatic\itAssets\endpoint\converter\impl\AssetsControllerImpl.class
 com\anabatic\itAssets\endpoint\converter\impl\ChangePasswordConverterImpl.class
@@ -78,8 +84,11 @@ com\anabatic\itAssets\endpoint\Request\InsertCandidateRequest.class
 com\anabatic\itAssets\endpoint\converter\impl\DeleteFaqConverterImpl.class
 com\anabatic\itAssets\endpoint\converter\impl\GetAllFaqConverterImpl.class
 com\anabatic\itAssets\endpoint\Response\InsertCandidateResponse.class
+com\anabatic\itAssets\endpoint\converter\UpdateCandidateConverter.class
 com\anabatic\itAssets\endpoint\Response\RequestGetByIdResponse.class
+com\anabatic\itAssets\endpoint\Request\UpdateCandidateRequest.class
 com\anabatic\itAssets\endpoint\converter\impl\AssetsCategoryConverterImpl.class
+com\anabatic\itAssets\endpoint\converter\GetAllCandidateConverter.class
 com\anabatic\itAssets\endpoint\converter\UsersRequestConverter.class
 com\anabatic\itAssets\endpoint\Response\RequestUpdateResponse.class
 com\anabatic\itAssets\endpoint\converter\impl\GetAllRequestConverterImpl.class
@@ -91,6 +100,7 @@ com\anabatic\itAssets\endpoint\Request\UpdateFaqRequest.class
 com\anabatic\itAssets\endpoint\controller\RequestController.class
 com\anabatic\itAssets\endpoint\converter\UsersUpdateConverter.class
 com\anabatic\itAssets\endpoint\converter\impl\UsersUpdateConverterImpl.class
+com\anabatic\itAssets\endpoint\Response\GetAllCandidateResponse.class
 com\anabatic\itAssets\endpoint\converter\ChangePasswordConverter.class
 com\anabatic\itAssets\endpoint\converter\impl\GetByRequestToConverterImpl.class
 com\anabatic\itAssets\endpoint\Response\AssetFormResponse.class
@@ -104,6 +114,7 @@ com\anabatic\itAssets\endpoint\Request\GetByIdFaqRequest.class
 com\anabatic\itAssets\endpoint\Response\GetAllUsersResponse.class
 com\anabatic\itAssets\endpoint\converter\impl\DeleteByIdUserConverterImpl.class
 com\anabatic\itAssets\endpoint\Request\DeleteFaqRequest.class
+com\anabatic\itAssets\endpoint\Request\GetByIdCandidateRequest.class
 com\anabatic\itAssets\endpoint\Response\GetAllFaqResponse.class
 com\anabatic\itAssets\endpoint\converter\impl\UsersConverterImpl.class
 com\anabatic\itAssets\endpoint\Response\AvailableAssetResponse.class
