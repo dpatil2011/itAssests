@@ -63,7 +63,7 @@ public class RequestDaoImpl implements RequestDao {
 	public List<Request> getByRequestToUserId(String requestTo, Long userId) {
 		try {
 			Query query = manager
-					.createQuery("select u from Request u where u.requestTo=:requestTo and user_id=:userId");
+					.createQuery("select u from Request u where u.requestTo=:requestTo and u.userId.id=:userId");
 			query.setParameter("requestTo", requestTo);
 			query.setParameter("userId", userId);
 			return query.getResultList();

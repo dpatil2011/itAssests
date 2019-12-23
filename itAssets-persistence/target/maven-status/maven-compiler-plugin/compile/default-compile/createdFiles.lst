@@ -1,6 +1,7 @@
 com\anabatic\itAssets\persistence\model\Assets.class
 com\anabatic\itAssets\persistence\dao\impl\AvailableAssetDaoImpl.class
 com\anabatic\itAssets\persistence\dao\AssetFomDao.class
+com\anabatic\itAssets\persistence\model\CandidateRecord.class
 com\anabatic\itAssets\persistence\dao\FaqDao.class
 com\anabatic\itAssets\persistence\dao\impl\AssetFormDaoImpl.class
 com\anabatic\itAssets\persistence\model\AssetsForm.class
