@@ -1,6 +1,5 @@
 package com.anabatic.itAssets.endpoint.converter.impl;
 
-
 import java.util.List;
 
 import com.anabatic.itAssets.endpoint.Request.RequestUpdateRequest;
