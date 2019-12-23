@@ -15,8 +15,10 @@ E:\allReactApp\Atipl(23-12)\itAssests\itAssets-endpoint\src\main\java\com\anabat
 E:\allReactApp\Atipl(23-12)\itAssests\itAssets-endpoint\src\main\java\com\anabatic\itAssets\endpoint\converter\impl\AssetsCategoryConverterImpl.java
 E:\allReactApp\Atipl(23-12)\itAssests\itAssets-endpoint\src\main\java\com\anabatic\itAssets\endpoint\converter\impl\DeleteRequestConverterImpl.java
 E:\allReactApp\Atipl(23-12)\itAssests\itAssets-endpoint\src\main\java\com\anabatic\itAssets\endpoint\converter\UsersRequestConverter.java
+E:\allReactApp\Atipl(23-12)\itAssests\itAssets-endpoint\src\main\java\com\anabatic\itAssets\endpoint\converter\impl\InsertCandidateConverterImpl.java
 E:\allReactApp\Atipl(23-12)\itAssests\itAssets-endpoint\src\main\java\com\anabatic\itAssets\endpoint\Request\RequestDeleteRequest.java
 E:\allReactApp\Atipl(23-12)\itAssests\itAssets-endpoint\src\main\java\com\anabatic\itAssets\endpoint\Request\GetByIdUsersRequest.java
+E:\allReactApp\Atipl(23-12)\itAssests\itAssets-endpoint\src\main\java\com\anabatic\itAssets\endpoint\Request\InsertCandidateRequest.java
 E:\allReactApp\Atipl(23-12)\itAssests\itAssets-endpoint\src\main\java\com\anabatic\itAssets\endpoint\Response\InsertRequestResponse.java
 E:\allReactApp\Atipl(23-12)\itAssests\itAssets-endpoint\src\main\java\com\anabatic\itAssets\endpoint\converter\GetAllRequestConverter.java
 E:\allReactApp\Atipl(23-12)\itAssests\itAssets-endpoint\src\main\java\com\anabatic\itAssets\endpoint\converter\impl\AssetsControllerImpl.java
@@ -69,12 +71,14 @@ E:\allReactApp\Atipl(23-12)\itAssests\itAssets-endpoint\src\main\java\com\anabat
 E:\allReactApp\Atipl(23-12)\itAssests\itAssets-endpoint\src\main\java\com\anabatic\itAssets\endpoint\converter\impl\UsersUpdateConverterImpl.java
 E:\allReactApp\Atipl(23-12)\itAssests\itAssets-endpoint\src\main\java\com\anabatic\itAssets\endpoint\converter\InsertRequestConverter.java
 E:\allReactApp\Atipl(23-12)\itAssests\itAssets-endpoint\src\main\java\com\anabatic\itAssets\endpoint\converter\GetAllFaqConverter.java
+E:\allReactApp\Atipl(23-12)\itAssests\itAssets-endpoint\src\main\java\com\anabatic\itAssets\endpoint\controller\CandidateController.java
 E:\allReactApp\Atipl(23-12)\itAssests\itAssets-endpoint\src\main\java\com\anabatic\itAssets\endpoint\converter\UserLoginConverter.java
 E:\allReactApp\Atipl(23-12)\itAssests\itAssets-endpoint\src\main\java\com\anabatic\itAssets\endpoint\converter\GetAllUsersConverter.java
 E:\allReactApp\Atipl(23-12)\itAssests\itAssets-endpoint\src\main\java\com\anabatic\itAssets\endpoint\Response\AvailableAssetResponse.java
 E:\allReactApp\Atipl(23-12)\itAssests\itAssets-endpoint\src\main\java\com\anabatic\itAssets\endpoint\Response\UsersReqRes.java
 E:\allReactApp\Atipl(23-12)\itAssests\itAssets-endpoint\src\main\java\com\anabatic\itAssets\endpoint\controller\AssetsCategoryController.java
 E:\allReactApp\Atipl(23-12)\itAssests\itAssets-endpoint\src\main\java\com\anabatic\itAssets\endpoint\Response\UpdateFaqResponse.java
+E:\allReactApp\Atipl(23-12)\itAssests\itAssets-endpoint\src\main\java\com\anabatic\itAssets\endpoint\Response\InsertCandidateResponse.java
 E:\allReactApp\Atipl(23-12)\itAssests\itAssets-endpoint\src\main\java\com\anabatic\itAssets\endpoint\converter\impl\InsertFaqConverterImpl.java
 E:\allReactApp\Atipl(23-12)\itAssests\itAssets-endpoint\src\main\java\com\anabatic\itAssets\endpoint\converter\impl\UsersConverterImpl.java
 E:\allReactApp\Atipl(23-12)\itAssests\itAssets-endpoint\src\main\java\com\anabatic\itAssets\endpoint\Request\InsertFaqRequest.java
@@ -86,4 +90,5 @@ E:\allReactApp\Atipl(23-12)\itAssests\itAssets-endpoint\src\main\java\com\anabat
 E:\allReactApp\Atipl(23-12)\itAssests\itAssets-endpoint\src\main\java\com\anabatic\itAssets\endpoint\controller\AssetFormController.java
 E:\allReactApp\Atipl(23-12)\itAssests\itAssets-endpoint\src\main\java\com\anabatic\itAssets\endpoint\converter\UpdateRequestConverter.java
 E:\allReactApp\Atipl(23-12)\itAssests\itAssets-endpoint\src\main\java\com\anabatic\itAssets\endpoint\Request\RequestUpdateRequest.java
+E:\allReactApp\Atipl(23-12)\itAssests\itAssets-endpoint\src\main\java\com\anabatic\itAssets\endpoint\converter\InsertCandidateConverter.java
 E:\allReactApp\Atipl(23-12)\itAssests\itAssets-endpoint\src\main\java\com\anabatic\itAssets\endpoint\converter\DeleteFaqConverter.java

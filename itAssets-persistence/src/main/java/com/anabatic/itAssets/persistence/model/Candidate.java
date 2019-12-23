@@ -1,4 +1,6 @@
+
 package com.anabatic.itAssets.persistence.model;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -15,27 +17,32 @@ import com.anabatic.generic.persistence.annotation.IsRequired;
 @Table(name = "candidate")
 public class Candidate {
 
-
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private Long id;
 
-	
+	@IsRequired
 	@Column(name = "name")
 	private String name;
 
-	
+	@IsRequired
 	@Column(name = "email")
 	private String email;
 
-	
+	@IsRequired
 	@Column(name = "phone_number")
-	private Integer phoneNo; 
-  
-	@Column(name = "skills") 
+	private Integer phoneNo;
+
+	@Column(name = "skills")
 	private String skills;
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "manager_id")
+	private Users users;
+
+	@Column(name = "comment")
+	private String comment;
 
 	public String getSkills() {
 		return skills;
@@ -50,7 +57,6 @@ public class Candidate {
 
 	@Column(name = "status")
 	private Integer status;
-	
 
 	public Long getId() {
 		return id;
@@ -116,93 +122,6 @@ public class Candidate {
 		this.comment = comment;
 	}
 
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "manager_id")
-	private Users users;
-
-	@Column(name = "comment")
-	private String comment;
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((comment == null) ? 0 : comment.hashCode());
-		result = prime * result + ((email == null) ? 0 : email.hashCode());
-		result = prime * result + ((experience == null) ? 0 : experience.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + ((phoneNo == null) ? 0 : phoneNo.hashCode());
-		result = prime * result + ((skills == null) ? 0 : skills.hashCode());
-		result = prime * result + ((status == null) ? 0 : status.hashCode());
-		result = prime * result + ((users == null) ? 0 : users.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Candidate other = (Candidate) obj;
-		if (comment == null) {
-			if (other.comment != null)
-				return false;
-		} else if (!comment.equals(other.comment))
-			return false;
-		if (email == null) {
-			if (other.email != null)
-				return false;
-		} else if (!email.equals(other.email))
-			return false;
-		if (experience == null) {
-			if (other.experience != null)
-				return false;
-		} else if (!experience.equals(other.experience))
-			return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		if (name == null) {
-			if (other.name != null)
-				return false;
-		} else if (!name.equals(other.name))
-			return false;
-		if (phoneNo == null) {
-			if (other.phoneNo != null)
-				return false;
-		} else if (!phoneNo.equals(other.phoneNo))
-			return false;
-		if (skills == null) {
-			if (other.skills != null)
-				return false;
-		} else if (!skills.equals(other.skills))
-			return false;
-		if (status == null) {
-			if (other.status != null)
-				return false;
-		} else if (!status.equals(other.status))
-			return false;
-		if (users == null) {
-			if (other.users != null)
-				return false;
-		} else if (!users.equals(other.users))
-			return false;
-		return true;
-	}
-
-	@Override
-	public String toString() {
-		return "candidate [id=" + id + ", name=" + name + ", email=" + email + ", phoneNo=" + phoneNo + ", skills="
-				+ skills + ", experience=" + experience + ", status=" + status + ", users=" + users + ", comment="
-				+ comment + "]";
-	}
-	
 	
 
 }
