@@ -22,8 +22,8 @@ public class Faq {
 
 	@Column(name = "question")
 	private String question;
-	
-	@Column(name="questionTo")
+
+	@Column(name = "questionTo")
 	private String questionTo;
 
 	@Column(name = "answer")
@@ -35,11 +35,11 @@ public class Faq {
 	@Column(name = "identifier")
 	private Integer identifier;
 
-	@ManyToOne(fetch = FetchType.EAGER,cascade= {CascadeType.ALL})
-	@JoinColumn(name = "userId")
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "userId", referencedColumnName = "id")
 	private Users userId;
 
-	@ManyToOne(cascade= {CascadeType.ALL},fetch=FetchType.EAGER)
+	@ManyToOne(cascade = { CascadeType.ALL }, fetch = FetchType.EAGER)
 	@JoinColumn(name = "repliedBy", referencedColumnName = "id")
 	private Users repliedBy;
 

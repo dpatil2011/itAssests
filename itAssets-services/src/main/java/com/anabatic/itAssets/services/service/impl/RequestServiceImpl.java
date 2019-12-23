@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.anabatic.itAssets.persistence.dao.RequestDao;
 import com.anabatic.itAssets.persistence.model.Request;
+import com.anabatic.itAssets.persistence.model.Users;
 import com.anabatic.itAssets.services.service.RequestService;
 
 public class RequestServiceImpl implements RequestService {
@@ -44,7 +45,6 @@ public class RequestServiceImpl implements RequestService {
 		return list;
 	}
 
-
 	public List<Request> getByRequest(String requestTo) {
 		List<Request> list = new ArrayList<>();
 		list = requestDao.getByRequest(requestTo);
@@ -56,6 +56,18 @@ public class RequestServiceImpl implements RequestService {
 		Request request2 = requestDao.insert(model);
 		return request2;
 
+	}
+
+	@Override
+	public List<Request> getByRequestToUserId(String requestTo, Long userId) {
+		Request request = new Request();
+		request.setRequestTo(requestTo);
+		Users users = new Users();
+		users.setId(userId);
+		request.setUserId(users);
+		List<Request> list = new ArrayList<>();
+		list = requestDao.getByRequestToUserId(requestTo, userId);
+		return list;
 	}
 
 }

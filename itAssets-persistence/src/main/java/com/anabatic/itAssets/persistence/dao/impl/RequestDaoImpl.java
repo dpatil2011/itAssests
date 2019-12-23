@@ -50,8 +50,23 @@ public class RequestDaoImpl implements RequestDao {
 	@Override
 	public List<Request> getByRequest(String requestTo) {
 		try {
-			return manager.createNativeQuery("SELECT * FROM request WHERE request_to=:" + requestTo, Request.class)
-					.getResultList();
+			Query query = manager
+					.createQuery("select u from Request u where u.requestTo=:requestTo");
+			query.setParameter("requestTo", requestTo);
+			return (List<Request>) query.getResultList();
+		} catch (Exception e) {
+			throw e;
+		}
+	}
+
+	@Override
+	public List<Request> getByRequestToUserId(String requestTo, Long userId) {
+		try {
+			Query query = manager
+					.createQuery("select u from Request u where u.requestTo=:requestTo and u.userId.id=:userId");
+			query.setParameter("requestTo", requestTo);
+			query.setParameter("userId", userId);
+			return query.getResultList();
 		} catch (Exception e) {
 			throw e;
 		}

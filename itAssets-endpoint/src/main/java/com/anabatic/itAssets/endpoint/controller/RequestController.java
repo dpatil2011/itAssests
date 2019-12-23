@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.anabatic.generic.endpoint.contract.BaseResponse;
+import com.anabatic.itAssets.endpoint.Request.GetByRequestToRequest;
 import com.anabatic.itAssets.endpoint.Request.InsertRequestRequest;
 import com.anabatic.itAssets.endpoint.Request.RequestDeleteRequest;
 import com.anabatic.itAssets.endpoint.Request.RequestGetByIdRequest;
@@ -19,12 +20,13 @@ import com.anabatic.itAssets.endpoint.Request.RequestUpdateRequest;
 import com.anabatic.itAssets.endpoint.converter.DeleteRequestConverter;
 import com.anabatic.itAssets.endpoint.converter.GetAllRequestConverter;
 import com.anabatic.itAssets.endpoint.converter.GetByIdRequestConverter;
+import com.anabatic.itAssets.endpoint.converter.GetByRequestToConverter;
 import com.anabatic.itAssets.endpoint.converter.InsertRequestConverter;
 import com.anabatic.itAssets.endpoint.converter.UpdateRequestConverter;
 import com.anabatic.itAssets.persistence.model.Request;
 import com.anabatic.itAssets.services.service.RequestService;
 
-@CrossOrigin(origins="http://localhost:3000")
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/request")
 public class RequestController {
@@ -46,6 +48,9 @@ public class RequestController {
 
 	@Autowired
 	private GetAllRequestConverter getAllRequestConverter;
+
+	@Autowired
+	private GetByRequestToConverter getByRequestToConverter;
 
 	@PostMapping("/insertRequest")
 	public ResponseEntity<BaseResponse> insert(@RequestBody InsertRequestRequest requestRequest) {
@@ -88,6 +93,23 @@ public class RequestController {
 		List<Request> list = requestService.getAll();
 		BaseResponse baseResponse = new BaseResponse();
 		baseResponse.setResponse(getAllRequestConverter.toContracts(list));
+		return ResponseEntity.ok().body(baseResponse);
+	}
+
+	@GetMapping("getByRequestTo")
+	public ResponseEntity<BaseResponse> getByRequestTo(String requestTo) {
+		List<Request> list = requestService.getByRequest(requestTo);
+		BaseResponse baseResponse = new BaseResponse();
+		baseResponse.setResponse(getByRequestToConverter.toContracts(list));
+		return ResponseEntity.ok().body(baseResponse);
+
+	}
+
+	@PostMapping("getByRequest")
+	public ResponseEntity<BaseResponse> getByRequestToUserId(@RequestBody GetByRequestToRequest request) {
+		List<Request> list = requestService.getByRequestToUserId(request.getRequestTo(), request.getUserId());
+		BaseResponse baseResponse = new BaseResponse();
+		baseResponse.setResponse(getByRequestToConverter.toContracts(list));
 		return ResponseEntity.ok().body(baseResponse);
 	}
 
