@@ -22,6 +22,8 @@
 	<bean id="faqDao" class="com.anabatic.itAssets.persistence.dao.impl.FaqDaoImpl" />
 
 	<bean id="usersdao" class="com.anabatic.itAssets.persistence.dao.impl.UsersDaoImpl" />
+	
+	<bean id="candidateDao" class="com.anabatic.itAssets.persistence.dao.impl.CandidateDaoImpl" />
 
 
 

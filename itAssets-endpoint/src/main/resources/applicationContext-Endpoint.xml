@@ -56,4 +56,7 @@
 		class="com.anabatic.itAssets.endpoint.converter.impl.UserLoginConverterImpl" />
 		<bean id="usersRequestConverter"
 		class="com.anabatic.itAssets.endpoint.converter.impl.UsersRequestConverterImpl" />
+		
+		<bean id="insertCandidateConverter"
+		class="com.anabatic.itAssets.endpoint.converter.impl.InsertCandidateConverterImpl" />
 </beans>

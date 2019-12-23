@@ -20,3 +20,4 @@ com\anabatic\itAssets\persistence\dao\impl\RequestDaoImpl.class
 com\anabatic\itAssets\persistence\model\AvailableAsset.class
 com\anabatic\itAssets\persistence\dao\AssetsCategoryDao.class
 com\anabatic\itAssets\persistence\dao\impl\FaqDaoImpl.class
+com\anabatic\itAssets\persistence\model\candidate.class

@@ -21,8 +21,12 @@
 		class="com.anabatic.itAssets.services.service.impl.UsersServiceImpl" />
 	<bean id="requestService"
 		class="com.anabatic.itAssets.services.service.impl.RequestServiceImpl" />
+		
 	<bean id="faqService"
 		class="com.anabatic.itAssets.services.service.impl.FaqServiceImpl" />
+		
+    <bean id="candidateService"
+		class="com.anabatic.itAssets.services.service.impl.CandidateServiceImpl" />
 
 
 </beans>
