@@ -1,3 +1,4 @@
+com\anabatic\itAssets\services\service\PrivilegeTypeService.class
 com\anabatic\itAssets\services\service\UsersService.class
 com\anabatic\itAssets\services\service\AssetFormService.class
 com\anabatic\itAssets\services\service\AvailableAssetService.class
@@ -5,6 +6,7 @@ com\anabatic\itAssets\services\service\FaqService.class
 com\anabatic\itAssets\services\service\impl\UsersServiceImpl.class
 com\anabatic\itAssets\services\service\impl\AvailableAssetServiceImpl.class
 org\itAssets\services\App.class
+com\anabatic\itAssets\services\service\impl\PrivilegeTypeServiceImpl.class
 com\anabatic\itAssets\services\service\impl\RequestServiceImpl.class
 com\anabatic\itAssets\services\service\impl\AssetsCategoryServiceImpl.class
 com\anabatic\itAssets\services\service\RequestService.class

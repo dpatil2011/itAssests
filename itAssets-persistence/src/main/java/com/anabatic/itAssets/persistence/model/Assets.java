@@ -20,195 +20,194 @@ import com.anabatic.generic.persistence.model.TypicalGenericModel;
 @Table(name = "assets")
 public class Assets extends TypicalGenericModel {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
+	private Long id;
 
-    @Column(name = "assets_id")
-    private String assetsId;
+	@Column(name = "assets_id")
+	private String assetsId;
 
-    @Column(name = "make")
-    private String make;
+	@Column(name = "make")
+	private String make;
 
-    @Column(name = "model")
-    private String model;
+	@Column(name = "model")
+	private String model;
 
-    @Column(name = "serial_number")
-    private String serialNumber;
+	@Column(name = "serial_number")
+	private String serialNumber;
 
-    @Column(name = "assigned_to")
-    private String assignedTo;
+	@Column(name = "assigned_to")
+	private String assignedTo;
 
-    @Column(name = "invoice_date")
-    private Date invoiceDate;
+	@Column(name = "invoice_date")
+	private Date invoiceDate;
 
-    @Column(name = "process_date")
-    private Date processDate;
+	@Column(name = "process_date")
+	private Date processDate;
 
-    @Column(name = "age")
-    private String age;
+	@Column(name = "age")
+	private String age;
 
-    @Column(name = "processor")
-    private String processor;
+	@Column(name = "processor")
+	private String processor;
 
-    @Column(name = "ram")
-    private String ram;
+	@Column(name = "ram")
+	private String ram;
 
-    @Column(name = "hdd")
-    private String hdd;
+	@Column(name = "hdd")
+	private String hdd;
 
-    @Column(name = "cd_drive")
-    private String cdDrive;
+	@Column(name = "cd_drive")
+	private String cdDrive;
 
-    @Column(name = "operating_sys")
-    private String operatingSys;
+	@Column(name = "operating_sys")
+	private String operatingSys;
 
-    @Column(name = "location")
-    private String location;
+	@Column(name = "location")
+	private String location;
 
-    @Column(name = "comments")
-    private String comments;
+	@Column(name = "comments")
+	private String comments;
 
-//    @ManyToOne(fetch = FetchType.EAGER)
-//    @JoinColumn(name = "category_id")
-//    private AssetsCategory assetsCategory;
+	// @ManyToOne(fetch = FetchType.EAGER)
+	// @JoinColumn(name = "category_id")
+	// private AssetsCategory assetsCategory;
 
-    public Long getId() {
-        return id;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public String getAssetsId() {
-        return assetsId;
-    }
+	public String getAssetsId() {
+		return assetsId;
+	}
 
-    public void setAssetsId(String assetsId) {
-        this.assetsId = assetsId;
-    }
+	public void setAssetsId(String assetsId) {
+		this.assetsId = assetsId;
+	}
 
-    public String getMake() {
-        return make;
-    }
+	public String getMake() {
+		return make;
+	}
 
-    public void setMake(String make) {
-        this.make = make;
-    }
+	public void setMake(String make) {
+		this.make = make;
+	}
 
-    public String getModel() {
-        return model;
-    }
+	public String getModel() {
+		return model;
+	}
 
-    public void setModel(String model) {
-        this.model = model;
-    }
+	public void setModel(String model) {
+		this.model = model;
+	}
 
-    public String getSerialNumber() {
-        return serialNumber;
-    }
+	public String getSerialNumber() {
+		return serialNumber;
+	}
 
-    public void setSerialNumber(String serialNumber) {
-        this.serialNumber = serialNumber;
-    }
+	public void setSerialNumber(String serialNumber) {
+		this.serialNumber = serialNumber;
+	}
 
-    public String getAssignedTo() {
-        return assignedTo;
-    }
+	public String getAssignedTo() {
+		return assignedTo;
+	}
 
-    public void setAssignedTo(String assignedTo) {
-        this.assignedTo = assignedTo;
-    }
+	public void setAssignedTo(String assignedTo) {
+		this.assignedTo = assignedTo;
+	}
 
-    public Date getInvoiceDate() {
-        return invoiceDate;
-    }
+	public Date getInvoiceDate() {
+		return invoiceDate;
+	}
 
-    public void setInvoiceDate(Date invoiceDate) {
-        this.invoiceDate = invoiceDate;
-    }
+	public void setInvoiceDate(Date invoiceDate) {
+		this.invoiceDate = invoiceDate;
+	}
 
-    public Date getProcessDate() {
-        return processDate;
-    }
+	public Date getProcessDate() {
+		return processDate;
+	}
 
-    public void setProcessDate(Date processDate) {
-        this.processDate = processDate;
-    }
+	public void setProcessDate(Date processDate) {
+		this.processDate = processDate;
+	}
 
-    public String getAge() {
-        return age;
-    }
+	public String getAge() {
+		return age;
+	}
 
-    public void setAge(String age) {
-        this.age = age;
-    }
+	public void setAge(String age) {
+		this.age = age;
+	}
 
-    public String getProcessor() {
-        return processor;
-    }
+	public String getProcessor() {
+		return processor;
+	}
 
-    public void setProcessor(String processor) {
-        this.processor = processor;
-    }
+	public void setProcessor(String processor) {
+		this.processor = processor;
+	}
 
-    public String getRam() {
-        return ram;
-    }
+	public String getRam() {
+		return ram;
+	}
 
-    public void setRam(String ram) {
-        this.ram = ram;
-    }
+	public void setRam(String ram) {
+		this.ram = ram;
+	}
 
-    public String getHdd() {
-        return hdd;
-    }
+	public String getHdd() {
+		return hdd;
+	}
 
-    public void setHdd(String hdd) {
-        this.hdd = hdd;
-    }
+	public void setHdd(String hdd) {
+		this.hdd = hdd;
+	}
 
-    public String getCdDrive() {
-        return cdDrive;
-    }
+	public String getCdDrive() {
+		return cdDrive;
+	}
 
-    public void setCdDrive(String cdDrive) {
-        this.cdDrive = cdDrive;
-    }
+	public void setCdDrive(String cdDrive) {
+		this.cdDrive = cdDrive;
+	}
 
-    public String getOperatingSys() {
-        return operatingSys;
-    }
+	public String getOperatingSys() {
+		return operatingSys;
+	}
 
-    public void setOperatingSys(String operatingSys) {
-        this.operatingSys = operatingSys;
-    }
+	public void setOperatingSys(String operatingSys) {
+		this.operatingSys = operatingSys;
+	}
 
-    public String getLocation() {
-        return location;
-    }
+	public String getLocation() {
+		return location;
+	}
 
-    public void setLocation(String location) {
-        this.location = location;
-    }
+	public void setLocation(String location) {
+		this.location = location;
+	}
 
-    public String getComments() {
-        return comments;
-    }
+	public String getComments() {
+		return comments;
+	}
 
-    public void setComments(String comments) {
-        this.comments = comments;
-    }
+	public void setComments(String comments) {
+		this.comments = comments;
+	}
 
-//    public AssetsCategory getAssetsCategory() {
-//        return assetsCategory;
-//    }
-//
-//    public void setAssetsCategory(AssetsCategory assetsCategory) {
-//        this.assetsCategory = assetsCategory;
-//    }
-    
-    
+	// public AssetsCategory getAssetsCategory() {
+	// return assetsCategory;
+	// }
+	//
+	// public void setAssetsCategory(AssetsCategory assetsCategory) {
+	// this.assetsCategory = assetsCategory;
+	// }
+
 }

@@ -11,7 +11,7 @@
 
 	<bean id="assetsCategoryConverter"
 		class="com.anabatic.itAssets.endpoint.converter.impl.AssetsCategoryConverterImpl" />
-		
+
 	<bean id="availableAssetConverter"
 		class="com.anabatic.itAssets.endpoint.converter.impl.AvailableAssetConverterImpl" />
 
@@ -25,10 +25,10 @@
 		class="com.anabatic.itAssets.endpoint.converter.impl.DeleteRequestConverterImpl" />
 	<bean id="GetAllRequestConverter"
 		class="com.anabatic.itAssets.endpoint.converter.impl.GetAllRequestConverterImpl" />
-		
-		<bean id="GetByRequestToConverter"
+
+	<bean id="GetByRequestToConverter"
 		class="com.anabatic.itAssets.endpoint.converter.impl.GetByRequestToConverterImpl" />
-		
+
 	<bean id="assetFormConverter"
 		class="com.anabatic.itAssets.endpoint.converter.impl.AssetFormConverterImpl" />
 
@@ -44,16 +44,20 @@
 		class="com.anabatic.itAssets.endpoint.converter.impl.DeleteFaqConverterImpl" />
 	<bean id="GetAllFaqConverter"
 		class="com.anabatic.itAssets.endpoint.converter.impl.GetAllFaqConverterImpl" />
-    <bean id="getAllUsersConverter"
+	<bean id="getAllUsersConverter"
 		class="com.anabatic.itAssets.endpoint.converter.impl.GetAllUsersConverterImpl" />
-		<bean id="getByIdUsersConverter"
+	<bean id="getByIdUsersConverter"
 		class="com.anabatic.itAssets.endpoint.converter.impl.GetByIdUsersConverterImpl" />
-		<bean id="usersUpdateConverter"
+	<bean id="usersUpdateConverter"
 		class="com.anabatic.itAssets.endpoint.converter.impl.UsersUpdateConverterImpl" />
-		<bean id="deleteByIdUserConverter"
+	<bean id="deleteByIdUserConverter"
 		class="com.anabatic.itAssets.endpoint.converter.impl.DeleteByIdUserConverterImpl" />
-		<bean id="userLoginConverter"
+	<bean id="userLoginConverter"
 		class="com.anabatic.itAssets.endpoint.converter.impl.UserLoginConverterImpl" />
-		<bean id="usersRequestConverter"
+
+	<bean id="usersRequestConverter"
 		class="com.anabatic.itAssets.endpoint.converter.impl.UsersRequestConverterImpl" />
+
+	<bean id="privilegeConverter"
+		class="com.anabatic.itAssets.endpoint.converter.impl.PrivilegeConverterImpl" />
 </beans>

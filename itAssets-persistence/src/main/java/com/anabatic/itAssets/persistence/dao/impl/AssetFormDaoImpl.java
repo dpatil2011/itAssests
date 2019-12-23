@@ -17,35 +17,34 @@ import com.anabatic.itAssets.persistence.model.AssetsForm;
 @Transactional
 public class AssetFormDaoImpl implements AssetFomDao {
 
-    @PersistenceContext
-    EntityManager manager;
+	@PersistenceContext
+	EntityManager manager;
 
-    @Override
-    public AssetsForm insert(AssetsForm request) {
-        AssetsForm response = manager.merge(request);
-        return response;
-    }
+	@Override
+	public AssetsForm insert(AssetsForm request) {
+		AssetsForm response = manager.merge(request);
+		return response;
+	}
 
-    @Override
-    public AssetsForm getById(Long request) {
-        AssetsForm response = manager.find(AssetsForm.class, request);
-        return response;
-    }
+	@Override
+	public AssetsForm getById(Long request) {
+		AssetsForm response = manager.find(AssetsForm.class, request);
+		return response;
+	}
 
-    @Override
-    public AssetsForm delete(Long request) {
-        AssetsForm response = manager.find(AssetsForm.class, request);
-        manager.remove(response);
-        return null;
-    }
+	@Override
+	public AssetsForm delete(Long request) {
+		AssetsForm response = manager.find(AssetsForm.class, request);
+		manager.remove(response);
+		return null;
+	}
 
-    @Override
-    public List<AssetsForm> getAll() {
-        try {
-            return manager.createNativeQuery("SELECT * FROM asset_form",
-                    AssetsForm.class).getResultList();
-        } catch (Exception e) {
-            throw e;
-        }
-    }
+	@Override
+	public List<AssetsForm> getAll() {
+		try {
+			return manager.createNativeQuery("SELECT * FROM asset_form", AssetsForm.class).getResultList();
+		} catch (Exception e) {
+			throw e;
+		}
+	}
 }

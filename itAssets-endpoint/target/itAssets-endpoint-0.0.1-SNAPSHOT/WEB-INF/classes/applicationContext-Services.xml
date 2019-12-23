@@ -10,10 +10,10 @@
 
 	<bean id="assetFormService"
 		class="com.anabatic.itAssets.services.service.impl.AssetFormServiceImpl" />
-		
+
 	<bean id="availableAssetService"
 		class="com.anabatic.itAssets.services.service.impl.AvailableAssetServiceImpl" />
-	
+
 	<bean id="assetsCategoryService"
 		class="com.anabatic.itAssets.services.service.impl.AssetsCategoryServiceImpl" />
 
@@ -24,5 +24,7 @@
 	<bean id="faqService"
 		class="com.anabatic.itAssets.services.service.impl.FaqServiceImpl" />
 
+	<bean id="privilegeTypeService"
+		class="com.anabatic.itAssets.services.service.impl.PrivilegeTypeServiceImpl" />
 
 </beans>

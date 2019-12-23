@@ -10,19 +10,20 @@
 
 	<bean id="assetsCategoryDao"
 		class="com.anabatic.itAssets.persistence.dao.impl.AssetsCategoryDaoImpl" />
-		
+
 	<bean id="assetFormDao"
 		class="com.anabatic.itAssets.persistence.dao.impl.AssetFormDaoImpl" />
-		
+
 	<bean id="availableAssetDao"
 		class="com.anabatic.itAssets.persistence.dao.impl.AvailableAssetDaoImpl" />
-		
+
 	<bean id="requestDao"
 		class="com.anabatic.itAssets.persistence.dao.impl.RequestDaoImpl" />
 	<bean id="faqDao" class="com.anabatic.itAssets.persistence.dao.impl.FaqDaoImpl" />
 
 	<bean id="usersdao" class="com.anabatic.itAssets.persistence.dao.impl.UsersDaoImpl" />
 
-
+	<bean id="privilegeTypeDao"
+		class="com.anabatic.itAssets.persistence.dao.impl.PrivilegeTypeDaoImpl" />
 
 </beans>

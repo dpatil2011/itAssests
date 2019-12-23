@@ -2,7 +2,6 @@ package com.anabatic.itAssets.persistence.model;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -26,10 +25,9 @@ public class Privilege {
 
 	@Column(name = "status")
 	private Integer status;
-	
-    @OneToMany(mappedBy = "privilege", fetch = FetchType.LAZY)
-	private List<Users> users;
 
+	@OneToMany(mappedBy = "privilege", fetch = FetchType.LAZY)
+	private List<Users> users;
 
 	public List<Users> getUsers() {
 		return users;
