@@ -34,5 +34,9 @@
 	<bean id="loginDao"
 		class="com.anabatic.itAssets.persistence.dao.impl.LoginDaoImpl" />
 
+	<bean id="candidateRecordDao"
+		class="com.anabatic.itAssets.persistence.dao.impl.CandidateRecordDaoImpl" />
+
+
 
 </beans>
