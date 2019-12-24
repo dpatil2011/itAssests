@@ -16,4 +16,8 @@ public interface FaqService {
 
 	public List<Faq> getAll();
 
+	public List<Faq> getByQueTo(Faq faq);
+
+	public List<Faq> getByUIdAndQueTo(Faq faq);
+
 }

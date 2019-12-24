@@ -72,4 +72,10 @@
 		class="com.anabatic.itAssets.endpoint.converter.impl.GetAllCandidateConverterImpl" />
 	<bean id="updateCandidateConverter"
 		class="com.anabatic.itAssets.endpoint.converter.impl.UpdateCandidateConverterImpl" />
+		
+		<bean id="getByQuestionToFaqConverter"
+		class="com.anabatic.itAssets.endpoint.converter.impl.GetByQuestionToFaqConverterImpl" />
+		
+		<bean id="getByUserIdAndQuestionToFaqConverter"
+		class="com.anabatic.itAssets.endpoint.converter.impl.GetByUserIdAndQuestionToFaqConverterImpl" />
 </beans>
