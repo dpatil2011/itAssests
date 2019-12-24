@@ -16,4 +16,8 @@ public interface FaqDao {
 
 	public List<Faq> getall();
 
+	public List<Faq> getByQueTo(Faq faq);
+
+	public List<Faq> getByUIdAndQueTo(Faq faq);
+
 }

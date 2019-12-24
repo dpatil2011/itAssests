@@ -21,6 +21,7 @@ public class InsertRequestConverterImpl implements InsertRequestConverter {
 		request.setRequestType(object.getRequestType());
 		request.setRequestedDate(object.getRequestedDate());
 		request.setClosingDate(object.getClosingDate());
+		request.setStatus(object.getStatus());
 		Users users = new Users();
 		users.setId(object.getUserId());
 		request.setUserId(users);

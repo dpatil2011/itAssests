@@ -2,7 +2,7 @@ package com.anabatic.itAssets.endpoint.Request;
 
 public class GetByRequestToRequest {
 	private Long userId;
-	private String RequestTo;
+	private String requestTo;
 
 	public Long getUserId() {
 		return userId;
@@ -13,11 +13,11 @@ public class GetByRequestToRequest {
 	}
 
 	public String getRequestTo() {
-		return RequestTo;
+		return requestTo;
 	}
 
 	public void setRequestTo(String requestTo) {
-		RequestTo = requestTo;
+		requestTo = requestTo;
 	}
 
 }

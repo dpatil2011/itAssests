@@ -1,5 +1,6 @@
 package com.anabatic.itAssets.endpoint;
 
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
@@ -15,6 +16,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import com.anabatic.generic.endpoint.controlleradvice.GenericControllerAdvice;
+import com.anabatic.itAssets.persistence.dao.LoginDao;
+import com.anabatic.itAssets.persistence.dao.impl.LoginDaoImpl;
+import com.anabatic.itAssets.persistence.model.Login;
 
 /**
  * !place your description here!
@@ -36,6 +40,7 @@ public class AppStarter extends SpringBootServletInitializer{
     }
     
     public static void main(String[] args) {
+    	
         SpringApplication.run(AppStarter.class, args);
     }
 //    @Bean
@@ -46,5 +51,17 @@ public class AppStarter extends SpringBootServletInitializer{
 //             registry.addMapping("/itserv").allowedOrigins("http://192.168.0.150:8080");
 //          }
 //       };
+//    }
+//    @Bean
+//    CommandLineRunner init (LoginDao login) {
+//		return login.insert();
+//    	//System.out.
+//	//	return login.insert();
+//    	
+//    }
+//    
+//    @Bean
+//    public LoginDao lo() {
+//        return new LoginDaoImpl();
 //    }
 }

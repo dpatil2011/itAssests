@@ -13,11 +13,15 @@ import org.springframework.web.bind.annotation.RestController;
 import com.anabatic.generic.endpoint.contract.BaseResponse;
 import com.anabatic.itAssets.endpoint.Request.DeleteFaqRequest;
 import com.anabatic.itAssets.endpoint.Request.GetByIdFaqRequest;
+import com.anabatic.itAssets.endpoint.Request.GetByQuestionToFaqRequest;
+import com.anabatic.itAssets.endpoint.Request.GetByUserIdAndQuestionToFaqRequest;
 import com.anabatic.itAssets.endpoint.Request.InsertFaqRequest;
 import com.anabatic.itAssets.endpoint.Request.UpdateFaqRequest;
 import com.anabatic.itAssets.endpoint.converter.DeleteFaqConverter;
 import com.anabatic.itAssets.endpoint.converter.GetAllFaqConverter;
 import com.anabatic.itAssets.endpoint.converter.GetByIdFaqConverter;
+import com.anabatic.itAssets.endpoint.converter.GetByQuestionToFaqConverter;
+import com.anabatic.itAssets.endpoint.converter.GetByUserIdAndQuestionToFaqConverter;
 import com.anabatic.itAssets.endpoint.converter.InsertFaqConverter;
 import com.anabatic.itAssets.endpoint.converter.UpdateFaqConverter;
 import com.anabatic.itAssets.persistence.model.Faq;
@@ -45,7 +49,13 @@ public class FaqController {
 
 	@Autowired
 	private GetAllFaqConverter getAllFaqConverter;
-
+	
+	@Autowired
+	private GetByQuestionToFaqConverter getByQuestionToFaqConverter;
+	
+	@Autowired
+	private GetByUserIdAndQuestionToFaqConverter getByUserIdAndQuestionToFaqConverter;
+	
 	@PostMapping("/insert")
 	public ResponseEntity<BaseResponse> insert(@RequestBody InsertFaqRequest request) {
 		Faq faq = insertFaqConverter.toModel(request);
@@ -63,7 +73,25 @@ public class FaqController {
 		baseResponse.setResponse(getByIdFaqConverter.toContract(faq2));
 		return ResponseEntity.ok().body(baseResponse);
 	}
+	
+	@PostMapping("/getByQueTo")
+	public ResponseEntity<BaseResponse> getByQueTo(@RequestBody GetByQuestionToFaqRequest request) {
+		Faq faq = getByQuestionToFaqConverter.toModel(request);
+		List<Faq> faq2 = faqService.getByQueTo(faq);
+		BaseResponse baseResponse = new BaseResponse();
+		baseResponse.setResponse(getByQuestionToFaqConverter.toContracts(faq2));
+		return ResponseEntity.ok().body(baseResponse);
+	}
+	@PostMapping("/getByUIdAndQueTo")
+	public ResponseEntity<BaseResponse> getByUIdAndQueTo(@RequestBody GetByUserIdAndQuestionToFaqRequest request) {
+		Faq faq = getByUserIdAndQuestionToFaqConverter.toModel(request);
+		List<Faq> faq2 = faqService.getByUIdAndQueTo(faq);
+		BaseResponse baseResponse = new BaseResponse();
+		baseResponse.setResponse(getByQuestionToFaqConverter.toContracts(faq2));
+		return ResponseEntity.ok().body(baseResponse);
+	}
 
+	
 	@PostMapping("/update")
 	public ResponseEntity<BaseResponse> update(@RequestBody UpdateFaqRequest request) {
 		Faq faq = updateFaqConverter.toModel(request);

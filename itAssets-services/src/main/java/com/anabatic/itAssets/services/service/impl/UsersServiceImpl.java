@@ -80,6 +80,14 @@ public class UsersServiceImpl
 	}
 
 
+	@Override
+	public List<Users> getByStatus(Integer status) {
+		// TODO Auto-generated method stub
+		List<Users> res = usersDao.getByStatus(status);
+		return res;
+	}
+
+
 
 
 }

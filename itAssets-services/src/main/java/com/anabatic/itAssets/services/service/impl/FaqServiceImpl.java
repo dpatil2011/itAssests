@@ -45,4 +45,18 @@ public class FaqServiceImpl implements FaqService {
 		return list;
 	}
 
+	@Override
+	public List<Faq> getByQueTo(Faq faq) {
+		List<Faq> list=new ArrayList<>();
+		list=faqDao.getByQueTo(faq);
+		return list;
+	}
+
+	@Override
+	public List<Faq> getByUIdAndQueTo(Faq faq) {
+		List<Faq> list=new ArrayList<>();
+		list=faqDao.getByUIdAndQueTo(faq);
+		return list;
+	}
+
 }

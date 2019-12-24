@@ -22,6 +22,8 @@ public interface UsersDao {
 
 	Users login(String employeeId, String password);
 
+	List<Users> getByStatus(Integer status);
+
 	
 
 }

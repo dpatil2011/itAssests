@@ -110,4 +110,17 @@ public class UsersDaoImpl implements UsersDao {
 		}
 	}
 
+	@Override
+	public List<Users> getByStatus(Integer status) {
+		try {
+			Query query = manager
+					.createQuery("select u from Users u where u.status =:status");
+			query.setParameter("status", status);
+			return query.getResultList();
+		}  catch (Exception e) {
+			return null;
+		}
+		
+	}
+
 }

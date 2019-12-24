@@ -15,10 +15,6 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "request")
 public class Request {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -55,6 +51,9 @@ public class Request {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "userId")
 	private Users userId;
+	
+	@Column(name="status")
+	private Integer status;
 
 	public Long getId() {
 		return id;
@@ -142,6 +141,18 @@ public class Request {
 
 	public void setUserId(Users userId) {
 		this.userId = userId;
+	}
+
+	public Integer getStatus() {
+		return status;
+	}
+
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
+
+	public void setRequestItem(String requestItem) {
+		this.requestItem = requestItem;
 	}
 
 }

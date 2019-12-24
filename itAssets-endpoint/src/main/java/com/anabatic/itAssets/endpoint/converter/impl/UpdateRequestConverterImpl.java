@@ -1,6 +1,5 @@
 package com.anabatic.itAssets.endpoint.converter.impl;
 
-
 import java.util.List;
 
 import com.anabatic.itAssets.endpoint.Request.RequestUpdateRequest;
@@ -24,6 +23,7 @@ public class UpdateRequestConverterImpl implements UpdateRequestConverter {
 		request.setDepartment(object.getDepartment());
 		request.setRequestedDate(object.getRequestedDate());
 		request.setClosingDate(object.getClosingDate());
+		request.setStatus(object.getStatus());
 		Users users = new Users();
 		users.setId(object.getUserId());
 		request.setUserId(users);

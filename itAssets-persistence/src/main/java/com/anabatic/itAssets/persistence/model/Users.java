@@ -14,7 +14,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
 import org.hibernate.annotations.DynamicUpdate;
 
 @Entity
@@ -53,6 +52,7 @@ public class Users {
 
 	@Column(name = "mother_dateOfBirth")
 	private Date motherDateOfBirth;
+
 
 	@Column(name = "sibling1")
 	private String sibling1;
@@ -364,6 +364,9 @@ public class Users {
 
 	@OneToMany(mappedBy = "userId", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Request> request;
+
+	@OneToMany(mappedBy = "users", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<Candidate> candidate;
 
 	public Long getId() {
 		return id;
