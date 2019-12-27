@@ -11,4 +11,6 @@ public interface PrivilegeTypeService {
 
 	public List<PrivilegeType> getAllByStatus();
 
+    void delete(Long id);
+
 }

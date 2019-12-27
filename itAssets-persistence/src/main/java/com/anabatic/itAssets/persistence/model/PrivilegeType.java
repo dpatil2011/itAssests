@@ -27,6 +27,9 @@ public class PrivilegeType {
 
 	@Column(name = "status")
 	private Integer status;
+	
+	@Column(name = "privi_count")
+    private Integer priviCount;
 
 	public Long getId() {
 		return id;
@@ -67,4 +70,13 @@ public class PrivilegeType {
 	public void setStatus(Integer status) {
 		this.status = status;
 	}
+
+    public Integer getPriviCount() {
+        return priviCount;
+    }
+
+    public void setPriviCount(Integer priviCount) {
+        this.priviCount = priviCount;
+    }
+	
 }

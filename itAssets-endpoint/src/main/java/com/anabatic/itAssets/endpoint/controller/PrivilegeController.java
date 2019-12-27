@@ -13,13 +13,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.anabatic.generic.endpoint.contract.BaseResponse;
 import com.anabatic.itAssets.endpoint.Request.PrivilegeTypeRequest;
+import com.anabatic.itAssets.endpoint.Request.RequestId;
 import com.anabatic.itAssets.endpoint.converter.PrivilegeConverter;
 import com.anabatic.itAssets.persistence.model.PrivilegeType;
 import com.anabatic.itAssets.services.service.PrivilegeTypeService;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
-@RequestMapping("/privilege")
+@RequestMapping("/priviledge")
 public class PrivilegeController {
 	@Autowired
 	private PrivilegeTypeService privilegeTypeService;
@@ -51,4 +52,14 @@ public class PrivilegeController {
 		baseResponse.setResponse(privilegeConverter.toContracts(response));
 		return ResponseEntity.ok().body(baseResponse);
 	}
+	
+	@PostMapping("/delete")
+    public ResponseEntity<BaseResponse> delete(
+            @RequestBody RequestId request) {
+	    privilegeTypeService.delete(request.getId());
+        BaseResponse baseResponse = new BaseResponse();
+        baseResponse.setResponse("Operation performed Successfully");
+        return ResponseEntity.ok().body(baseResponse);
+    }
+    
 }
