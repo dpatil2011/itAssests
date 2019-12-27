@@ -1,24 +1,18 @@
 package com.anabatic.itAssets.endpoint;
 
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.ImportResource;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import com.anabatic.generic.endpoint.controlleradvice.GenericControllerAdvice;
-import com.anabatic.itAssets.persistence.dao.LoginDao;
-import com.anabatic.itAssets.persistence.dao.impl.LoginDaoImpl;
-import com.anabatic.itAssets.persistence.model.Login;
+import com.anabatic.itAssets.persistence.model.FileStorageProperties;
 
 /**
  * !place your description here!
@@ -33,6 +27,9 @@ import com.anabatic.itAssets.persistence.model.Login;
         "classpath*:applicationContext-Endpoint.xml" })
 @SpringBootApplication(exclude={SecurityAutoConfiguration.class})
 @Import({GenericControllerAdvice.class})
+@EnableConfigurationProperties({
+    FileStorageProperties.class
+})
 public class AppStarter extends SpringBootServletInitializer{
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {

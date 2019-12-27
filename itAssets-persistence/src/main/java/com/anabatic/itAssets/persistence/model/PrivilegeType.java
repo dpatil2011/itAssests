@@ -30,6 +30,8 @@ public class PrivilegeType {
 	
 	@Column(name = "privi_count")
     private Integer priviCount;
+	
+	
 
 	public Long getId() {
 		return id;

@@ -1,7 +1,5 @@
 package com.anabatic.itAssets.endpoint.Request;
 
-import com.anabatic.itAssets.persistence.model.Users;
-
 public class InsertCandidateRequest {
 	
 	private Long id;
