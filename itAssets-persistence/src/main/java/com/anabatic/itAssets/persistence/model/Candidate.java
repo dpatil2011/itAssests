@@ -44,8 +44,41 @@ public class Candidate {
 	@Column(name = "comment")
 	private String comment;
 	
+	@Column(name = "file_name")
+	private String fileName;
+	
 	@Column(name = "upload_dir")
 	private String uploadDir;
+	
+	@Column(name = "file_type")
+	private String fileType;
+	
+	@Column(name = "file_size")
+	private Long filesize;
+
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
+	public String getFileType() {
+		return fileType;
+	}
+
+	public void setFileType(String fileType) {
+		this.fileType = fileType;
+	}
+
+	public Long getFilesize() {
+		return filesize;
+	}
+
+	public void setFilesize(Long filesize) {
+		this.filesize = filesize;
+	}
 
 	public String getUploadDir() {
 		return uploadDir;

@@ -9,8 +9,36 @@ public class InsertCandidateResponse {
 	private Float experience;
 	private Integer status;
 	private String comment;
-	private Long managerId;
+	private Long managerId;	
+	private String fileName;	
+	private String uploadDir;	
+	private String fileType;
+	private Long filesize;
 	
+	public String getFileName() {
+		return fileName;
+	}
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+	public String getUploadDir() {
+		return uploadDir;
+	}
+	public void setUploadDir(String uploadDir) {
+		this.uploadDir = uploadDir;
+	}
+	public String getFileType() {
+		return fileType;
+	}
+	public void setFileType(String fileType) {
+		this.fileType = fileType;
+	}
+	public Long getFilesize() {
+		return filesize;
+	}
+	public void setFilesize(Long filesize) {
+		this.filesize = filesize;
+	}
 	public Long getId() {
 		return id;
 	}

@@ -35,8 +35,10 @@ public class PrivilegeType {
 	@Column(name = "privi_count")
     private Integer priviCount;
 	
+
 	@OneToMany(mappedBy = "privilegeType", fetch = FetchType.LAZY)
 	private List<Privilege> privilege;
+
 	public Long getId() {
 		return id;
 	}

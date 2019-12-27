@@ -46,6 +46,10 @@ public class InsertCandidateConverterImpl implements InsertCandidateConverter {
 		res.setSkills(object.getSkills());
 		res.setStatus(object.getStatus());
 		res.setManagerId(object.getUsers().getId());
+		res.setFileName(object.getFileName());
+		res.setFilesize(object.getFilesize());
+		res.setFileType(object.getFileType());
+		res.setUploadDir(object.getUploadDir());
 		return res;
 	}
 
