@@ -26,6 +26,7 @@ public class PrivilegeDaoImpl  implements PrivilegeDao{
 		        Query query = entityManager
 	                    .createQuery("SELECT u FROM Privilege u where u.status =:status ");
 	            query.setParameter("status", p.getStatus());
+	            
 	            return query.getResultList();
 		    }else {
 		        Query query = entityManager
