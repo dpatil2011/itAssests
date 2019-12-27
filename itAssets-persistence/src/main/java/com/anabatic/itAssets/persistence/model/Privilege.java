@@ -23,21 +23,20 @@ public class Privilege {
 
 	@Column(name = "status")
 	private Integer status;
-	
+
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "user_id")
 	private Users users;
-	
+
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "privilegetype_id")
 	private PrivilegeType privilegeType;
-	
+
 	@Column(name = "from_date")
 	private Date fromDate;
-	
+
 	@Column(name = "to_date")
 	private Date toDate;
-
 
 	public Users getUsers() {
 		return users;
@@ -78,7 +77,6 @@ public class Privilege {
 	public void setId(Long id) {
 		this.id = id;
 	}
-
 
 	public Integer getStatus() {
 		return status;
