@@ -5,7 +5,6 @@ import org.itAssests.core.constant.UsersErrorConstant;
 import org.itAssests.core.exception.UsersException;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.anabatic.generic.service.impl.TypicalGenericServiceImpl;
 import com.anabatic.itAssets.persistence.dao.UsersDao;
 import com.anabatic.itAssets.persistence.model.Request;
 import com.anabatic.itAssets.persistence.model.Users;
@@ -33,6 +32,12 @@ public class UsersServiceImpl
 		return res;
 	}
 
+	@Override
+    public List<Users> fetchRole() {
+        // TODO Auto-generated method stub
+        List<Users> res = usersDao.fetchRole();
+        return res;
+    }
 
 	
 

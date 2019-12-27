@@ -21,9 +21,9 @@ public class PrivilegeServiceImpl  implements PrivilegeService{
 
 
 	@Override
-	public List<Privilege> getByStatus(Privilege p) {
+	public List<Privilege> getByStatus(Privilege p,Long priviId) {
 		// TODO Auto-generated method stub
-		return privilegeDao.getByStatus(p);
+		return privilegeDao.getByStatus(p, priviId);
 	}
 
 

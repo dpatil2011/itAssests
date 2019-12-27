@@ -4,10 +4,6 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
-import org.springframework.stereotype.Service;
-
-import com.anabatic.generic.service.TypicalGenericService;
-import com.anabatic.itAssets.persistence.model.AssetsForm;
 import com.anabatic.itAssets.persistence.model.Request;
 import com.anabatic.itAssets.persistence.model.Users;
 
@@ -18,6 +14,8 @@ public interface UsersService {
 
 	List<Users> getAll();
 
+	List<Users> fetchRole();
+	
 	Users getById(Long long1);
 
 	Users updateUsers(Users user);
@@ -29,8 +27,5 @@ public interface UsersService {
 	Request insertRequest(Request model);
 
 	List<Users> getByStatus(Integer status);
-
-
-
-
+	
 }

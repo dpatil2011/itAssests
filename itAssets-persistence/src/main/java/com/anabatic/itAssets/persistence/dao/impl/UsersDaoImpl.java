@@ -3,16 +3,12 @@ package com.anabatic.itAssets.persistence.dao.impl;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import org.aspectj.apache.bcel.classfile.Module.Uses;
 import org.itAssests.core.constant.UsersErrorConstant;
 import org.itAssests.core.exception.UsersException;
-import org.springframework.http.HttpStatus;
 
-import com.anabatic.generic.endpoint.contract.BaseResponse;
 import com.anabatic.itAssets.persistence.dao.UsersDao;
 import com.anabatic.itAssets.persistence.model.Users;
 
@@ -46,11 +42,20 @@ public class UsersDaoImpl implements UsersDao {
 	@Override
 	public List<Users> getAll() {
 		try {
-			return manager.createNativeQuery("SELECT * FROM users", Users.class).getResultList();
+			return manager.createNativeQuery("SELECT * FROM users ", Users.class).getResultList();
 		} catch (Exception e) {
 			throw e;
 		}
 	}
+	
+	@Override
+    public List<Users> fetchRole() {
+        try {
+            return manager.createNativeQuery("SELECT * FROM users where ", Users.class).getResultList();
+        } catch (Exception e) {
+            throw e;
+        }
+    }
 
 	@Override
 	public Users getById(Long long1) {

@@ -18,9 +18,7 @@ import com.anabatic.itAssets.endpoint.Response.LoginResponse;
 import com.anabatic.itAssets.endpoint.converter.InsertLoginConverter;
 import com.anabatic.itAssets.endpoint.converter.LoginConverter;
 import com.anabatic.itAssets.endpoint.converter.UpdateLoginConverter;
-import com.anabatic.itAssets.persistence.model.CandidateRecord;
 import com.anabatic.itAssets.persistence.model.Login;
-import com.anabatic.itAssets.persistence.model.Users;
 import com.anabatic.itAssets.services.service.LoginService;
 
 @CrossOrigin(origins="*",allowedHeaders="*")

@@ -20,12 +20,21 @@ public class PrivilegeDaoImpl  implements PrivilegeDao{
 	
 
 	@Override
-	public List<Privilege> getByStatus(Privilege p) {
+	public List<Privilege> getByStatus(Privilege p,Long priviId) {
 		try {
-			Query query = entityManager
-					.createQuery("SELECT u FROM Privilege u where u.status =:status");
-			query.setParameter("status", p.getStatus());
-            return query.getResultList();
+		    if(priviId==null) {
+		        Query query = entityManager
+	                    .createQuery("SELECT u FROM Privilege u where u.status =:status ");
+	            query.setParameter("status", p.getStatus());
+	            return query.getResultList();
+		    }else {
+		        Query query = entityManager
+                        .createQuery("SELECT u FROM Privilege u where u.status =:status and  privilegetype_id =:priviId");
+                query.setParameter("status", p.getStatus());
+                query.setParameter("priviId",priviId);
+                return query.getResultList();
+		    }
+            
 		} catch (Exception e) {
 			throw e;
 		}

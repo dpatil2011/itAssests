@@ -4,8 +4,17 @@ public class GetByStatusPrivilegeRequest {
 
 	
 	private Integer status;
+	private Long priviId;
+	
+	public Long getPriviId() {
+        return priviId;
+    }
 
-	public Integer getStatus() {
+    public void setPriviId(Long priviId) {
+        this.priviId = priviId;
+    }
+
+    public Integer getStatus() {
 		return status;
 	}
 

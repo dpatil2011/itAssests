@@ -37,22 +37,22 @@ public class PrivilegeController {
 	
 	@Autowired
 	private PrivilegeService privilegeService;
-	
+
 	@Autowired
 	private PrivilegeTypeService PrivilegeTypeService;
 	
 	@Autowired
 	private PrivilegeInsertConverter privilegeInsertConverter;
 	
-	@Autowired
-	private RemovePrivilegeConverter removePrivilegeConverter;
-	
-	
+
+    @Autowired
+    private RemovePrivilegeConverter removePrivilegeConverter;
 	
 	@RequestMapping(value = "/getbystatus", method = RequestMethod.GET)
+
 	public ResponseEntity<BaseResponse> getByStatus(@RequestBody GetByStatusPrivilegeRequest request) {
 		Privilege p = getByStatusPrivilegeConverter.toModel(request);
-		List<Privilege> response = privilegeService.getByStatus(p);
+		List<Privilege> response = privilegeService.getByStatus(p,request.getPriviId());
 		BaseResponse baseResponse = new BaseResponse();
 		baseResponse.setResponse(getByStatusPrivilegeConverter.toContracts(response));
 		return ResponseEntity.ok().body(baseResponse);

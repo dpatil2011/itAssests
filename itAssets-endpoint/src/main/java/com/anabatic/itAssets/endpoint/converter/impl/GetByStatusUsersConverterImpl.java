@@ -49,6 +49,7 @@ List<GetByStatusResponse> list = new ArrayList<>(objects.size());
 			user.setDepartment(object.getDepartment());
 			user.setFirstName(object.getFirstName());
 			user.setLastName(object.getLastName());
+			user.setFullName(object.getFullName());
 			user.setAadhar(object.getAadhar());
 			user.setCity(object.getCity());
 			user.setCurrentAddress(object.getCurrentAddress());

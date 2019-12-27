@@ -197,5 +197,13 @@ public class UsersController {
         baseResponse.setResponse(response);
         return new ResponseEntity<>(baseResponse, HttpStatus.OK);
     }
+    
+    @GetMapping(value = "/fetchrole", consumes = "application/json", produces = "application/json")
+    public ResponseEntity<List<GetAllUsersResponse>> fetchRole() {
+          List<Users> res = usersService.fetchRole(); 
+          List<GetAllUsersResponse> contracts = getAllUsersConverter.toContracts(res);
+        return ResponseEntity.ok().body(contracts);
+    }
+    
 
 }

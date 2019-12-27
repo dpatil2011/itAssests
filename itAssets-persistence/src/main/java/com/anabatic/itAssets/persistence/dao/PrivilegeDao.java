@@ -6,7 +6,7 @@ import com.anabatic.itAssets.persistence.model.Privilege;
 
 public interface PrivilegeDao {
 
-	List<Privilege> getByStatus(Privilege p) ;
+	List<Privilege> getByStatus(Privilege p,Long priviId) ;
 
 	Privilege insert(Privilege model);
 

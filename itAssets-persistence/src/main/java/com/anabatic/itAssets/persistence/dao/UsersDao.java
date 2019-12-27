@@ -11,6 +11,8 @@ public interface UsersDao {
 	Users insert(Users model);
 
 	List<Users> getAll();
+	
+	List<Users> fetchRole();
 
 	Users getById(Long long1);
 	
