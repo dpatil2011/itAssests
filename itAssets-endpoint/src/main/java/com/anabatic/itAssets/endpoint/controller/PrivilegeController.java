@@ -17,9 +17,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.anabatic.generic.endpoint.contract.BaseResponse;
 import com.anabatic.itAssets.endpoint.Request.GetByStatusPrivilegeRequest;
 import com.anabatic.itAssets.endpoint.Request.PrivilegeInsertRequest;
+import com.anabatic.itAssets.endpoint.Request.RemovePrivilegeRequest;
 import com.anabatic.itAssets.endpoint.Response.PrivilegeInsertResponse;
 import com.anabatic.itAssets.endpoint.converter.GetByStatusPrivilegeConverter;
 import com.anabatic.itAssets.endpoint.converter.PrivilegeInsertConverter;
+import com.anabatic.itAssets.endpoint.converter.RemovePrivilegeConverter;
 import com.anabatic.itAssets.persistence.model.Privilege;
 import com.anabatic.itAssets.persistence.model.PrivilegeType;
 import com.anabatic.itAssets.services.service.PrivilegeService;
@@ -42,6 +44,11 @@ public class PrivilegeController {
 	@Autowired
 	private PrivilegeInsertConverter privilegeInsertConverter;
 	
+	@Autowired
+	private RemovePrivilegeConverter removePrivilegeConverter;
+	
+	
+	
 	@RequestMapping(value = "/getbystatus", method = RequestMethod.GET)
 	public ResponseEntity<BaseResponse> getByStatus(@RequestBody GetByStatusPrivilegeRequest request) {
 		Privilege p = getByStatusPrivilegeConverter.toModel(request);
@@ -63,6 +70,22 @@ public class PrivilegeController {
 		    }
 			BaseResponse baseResponse = new BaseResponse();
 			baseResponse.setResponse(contract);
+	        return ResponseEntity.ok().body(baseResponse);
+
+	    }
+	  
+	  @PostMapping(value = "/remove-privilege", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	    public ResponseEntity<BaseResponse> removePrivilege(
+	            @Valid @RequestBody RemovePrivilegeRequest usersRequest) {
+	  
+		    Privilege model = removePrivilegeConverter.toModel(usersRequest);
+		    Privilege p = privilegeService.removePrivilege(model);
+		  
+		    if (p!=null) {
+		    	PrivilegeType updatePriviCount = PrivilegeTypeService.updatePriviCountTo(p.getPrivilegeType().getId());
+		    }
+			BaseResponse baseResponse = new BaseResponse();
+			
 	        return ResponseEntity.ok().body(baseResponse);
 
 	    }

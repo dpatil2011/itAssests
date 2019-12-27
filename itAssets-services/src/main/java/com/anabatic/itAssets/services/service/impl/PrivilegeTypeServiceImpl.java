@@ -61,4 +61,10 @@ public class PrivilegeTypeServiceImpl implements PrivilegeTypeService {
 		// TODO Auto-generated method stub
 		return privilegeTypeDao.getById(id);
 	}
+
+	@Override
+	public PrivilegeType updatePriviCountTo(Long id) {
+		// TODO Auto-generated method stub
+		return privilegeTypeDao.updatePriviCountTo(id);
+	}
 }

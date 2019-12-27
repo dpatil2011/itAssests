@@ -13,4 +13,6 @@ public interface PrivilegeTypeDao {
 	
 	public PrivilegeType getById(Long id);
 
+	public PrivilegeType updatePriviCountTo(Long id);
+
 }

@@ -10,4 +10,8 @@ public interface PrivilegeDao {
 
 	Privilege insert(Privilege model);
 
+	Privilege removePrivilege(Privilege model);
+	
+	Privilege getById(Privilege model);
+
 }

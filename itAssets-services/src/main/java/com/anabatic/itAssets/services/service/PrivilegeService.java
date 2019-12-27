@@ -10,6 +10,8 @@ public interface PrivilegeService {
 
 	Privilege insert(Privilege model);
 
+	Privilege removePrivilege(Privilege model);
+
 	
 
 }

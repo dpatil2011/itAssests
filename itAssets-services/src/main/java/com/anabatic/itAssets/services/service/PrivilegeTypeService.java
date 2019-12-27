@@ -17,4 +17,6 @@ public interface PrivilegeTypeService {
 	
 	public PrivilegeType getById(Long id);
 
+	public PrivilegeType updatePriviCountTo(Long id);
+
 }

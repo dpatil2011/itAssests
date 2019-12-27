@@ -33,4 +33,12 @@ public class PrivilegeServiceImpl  implements PrivilegeService{
 		return privilegeDao.insert(model);
 	}
 
+
+	@Override
+	public Privilege removePrivilege(Privilege model) {
+		
+		// TODO Auto-generated method stub
+		return privilegeDao.removePrivilege(model);
+	}
+
 }

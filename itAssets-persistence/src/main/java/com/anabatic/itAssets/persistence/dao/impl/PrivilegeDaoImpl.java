@@ -1,5 +1,6 @@
 package com.anabatic.itAssets.persistence.dao.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -43,6 +44,36 @@ public class PrivilegeDaoImpl  implements PrivilegeDao{
 			e.printStackTrace();			
 		}
 		return null;
+	}
+
+
+
+	@Override
+	public Privilege removePrivilege(Privilege model) {
+		Privilege byId = getById(model);
+		byId.setToDate(new Date());
+		byId.setStatus(0);
+		try {
+			Privilege p = entityManager.merge(byId);
+			return p;
+		}
+	 catch(Exception e) {
+		 e.printStackTrace();
+	 }
+		return null;
+	}
+
+
+
+	@Override
+	public Privilege getById(Privilege model) {
+      try {
+    	  Privilege getById = entityManager.find(Privilege.class, model.getId());
+    	  return getById;
+      } catch (Exception e) {
+    	  e.printStackTrace();
+      }
+      return null;
 	}
 
 }

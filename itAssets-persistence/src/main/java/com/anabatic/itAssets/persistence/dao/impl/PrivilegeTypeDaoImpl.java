@@ -49,5 +49,13 @@ public class PrivilegeTypeDaoImpl implements PrivilegeTypeDao {
 		return null;
 	}
 
+	@Override
+	public PrivilegeType updatePriviCountTo(Long id) {
+		PrivilegeType byId = getById(id);
+		byId.setPriviCount(byId.getPriviCount()-1);
+		PrivilegeType merge = entityManager.merge(byId);
+		return merge;		
+	}
+
 
 }

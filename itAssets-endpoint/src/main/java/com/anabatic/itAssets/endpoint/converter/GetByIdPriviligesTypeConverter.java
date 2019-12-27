@@ -8,7 +8,8 @@ import com.anabatic.itAssets.persistence.model.PrivilegeType;
 
 public interface GetByIdPriviligesTypeConverter
 
-extends ToModelConverter<GetByIdPrivilegeTypeRequest, PrivilegeType>, ToContractConverter<PrivilegeType, PrivilegeTypeRequest> {
+extends ToModelConverter<GetByIdPrivilegeTypeRequest, PrivilegeType>, ToContractConverter<PrivilegeType, PrivilegeTypeRequest> 
+{
 
 
 
