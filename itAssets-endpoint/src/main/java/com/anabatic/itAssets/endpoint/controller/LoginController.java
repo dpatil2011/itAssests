@@ -3,8 +3,6 @@ package com.anabatic.itAssets.endpoint.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.AutoConfigureOrder;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,16 +11,17 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.anabatic.generic.persistence.validator.field.ValidationCheck;
-import com.anabatic.itAssets.endpoint.Request.UserLoginRequest;
-import com.anabatic.itAssets.endpoint.Response.GetAllUsersResponse;
+import com.anabatic.generic.endpoint.contract.BaseResponse;
+import com.anabatic.itAssets.endpoint.Request.LoginVarificationRequest;
+import com.anabatic.itAssets.endpoint.Request.UpdateLoginRequest;
 import com.anabatic.itAssets.endpoint.Response.LoginResponse;
-import com.anabatic.itAssets.endpoint.Response.UserLoginResponse;
+import com.anabatic.itAssets.endpoint.converter.InsertLoginConverter;
 import com.anabatic.itAssets.endpoint.converter.LoginConverter;
+import com.anabatic.itAssets.endpoint.converter.UpdateLoginConverter;
+import com.anabatic.itAssets.persistence.model.CandidateRecord;
 import com.anabatic.itAssets.persistence.model.Login;
 import com.anabatic.itAssets.persistence.model.Users;
 import com.anabatic.itAssets.services.service.LoginService;
-import com.anabatic.logging.annotation.Log;
 
 @CrossOrigin(origins="*",allowedHeaders="*")
 @RestController
@@ -34,6 +33,13 @@ public class LoginController {
 	
 	@Autowired
 	private LoginConverter loginConverter;
+	
+	@Autowired
+	private InsertLoginConverter insertLoginConverter;
+	
+	@Autowired
+	private UpdateLoginConverter updateLoginConverter;
+	
 	
 	    @GetMapping(value = "/get", consumes = "application/json", produces = "application/json")
 	    public ResponseEntity<List<LoginResponse>> getAll() {
@@ -56,6 +62,27 @@ public class LoginController {
 //	                .toContract(users2);
 //	        baseResponse.setResponse(response);
 //	        return new ResponseEntity<>(baseResponse, HttpStatus.OK);
-//	    }    
+//	    }  
+	    
+	    @PostMapping("/login")
+		public ResponseEntity<BaseResponse> insert(@RequestBody LoginVarificationRequest request) {
+			Login can = insertLoginConverter.toModel(request);
+			
+			Login can1 = loginService.login(
+					can.getUserName(), can.getPassword());
+		
+			BaseResponse baseResponse = new BaseResponse();
+			baseResponse.setResponse(insertLoginConverter.toContract(can1));
+			return ResponseEntity.ok().body(baseResponse);
+		}
+	    
+	    @PostMapping("/update")
+		public ResponseEntity<BaseResponse> update(@RequestBody UpdateLoginRequest request) {
+	    	Login request2 = updateLoginConverter.toModel(request);
+	    	Login request3 = loginService.update(request2);
+			BaseResponse baseResponse = new BaseResponse();
+			baseResponse.setResponse(updateLoginConverter.toContract(request3));
+			return ResponseEntity.ok().body(baseResponse);
+		}
 
 }

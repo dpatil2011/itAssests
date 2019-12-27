@@ -87,21 +87,30 @@
 
 	<bean id="getByIdCandidateRecordConverter"
 		class="com.anabatic.itAssets.endpoint.converter.impl.GetByIdCandidateRecordConverterImpl" />
-		
-			<bean id="updateCandidateRecordConverter"
+
+	<bean id="updateCandidateRecordConverter"
 		class="com.anabatic.itAssets.endpoint.converter.impl.UpdateCandidateRecordConverterImpl" />
-		
+
 	<bean id="getAllCandidateRecordConverter"
 		class="com.anabatic.itAssets.endpoint.converter.impl.GetAllCandidateRecordConverterImpl" />
-		
-		<bean id="deleteCandidateRecordConverter"
+
+	<bean id="deleteCandidateRecordConverter"
 		class="com.anabatic.itAssets.endpoint.converter.impl.DeleteCandidateRecordConverterImpl" />
-		
-		<bean id="getByStatusPrivilegeConverter"
+
+	<bean id="getByStatusPrivilegeConverter"
 		class="com.anabatic.itAssets.endpoint.converter.impl.GetByStatusPrivilegeConverterImpl" />
+
+	<bean id="getByIdPriviligesTypeConverter"
+		class="com.anabatic.itAssets.endpoint.converter.impl.GetByIdPriviligesTypeConverterImpl" />
 		
 		<bean id="privilegeInsertConverter"
 		class="com.anabatic.itAssets.endpoint.converter.impl.PrivilegeInsertConverterImpl" />
 		
+		<bean id="insertLoginConverter"
+		class="com.anabatic.itAssets.endpoint.converter.impl.InsertLoginConverterImpl" />
 		
+		<bean id="updateLoginConverter"
+		class="com.anabatic.itAssets.endpoint.converter.impl.UpdateLoginConverterImpl" />
+
+
 </beans>

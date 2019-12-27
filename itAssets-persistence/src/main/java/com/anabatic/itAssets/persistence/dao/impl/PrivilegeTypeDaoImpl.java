@@ -8,7 +8,6 @@ import javax.transaction.Transactional;
 
 import com.anabatic.itAssets.persistence.dao.PrivilegeTypeDao;
 import com.anabatic.itAssets.persistence.model.PrivilegeType;
-import com.anabatic.itAssets.persistence.model.Users;
 
 @Transactional
 public class PrivilegeTypeDaoImpl implements PrivilegeTypeDao {
@@ -36,9 +35,7 @@ public class PrivilegeTypeDaoImpl implements PrivilegeTypeDao {
 		PrivilegeType byId = getById(privilegeTypeId);
 		byId.setPriviCount(byId.getPriviCount()+1);
 		PrivilegeType merge = entityManager.merge(byId);
-		return merge;
-		// TODO Auto-generated method stub
-		
+		return merge;		
 	}
 
 	@Override
@@ -51,5 +48,6 @@ public class PrivilegeTypeDaoImpl implements PrivilegeTypeDao {
 		}
 		return null;
 	}
+
 
 }

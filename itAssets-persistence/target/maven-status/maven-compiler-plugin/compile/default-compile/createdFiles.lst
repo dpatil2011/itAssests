@@ -27,6 +27,7 @@ com\anabatic\itAssets\persistence\dao\impl\PrivilegeDaoImpl.class
 com\anabatic\itAssets\persistence\dao\RequestDao.class
 com\anabatic\itAssets\persistence\dao\LoginDao.class
 org\itAssets\persistence\App.class
+com\anabatic\itAssets\persistence\model\FileStorageProperties.class
 com\anabatic\itAssets\persistence\model\Faq.class
 com\anabatic\itAssets\persistence\dao\impl\RequestDaoImpl.class
 com\anabatic\itAssets\persistence\model\AvailableAsset.class

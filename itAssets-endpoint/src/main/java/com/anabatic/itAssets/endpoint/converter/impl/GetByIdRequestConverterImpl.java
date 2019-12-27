@@ -14,6 +14,7 @@ public class GetByIdRequestConverterImpl implements GetByIdRequestConverter {
 	public Request toModel(RequestGetByIdRequest object) {
 		Request request = new Request();
 		request.setId(object.getId());
+		
 		return request;
 	}
 

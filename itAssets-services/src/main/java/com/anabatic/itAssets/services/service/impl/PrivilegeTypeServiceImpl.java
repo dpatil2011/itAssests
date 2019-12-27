@@ -10,7 +10,6 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.anabatic.itAssets.persistence.dao.PrivilegeTypeDao;
-import com.anabatic.itAssets.persistence.model.AssetsCategory;
 import com.anabatic.itAssets.persistence.model.PrivilegeType;
 import com.anabatic.itAssets.services.service.PrivilegeTypeService;
 
@@ -56,6 +55,10 @@ public class PrivilegeTypeServiceImpl implements PrivilegeTypeService {
 	@Override
 	public PrivilegeType updatePriviCount(Long privilegeTypeId) {
 		return privilegeTypeDao.updatePriviCount(privilegeTypeId);
+	}
 		
+	public PrivilegeType getById(Long id) {
+		// TODO Auto-generated method stub
+		return privilegeTypeDao.getById(id);
 	}
 }

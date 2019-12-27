@@ -12,4 +12,10 @@ public interface LoginDao {
 
 	List<Login> getAll();
 
+	Login insert(Login can);
+
+	Login update(Login request2);
+
+	Login login(String userName, String password);
+
 }
