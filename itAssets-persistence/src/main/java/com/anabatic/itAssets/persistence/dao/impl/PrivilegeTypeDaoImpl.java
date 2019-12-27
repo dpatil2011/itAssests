@@ -7,6 +7,7 @@ import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
 import com.anabatic.itAssets.persistence.dao.PrivilegeTypeDao;
+import com.anabatic.itAssets.persistence.model.Candidate;
 import com.anabatic.itAssets.persistence.model.PrivilegeType;
 
 @Transactional
@@ -28,6 +29,13 @@ public class PrivilegeTypeDaoImpl implements PrivilegeTypeDao {
 		} catch (Exception e) {
 			throw e;
 		}
+	}
+
+	@Override
+	public PrivilegeType getById(Long id) {
+		PrivilegeType response = entityManager.find(PrivilegeType.class,
+                id);
+        return response;
 	}
 
 }

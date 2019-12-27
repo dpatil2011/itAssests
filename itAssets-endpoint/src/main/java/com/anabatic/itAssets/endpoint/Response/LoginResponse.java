@@ -1,7 +1,5 @@
 package com.anabatic.itAssets.endpoint.Response;
 
-import javax.persistence.Column;
-
 public class LoginResponse {
 	
 	private Long id;

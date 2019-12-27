@@ -12,9 +12,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.anabatic.generic.endpoint.contract.BaseResponse;
+import com.anabatic.itAssets.endpoint.Request.GetByIdPrivilegeTypeRequest;
 import com.anabatic.itAssets.endpoint.Request.PrivilegeTypeRequest;
 import com.anabatic.itAssets.endpoint.Request.RequestId;
-import com.anabatic.itAssets.endpoint.converter.GetByStatusPrivilegeConverter;
+import com.anabatic.itAssets.endpoint.converter.GetByIdPriviligesTypeConverter;
 import com.anabatic.itAssets.endpoint.converter.PrivilegeConverter;
 import com.anabatic.itAssets.persistence.model.PrivilegeType;
 import com.anabatic.itAssets.services.service.PrivilegeTypeService;
@@ -28,6 +29,9 @@ public class PrivilegeTypeController {
 
 	@Autowired
 	private PrivilegeConverter privilegeConverter;
+	
+	@Autowired
+	private GetByIdPriviligesTypeConverter getByIdPriviligesTypeConverter;
 	
 	
 
@@ -53,6 +57,16 @@ public class PrivilegeTypeController {
 		List<PrivilegeType> response = privilegeTypeService.getAllByStatus();
 		BaseResponse baseResponse = new BaseResponse();
 		baseResponse.setResponse(privilegeConverter.toContracts(response));
+		return ResponseEntity.ok().body(baseResponse);
+	}
+	
+	
+	@RequestMapping(value = "/getById", method = RequestMethod.GET)
+	public ResponseEntity<BaseResponse> getById(@RequestBody GetByIdPrivilegeTypeRequest request) {	
+		PrivilegeType can = getByIdPriviligesTypeConverter.toModel(request);
+		PrivilegeType can1 = privilegeTypeService.getById(can.getId());
+		BaseResponse baseResponse = new BaseResponse();
+		baseResponse.setResponse(getByIdPriviligesTypeConverter.toContract(can1));
 		return ResponseEntity.ok().body(baseResponse);
 	}
 	

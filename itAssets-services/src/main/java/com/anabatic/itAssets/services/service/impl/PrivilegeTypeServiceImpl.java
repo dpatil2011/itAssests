@@ -52,4 +52,10 @@ public class PrivilegeTypeServiceImpl implements PrivilegeTypeService {
 	    privilegeTypeDao.insert(response);
         
     }
+
+	@Override
+	public PrivilegeType getById(Long id) {
+		// TODO Auto-generated method stub
+		return privilegeTypeDao.getById(id);
+	}
 }
