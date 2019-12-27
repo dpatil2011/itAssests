@@ -12,11 +12,16 @@ public class PrivilegeConverterImpl implements PrivilegeConverter {
 	@Override
 	public PrivilegeType toModel(PrivilegeTypeRequest object) {
 		PrivilegeType privilegeType = new PrivilegeType();
+		Integer count = 0;
+		if(object.getPriviCount()!=null) {
+		    count = object.getPriviCount();
+		}
 		privilegeType.setId(object.getId());
 		privilegeType.setPrivilegeType(object.getPrivilegeType());
 		privilegeType.setStatus(object.getStatus());
 		privilegeType.setIcon(object.getIcon());
 		privilegeType.setColor(object.getColor());
+		privilegeType.setPriviCount(count);
 		return privilegeType;
 	}
 
@@ -35,6 +40,7 @@ public class PrivilegeConverterImpl implements PrivilegeConverter {
 		privilegeTypeRequest.setStatus(object.getStatus());
 		privilegeTypeRequest.setIcon(object.getIcon());
 		privilegeTypeRequest.setColor(object.getColor());
+		privilegeTypeRequest.setPriviCount(object.getPriviCount());
 		return privilegeTypeRequest;
 	}
 

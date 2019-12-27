@@ -7,6 +7,7 @@ E:\allReactApp\ATIPL(24-12)\itAssests\itAssets-services\src\main\java\com\anabat
 E:\allReactApp\ATIPL(24-12)\itAssests\itAssets-services\src\main\java\com\anabatic\itAssets\services\service\impl\AssetsCategoryServiceImpl.java
 E:\allReactApp\ATIPL(24-12)\itAssests\itAssets-services\src\main\java\com\anabatic\itAssets\services\service\CandidateRecordService.java
 E:\allReactApp\ATIPL(24-12)\itAssests\itAssets-services\src\main\java\com\anabatic\itAssets\services\service\impl\CandidateServiceImpl.java
+E:\allReactApp\ATIPL(24-12)\itAssests\itAssets-services\src\main\java\com\anabatic\itAssets\services\service\impl\PrivilegeServiceImpl.java
 E:\allReactApp\ATIPL(24-12)\itAssests\itAssets-services\src\main\java\com\anabatic\itAssets\services\service\AssetsCategoryService.java
 E:\allReactApp\ATIPL(24-12)\itAssests\itAssets-services\src\main\java\com\anabatic\itAssets\services\service\AvailableAssetService.java
 E:\allReactApp\ATIPL(24-12)\itAssests\itAssets-services\src\main\java\com\anabatic\itAssets\services\service\UsersService.java
@@ -16,6 +17,7 @@ E:\allReactApp\ATIPL(24-12)\itAssests\itAssets-services\src\main\java\com\anabat
 E:\allReactApp\ATIPL(24-12)\itAssests\itAssets-services\src\main\java\com\anabatic\itAssets\services\service\impl\RequestServiceImpl.java
 E:\allReactApp\ATIPL(24-12)\itAssests\itAssets-services\src\main\java\com\anabatic\itAssets\services\service\CandidateService.java
 E:\allReactApp\ATIPL(24-12)\itAssests\itAssets-services\src\main\java\com\anabatic\itAssets\services\service\RequestService.java
+E:\allReactApp\ATIPL(24-12)\itAssests\itAssets-services\src\main\java\com\anabatic\itAssets\services\service\PrivilegeService.java
 E:\allReactApp\ATIPL(24-12)\itAssests\itAssets-services\src\main\java\com\anabatic\itAssets\services\service\impl\PrivilegeTypeServiceImpl.java
 E:\allReactApp\ATIPL(24-12)\itAssests\itAssets-services\src\main\java\com\anabatic\itAssets\services\service\PrivilegeTypeService.java
 E:\allReactApp\ATIPL(24-12)\itAssests\itAssets-services\src\main\java\com\anabatic\itAssets\services\service\impl\LoginServiceImpl.java

@@ -36,6 +36,8 @@
 
 	<bean id="candidateRecordDao"
 		class="com.anabatic.itAssets.persistence.dao.impl.CandidateRecordDaoImpl" />
+	<bean id="privilegeDao"
+		class="com.anabatic.itAssets.persistence.dao.impl.PrivilegeDaoImpl" />
 
 
 

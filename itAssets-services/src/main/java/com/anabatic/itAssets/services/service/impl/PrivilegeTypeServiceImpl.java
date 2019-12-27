@@ -1,18 +1,27 @@
 package com.anabatic.itAssets.services.service.impl;
 
-import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.anabatic.itAssets.persistence.dao.PrivilegeTypeDao;
+import com.anabatic.itAssets.persistence.model.AssetsCategory;
 import com.anabatic.itAssets.persistence.model.PrivilegeType;
 import com.anabatic.itAssets.services.service.PrivilegeTypeService;
 
+@Transactional
 public class PrivilegeTypeServiceImpl implements PrivilegeTypeService {
 	@Autowired
 	private PrivilegeTypeDao privilegeTypeDao;
 
+	@PersistenceContext
+    EntityManager entityManager;
+	
 	@Override
 	public PrivilegeType insert(PrivilegeType faq) {
 		return privilegeTypeDao.insert(faq);
@@ -25,14 +34,22 @@ public class PrivilegeTypeServiceImpl implements PrivilegeTypeService {
 
 	@Override
 	public List<PrivilegeType> getAllByStatus() {
-		List<PrivilegeType> status = new ArrayList<>();
-		List<PrivilegeType> list = privilegeTypeDao.getAll();
-		for (PrivilegeType privilegeType : list) {
-			Integer i = new Integer(1);
-			if (privilegeType.getStatus().equals(i)) {
-				status.add(privilegeType);
-			}
-		}
-		return status;
+	    try {
+            Query query = entityManager
+                    .createQuery("select u from PrivilegeType u where u.status =:status");
+            query.setParameter("status", 1);
+            return query.getResultList();
+        }  catch (Exception e) {
+            return null;
+        }
+	    
 	}
+	
+	@Override
+    public void delete(Long id) {
+	    PrivilegeType response = entityManager.find(PrivilegeType.class, id);
+	    response.setStatus(0);
+	    privilegeTypeDao.insert(response);
+        
+    }
 }

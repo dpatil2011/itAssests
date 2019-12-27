@@ -42,6 +42,8 @@ com\anabatic\itAssets\endpoint\Request\InsertCandidateRecordRequest.class
 com\anabatic\itAssets\endpoint\Response\InsertCandidateRecordResponse.class
 com\anabatic\itAssets\endpoint\Response\InsertFaqResponse.class
 com\anabatic\itAssets\endpoint\Request\GetByStatusRequest.class
+com\anabatic\itAssets\endpoint\param\bean\PrivilegeTypeBean.class
+com\anabatic\itAssets\endpoint\converter\GetByStatusPrivilegeConverter.class
 com\anabatic\itAssets\endpoint\Request\RequestGetByIdRequest.class
 com\anabatic\itAssets\endpoint\converter\GetByRequestToConverter.class
 com\anabatic\itAssets\endpoint\Response\GetAllCandidateRecordResponse.class
@@ -55,6 +57,7 @@ com\anabatic\itAssets\endpoint\controller\CandidateRecordController.class
 com\anabatic\itAssets\endpoint\converter\UsersConverter.class
 com\anabatic\itAssets\endpoint\converter\GetByIdCandidateRecordConverter.class
 com\anabatic\itAssets\endpoint\Request\RequestId.class
+com\anabatic\itAssets\endpoint\controller\PrivilegeTypeController.class
 com\anabatic\itAssets\endpoint\converter\impl\AvailableAssetConverterImpl.class
 com\anabatic\itAssets\endpoint\controller\LoginController.class
 com\anabatic\itAssets\endpoint\converter\AssetsCategoryConverter.class
@@ -75,6 +78,7 @@ com\anabatic\itAssets\endpoint\Request\AvailableAssetRequest.class
 com\anabatic\itAssets\endpoint\Response\UsersUpdateResponse.class
 com\anabatic\itAssets\endpoint\converter\GetByIdUsersConverter.class
 com\anabatic\itAssets\endpoint\Response\AssetsCategoryResponse.class
+com\anabatic\itAssets\endpoint\converter\impl\GetByStatusPrivilegeConverterImpl.class
 com\anabatic\itAssets\endpoint\Request\RequestDeleteRequest.class
 com\anabatic\itAssets\endpoint\Response\ChangePasswordResponse.class
 com\anabatic\itAssets\endpoint\Response\GetByIdUsersResponse.class
@@ -95,6 +99,7 @@ com\anabatic\itAssets\endpoint\converter\impl\GetByIdCandidateRecordConverterImp
 com\anabatic\itAssets\endpoint\Request\AssetFormRequest.class
 com\anabatic\itAssets\endpoint\converter\InsertCandidateRecordConverter.class
 com\anabatic\itAssets\endpoint\converter\impl\GetAllUsersConverterImpl.class
+com\anabatic\itAssets\endpoint\Response\GetByStatusPrivilegeResponse.class
 com\anabatic\itAssets\endpoint\converter\GetAllFaqConverter.class
 com\anabatic\itAssets\endpoint\Response\InsertRequestResponse.class
 com\anabatic\itAssets\endpoint\Response\GetByIdFaqResponse.class
@@ -126,6 +131,7 @@ com\anabatic\itAssets\endpoint\Response\UpdateCandidateRecordResponse.class
 com\anabatic\itAssets\endpoint\Response\UserLoginResponse.class
 com\anabatic\itAssets\endpoint\converter\impl\UpdateFaqConverterImpl.class
 com\anabatic\itAssets\endpoint\converter\LoginConverter.class
+com\anabatic\itAssets\endpoint\param\bean\UsersBean.class
 com\anabatic\itAssets\endpoint\Request\UpdateFaqRequest.class
 com\anabatic\itAssets\endpoint\controller\RequestController.class
 com\anabatic\itAssets\endpoint\converter\UsersUpdateConverter.class
@@ -146,6 +152,7 @@ com\anabatic\itAssets\endpoint\Response\GetAllUsersResponse.class
 com\anabatic\itAssets\endpoint\converter\impl\DeleteByIdUserConverterImpl.class
 com\anabatic\itAssets\endpoint\Request\DeleteFaqRequest.class
 com\anabatic\itAssets\endpoint\Request\GetByIdCandidateRequest.class
+com\anabatic\itAssets\endpoint\Request\GetByStatusPrivilegeRequest.class
 com\anabatic\itAssets\endpoint\Response\GetAllFaqResponse.class
 com\anabatic\itAssets\endpoint\converter\impl\UsersConverterImpl.class
 com\anabatic\itAssets\endpoint\Response\AvailableAssetResponse.class

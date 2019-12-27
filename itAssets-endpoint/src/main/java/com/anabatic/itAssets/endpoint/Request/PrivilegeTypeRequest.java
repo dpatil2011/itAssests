@@ -7,6 +7,7 @@ public class PrivilegeTypeRequest {
 	private Integer status;
 	private String icon;
 	private String color;
+	private Integer priviCount;
 
 	public Long getId() {
 		return id;
@@ -47,4 +48,13 @@ public class PrivilegeTypeRequest {
 	public void setColor(String color) {
 		this.color = color;
 	}
+
+    public Integer getPriviCount() {
+        return priviCount;
+    }
+
+    public void setPriviCount(Integer priviCount) {
+        this.priviCount = priviCount;
+    }
+	
 }

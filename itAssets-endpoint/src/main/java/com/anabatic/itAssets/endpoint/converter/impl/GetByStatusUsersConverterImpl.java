@@ -87,7 +87,6 @@ List<GetByStatusResponse> list = new ArrayList<>(objects.size());
 			user.setPhoneNumber(object.getPhoneNumber());
 			user.setPincode(object.getPincode());
 			user.setPhoto(object.getPhoto());
-			user.setPrivilege(object.getPrivilege());
 			user.setReligion(object.getReligion());
 			user.setReportingManager(object.getReportingManager());
 			user.setSecondarygrade(object.getSecondarygrade());

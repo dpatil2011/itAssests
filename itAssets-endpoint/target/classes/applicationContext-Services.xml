@@ -37,5 +37,8 @@
 	<bean id="candidateRecordService"
 		class="com.anabatic.itAssets.services.service.impl.CandidateRecordServiceImpl" />
 
+	<bean id="privilegeService"
+		class="com.anabatic.itAssets.services.service.impl.PrivilegeServiceImpl" />
+
 
 </beans>

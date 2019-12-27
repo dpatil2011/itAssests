@@ -1,7 +1,9 @@
 com\anabatic\itAssets\services\service\PrivilegeTypeService.class
+com\anabatic\itAssets\services\service\PrivilegeService.class
 com\anabatic\itAssets\services\service\UsersService.class
 com\anabatic\itAssets\services\service\impl\LoginServiceImpl.class
 com\anabatic\itAssets\services\service\AssetFormService.class
+com\anabatic\itAssets\services\service\impl\PrivilegeServiceImpl.class
 com\anabatic\itAssets\services\service\AvailableAssetService.class
 com\anabatic\itAssets\services\service\FaqService.class
 com\anabatic\itAssets\services\service\impl\CandidateRecordServiceImpl.class

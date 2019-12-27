@@ -6,6 +6,7 @@ com\anabatic\itAssets\persistence\model\CandidateRecord.class
 com\anabatic\itAssets\persistence\dao\FaqDao.class
 com\anabatic\itAssets\persistence\dao\impl\AssetFormDaoImpl.class
 com\anabatic\itAssets\persistence\model\Candidate.class
+com\anabatic\itAssets\persistence\dao\PrivilegeDao.class
 com\anabatic\itAssets\persistence\model\AssetsForm.class
 com\anabatic\itAssets\persistence\model\Request.class
 com\anabatic\itAssets\persistence\model\Skills.class
@@ -22,6 +23,7 @@ com\anabatic\itAssets\persistence\dao\impl\AssetsCategoryDaoImpl.class
 com\anabatic\itAssets\persistence\dao\AvailableAssetDao.class
 com\anabatic\itAssets\persistence\model\Users.class
 com\anabatic\itAssets\persistence\dao\impl\LoginDaoImpl.class
+com\anabatic\itAssets\persistence\dao\impl\PrivilegeDaoImpl.class
 com\anabatic\itAssets\persistence\dao\RequestDao.class
 com\anabatic\itAssets\persistence\dao\LoginDao.class
 org\itAssets\persistence\App.class

@@ -1,6 +1,6 @@
 package com.anabatic.itAssets.persistence.model;
 
-import java.util.List;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,7 +8,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -20,21 +21,53 @@ public class Privilege {
 	@Column(name = "id")
 	private Long id;
 
-	@Column(name = "privilegeType")
-	private String privilegeType;
-
 	@Column(name = "status")
 	private Integer status;
 
-	@OneToMany(mappedBy = "privilege", fetch = FetchType.LAZY)
-	private List<Users> users;
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "user_id")
+	private Users users;
 
-	public List<Users> getUsers() {
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "privilegetype_id")
+	private PrivilegeType privilegeType;
+
+	@Column(name = "from_date")
+	private Date fromDate;
+
+	@Column(name = "to_date")
+	private Date toDate;
+
+	public Users getUsers() {
 		return users;
 	}
 
-	public void setUsers(List<Users> users) {
+	public void setUsers(Users users) {
 		this.users = users;
+	}
+
+	public PrivilegeType getPrivilegeType() {
+		return privilegeType;
+	}
+
+	public void setPrivilegeType(PrivilegeType privilegeType) {
+		this.privilegeType = privilegeType;
+	}
+
+	public Date getFromDate() {
+		return fromDate;
+	}
+
+	public void setFromDate(Date fromDate) {
+		this.fromDate = fromDate;
+	}
+
+	public Date getToDate() {
+		return toDate;
+	}
+
+	public void setToDate(Date toDate) {
+		this.toDate = toDate;
 	}
 
 	public Long getId() {
@@ -43,14 +76,6 @@ public class Privilege {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public String getPrivilegeType() {
-		return privilegeType;
-	}
-
-	public void setPrivilegeType(String privilegeType) {
-		this.privilegeType = privilegeType;
 	}
 
 	public Integer getStatus() {
