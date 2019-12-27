@@ -1,11 +1,23 @@
 package com.anabatic.itAssets.endpoint.Request;
 
-import com.anabatic.itAssets.persistence.model.PrivilegeType;
-import com.anabatic.itAssets.persistence.model.Users;
-
 public class PrivilegeInsertRequest {
 
-	private Integer status;
+
 	private Long usersId;
-	private PrivilegeType privilegeType;
+	private Long privilegeTypeId;
+	
+	
+	public Long getUsersId() {
+		return usersId;
+	}
+	public void setUsersId(Long usersId) {
+		this.usersId = usersId;
+	}
+	public Long getPrivilegeTypeId() {
+		return privilegeTypeId;
+	}
+	public void setPrivilegeTypeId(Long privilegeTypeId) {
+		this.privilegeTypeId = privilegeTypeId;
+	}
+	
 }

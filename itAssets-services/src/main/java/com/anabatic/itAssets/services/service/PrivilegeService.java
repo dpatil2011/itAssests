@@ -8,6 +8,8 @@ public interface PrivilegeService {
 
 	List<Privilege> getByStatus(Privilege p);
 
+	Privilege insert(Privilege model);
+
 	
 
 }

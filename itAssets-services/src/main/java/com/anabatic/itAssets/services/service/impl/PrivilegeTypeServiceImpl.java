@@ -52,4 +52,10 @@ public class PrivilegeTypeServiceImpl implements PrivilegeTypeService {
 	    privilegeTypeDao.insert(response);
         
     }
+
+	@Override
+	public PrivilegeType updatePriviCount(Long privilegeTypeId) {
+		return privilegeTypeDao.updatePriviCount(privilegeTypeId);
+		
+	}
 }

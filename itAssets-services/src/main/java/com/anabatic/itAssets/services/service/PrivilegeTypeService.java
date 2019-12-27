@@ -13,4 +13,6 @@ public interface PrivilegeTypeService {
 
     void delete(Long id);
 
+	public PrivilegeType updatePriviCount(Long privilegeTypeId);
+
 }

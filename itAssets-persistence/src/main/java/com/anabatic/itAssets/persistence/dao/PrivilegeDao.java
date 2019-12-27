@@ -8,4 +8,6 @@ public interface PrivilegeDao {
 
 	List<Privilege> getByStatus(Privilege p) ;
 
+	Privilege insert(Privilege model);
+
 }

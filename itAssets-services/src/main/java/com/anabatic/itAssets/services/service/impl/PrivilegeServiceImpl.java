@@ -26,4 +26,11 @@ public class PrivilegeServiceImpl  implements PrivilegeService{
 		return privilegeDao.getByStatus(p);
 	}
 
+
+	@Override
+	public Privilege insert(Privilege model) {
+		// TODO Auto-generated method stub
+		return privilegeDao.insert(model);
+	}
+
 }

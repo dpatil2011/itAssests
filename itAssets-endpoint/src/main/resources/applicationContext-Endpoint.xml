@@ -100,5 +100,8 @@
 		<bean id="getByStatusPrivilegeConverter"
 		class="com.anabatic.itAssets.endpoint.converter.impl.GetByStatusPrivilegeConverterImpl" />
 		
+		<bean id="privilegeInsertConverter"
+		class="com.anabatic.itAssets.endpoint.converter.impl.PrivilegeInsertConverterImpl" />
+		
 		
 </beans>

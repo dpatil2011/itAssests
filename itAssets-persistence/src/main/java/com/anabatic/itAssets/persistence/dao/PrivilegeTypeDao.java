@@ -9,4 +9,8 @@ public interface PrivilegeTypeDao {
 	
 	public List<PrivilegeType> getAll();
 
+	public PrivilegeType updatePriviCount(Long privilegeTypeId);
+	
+	public PrivilegeType getById(Long id);
+
 }

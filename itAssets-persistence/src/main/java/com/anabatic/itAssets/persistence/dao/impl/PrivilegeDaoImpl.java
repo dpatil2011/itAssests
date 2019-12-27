@@ -9,6 +9,7 @@ import javax.persistence.Query;
 import com.anabatic.itAssets.persistence.dao.PrivilegeDao;
 import com.anabatic.itAssets.persistence.model.Privilege;
 
+@javax.transaction.Transactional
 public class PrivilegeDaoImpl  implements PrivilegeDao{
 	
 
@@ -27,6 +28,21 @@ public class PrivilegeDaoImpl  implements PrivilegeDao{
 		} catch (Exception e) {
 			throw e;
 		}
+	}
+
+
+
+	@Override
+	public Privilege insert(Privilege model) {
+		// TODO Auto-generated method stub
+		try {
+			Privilege merge = entityManager.merge(model);
+			return merge;
+		}
+		catch(Exception e) {
+			e.printStackTrace();			
+		}
+		return null;
 	}
 
 }
