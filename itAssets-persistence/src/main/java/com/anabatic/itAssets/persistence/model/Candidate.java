@@ -43,6 +43,17 @@ public class Candidate {
 
 	@Column(name = "comment")
 	private String comment;
+	
+	@Column(name = "upload_dir")
+	private String uploadDir;
+
+	public String getUploadDir() {
+		return uploadDir;
+	}
+
+	public void setUploadDir(String uploadDir) {
+		this.uploadDir = uploadDir;
+	}
 
 	public String getSkills() {
 		return skills;

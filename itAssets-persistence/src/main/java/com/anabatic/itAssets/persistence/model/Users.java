@@ -219,6 +219,53 @@ public class Users {
 	@Column(name = "status")
 	private Integer status;
 
+	@OneToMany(mappedBy = "users", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<Skills> skills;
+	
+	@OneToMany(mappedBy = "users", fetch = FetchType.LAZY)
+	private List<Privilege> privilege;
+	
+
+	@OneToMany(mappedBy = "userId", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<Request> request;
+
+	@OneToMany(mappedBy = "users", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<Candidate> candidate;
+
+	
+	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getFullName() {
+		return fullName;
+	}
+
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
+	}
+
 	public String getFatherName() {
 		return fatherName;
 	}
@@ -315,6 +362,14 @@ public class Users {
 		this.sibling3DateOfBirth = sibling3DateOfBirth;
 	}
 
+	public String getEmployeeId() {
+		return employeeId;
+	}
+
+	public void setEmployeeId(String employeeId) {
+		this.employeeId = employeeId;
+	}
+
 	public String getSpouceName() {
 		return spouceName;
 	}
@@ -329,75 +384,6 @@ public class Users {
 
 	public void setSpouceAdhar(String spouceAdhar) {
 		this.spouceAdhar = spouceAdhar;
-	}
-
-	public List<Request> getRequest() {
-		return request;
-	}
-
-	public void setRequest(List<Request> request) {
-		this.request = request;
-	}
-
-	public String getFullName() {
-		return fullName;
-	}
-
-	public void setFullName(String fullName) {
-		this.fullName = fullName;
-	}
-
-	public Integer getStatus() {
-		return status;
-	}
-
-	public void setStatus(Integer status) {
-		this.status = status;
-	}
-
-	@OneToMany(mappedBy = "users", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private List<Skills> skills;
-
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "privilege_id")
-	private Privilege privilege;
-
-	@OneToMany(mappedBy = "userId", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private List<Request> request;
-
-	@OneToMany(mappedBy = "users", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private List<Candidate> candidate;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-	public String getEmployeeId() {
-		return employeeId;
-	}
-
-	public void setEmployeeId(String employeeId) {
-		this.employeeId = employeeId;
 	}
 
 	public String getGender() {
@@ -760,6 +746,14 @@ public class Users {
 		this.postGraduationGrade = postGraduationGrade;
 	}
 
+	public Integer getStatus() {
+		return status;
+	}
+
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
+
 	public List<Skills> getSkills() {
 		return skills;
 	}
@@ -768,12 +762,28 @@ public class Users {
 		this.skills = skills;
 	}
 
-	public Privilege getPrivilege() {
+	public List<Privilege> getPrivilege() {
 		return privilege;
 	}
 
-	public void setPrivilege(Privilege privilege) {
+	public void setPrivilege(List<Privilege> privilege) {
 		this.privilege = privilege;
+	}
+
+	public List<Request> getRequest() {
+		return request;
+	}
+
+	public void setRequest(List<Request> request) {
+		this.request = request;
+	}
+
+	public List<Candidate> getCandidate() {
+		return candidate;
+	}
+
+	public void setCandidate(List<Candidate> candidate) {
+		this.candidate = candidate;
 	}
 
 	@Override
@@ -824,7 +834,6 @@ public class Users {
 		result = prime * result + ((postGraduationGrade == null) ? 0 : postGraduationGrade.hashCode());
 		result = prime * result + ((postGraduationMajor == null) ? 0 : postGraduationMajor.hashCode());
 		result = prime * result + ((postGraduationStartYear == null) ? 0 : postGraduationStartYear.hashCode());
-		result = prime * result + ((privilege == null) ? 0 : privilege.hashCode());
 		result = prime * result + ((religion == null) ? 0 : religion.hashCode());
 		result = prime * result + ((reportingManager == null) ? 0 : reportingManager.hashCode());
 		result = prime * result + ((secondaryEndYear == null) ? 0 : secondaryEndYear.hashCode());
@@ -1063,11 +1072,7 @@ public class Users {
 				return false;
 		} else if (!postGraduationStartYear.equals(other.postGraduationStartYear))
 			return false;
-		if (privilege == null) {
-			if (other.privilege != null)
-				return false;
-		} else if (!privilege.equals(other.privilege))
-			return false;
+		
 		if (religion == null) {
 			if (other.religion != null)
 				return false;
@@ -1120,7 +1125,7 @@ public class Users {
 				+ secondaryStartYear + ", secondaryEndYear=" + secondaryEndYear + ", secondarygrade=" + secondarygrade
 				+ ", postGraduation=" + postGraduation + ", postGraduationStartYear=" + postGraduationStartYear
 				+ ", postGraduationEndYear=" + postGraduationEndYear + ", postGraduationMajor=" + postGraduationMajor
-				+ ", postGraduationGrade=" + postGraduationGrade + ", skills=" + skills + ", privilege=" + privilege
+				+ ", postGraduationGrade=" + postGraduationGrade + ", skills=" + skills + ", privilege=" 
 				+ "]";
 	}
 

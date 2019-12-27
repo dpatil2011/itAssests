@@ -55,6 +55,14 @@ public class Request {
 	@Column(name="status")
 	private Integer status;
 
+	public String getRequestItem() {
+		return requestItem;
+	}
+
+	public void setrequestItem(String requestItem) {
+		this.requestItem = requestItem;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -85,14 +93,6 @@ public class Request {
 
 	public void setDepartment(String department) {
 		this.department = department;
-	}
-
-	public String getRequestItem() {
-		return requestItem;
-	}
-
-	public void setrequestItem(String request) {
-		this.requestItem = request;
 	}
 
 	public Integer getQuantity() {
@@ -149,10 +149,6 @@ public class Request {
 
 	public void setStatus(Integer status) {
 		this.status = status;
-	}
-
-	public void setRequestItem(String requestItem) {
-		this.requestItem = requestItem;
 	}
 
 }
