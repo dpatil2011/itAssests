@@ -6,6 +6,7 @@ E:\allReactApp\ATIPL(24-12)\itAssests\itAssets-endpoint\src\main\java\com\anabat
 E:\allReactApp\ATIPL(24-12)\itAssests\itAssets-endpoint\src\main\java\com\anabatic\itAssets\endpoint\Response\RequestUpdateResponse.java
 E:\allReactApp\ATIPL(24-12)\itAssests\itAssets-endpoint\src\main\java\com\anabatic\itAssets\endpoint\converter\impl\AssetFormConverterImpl.java
 E:\allReactApp\ATIPL(24-12)\itAssests\itAssets-endpoint\src\main\java\com\anabatic\itAssets\endpoint\Request\UsersUpdateRequest.java
+E:\allReactApp\ATIPL(24-12)\itAssests\itAssets-endpoint\src\main\java\com\anabatic\itAssets\endpoint\Request\GetByStatusPrivilegeRequest.java
 E:\allReactApp\ATIPL(24-12)\itAssests\itAssets-endpoint\src\main\java\com\anabatic\itAssets\endpoint\Request\InsertCandidateRequest.java
 E:\allReactApp\ATIPL(24-12)\itAssests\itAssets-endpoint\src\main\java\com\anabatic\itAssets\endpoint\converter\impl\GetAllFaqConverterImpl.java
 E:\allReactApp\ATIPL(24-12)\itAssests\itAssets-endpoint\src\main\java\com\anabatic\itAssets\endpoint\Response\InsertFaqResponse.java
@@ -25,8 +26,10 @@ E:\allReactApp\ATIPL(24-12)\itAssests\itAssets-endpoint\src\main\java\com\anabat
 E:\allReactApp\ATIPL(24-12)\itAssests\itAssets-endpoint\src\main\java\com\anabatic\itAssets\endpoint\controller\FaqController.java
 E:\allReactApp\ATIPL(24-12)\itAssests\itAssets-endpoint\src\main\java\com\anabatic\itAssets\endpoint\converter\impl\PrivilegeConverterImpl.java
 E:\allReactApp\ATIPL(24-12)\itAssests\itAssets-endpoint\src\main\java\com\anabatic\itAssets\endpoint\AppStarter.java
+E:\allReactApp\ATIPL(24-12)\itAssests\itAssets-endpoint\src\main\java\com\anabatic\itAssets\endpoint\Response\GetByStatusPrivilegeResponse.java
 E:\allReactApp\ATIPL(24-12)\itAssests\itAssets-endpoint\src\main\java\com\anabatic\itAssets\endpoint\converter\InsertFaqConverter.java
 E:\allReactApp\ATIPL(24-12)\itAssests\itAssets-endpoint\src\main\java\com\anabatic\itAssets\endpoint\converter\impl\GetByIdFaqConverterImpl.java
+E:\allReactApp\ATIPL(24-12)\itAssests\itAssets-endpoint\src\main\java\com\anabatic\itAssets\endpoint\converter\GetByStatusPrivilegeConverter.java
 E:\allReactApp\ATIPL(24-12)\itAssests\itAssets-endpoint\src\main\java\com\anabatic\itAssets\endpoint\converter\GetAllRequestConverter.java
 E:\allReactApp\ATIPL(24-12)\itAssests\itAssets-endpoint\src\main\java\com\anabatic\itAssets\endpoint\converter\impl\GetByUserIdAndQuestionToFaqConverterImpl.java
 E:\allReactApp\ATIPL(24-12)\itAssests\itAssets-endpoint\src\main\java\com\anabatic\itAssets\endpoint\Request\DeleteFaqRequest.java
@@ -66,6 +69,7 @@ E:\allReactApp\ATIPL(24-12)\itAssests\itAssets-endpoint\src\main\java\com\anabat
 E:\allReactApp\ATIPL(24-12)\itAssests\itAssets-endpoint\src\main\java\com\anabatic\itAssets\endpoint\converter\impl\AvailableAssetConverterImpl.java
 E:\allReactApp\ATIPL(24-12)\itAssests\itAssets-endpoint\src\main\java\com\anabatic\itAssets\endpoint\converter\impl\GetByRequestToConverterImpl.java
 E:\allReactApp\ATIPL(24-12)\itAssests\itAssets-endpoint\src\main\java\com\anabatic\itAssets\endpoint\converter\GetByStatusUsersConverter.java
+E:\allReactApp\ATIPL(24-12)\itAssests\itAssets-endpoint\src\main\java\com\anabatic\itAssets\endpoint\param\bean\PrivilegeTypeBean.java
 E:\allReactApp\ATIPL(24-12)\itAssests\itAssets-endpoint\src\main\java\com\anabatic\itAssets\endpoint\Request\DeleteCandidateRecordRequest.java
 E:\allReactApp\ATIPL(24-12)\itAssests\itAssets-endpoint\src\main\java\com\anabatic\itAssets\endpoint\Response\InsertCandidateResponse.java
 E:\allReactApp\ATIPL(24-12)\itAssests\itAssets-endpoint\src\main\java\com\anabatic\itAssets\endpoint\Request\InsertRequestRequest.java
@@ -99,6 +103,7 @@ E:\allReactApp\ATIPL(24-12)\itAssests\itAssets-endpoint\src\main\java\com\anabat
 E:\allReactApp\ATIPL(24-12)\itAssests\itAssets-endpoint\src\main\java\com\anabatic\itAssets\endpoint\Request\GetByRequestToRequest.java
 E:\allReactApp\ATIPL(24-12)\itAssests\itAssets-endpoint\src\main\java\com\anabatic\itAssets\endpoint\converter\GetByRequestToConverter.java
 E:\allReactApp\ATIPL(24-12)\itAssests\itAssets-endpoint\src\main\java\com\anabatic\itAssets\endpoint\Request\AssetsCategoryRequest.java
+E:\allReactApp\ATIPL(24-12)\itAssests\itAssets-endpoint\src\main\java\com\anabatic\itAssets\endpoint\param\bean\UsersBean.java
 E:\allReactApp\ATIPL(24-12)\itAssests\itAssets-endpoint\src\main\java\com\anabatic\itAssets\endpoint\Request\GetByIdUsersRequest.java
 E:\allReactApp\ATIPL(24-12)\itAssests\itAssets-endpoint\src\main\java\com\anabatic\itAssets\endpoint\converter\impl\InsertRequestConverterImpl.java
 E:\allReactApp\ATIPL(24-12)\itAssests\itAssets-endpoint\src\main\java\com\anabatic\itAssets\endpoint\Response\GetAllRequestResponse.java
@@ -118,6 +123,7 @@ E:\allReactApp\ATIPL(24-12)\itAssests\itAssets-endpoint\src\main\java\com\anabat
 E:\allReactApp\ATIPL(24-12)\itAssests\itAssets-endpoint\src\main\java\com\anabatic\itAssets\endpoint\Response\AssetsCategoryResponse.java
 E:\allReactApp\ATIPL(24-12)\itAssests\itAssets-endpoint\src\main\java\com\anabatic\itAssets\endpoint\Response\GetAllCandidateResponse.java
 E:\allReactApp\ATIPL(24-12)\itAssests\itAssets-endpoint\src\main\java\com\anabatic\itAssets\endpoint\Request\RequestDeleteRequest.java
+E:\allReactApp\ATIPL(24-12)\itAssests\itAssets-endpoint\src\main\java\com\anabatic\itAssets\endpoint\controller\PrivilegeTypeController.java
 E:\allReactApp\ATIPL(24-12)\itAssests\itAssets-endpoint\src\main\java\com\anabatic\itAssets\endpoint\converter\impl\LoginConverterImpl.java
 E:\allReactApp\ATIPL(24-12)\itAssests\itAssets-endpoint\src\main\java\com\anabatic\itAssets\endpoint\converter\AssetFormConverter.java
 E:\allReactApp\ATIPL(24-12)\itAssests\itAssets-endpoint\src\main\java\com\anabatic\itAssets\endpoint\converter\impl\GetAllCandidateConverterImpl.java
@@ -128,6 +134,7 @@ E:\allReactApp\ATIPL(24-12)\itAssests\itAssets-endpoint\src\main\java\com\anabat
 E:\allReactApp\ATIPL(24-12)\itAssests\itAssets-endpoint\src\main\java\com\anabatic\itAssets\endpoint\converter\GetByIdRequestConverter.java
 E:\allReactApp\ATIPL(24-12)\itAssests\itAssets-endpoint\src\main\java\com\anabatic\itAssets\endpoint\converter\UpdateCandidateRecordConverter.java
 E:\allReactApp\ATIPL(24-12)\itAssests\itAssets-endpoint\src\main\java\com\anabatic\itAssets\endpoint\controller\CandidateController.java
+E:\allReactApp\ATIPL(24-12)\itAssests\itAssets-endpoint\src\main\java\com\anabatic\itAssets\endpoint\converter\impl\GetByStatusPrivilegeConverterImpl.java
 E:\allReactApp\ATIPL(24-12)\itAssests\itAssets-endpoint\src\main\java\com\anabatic\itAssets\endpoint\converter\GetByIdCandidateRecordConverter.java
 E:\allReactApp\ATIPL(24-12)\itAssests\itAssets-endpoint\src\main\java\com\anabatic\itAssets\endpoint\Request\UsersReq.java
 E:\allReactApp\ATIPL(24-12)\itAssests\itAssets-endpoint\src\main\java\com\anabatic\itAssets\endpoint\controller\CandidateRecordController.java

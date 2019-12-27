@@ -18,11 +18,13 @@ E:\allReactApp\ATIPL(24-12)\itAssests\itAssets-persistence\src\main\java\com\ana
 E:\allReactApp\ATIPL(24-12)\itAssests\itAssets-persistence\src\main\java\com\anabatic\itAssets\persistence\model\PrivilegeType.java
 E:\allReactApp\ATIPL(24-12)\itAssests\itAssets-persistence\src\main\java\com\anabatic\itAssets\persistence\model\Skills.java
 E:\allReactApp\ATIPL(24-12)\itAssests\itAssets-persistence\src\main\java\com\anabatic\itAssets\persistence\dao\impl\FaqDaoImpl.java
+E:\allReactApp\ATIPL(24-12)\itAssests\itAssets-persistence\src\main\java\com\anabatic\itAssets\persistence\dao\impl\PrivilegeDaoImpl.java
 E:\allReactApp\ATIPL(24-12)\itAssests\itAssets-persistence\src\main\java\com\anabatic\itAssets\persistence\model\Login.java
 E:\allReactApp\ATIPL(24-12)\itAssests\itAssets-persistence\src\main\java\com\anabatic\itAssets\persistence\model\Users.java
 E:\allReactApp\ATIPL(24-12)\itAssests\itAssets-persistence\src\main\java\com\anabatic\itAssets\persistence\model\AssetsForm.java
 E:\allReactApp\ATIPL(24-12)\itAssests\itAssets-persistence\src\main\java\com\anabatic\itAssets\persistence\model\AvailableAsset.java
 E:\allReactApp\ATIPL(24-12)\itAssests\itAssets-persistence\src\main\java\com\anabatic\itAssets\persistence\dao\PrivilegeTypeDao.java
+E:\allReactApp\ATIPL(24-12)\itAssests\itAssets-persistence\src\main\java\com\anabatic\itAssets\persistence\dao\PrivilegeDao.java
 E:\allReactApp\ATIPL(24-12)\itAssests\itAssets-persistence\src\main\java\com\anabatic\itAssets\persistence\model\Request.java
 E:\allReactApp\ATIPL(24-12)\itAssests\itAssets-persistence\src\main\java\com\anabatic\itAssets\persistence\model\Assets.java
 E:\allReactApp\ATIPL(24-12)\itAssests\itAssets-persistence\src\main\java\com\anabatic\itAssets\persistence\dao\LoginDao.java

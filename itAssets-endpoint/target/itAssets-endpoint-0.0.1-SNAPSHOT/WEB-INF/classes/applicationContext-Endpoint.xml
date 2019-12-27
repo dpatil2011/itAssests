@@ -97,5 +97,8 @@
 		<bean id="deleteCandidateRecordConverter"
 		class="com.anabatic.itAssets.endpoint.converter.impl.DeleteCandidateRecordConverterImpl" />
 		
+		<bean id="getByStatusPrivilegeConverter"
+		class="com.anabatic.itAssets.endpoint.converter.impl.GetByStatusPrivilegeConverterImpl" />
+		
 		
 </beans>
