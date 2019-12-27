@@ -22,7 +22,6 @@ import com.anabatic.itAssets.endpoint.Request.ChangePasswordRequest;
 import com.anabatic.itAssets.endpoint.Request.DeleteByIdUserRequest;
 import com.anabatic.itAssets.endpoint.Request.GetByIdUsersRequest;
 import com.anabatic.itAssets.endpoint.Request.GetByStatusRequest;
-import com.anabatic.itAssets.endpoint.Request.LoginRequest;
 import com.anabatic.itAssets.endpoint.Request.UserLoginRequest;
 import com.anabatic.itAssets.endpoint.Request.UsersReq;
 import com.anabatic.itAssets.endpoint.Request.UsersRequest;
