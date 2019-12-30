@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:p="http://www.springframework.org/schema/p"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
 	   		http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
@@ -28,6 +27,7 @@
 
 	<bean id="privilegeTypeService"
 		class="com.anabatic.itAssets.services.service.impl.PrivilegeTypeServiceImpl" />
+
 	<bean id="loginService"
 		class="com.anabatic.itAssets.services.service.impl.LoginServiceImpl" />
 
@@ -41,9 +41,7 @@
 	<bean id="privilegeService"
 		class="com.anabatic.itAssets.services.service.impl.PrivilegeServiceImpl" />
 
-<bean id="fileStorageService"
+	<bean id="fileStorageService"
 		class="com.anabatic.itAssets.services.service.impl.FileStorageService" />
-
-
 
 </beans>

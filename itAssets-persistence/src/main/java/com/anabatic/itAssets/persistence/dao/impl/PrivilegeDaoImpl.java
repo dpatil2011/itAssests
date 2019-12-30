@@ -9,6 +9,7 @@ import javax.persistence.Query;
 
 import com.anabatic.itAssets.persistence.dao.PrivilegeDao;
 import com.anabatic.itAssets.persistence.model.Privilege;
+import com.anabatic.itAssets.persistence.model.Users;
 
 @javax.transaction.Transactional
 public class PrivilegeDaoImpl  implements PrivilegeDao{
@@ -85,5 +86,4 @@ public class PrivilegeDaoImpl  implements PrivilegeDao{
       }
       return null;
 	}
-
 }
