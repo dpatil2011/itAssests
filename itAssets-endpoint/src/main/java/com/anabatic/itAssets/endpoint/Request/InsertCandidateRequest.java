@@ -5,7 +5,7 @@ public class InsertCandidateRequest {
 	private Long id;
 	private String name;
 	private String email;
-	private Integer phoneNo; 
+	private Long phoneNo; 
 	private String skills;
 	private Float experience;
 	private Integer status;
@@ -13,6 +13,12 @@ public class InsertCandidateRequest {
 	private Long hmId;
 	private Long rId;
 	
+	public Long getPhoneNo() {
+		return phoneNo;
+	}
+	public void setPhoneNo(Long phoneNo) {
+		this.phoneNo = phoneNo;
+	}
 	public Long getHmId() {
 		return hmId;
 	}
@@ -43,12 +49,7 @@ public class InsertCandidateRequest {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public Integer getPhoneNo() {
-		return phoneNo;
-	}
-	public void setPhoneNo(Integer phoneNo) {
-		this.phoneNo = phoneNo;
-	}
+	
 	public String getSkills() {
 		return skills;
 	}

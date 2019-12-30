@@ -5,7 +5,7 @@ public class UpdateCandidateRequest {
 	private Long id;
 	private String name;
 	private String email;
-	private Integer phoneNo;
+	private Long phoneNo;
 	private String skills;
 	private Float experience;
 	private Integer status;
@@ -53,11 +53,12 @@ public class UpdateCandidateRequest {
 		this.email = email;
 	}
 
-	public Integer getPhoneNo() {
+	
+	public Long getPhoneNo() {
 		return phoneNo;
 	}
 
-	public void setPhoneNo(Integer phoneNo) {
+	public void setPhoneNo(Long phoneNo) {
 		this.phoneNo = phoneNo;
 	}
 
