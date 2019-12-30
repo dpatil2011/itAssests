@@ -2,12 +2,12 @@ package com.anabatic.itAssets.services.service.impl;
 
 import java.util.List;
 
+import org.itAssests.core.constant.UsersErrorConstant;
+import org.itAssests.core.exception.UsersException;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.anabatic.itAssets.persistence.dao.CandidateDao;
-import com.anabatic.itAssets.persistence.model.AvailableAsset;
 import com.anabatic.itAssets.persistence.model.Candidate;
-import com.anabatic.itAssets.persistence.model.Request;
 import com.anabatic.itAssets.services.service.CandidateService;
 
 public class CandidateServiceImpl implements CandidateService {
@@ -18,8 +18,24 @@ public class CandidateServiceImpl implements CandidateService {
 	@Override
 	public Candidate insert(Candidate can) {
 		// TODO Auto-generated method stub
-		Candidate can1=candidateDao.insert(can);
+		Boolean validEmail=candidateDao.validateEmail(can);
+		Boolean validPhone = candidateDao.validatePhone(can);
+		Candidate can1= new Candidate();
+		 if ((validPhone && validEmail)) {
+				throw new UsersException(UsersErrorConstant.CANDIDATE_EXISTS); 
+		 }
+		 else if(validEmail) {
+			throw new UsersException(UsersErrorConstant.EMAIL_ID);
+//			throw new UsersException(UsersErrorConstant.INVALID_EMAIL_KEY);
+		}
+		else if (validPhone) {
+			throw new UsersException(UsersErrorConstant.PHONE_NO);
+		}
 		
+		else {
+			 can1=candidateDao.insert(can);
+			
+		}
 		return can1;
 	}
 

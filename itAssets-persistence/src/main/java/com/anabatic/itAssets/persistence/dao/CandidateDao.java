@@ -13,4 +13,8 @@ public interface CandidateDao {
 	public List<Candidate> getAll();
 
 	public Candidate update(Candidate request);
+
+	public Boolean validatePhone(Candidate can);
+
+	public Boolean validateEmail(Candidate can);
 }
