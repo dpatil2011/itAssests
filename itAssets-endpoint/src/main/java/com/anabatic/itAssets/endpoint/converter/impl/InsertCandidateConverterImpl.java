@@ -22,11 +22,8 @@ public class InsertCandidateConverterImpl implements InsertCandidateConverter {
 		c.setSkills(object.getSkills());
 		c.setStatus(object.getStatus());
 		Users u = new Users();
-		u.setId(object.getHmId());
-		c.setHmUsers(u);
-		Users u1=new Users();
-		u1.setId(object.getrId());
-		c.setrUsers(u1);
+		u.setId(object.getManagerId());
+		c.setUsers(u);
 		return c;
 	}
 
@@ -48,8 +45,7 @@ public class InsertCandidateConverterImpl implements InsertCandidateConverter {
 		res.setPhoneNo(object.getPhoneNo());
 		res.setSkills(object.getSkills());
 		res.setStatus(object.getStatus());
-		res.setHmId(object.getHmUsers().getId());
-		res.setrId(object.getrUsers().getId());
+		res.setManagerId(object.getUsers().getId());
 		res.setFileName(object.getFileName());
 		res.setFilesize(object.getFilesize());
 		res.setFileType(object.getFileType());

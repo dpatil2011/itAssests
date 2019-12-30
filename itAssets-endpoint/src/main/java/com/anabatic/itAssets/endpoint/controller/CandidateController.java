@@ -1,19 +1,13 @@
 package com.anabatic.itAssets.endpoint.controller;
 
+
 import java.io.IOException;
 import java.util.Date;
+
 import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.Resource;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -75,12 +69,11 @@ public class CandidateController {
 			,@RequestParam(value="experience", required=true) final Float experience
 			,@RequestParam(value="status", required=true) final Integer status
 			,@RequestParam(value="comment", required=true) final String comment
-			,@RequestParam(value="hmId", required=true) final Long hmId
-			,@RequestParam(value="rId", required=true) final Long recruiterId
+			,@RequestParam(value="managerId", required=true) final Long managerId
 			) {
         String fileName = fileStorageService.storeFile(file);
         String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
-                .path("/candidate/")
+                .path("/upload/")
                 .path(fileName)
                 .toUriString();
         InsertCandidateRequest request = new InsertCandidateRequest();
@@ -88,8 +81,7 @@ public class CandidateController {
         request.setComment(comment);
         request.setEmail(email);
         request.setExperience(experience);
-        request.setHmId(hmId);
-        request.setrId(recruiterId);
+        request.setManagerId(managerId);
         request.setPhoneNo(phoneNo);
         request.setSkills(skills);
         request.setStatus(status);
@@ -101,10 +93,11 @@ public class CandidateController {
 		Candidate can1 = candidateService.insert(can);
 		CandidateRecord c = new CandidateRecord();
 		c.setStatus(1);
-		c.setrUserId(can1.getrUsers());
-		c.setHmUserId(can1.getHmUsers());
-		c.setcId(can1);
-		c.setSteps(1);
+		
+//		c.setrUserId(can1.getrUsers());
+//		c.setHmUserId(can1.getHmUsers());
+//		c.setcId(can1);
+//		c.setSteps(1);
 //		 SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");  
 		 Date date = new Date();  
 		c.setDate(date);
@@ -141,24 +134,5 @@ public class CandidateController {
 		baseResponse.setResponse(updateCandidateConverter.toContract(request3));
 		return ResponseEntity.ok().body(baseResponse);
 	}
-    
-    @GetMapping("/{fileName:.+}")
-    public ResponseEntity<Resource> downloadFile(@PathVariable String fileName, HttpServletRequest request) {
-     
-        Resource resource = fileStorageService.loadFileAsResource(fileName);
-        String contentType = null;
-        try {
-            contentType = request.getServletContext().getMimeType(resource.getFile().getAbsolutePath());
-        } catch (IOException ex) {
-        	ex.printStackTrace();
-        }
-        if(contentType == null) {
-            contentType = "application/octet-stream";
-        }
-        return ResponseEntity.ok()
-                .contentType(MediaType.parseMediaType(contentType))
-                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"")
-                .body(resource);
-    }
 
 }

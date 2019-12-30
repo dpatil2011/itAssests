@@ -6,7 +6,6 @@ import com.anabatic.itAssets.endpoint.Request.UpdateCandidateRecordRequest;
 import com.anabatic.itAssets.endpoint.Response.InsertCandidateRecordResponse;
 import com.anabatic.itAssets.endpoint.Response.UpdateCandidateRecordResponse;
 import com.anabatic.itAssets.endpoint.converter.UpdateCandidateRecordConverter;
-import com.anabatic.itAssets.persistence.model.Candidate;
 import com.anabatic.itAssets.persistence.model.CandidateRecord;
 import com.anabatic.itAssets.persistence.model.Users;
 
@@ -20,14 +19,8 @@ public class UpdateCandidateRecordConverterImpl  implements UpdateCandidateRecor
 		cr.setId(object.getId());
 		cr.setStatus(object.getStatus());
 		Users u=new Users();
-		u.setId(object.getHmUserId());
-		cr.setHmUserId(u);
-		Users u1=new Users();
-		u1.setId(object.getrUserId());
-		cr.setrUserId(u1);
-		Candidate c=new Candidate();
-		c.setId(object.getcId());
-		cr.setcId(c);
+		u.setId(object.getUserId());
+		cr.setUserId(u);
 		return cr;
 	}
 
@@ -46,9 +39,7 @@ public class UpdateCandidateRecordConverterImpl  implements UpdateCandidateRecor
 		cr.setStatus(object.getStatus());
 		//Users u=new Users();
 		//u.setId(object.getUserId());
-		cr.setHmUserId(object.getHmUserId().getId());
-		cr.setrUserId(object.getrUserId().getId());
-		cr.setcId(object.getcId().getId());
+		cr.setUserId(object.getUserId().getId());
 		return cr;
 	}
 

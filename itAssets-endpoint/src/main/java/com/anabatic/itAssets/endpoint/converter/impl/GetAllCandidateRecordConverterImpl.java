@@ -17,9 +17,7 @@ public class GetAllCandidateRecordConverterImpl  implements GetAllCandidateRecor
 		cr.setDate(object.getDate());
 		cr.setId(object.getId());
 		cr.setStatus(object.getStatus());
-		cr.setHmUserId(object.getHmUserId().getId());
-		cr.setrUserId(object.getrUserId().getId());
-		cr.setcId(object.getcId().getId());
+		cr.setUserId(object.getUserId().getId());
 		return cr;
 		
 	}

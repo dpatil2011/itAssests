@@ -2,6 +2,7 @@ package com.anabatic.itAssets.services.service;
 
 import java.util.List;
 
+import com.anabatic.itAssets.persistence.model.Privilege;
 import com.anabatic.itAssets.persistence.model.PrivilegeType;
 
 public interface PrivilegeTypeService {
@@ -18,5 +19,7 @@ public interface PrivilegeTypeService {
 	public PrivilegeType getById(Long id);
 
 	public PrivilegeType updatePriviCountTo(Long id);
+
+	List<Privilege> getAllPrivilegeByType(String type);
 
 }
