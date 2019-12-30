@@ -55,6 +55,7 @@ com\anabatic\itAssets\endpoint\Response\GetAllCandidateRecordResponse.class
 com\anabatic\itAssets\endpoint\Response\PrivilegeInsertResponse.class
 com\anabatic\itAssets\endpoint\Request\DeleteByIdUserRequest.class
 com\anabatic\itAssets\endpoint\converter\impl\GetByIdFaqConverterImpl.class
+com\anabatic\itAssets\endpoint\converter\impl\RemovePrivilegeConverterImpl.class
 com\anabatic\itAssets\endpoint\Request\UsersReq.class
 com\anabatic\itAssets\endpoint\controller\PrivilegeController.class
 com\anabatic\itAssets\endpoint\converter\InsertCandidateConverter.class
@@ -82,6 +83,7 @@ com\anabatic\itAssets\endpoint\converter\InsertFaqConverter.class
 com\anabatic\itAssets\endpoint\converter\PrivilegeConverter.class
 com\anabatic\itAssets\endpoint\controller\AssetsCategoryController.class
 com\anabatic\itAssets\endpoint\Request\AvailableAssetRequest.class
+com\anabatic\itAssets\endpoint\Request\RemovePrivilegeRequest.class
 com\anabatic\itAssets\endpoint\Response\UsersUpdateResponse.class
 com\anabatic\itAssets\endpoint\converter\GetByIdUsersConverter.class
 com\anabatic\itAssets\endpoint\Response\AssetsCategoryResponse.class
@@ -92,6 +94,7 @@ com\anabatic\itAssets\endpoint\Response\GetByIdUsersResponse.class
 com\anabatic\itAssets\endpoint\converter\impl\AssetFormConverterImpl.class
 com\anabatic\itAssets\endpoint\converter\DeleteByIdUserConverter.class
 com\anabatic\itAssets\endpoint\Response\GetByIdCandidateResponse.class
+com\anabatic\itAssets\endpoint\converter\RemovePrivilegeConverter.class
 com\anabatic\itAssets\endpoint\Request\GetByQuestionToFaqRequest.class
 com\anabatic\itAssets\endpoint\Request\AssetsCategoryRequest.class
 com\anabatic\itAssets\endpoint\converter\UpdateCandidateRecordConverter.class

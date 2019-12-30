@@ -3,7 +3,6 @@ package com.anabatic.itAssets.endpoint.converter.impl;
 import java.util.List;
 
 import com.anabatic.itAssets.endpoint.Request.UpdateCandidateRequest;
-import com.anabatic.itAssets.endpoint.Response.InsertCandidateResponse;
 import com.anabatic.itAssets.endpoint.Response.UpdateCandidateResponse;
 import com.anabatic.itAssets.endpoint.converter.UpdateCandidateConverter;
 import com.anabatic.itAssets.persistence.model.Candidate;
@@ -23,8 +22,11 @@ public class UpdateCandidateConverterImpl implements UpdateCandidateConverter {
 		c.setSkills(object.getSkills());
 		c.setStatus(object.getStatus());
 		Users u = new Users();
-		u.setId(object.getManagerId());
-		c.setUsers(u);
+		u.setId(object.getHmId());
+		c.setHmUsers(u);
+		Users u1=new Users();
+		u1.setId(object.getrId());
+		c.setrUsers(u1);
 		return c;
 	}
 
@@ -46,7 +48,8 @@ public class UpdateCandidateConverterImpl implements UpdateCandidateConverter {
 		res.setPhoneNo(object.getPhoneNo());
 		res.setSkills(object.getSkills());
 		res.setStatus(object.getStatus());
-		res.setManagerId(object.getUsers().getId());
+		res.setHmId(object.getHmUsers().getId());
+		res.setrId(object.getrUsers().getId());
 		return res;
 	}
 

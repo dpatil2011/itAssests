@@ -112,5 +112,8 @@
 		<bean id="updateLoginConverter"
 		class="com.anabatic.itAssets.endpoint.converter.impl.UpdateLoginConverterImpl" />
 
+<bean id="removePrivilegeConverter"
+		class="com.anabatic.itAssets.endpoint.converter.impl.RemovePrivilegeConverterImpl" />
+
 
 </beans>

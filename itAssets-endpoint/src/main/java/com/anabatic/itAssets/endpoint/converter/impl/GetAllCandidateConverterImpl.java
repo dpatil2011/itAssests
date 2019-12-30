@@ -46,7 +46,9 @@ public class GetAllCandidateConverterImpl implements GetAllCandidateConverter {
 			can.setPhoneNo(object.getPhoneNo());
 			can.setSkills(object.getSkills());
 			can.setStatus(object.getStatus());
-			can.setManagerId(object.getUsers().getId());
+			can.setrId(object.getrUsers().getId());
+			
+			can.setHmId(object.getHmUsers().getId());
 			list.add(can);
 		}		
 		return list;

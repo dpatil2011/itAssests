@@ -229,7 +229,7 @@ public class Users {
 	@OneToMany(mappedBy = "userId", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Request> request;
 
-	@OneToMany(mappedBy = "users", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "hmUsers", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Candidate> candidate;
 
 	
