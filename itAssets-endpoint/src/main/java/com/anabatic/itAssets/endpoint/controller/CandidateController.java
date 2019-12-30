@@ -79,6 +79,7 @@ public class CandidateController {
 		can.setFilesize(file.getSize());
 		can.setFileType(file.getContentType());
 		Candidate can1 = candidateService.insert(can);
+		
 		BaseResponse baseResponse = new BaseResponse();
 		baseResponse.setResponse(insertCandidateConverter.toContract(can1));
 		return ResponseEntity.ok().body(baseResponse);

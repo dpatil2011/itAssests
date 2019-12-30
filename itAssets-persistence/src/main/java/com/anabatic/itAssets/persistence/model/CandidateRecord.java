@@ -25,6 +25,11 @@ public class CandidateRecord {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "userId")
 	private Users userId;
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "ruserId")
+	private Users ruserId;
+
 
 	@Column(name = "status")
 	private Integer status;

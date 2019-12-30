@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Implementation-Title: itAssets-core
 Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: yeshwantk
+Built-By: dhanrajp
 Implementation-Vendor-Id: com.anabatic.itAssets
 Build-Jdk: 1.8.0_151
 Implementation-URL: http://maven.apache.org
