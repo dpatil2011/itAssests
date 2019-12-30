@@ -1,7 +1,5 @@
 package com.anabatic.itAssets.endpoint.Request;
 
-import java.util.Date;
-
 public class InsertFaqRequest {
 	private String question;
 	private String questionTo;
