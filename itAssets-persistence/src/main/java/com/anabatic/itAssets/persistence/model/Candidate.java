@@ -1,6 +1,9 @@
 
 package com.anabatic.itAssets.persistence.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -9,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.anabatic.generic.persistence.annotation.IsRequired;
@@ -38,8 +42,12 @@ public class Candidate {
 	private String skills;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "manager_id")
-	private Users users;
+	@JoinColumn(name = "hm_id")
+	private Users hmUsers;
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "r_id")
+	private Users rUsers;
 
 	@Column(name = "comment")
 	private String comment;
@@ -55,6 +63,17 @@ public class Candidate {
 	
 	@Column(name = "file_size")
 	private Long filesize;
+	
+	@OneToMany(mappedBy = "cId", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<CandidateRecord> candidateRecord;
+
+	public List<CandidateRecord> getCandidateRecord() {
+		return candidateRecord;
+	}
+
+	public void setCandidateRecord(List<CandidateRecord> candidateRecord) {
+		this.candidateRecord = candidateRecord;
+	}
 
 	public String getFileName() {
 		return fileName;
@@ -150,12 +169,21 @@ public class Candidate {
 		this.status = status;
 	}
 
-	public Users getUsers() {
-		return users;
+	
+	public Users getHmUsers() {
+		return hmUsers;
 	}
 
-	public void setUsers(Users users) {
-		this.users = users;
+	public void setHmUsers(Users hmUsers) {
+		this.hmUsers = hmUsers;
+	}
+
+	public Users getrUsers() {
+		return rUsers;
+	}
+
+	public void setrUsers(Users rUsers) {
+		this.rUsers = rUsers;
 	}
 
 	public String getComment() {

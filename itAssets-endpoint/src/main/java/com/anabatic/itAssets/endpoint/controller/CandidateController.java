@@ -66,7 +66,8 @@ public class CandidateController {
 			,@RequestParam(value="experience", required=true) final Float experience
 			,@RequestParam(value="status", required=true) final Integer status
 			,@RequestParam(value="comment", required=true) final String comment
-			,@RequestParam(value="managerId", required=true) final Long managerId
+			,@RequestParam(value="hmId", required=true) final Long hmId
+			,@RequestParam(value="rId", required=true) final Long recruiterId
 			) {
         String fileName = fileStorageService.storeFile(file);
         String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
@@ -78,7 +79,8 @@ public class CandidateController {
         request.setComment(comment);
         request.setEmail(email);
         request.setExperience(experience);
-        request.setManagerId(managerId);
+        request.setHmId(hmId);
+        request.setrId(recruiterId);
         request.setPhoneNo(phoneNo);
         request.setSkills(skills);
         request.setStatus(status);

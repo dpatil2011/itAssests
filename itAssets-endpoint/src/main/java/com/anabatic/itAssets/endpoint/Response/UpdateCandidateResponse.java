@@ -9,8 +9,21 @@ public class UpdateCandidateResponse {
 	private Float experience;
 	private Integer status;
 	private String comment;
-	private Long managerId;
+	private Long hmId;
+	private Long rId;
 	
+	public Long getHmId() {
+		return hmId;
+	}
+	public void setHmId(Long hmId) {
+		this.hmId = hmId;
+	}
+	public Long getrId() {
+		return rId;
+	}
+	public void setrId(Long rId) {
+		this.rId = rId;
+	}
 	public Long getId() {
 		return id;
 	}
@@ -59,11 +72,6 @@ public class UpdateCandidateResponse {
 	public void setComment(String comment) {
 		this.comment = comment;
 	}
-	public Long getManagerId() {
-		return managerId;
-	}
-	public void setManagerId(Long managerId) {
-		this.managerId = managerId;
-	}
+	
 
 }
