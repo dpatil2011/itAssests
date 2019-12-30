@@ -1,5 +1,7 @@
 package com.anabatic.itAssets.endpoint.Request;
 
+import java.util.Date;
+
 public class UpdateFaqRequest {
 	private Long id;
 	private String question;
@@ -9,6 +11,7 @@ public class UpdateFaqRequest {
 	private Integer identifier;
 	private Long userId;
 	private Long repliedBy;
+	private Date cod;
 
 	public Long getId() {
 		return id;
@@ -74,4 +77,13 @@ public class UpdateFaqRequest {
 		this.questionTo = questionTo;
 	}
 
+	public Date getCod() {
+		return cod;
+	}
+
+	public void setCod(Date cod) {
+		this.cod = cod;
+	}
+
+	
 }

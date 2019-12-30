@@ -92,5 +92,14 @@ public class CandidateRecordController {
 	        baseResponse.setResponse("Operation performed Successfully");
 	        return ResponseEntity.ok().body(baseResponse);
 	    }
+	 
+		@PostMapping("/updateStep2")
+		public ResponseEntity<BaseResponse> updateStep2(@RequestBody InsertCandidateRecordRequest request) {
+			CandidateRecord can = insertCandidateRecordConverter.toModel(request);
+			CandidateRecord can1 = candidateRecordService.insert(can);
+			BaseResponse baseResponse = new BaseResponse();
+			baseResponse.setResponse(insertCandidateRecordConverter.toContract(can1));
+			return ResponseEntity.ok().body(baseResponse);
+		}
 	
 }

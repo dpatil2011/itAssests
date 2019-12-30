@@ -1,5 +1,7 @@
 package com.anabatic.itAssets.persistence.model;
 
+import java.util.Date;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -28,6 +30,28 @@ public class Faq {
 
 	@Column(name = "answer")
 	private String answer;
+	
+	@Column(name = "requested_date")
+	private Date dor;
+
+	@Column(name = "closing_date")
+	private Date cod;
+
+	public Date getDor() {
+		return dor;
+	}
+
+	public void setDor(Date dor) {
+		this.dor = dor;
+	}
+
+	public Date getCod() {
+		return cod;
+	}
+
+	public void setCod(Date cod) {
+		this.cod = cod;
+	}
 
 	@Column(name = "status")
 	private Integer status;
