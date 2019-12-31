@@ -1,5 +1,7 @@
 package com.anabatic.itAssets.endpoint.Response;
 
+import java.util.Date;
+
 public class GetByIdFaqResponse {
 	private Long id;
 	private String question;
@@ -9,6 +11,8 @@ public class GetByIdFaqResponse {
 	private Integer identifier;
 	private Long userId;
 	private Long repliedBy;
+	private Date dor;
+	private Date cod;
 
 	public Long getId() {
 		return id;
@@ -73,5 +77,23 @@ public class GetByIdFaqResponse {
 	public void setQuestionTo(String questionTo) {
 		this.questionTo = questionTo;
 	}
+
+	public Date getDor() {
+		return dor;
+	}
+
+	public void setDor(Date dor) {
+		this.dor = dor;
+	}
+
+	public Date getCod() {
+		return cod;
+	}
+
+	public void setCod(Date cod) {
+		this.cod = cod;
+	}
+
+	
 
 }

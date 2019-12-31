@@ -36,8 +36,7 @@ public class GetByIdCandidateConverterImpl implements GetByIdCandidateConverter{
 		res.setPhoneNo(object.getPhoneNo());
 		res.setSkills(object.getSkills());
 		res.setStatus(object.getStatus());
-		res.setHmId(object.getHmUsers().getId());
-		res.setrId(object.getrUsers().getId());
+		res.setManagerId(object.getUsers().getId());
 		return res;
 		
 	}

@@ -8,28 +8,6 @@ public class UpdateCandidateRecordRequest {
 	private Integer status;
 	private String data;
 	private Date date;
-	private Long hmUserId;
-	private Long rUserId;
-	private Long cId;
-	
-	public Long getHmUserId() {
-		return hmUserId;
-	}
-	public void setHmUserId(Long hmUserId) {
-		this.hmUserId = hmUserId;
-	}
-	public Long getrUserId() {
-		return rUserId;
-	}
-	public void setrUserId(Long rUserId) {
-		this.rUserId = rUserId;
-	}
-	public Long getcId() {
-		return cId;
-	}
-	public void setcId(Long cId) {
-		this.cId = cId;
-	}
 	public Long getId() {
 		return id;
 	}

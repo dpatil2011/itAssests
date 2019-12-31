@@ -25,6 +25,7 @@ public class UpdateFaqConverterImpl implements UpdateFaqConverter {
 		users2.setId(object.getRepliedBy());
 		faq.setRepliedBy(users2);
 		faq.setStatus(object.getStatus());
+		faq.setCod(object.getCod());
 		return faq;
 	}
 
@@ -45,6 +46,8 @@ public class UpdateFaqConverterImpl implements UpdateFaqConverter {
 		response.setUserId(object.getUserId().getId());
 		response.setRepliedBy(object.getUserId().getId());
 		response.setStatus(object.getStatus());
+		response.setDor(object.getDor());
+		response.setCod(object.getCod());
 		return response;
 	}
 

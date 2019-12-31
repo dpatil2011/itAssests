@@ -10,6 +10,10 @@ public class InsertCandidateRequest {
 	private Float experience;
 	private Integer status;
 	private String comment;
+
+	private Long managerId;
+	
+
 	private Long hmId;
 	private Long rId;
 
@@ -36,6 +40,7 @@ public class InsertCandidateRequest {
 	public void setrId(Long rId) {
 		this.rId = rId;
 	}
+
 
 	public Long getId() {
 		return id;
@@ -91,6 +96,13 @@ public class InsertCandidateRequest {
 
 	public void setComment(String comment) {
 		this.comment = comment;
+	}
+
+	public Long getManagerId() {
+		return managerId;
+	}
+	public void setManagerId(Long managerId) {
+		this.managerId = managerId;
 	}
 
 }

@@ -1,14 +1,13 @@
 package com.anabatic.itAssets.endpoint.controller;
 
+
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.Resource;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
 import com.anabatic.generic.endpoint.contract.BaseResponse;
 import com.anabatic.itAssets.endpoint.Request.GetByIdCandidateRequest;
 import com.anabatic.itAssets.endpoint.Request.InsertCandidateRequest;
@@ -28,8 +28,11 @@ import com.anabatic.itAssets.endpoint.Request.UpdateCandidateRequest;
 import com.anabatic.itAssets.endpoint.converter.GetAllCandidateConverter;
 import com.anabatic.itAssets.endpoint.converter.GetByIdCandidateConverter;
 import com.anabatic.itAssets.endpoint.converter.InsertCandidateConverter;
+import com.anabatic.itAssets.endpoint.converter.InsertCandidateRecordConverter;
 import com.anabatic.itAssets.endpoint.converter.UpdateCandidateConverter;
 import com.anabatic.itAssets.persistence.model.Candidate;
+import com.anabatic.itAssets.persistence.model.CandidateRecord;
+import com.anabatic.itAssets.services.service.CandidateRecordService;
 import com.anabatic.itAssets.services.service.CandidateService;
 import com.anabatic.itAssets.services.service.impl.FileStorageService;
 
@@ -54,6 +57,12 @@ public class CandidateController {
 
 	@Autowired
 	private FileStorageService fileStorageService;
+	@Autowired
+	private CandidateRecordService candidateRecordService;
+	
+	 @Autowired
+	 private InsertCandidateRecordConverter insertCandidateRecordConverter;
+
 
 	@PostMapping("/insert")
 	public ResponseEntity<BaseResponse> insert(@RequestParam("file") MultipartFile file,
@@ -79,6 +88,7 @@ public class CandidateController {
 		request.setPhoneNo(phoneNo);
 		request.setSkills(skills);
 		request.setStatus(status);
+
 		Candidate can = insertCandidateConverter.toModel(request);
 		can.setFileName(fileName);
 		can.setUploadDir(fileDownloadUri);
@@ -86,8 +96,22 @@ public class CandidateController {
 		can.setFileType(file.getContentType());
 		Candidate can1 = candidateService.insert(can);
 
+		CandidateRecord c = new CandidateRecord();
+		c.setStatus(1);
+		
+//		c.setrUserId(can1.getrUsers());
+//		c.setHmUserId(can1.getHmUsers());
+//		c.setcId(can1);
+//		c.setSteps(1);
+//		 SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");  
+		 Date date = new Date();  
+		c.setDate(date);
+		c.setData(can1.getComment());
+		candidateRecordService.insert(c);
+
 		BaseResponse baseResponse = new BaseResponse();
 		baseResponse.setResponse(insertCandidateConverter.toContract(can1));
+
 		return ResponseEntity.ok().body(baseResponse);
 	}
 
@@ -117,22 +141,7 @@ public class CandidateController {
 		return ResponseEntity.ok().body(baseResponse);
 	}
 
-	@GetMapping("/{fileName:.+}")
-	public ResponseEntity<Resource> downloadFile(@PathVariable String fileName, HttpServletRequest request) {
 
-		Resource resource = fileStorageService.loadFileAsResource(fileName);
-		String contentType = null;
-		try {
-			contentType = request.getServletContext().getMimeType(resource.getFile().getAbsolutePath());
-		} catch (IOException ex) {
-			ex.printStackTrace();
-		}
-		if (contentType == null) {
-			contentType = "application/octet-stream";
-		}
-		return ResponseEntity.ok().contentType(MediaType.parseMediaType(contentType))
-				.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"")
-				.body(resource);
-	}
+
 
 }

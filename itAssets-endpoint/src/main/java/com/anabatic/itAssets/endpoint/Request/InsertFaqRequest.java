@@ -3,12 +3,13 @@ package com.anabatic.itAssets.endpoint.Request;
 public class InsertFaqRequest {
 	private String question;
 	private String questionTo;
-	private String answer;
+	
 	private Integer status;
 	private Integer identifier;
 	private Long userId;
-	private Long repliedBy;
-
+	
+	
+	
 	public String getQuestion() {
 		return question;
 	}
@@ -17,13 +18,7 @@ public class InsertFaqRequest {
 		this.question = question;
 	}
 
-	public String getAnswer() {
-		return answer;
-	}
-
-	public void setAnswer(String answer) {
-		this.answer = answer;
-	}
+	
 
 	public Integer getStatus() {
 		return status;
@@ -49,13 +44,7 @@ public class InsertFaqRequest {
 		this.userId = userId;
 	}
 
-	public Long getRepliedBy() {
-		return repliedBy;
-	}
-
-	public void setRepliedBy(Long repliedBy) {
-		this.repliedBy = repliedBy;
-	}
+	
 
 	public String getQuestionTo() {
 		return questionTo;
@@ -65,4 +54,7 @@ public class InsertFaqRequest {
 		this.questionTo = questionTo;
 	}
 
+	
+
+	
 }

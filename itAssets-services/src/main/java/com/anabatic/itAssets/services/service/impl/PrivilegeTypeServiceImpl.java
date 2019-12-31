@@ -10,6 +10,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.anabatic.itAssets.persistence.dao.PrivilegeTypeDao;
+import com.anabatic.itAssets.persistence.model.Privilege;
 import com.anabatic.itAssets.persistence.model.PrivilegeType;
 import com.anabatic.itAssets.services.service.PrivilegeTypeService;
 
@@ -66,5 +67,18 @@ public class PrivilegeTypeServiceImpl implements PrivilegeTypeService {
 	public PrivilegeType updatePriviCountTo(Long id) {
 		// TODO Auto-generated method stub
 		return privilegeTypeDao.updatePriviCountTo(id);
+	}
+	
+	@Override
+	public List<Privilege> getAllPrivilegeByType(String type) {
+	    try {
+            Query query = entityManager
+                    .createQuery("select u.privilege from PrivilegeType u where u.privilegeType =:priv");
+            query.setParameter("priv", type);
+            return query.getResultList();
+        }  catch (Exception e) {
+            return null;
+        }
+	    
 	}
 }
