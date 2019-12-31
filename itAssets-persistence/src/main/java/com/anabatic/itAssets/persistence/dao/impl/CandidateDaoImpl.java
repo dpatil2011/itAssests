@@ -13,7 +13,7 @@ import com.anabatic.itAssets.persistence.model.Request;
 
 @Transactional
 public class CandidateDaoImpl implements CandidateDao {
-	
+
 	@PersistenceContext
 	EntityManager manager;
 
@@ -21,30 +21,28 @@ public class CandidateDaoImpl implements CandidateDao {
 	public Candidate insert(Candidate can) {
 		// TODO Auto-generated method stub
 		try {
-			Candidate can1=manager.merge(can);
+			Candidate can1 = manager.merge(can);
 			return can1;
-		}
-		catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		//Candidate can1=manager.merge(can);
+		// Candidate can1=manager.merge(can);
 		return null;
 	}
 
 	@Override
 	public Candidate getById(Long can) {
-		  Candidate response = manager.find(Candidate.class,
-	                can);
-	        return response;
+		Candidate response = manager.find(Candidate.class, can);
+		return response;
 	}
 
 	@Override
 	public List<Candidate> getAll() {
 		try {
-            return manager.createNativeQuery("SELECT * FROM candidate", Candidate.class).getResultList();
-        } catch (Exception e) {
-            throw e;
-        }
+			return manager.createNativeQuery("SELECT * FROM candidate", Candidate.class).getResultList();
+		} catch (Exception e) {
+			throw e;
+		}
 	}
 
 	@Override
