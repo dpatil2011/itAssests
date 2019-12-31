@@ -55,36 +55,36 @@ public class CandidateDaoImpl implements CandidateDao {
 
 	@Override
 	public Boolean validatePhone(Candidate can) {
-		//try {
-			// return manager.createNativeQuery("SELECT * FROM faq where ",
-			// Faq.class).getResultList();
-			Query query = manager.createQuery("select u from Candidate u where u.phoneNo =:phone");
-			query.setParameter("phone", can.getPhoneNo());
-			if (query.getResultList().isEmpty()) {
-				return false;
-			}else {
-				throw new UsersException(UsersErrorConstant.PHONE_NO);
-			}
-		/*} catch (Exception e) {
-			throw e;
-		}*/
+		// try {
+		// return manager.createNativeQuery("SELECT * FROM faq where ",
+		// Faq.class).getResultList();
+		Query query = manager.createQuery("select u from Candidate u where u.phoneNo =:phone");
+		query.setParameter("phone", can.getPhoneNo());
+		if (query.getResultList().isEmpty()) {
+			return false;
+		} else {
+			throw new UsersException(UsersErrorConstant.PHONE_NO);
+		}
+		/*
+		 * } catch (Exception e) { throw e; }
+		 */
 	}
 
 	@Override
 	public Boolean validateEmail(Candidate can) {
-		//try {
-			// return manager.createNativeQuery("SELECT * FROM faq where ",
-			// Faq.class).getResultList();
-			Query query = manager.createQuery("select u from Candidate u where u.email =:email");
-			query.setParameter("email", can.getEmail());
-			// return null;
-			if (query.getResultList().isEmpty()) {
-				return false;
-			}else {
-				throw new UsersException(UsersErrorConstant.EMAIL_ID);
-			}
-		/*} catch (Exception e) {
-			throw e;
-		}*/
+		// try {
+		// return manager.createNativeQuery("SELECT * FROM faq where ",
+		// Faq.class).getResultList();
+		Query query = manager.createQuery("select u from Candidate u where u.email =:email");
+		query.setParameter("email", can.getEmail());
+		// return null;
+		if (query.getResultList().isEmpty()) {
+			return false;
+		} else {
+			throw new UsersException(UsersErrorConstant.EMAIL_ID);
+		}
+		/*
+		 * } catch (Exception e) { throw e; }
+		 */
 	}
 }
