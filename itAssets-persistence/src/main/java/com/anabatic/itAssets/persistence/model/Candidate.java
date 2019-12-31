@@ -32,7 +32,7 @@ public class Candidate {
 
 	@IsRequired
 	@Column(name = "phone_number")
-	private Integer phoneNo;
+	private Long phoneNo;
 
 	@Column(name = "skills")
 	private String skills;
@@ -126,11 +126,13 @@ public class Candidate {
 		this.email = email;
 	}
 
-	public Integer getPhoneNo() {
+	
+
+	public Long getPhoneNo() {
 		return phoneNo;
 	}
 
-	public void setPhoneNo(Integer phoneNo) {
+	public void setPhoneNo(Long phoneNo) {
 		this.phoneNo = phoneNo;
 	}
 

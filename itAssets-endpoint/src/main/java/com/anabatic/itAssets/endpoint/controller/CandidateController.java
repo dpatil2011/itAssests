@@ -1,12 +1,17 @@
 package com.anabatic.itAssets.endpoint.controller;
 
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +28,7 @@ import com.anabatic.itAssets.endpoint.Request.UpdateCandidateRequest;
 import com.anabatic.itAssets.endpoint.converter.GetAllCandidateConverter;
 import com.anabatic.itAssets.endpoint.converter.GetByIdCandidateConverter;
 import com.anabatic.itAssets.endpoint.converter.InsertCandidateConverter;
+import com.anabatic.itAssets.endpoint.converter.InsertCandidateRecordConverter;
 import com.anabatic.itAssets.endpoint.converter.UpdateCandidateConverter;
 import com.anabatic.itAssets.persistence.model.Candidate;
 import com.anabatic.itAssets.persistence.model.CandidateRecord;
@@ -51,45 +57,45 @@ public class CandidateController {
 
 	@Autowired
 	private FileStorageService fileStorageService;
-
-	// @Autowired
-	// private InsertCandidateRecordConverter insertCandidateRecordConverter;
-	//
 	@Autowired
 	private CandidateRecordService candidateRecordService;
+	
+	 @Autowired
+	 private InsertCandidateRecordConverter insertCandidateRecordConverter;
+
 
 	@PostMapping("/insert")
+	public ResponseEntity<BaseResponse> insert(@RequestParam("file") MultipartFile file,
+			@RequestParam(value = "name", required = true) final String name,
+			@RequestParam(value = "email", required = true) final String email,
+			@RequestParam(value = "phoneNo", required = true) final Long phoneNo,
+			@RequestParam(value = "skills", required = true) final String skills,
+			@RequestParam(value = "experience", required = true) final Float experience,
+			@RequestParam(value = "status", required = true) final Integer status,
+			@RequestParam(value = "comment", required = true) final String comment,
+			@RequestParam(value = "hmId", required = true) final Long hmId,
+			@RequestParam(value = "rId", required = true) final Long recruiterId) {
+		String fileName = fileStorageService.storeFile(file);
+		String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath().path("/candidate/").path(fileName)
+				.toUriString();
+		InsertCandidateRequest request = new InsertCandidateRequest();
+		request.setName(name);
+		request.setComment(comment);
+		request.setEmail(email);
+		request.setExperience(experience);
+		request.setHmId(hmId);
+		request.setrId(recruiterId);
+		request.setPhoneNo(phoneNo);
+		request.setSkills(skills);
+		request.setStatus(status);
 
-	public ResponseEntity<BaseResponse> insert(@RequestParam("file") MultipartFile file
-			,@RequestParam(value="name", required=true) final String name
-			,@RequestParam(value="email", required=true) final String email
-			,@RequestParam(value="phoneNo", required=true) final Integer phoneNo
-			,@RequestParam(value="skills", required=true) final String skills
-			,@RequestParam(value="experience", required=true) final Float experience
-			,@RequestParam(value="status", required=true) final Integer status
-			,@RequestParam(value="comment", required=true) final String comment
-			,@RequestParam(value="managerId", required=true) final Long managerId
-			) {
-        String fileName = fileStorageService.storeFile(file);
-        String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
-                .path("/upload/")
-                .path(fileName)
-                .toUriString();
-        InsertCandidateRequest request = new InsertCandidateRequest();
-        request.setName(name);
-        request.setComment(comment);
-        request.setEmail(email);
-        request.setExperience(experience);
-        request.setManagerId(managerId);
-        request.setPhoneNo(phoneNo);
-        request.setSkills(skills);
-        request.setStatus(status);
 		Candidate can = insertCandidateConverter.toModel(request);
 		can.setFileName(fileName);
 		can.setUploadDir(fileDownloadUri);
 		can.setFilesize(file.getSize());
 		can.setFileType(file.getContentType());
 		Candidate can1 = candidateService.insert(can);
+
 		CandidateRecord c = new CandidateRecord();
 		c.setStatus(1);
 		
@@ -102,6 +108,7 @@ public class CandidateController {
 		c.setDate(date);
 		c.setData(can1.getComment());
 		candidateRecordService.insert(c);
+
 		BaseResponse baseResponse = new BaseResponse();
 		baseResponse.setResponse(insertCandidateConverter.toContract(can1));
 
@@ -133,5 +140,8 @@ public class CandidateController {
 		baseResponse.setResponse(updateCandidateConverter.toContract(request3));
 		return ResponseEntity.ok().body(baseResponse);
 	}
+
+
+
 
 }
