@@ -9,40 +9,34 @@ import javax.persistence.Query;
 
 import com.anabatic.itAssets.persistence.dao.PrivilegeDao;
 import com.anabatic.itAssets.persistence.model.Privilege;
-import com.anabatic.itAssets.persistence.model.Users;
 
 @javax.transaction.Transactional
-public class PrivilegeDaoImpl  implements PrivilegeDao{
-	
+public class PrivilegeDaoImpl implements PrivilegeDao {
 
 	@PersistenceContext
 	EntityManager entityManager;
 
-	
-
+	@SuppressWarnings("unchecked")
 	@Override
-	public List<Privilege> getByStatus(Privilege p,Long priviId) {
+	public List<Privilege> getByStatus(Privilege p, Long priviId) {
 		try {
-		    if(priviId==null) {
-		        Query query = entityManager
-	                    .createQuery("SELECT u FROM Privilege u where u.status =:status ");
-	            query.setParameter("status", p.getStatus());
-	            
-	            return query.getResultList();
-		    }else {
-		        Query query = entityManager
-                        .createQuery("SELECT u FROM Privilege u where u.status =:status and  privilegetype_id =:priviId");
-                query.setParameter("status", p.getStatus());
-                query.setParameter("priviId",priviId);
-                return query.getResultList();
-		    }
-            
+			if (priviId == null) {
+				Query query = entityManager.createQuery("SELECT u FROM Privilege u where u.status =:status ");
+				query.setParameter("status", p.getStatus());
+
+				return query.getResultList();
+			} else {
+				Query query = entityManager.createQuery(
+						"SELECT u FROM Privilege u where u.status =:status and  privilegetype_id =:priviId");
+				query.setParameter("status", p.getStatus());
+				query.setParameter("priviId", priviId);
+				return query.getResultList();
+			}
+
 		} catch (Exception e) {
 			throw e;
 		}
 	}
-
-
 
 	@Override
 	public Privilege insert(Privilege model) {
@@ -50,14 +44,11 @@ public class PrivilegeDaoImpl  implements PrivilegeDao{
 		try {
 			Privilege merge = entityManager.merge(model);
 			return merge;
-		}
-		catch(Exception e) {
-			e.printStackTrace();			
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		return null;
 	}
-
-
 
 	@Override
 	public Privilege removePrivilege(Privilege model) {
@@ -67,23 +58,20 @@ public class PrivilegeDaoImpl  implements PrivilegeDao{
 		try {
 			Privilege p = entityManager.merge(byId);
 			return p;
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-	 catch(Exception e) {
-		 e.printStackTrace();
-	 }
 		return null;
 	}
 
-
-
 	@Override
 	public Privilege getById(Privilege model) {
-      try {
-    	  Privilege getById = entityManager.find(Privilege.class, model.getId());
-    	  return getById;
-      } catch (Exception e) {
-    	  e.printStackTrace();
-      }
-      return null;
+		try {
+			Privilege getById = entityManager.find(Privilege.class, model.getId());
+			return getById;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 }

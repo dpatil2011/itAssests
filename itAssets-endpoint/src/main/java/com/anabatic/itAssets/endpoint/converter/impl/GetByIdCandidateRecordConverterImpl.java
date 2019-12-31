@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.anabatic.itAssets.endpoint.Request.GetByIdCandidateRecordRequest;
 import com.anabatic.itAssets.endpoint.Response.GetByIdCandidateRecordRespone;
-import com.anabatic.itAssets.endpoint.Response.InsertCandidateRecordResponse;
 import com.anabatic.itAssets.endpoint.converter.GetByIdCandidateRecordConverter;
 import com.anabatic.itAssets.persistence.model.CandidateRecord;
 
@@ -34,7 +33,10 @@ public class GetByIdCandidateRecordConverterImpl implements GetByIdCandidateReco
 		cr.setStatus(object.getStatus());
 		//Users u=new Users();
 		//u.setId(object.getUserId());
-		cr.setUserId(object.getUserId().getId());
+		cr.setcId(object.getcId().getId());
+		cr.setHmUserId(object.getHmUserId().getId());
+		cr.setrUserId(object.getrUserId().getId());
+		
 		return cr;
 	}
 

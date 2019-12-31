@@ -1,6 +1,9 @@
 
 package com.anabatic.itAssets.persistence.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -9,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.anabatic.generic.persistence.annotation.IsRequired;
@@ -56,6 +60,10 @@ public class Candidate {
 	@Column(name = "file_size")
 	private Long filesize;
 
+	
+	@OneToMany(mappedBy = "cId", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<CandidateRecord> candidateRecord;
+	
 	public String getFileName() {
 		return fileName;
 	}

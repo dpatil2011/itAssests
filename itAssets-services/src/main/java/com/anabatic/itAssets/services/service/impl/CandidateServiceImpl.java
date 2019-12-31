@@ -17,20 +17,19 @@ public class CandidateServiceImpl implements CandidateService {
 
 	@Override
 	public Candidate insert(Candidate can) {
-		// TODO Auto-generated method stub
 		Boolean validEmail=candidateDao.validateEmail(can);
 		Boolean validPhone = candidateDao.validatePhone(can);
 		Candidate can1= new Candidate();
 		 if ((validPhone && validEmail)) {
 				throw new UsersException(UsersErrorConstant.CANDIDATE_EXISTS); 
 		 }
-		 else if(validEmail) {
+		 /*else if(validEmail) {
 			throw new UsersException(UsersErrorConstant.EMAIL_ID);
 //			throw new UsersException(UsersErrorConstant.INVALID_EMAIL_KEY);
 		}
 		else if (validPhone) {
 			throw new UsersException(UsersErrorConstant.PHONE_NO);
-		}
+		}*/
 		
 		else {
 			 can1=candidateDao.insert(can);

@@ -2,6 +2,10 @@ package com.anabatic.itAssets.endpoint.controller;
 
 
 import java.io.IOException;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+
 import java.util.Date;
 import java.util.List;
 
@@ -32,6 +36,7 @@ import com.anabatic.itAssets.endpoint.converter.InsertCandidateRecordConverter;
 import com.anabatic.itAssets.endpoint.converter.UpdateCandidateConverter;
 import com.anabatic.itAssets.persistence.model.Candidate;
 import com.anabatic.itAssets.persistence.model.CandidateRecord;
+import com.anabatic.itAssets.persistence.model.Users;
 import com.anabatic.itAssets.services.service.CandidateRecordService;
 import com.anabatic.itAssets.services.service.CandidateService;
 import com.anabatic.itAssets.services.service.impl.FileStorageService;
@@ -94,6 +99,9 @@ public class CandidateController {
 		can.setUploadDir(fileDownloadUri);
 		can.setFilesize(file.getSize());
 		can.setFileType(file.getContentType());
+		Users user = new Users();
+		user.setId(request.getrId());
+		can.setUsers(user);
 		Candidate can1 = candidateService.insert(can);
 
 		CandidateRecord c = new CandidateRecord();
@@ -141,6 +149,23 @@ public class CandidateController {
 		return ResponseEntity.ok().body(baseResponse);
 	}
 
+	@GetMapping("/{fileName:.+}")
+	public ResponseEntity<Resource> downloadFile(@PathVariable String fileName, HttpServletRequest request) {
+
+		Resource resource = fileStorageService.loadFileAsResource(fileName);
+		String contentType = null;
+		try {
+			contentType = request.getServletContext().getMimeType(resource.getFile().getAbsolutePath());
+		} catch (IOException ex) {
+			ex.printStackTrace();
+		}
+		if (contentType == null) {
+			contentType = "application/octet-stream";
+		}
+		return ResponseEntity.ok().contentType(MediaType.parseMediaType(contentType))
+				.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"")
+				.body(resource);
+	}
 
 
 

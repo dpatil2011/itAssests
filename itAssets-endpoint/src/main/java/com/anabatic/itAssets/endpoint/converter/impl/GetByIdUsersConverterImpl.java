@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.anabatic.itAssets.endpoint.Request.GetByIdUsersRequest;
 import com.anabatic.itAssets.endpoint.Request.SkillBean;
-import com.anabatic.itAssets.endpoint.Response.GetAllUsersResponse;
+
 import com.anabatic.itAssets.endpoint.Response.GetByIdUsersResponse;
 import com.anabatic.itAssets.endpoint.converter.GetByIdUsersConverter;
 import com.anabatic.itAssets.persistence.model.Skills;
