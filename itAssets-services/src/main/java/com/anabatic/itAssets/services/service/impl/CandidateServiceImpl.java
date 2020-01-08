@@ -55,4 +55,10 @@ public class CandidateServiceImpl implements CandidateService {
 		return req;
 	}
 
+	@Override
+	public Candidate getByCIN(String cin) {
+		Candidate response = candidateDao.getByCIN(cin);
+        return response;
+}
+
 }

@@ -2,16 +2,15 @@ package com.anabatic.itAssets.endpoint.controller;
 
 
 import java.io.IOException;
-import org.springframework.core.io.Resource;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
-
 import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,10 +25,13 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.anabatic.generic.endpoint.contract.BaseResponse;
+import com.anabatic.generic.persistence.validator.field.ValidationCheck;
+import com.anabatic.itAssets.endpoint.Request.GetByCINCandidateRequest;
 import com.anabatic.itAssets.endpoint.Request.GetByIdCandidateRequest;
 import com.anabatic.itAssets.endpoint.Request.InsertCandidateRequest;
 import com.anabatic.itAssets.endpoint.Request.UpdateCandidateRequest;
 import com.anabatic.itAssets.endpoint.converter.GetAllCandidateConverter;
+import com.anabatic.itAssets.endpoint.converter.GetByCINCandidateConverter;
 import com.anabatic.itAssets.endpoint.converter.GetByIdCandidateConverter;
 import com.anabatic.itAssets.endpoint.converter.InsertCandidateConverter;
 import com.anabatic.itAssets.endpoint.converter.InsertCandidateRecordConverter;
@@ -53,6 +55,9 @@ public class CandidateController {
 
 	@Autowired
 	private GetByIdCandidateConverter getByIdCandidateConverter;
+	
+	@Autowired
+	private GetByCINCandidateConverter getByCINCandidateConverter;
 
 	@Autowired
 	private GetAllCandidateConverter getAllCandidateConverter;
@@ -167,6 +172,14 @@ public class CandidateController {
 				.body(resource);
 	}
 
-
+	@PostMapping("/getByCIN")
+	public ResponseEntity<BaseResponse> getByCIN(@RequestBody GetByCINCandidateRequest request) {
+        ValidationCheck.hasValidate(request);
+		Candidate can = getByCINCandidateConverter.toModel(request);
+		Candidate can1 = candidateService.getByCIN(can.getCin());
+		BaseResponse baseResponse = new BaseResponse();
+		baseResponse.setResponse(getByCINCandidateConverter.toContract(can1));
+		return ResponseEntity.ok().body(baseResponse);
+	}
 
 }

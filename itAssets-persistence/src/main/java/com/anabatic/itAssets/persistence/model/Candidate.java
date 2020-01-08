@@ -78,7 +78,7 @@ public class Candidate {
 	private Date dateOfJoining;
 	
 	@Column(name = "cin")
-	private String CIN;
+	private String cin;
 		
 	@OneToMany(mappedBy = "cId", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<CandidateRecord> candidateRecord;
@@ -115,12 +115,12 @@ public class Candidate {
 		this.dateOfJoining = dateOfJoining;
 	}
 
-	public String getCIN() {
-		return CIN;
+	public String getCin() {
+		return cin;
 	}
 
-	public void setCIN(String cIN) {
-		CIN = cIN;
+	public void setCin(String cin) {
+		this.cin = cin;
 	}
 
 	public Users getUsersr() {

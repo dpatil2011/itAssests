@@ -22,4 +22,6 @@ public interface CandidateDao {
 	public Boolean validatePhone(Candidate can);
 
 	public Boolean validateEmail(Candidate can);
+
+	public Candidate getByCIN(String cin);
 }

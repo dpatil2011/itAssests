@@ -41,4 +41,22 @@ public class CandidateRecordServiceImpl implements CandidateRecordService {
 	public void delete(CandidateRecord record) {
 		candidateRecordDao.delete(record);
 	}
+
+	@Override
+	public List<CandidateRecord> getByStatus(CandidateRecord req) {
+		List<CandidateRecord> record2 = candidateRecordDao.getByStatus(req.getStatus());
+		return record2;
+	}
+	
+	@Override
+	public List<CandidateRecord> getByStep(CandidateRecord req) {
+		List<CandidateRecord> record2 = candidateRecordDao.getByStep(req);
+		return record2;
+	}
+
+	@Override
+	public List<CandidateRecord> getBy(CandidateRecord can) {
+		List<CandidateRecord> list = candidateRecordDao.getBy(can);
+		return list;
+	}
 }
