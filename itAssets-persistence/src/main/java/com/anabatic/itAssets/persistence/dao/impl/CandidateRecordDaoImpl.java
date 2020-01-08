@@ -84,7 +84,7 @@ public class CandidateRecordDaoImpl implements CandidateRecordDao {
 
 	@Override
 	public List<CandidateRecord> getBy(CandidateRecord can) {
-		try {
+		try { 
 			Query query = entityManager
 					.createQuery("select u from candidate_record u where u.status=:status");
 			query.setParameter("requestTo", can.getStatus());
