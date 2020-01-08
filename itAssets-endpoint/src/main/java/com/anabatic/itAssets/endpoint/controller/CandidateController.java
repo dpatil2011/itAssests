@@ -73,7 +73,7 @@ public class CandidateController {
 	public ResponseEntity<BaseResponse> insert(@RequestParam("file") MultipartFile file,
 			@RequestParam(value = "name", required = true) final String name,
 			@RequestParam(value = "email", required = true) final String email,
-			@RequestParam(value = "phoneNo", required = true) final Long phoneNo,
+			@RequestParam(value = "phoneNo", required = true) final String phoneNo,
 			@RequestParam(value = "skills", required = true) final String skills,
 			@RequestParam(value = "experience", required = true) final Float experience,
 			@RequestParam(value = "status", required = true) final Integer status,

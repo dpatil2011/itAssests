@@ -1,6 +1,7 @@
 
 package com.anabatic.itAssets.persistence.model;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -36,7 +37,7 @@ public class Candidate {
 
 	@IsRequired
 	@Column(name = "phone_number")
-	private Long phoneNo;
+	private String phoneNo;
 
 	@Column(name = "skills")
 	private String skills;
@@ -44,6 +45,10 @@ public class Candidate {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "manager_id")
 	private Users users;
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "recruiter_id")
+	private Users usersr;
 
 	@Column(name = "comment")
 	private String comment;
@@ -59,11 +64,81 @@ public class Candidate {
 	
 	@Column(name = "file_size")
 	private Long filesize;
-
 	
+	@Column(name = "interview_date")
+	private Date interviewDate;
+	
+	@Column(name = "mode")
+	private String modeOfInterview;
+	
+	@Column(name = "slot")
+	private String slot;
+	
+	@Column(name = "date_of_joining")
+	private Date dateOfJoining;
+	
+	@Column(name = "cin")
+	private String CIN;
+		
 	@OneToMany(mappedBy = "cId", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<CandidateRecord> candidateRecord;
 	
+	public Date getInterviewDate() {
+		return interviewDate;
+	}
+
+	public void setInterviewDate(Date interviewDate) {
+		this.interviewDate = interviewDate;
+	}
+
+	public String getModeOfInterview() {
+		return modeOfInterview;
+	}
+
+	public void setModeOfInterview(String modeOfInterview) {
+		this.modeOfInterview = modeOfInterview;
+	}
+
+	public String getSlot() {
+		return slot;
+	}
+
+	public void setSlot(String slot) {
+		this.slot = slot;
+	}
+
+	public Date getDateOfJoining() {
+		return dateOfJoining;
+	}
+
+	public void setDateOfJoining(Date dateOfJoining) {
+		this.dateOfJoining = dateOfJoining;
+	}
+
+	public String getCIN() {
+		return CIN;
+	}
+
+	public void setCIN(String cIN) {
+		CIN = cIN;
+	}
+
+	public Users getUsersr() {
+		return usersr;
+	}
+
+	public void setUsersr(Users usersr) {
+		this.usersr = usersr;
+	}
+
+	public List<CandidateRecord> getCandidateRecord() {
+		return candidateRecord;
+	}
+
+	public void setCandidateRecord(List<CandidateRecord> candidateRecord) {
+		this.candidateRecord = candidateRecord;
+	}
+
 	public String getFileName() {
 		return fileName;
 	}
@@ -136,11 +211,11 @@ public class Candidate {
 
 	
 
-	public Long getPhoneNo() {
+	public String getPhoneNo() {
 		return phoneNo;
 	}
 
-	public void setPhoneNo(Long phoneNo) {
+	public void setPhoneNo(String phoneNo) {
 		this.phoneNo = phoneNo;
 	}
 

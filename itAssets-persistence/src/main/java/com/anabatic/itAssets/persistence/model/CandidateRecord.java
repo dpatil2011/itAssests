@@ -43,7 +43,18 @@ public class CandidateRecord {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "c_id")
 	private Candidate cId;
+	
+	@Column(name = "comments")
+	private String comment;
 
+
+	public String getComment() {
+		return comment;
+	}
+
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
 
 	public Candidate getcId() {
 		return cId;
