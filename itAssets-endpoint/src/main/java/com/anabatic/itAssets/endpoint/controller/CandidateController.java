@@ -214,13 +214,12 @@ public class CandidateController {
 		if(request3!=null) {
 			CandidateRecord candidateRecord = new CandidateRecord();
 			ObjectMapper Obj = new ObjectMapper();
-			InsertCandidateRequest request2 = new InsertCandidateRequest();
-			request2.setComment(request3.getComment());
-			request2.setHmId(request3.getUsers().getId());
-			request2.setStatus(request3.getStatus());
+			Candidate candidate=candidateService.getById(request.getcId());
+			candidate.setComment(request.getComment());
+			candidate.setStep(request.getStep());
 			String jsonStr=null;
 			try {
-				jsonStr = Obj.writeValueAsString(request2);
+				jsonStr = Obj.writeValueAsString(candidate);
 			} catch (JsonProcessingException e) {
 				e.printStackTrace();
 			}

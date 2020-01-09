@@ -14,6 +14,7 @@ import com.anabatic.generic.endpoint.contract.BaseResponse;
 import com.anabatic.itAssets.endpoint.Request.HmApproveRequest;
 import com.anabatic.itAssets.endpoint.converter.InsertCandidateConverter;
 import com.anabatic.itAssets.endpoint.converter.InsertCandidateRecordConverter;
+import com.anabatic.itAssets.endpoint.param.bean.CandidateBean;
 import com.anabatic.itAssets.persistence.model.Candidate;
 import com.anabatic.itAssets.persistence.model.CandidateRecord;
 import com.anabatic.itAssets.services.service.CandidateRecordService;
@@ -41,10 +42,30 @@ public class InterviewController {
 		candidate.setStep(request.getStep());
 		candidate.setStatus(request.getStatus());
 		candidateService.update(candidate);
+		CandidateBean bean=new CandidateBean();
+		bean.setName(candidate.getName());
+		bean.setEmail(candidate.getEmail());
+		bean.setPhoneNo(candidate.getPhoneNo());
+		bean.setSkills(candidate.getSkills());
+		bean.setUsers(candidate.getUsers());
+		bean.setUsersr(candidate.getUsersr());
+		bean.setComment(candidate.getComment());
+		bean.setFileName(candidate.getFileName());
+		bean.setUploadDir(candidate.getUploadDir());
+		bean.setFileType(candidate.getFileType());
+		bean.setFilesize(candidate.getFilesize());
+		bean.setInterviewDate(candidate.getInterviewDate());
+		bean.setInterviewStartTime(candidate.getInterviewStartTime());
+		bean.setInterviewEndTime(candidate.getInterviewEndTime());
+		bean.setModeOfInterview(candidate.getModeOfInterview());
+		bean.setSlot(candidate.getSlot());
+		bean.setDateOfJoining(candidate.getDateOfJoining());
+		bean.setCin(candidate.getCin());
+		bean.setStep(candidate.getStep());	
 		ObjectMapper objectMapper = new ObjectMapper();
 		String string = null;
 		try {
-			string = objectMapper.writeValueAsString(candidate);
+			string = objectMapper.writeValueAsString(bean);
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
 		}
