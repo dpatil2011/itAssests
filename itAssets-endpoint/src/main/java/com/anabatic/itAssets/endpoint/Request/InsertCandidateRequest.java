@@ -1,5 +1,8 @@
 package com.anabatic.itAssets.endpoint.Request;
 
+import java.sql.Time;
+import java.util.Date;
+
 public class InsertCandidateRequest {
 
 	private Long id;
@@ -10,12 +13,21 @@ public class InsertCandidateRequest {
 	private Float experience;
 	private Integer status;
 	private String comment;
-
 	private Long managerId;
-	
-
 	private Long hmId;
 	private Long rId;
+	private Integer step;
+	private String slot;
+	private String cin;
+	private Date doj;
+	private String modeOfInterview;
+	private Date interviewDate;
+	private Time interviewStartTime;
+	private Time interviewEndTime;
+	private String uploadDir;
+	private String fileName;
+	private Long fileSize;
+	private String fileType;
 
 	public String getPhoneNo() {
 		return phoneNo;
@@ -40,7 +52,6 @@ public class InsertCandidateRequest {
 	public void setrId(Long rId) {
 		this.rId = rId;
 	}
-
 
 	public Long getId() {
 		return id;
@@ -101,8 +112,105 @@ public class InsertCandidateRequest {
 	public Long getManagerId() {
 		return managerId;
 	}
+
 	public void setManagerId(Long managerId) {
 		this.managerId = managerId;
+	}
+
+	public Integer getStep() {
+		return step;
+	}
+
+	public void setStep(Integer step) {
+		this.step = step;
+	}
+
+	public String getSlot() {
+		return slot;
+	}
+
+	public void setSlot(String slot) {
+		this.slot = slot;
+	}
+
+	public String getCin() {
+		return cin;
+	}
+
+	public void setCin(String cin) {
+		this.cin = cin;
+	}
+
+	public Date getDoj() {
+		return doj;
+	}
+
+	public void setDoj(Date doj) {
+		this.doj = doj;
+	}
+
+	public String getModeOfInterview() {
+		return modeOfInterview;
+	}
+
+	public void setModeOfInterview(String modeOfInterview) {
+		this.modeOfInterview = modeOfInterview;
+	}
+
+	public Date getInterviewDate() {
+		return interviewDate;
+	}
+
+	public void setInterviewDate(Date interviewDate) {
+		this.interviewDate = interviewDate;
+	}
+
+	public Time getInterviewStartTime() {
+		return interviewStartTime;
+	}
+
+	public void setInterviewStartTime(Time interviewStartTime) {
+		this.interviewStartTime = interviewStartTime;
+	}
+
+	public Time getInterviewEndTime() {
+		return interviewEndTime;
+	}
+
+	public void setInterviewEndTime(Time interviewEndTime) {
+		this.interviewEndTime = interviewEndTime;
+	}
+
+	public String getUploadDir() {
+		return uploadDir;
+	}
+
+	public void setUploadDir(String uploadDir) {
+		this.uploadDir = uploadDir;
+	}
+
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
+	public Long getFileSize() {
+		return fileSize;
+	}
+
+	public void setFileSize(Long fileSize) {
+		this.fileSize = fileSize;
+	}
+
+	public String getFileType() {
+		return fileType;
+	}
+
+	public void setFileType(String fileType) {
+		this.fileType = fileType;
 	}
 
 }

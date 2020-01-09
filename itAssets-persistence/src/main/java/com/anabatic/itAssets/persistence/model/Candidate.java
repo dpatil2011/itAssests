@@ -69,6 +69,9 @@ public class Candidate {
 	@Column(name = "interview_date")
 	private Date interviewDate;
 	
+	@Column(name="interview_start_time")
+	private Time interviewStartTime;
+	
 	@Column(name="interview_end_time")
 	private Time interviewEndTime;
 	
@@ -275,6 +278,14 @@ public class Candidate {
 
 	public void setComment(String comment) {
 		this.comment = comment;
+	}
+
+	public Time getInterviewStartTime() {
+		return interviewStartTime;
+	}
+
+	public void setInterviewStartTime(Time interviewStartTime) {
+		this.interviewStartTime = interviewStartTime;
 	}
 
 	
