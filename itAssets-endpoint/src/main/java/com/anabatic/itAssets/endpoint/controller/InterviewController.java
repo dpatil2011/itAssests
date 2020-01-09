@@ -58,8 +58,10 @@ public class InterviewController {
 		record.setDate(new Date());
 		Integer step = request.getStep();
 		Integer recordStep = step - 1;
+		record.setStatus(request.getStatus());
 		record.setSteps(recordStep);
 		record.setHmUserId(candidate.getUsers());
+		record.setrUserId(candidate.getUsersr());
 		CandidateRecord record2 = candidateRecordService.insert(record);
 		BaseResponse baseResponse = new BaseResponse();
 		baseResponse.setResponse(insertCandidateRecordConverter.toContract(record2));
