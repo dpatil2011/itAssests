@@ -1,5 +1,7 @@
 package com.anabatic.itAssets.services.service.impl;
 
+import java.sql.Time;
+import java.util.Date;
 import java.util.List;
 
 import org.itAssests.core.constant.UsersErrorConstant;
@@ -54,5 +56,28 @@ public class CandidateServiceImpl implements CandidateService {
 		Candidate req = candidateDao.update(request);
 		return req;
 	}
+
+	@Override
+	public List<Candidate> getByHm(Long hmId) {
+		
+		return candidateDao.getByHm(hmId);
+	}
+
+	@Override
+	public List<Candidate> getByRecuriter(Long id) {
+		return candidateDao.getByRecuriter(id);
+	}
+
+	@Override
+	public Candidate scheduleInterview(Long id, Date interviewDate, String mode, Time time, Integer status, Integer step,String comment) {
+		return candidateDao.scheduleInterview(id,interviewDate,mode,time,status,step,comment);
+	}
+
+	@Override
+	public Candidate joiningDate(Date dateOfJoining, Long id) {
+		return candidateDao.joiningDate(id,dateOfJoining);
+	}
+
+	
 
 }

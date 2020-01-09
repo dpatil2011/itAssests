@@ -1,17 +1,15 @@
 package com.anabatic.itAssets.endpoint.controller;
 
-
 import java.io.IOException;
-import org.springframework.core.io.Resource;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
-
 import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,8 +24,12 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.anabatic.generic.endpoint.contract.BaseResponse;
+import com.anabatic.generic.persistence.validator.field.ValidationCheck;
+import com.anabatic.itAssets.endpoint.Request.GetByHmCandidateRequest;
 import com.anabatic.itAssets.endpoint.Request.GetByIdCandidateRequest;
 import com.anabatic.itAssets.endpoint.Request.InsertCandidateRequest;
+import com.anabatic.itAssets.endpoint.Request.JoiningDateCandidateRequest;
+import com.anabatic.itAssets.endpoint.Request.ScheduleInterviewCandidateRequest;
 import com.anabatic.itAssets.endpoint.Request.UpdateCandidateRequest;
 import com.anabatic.itAssets.endpoint.converter.GetAllCandidateConverter;
 import com.anabatic.itAssets.endpoint.converter.GetByIdCandidateConverter;
@@ -40,11 +42,18 @@ import com.anabatic.itAssets.persistence.model.Users;
 import com.anabatic.itAssets.services.service.CandidateRecordService;
 import com.anabatic.itAssets.services.service.CandidateService;
 import com.anabatic.itAssets.services.service.impl.FileStorageService;
+import com.anabatic.logging.executor.Logging;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/candidate")
 public class CandidateController {
+
+	private static final Logging LOGGING = new Logging(CandidateController.class);
+	private BaseResponse baseResponse = new BaseResponse();
+
 	@Autowired
 	private CandidateService candidateService;
 
@@ -64,10 +73,12 @@ public class CandidateController {
 	private FileStorageService fileStorageService;
 	@Autowired
 	private CandidateRecordService candidateRecordService;
-	
-	 @Autowired
-	 private InsertCandidateRecordConverter insertCandidateRecordConverter;
 
+	@Autowired
+	private InsertCandidateRecordConverter insertCandidateRecordConverter;
+	
+	
+	
 
 	@PostMapping("/insert")
 	public ResponseEntity<BaseResponse> insert(@RequestParam("file") MultipartFile file,
@@ -106,18 +117,17 @@ public class CandidateController {
 
 		CandidateRecord c = new CandidateRecord();
 		c.setStatus(1);
-		
-//		c.setrUserId(can1.getrUsers());
-//		c.setHmUserId(can1.getHmUsers());
-//		c.setcId(can1);
-//		c.setSteps(1);
-//		 SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");  
-		 Date date = new Date();  
+
+		// c.setrUserId(can1.getrUsers());
+		// c.setHmUserId(can1.getHmUsers());
+		// c.setcId(can1);
+		// c.setSteps(1);
+		// SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+		Date date = new Date();
 		c.setDate(date);
 		c.setData(can1.getComment());
 		candidateRecordService.insert(c);
 
-		BaseResponse baseResponse = new BaseResponse();
 		baseResponse.setResponse(insertCandidateConverter.toContract(can1));
 
 		return ResponseEntity.ok().body(baseResponse);
@@ -127,7 +137,6 @@ public class CandidateController {
 	public ResponseEntity<BaseResponse> getById(@RequestBody GetByIdCandidateRequest request) {
 		Candidate can = getByIdCandidateConverter.toModel(request);
 		Candidate can1 = candidateService.getById(can.getId());
-		BaseResponse baseResponse = new BaseResponse();
 		baseResponse.setResponse(getByIdCandidateConverter.toContract(can1));
 		return ResponseEntity.ok().body(baseResponse);
 	}
@@ -135,7 +144,6 @@ public class CandidateController {
 	@RequestMapping(value = "/getAll", method = RequestMethod.GET)
 	public ResponseEntity<BaseResponse> getAll() {
 		List<Candidate> response = candidateService.getAll();
-		BaseResponse baseResponse = new BaseResponse();
 		baseResponse.setResponse(getAllCandidateConverter.toContracts(response));
 		return ResponseEntity.ok().body(baseResponse);
 	}
@@ -144,7 +152,6 @@ public class CandidateController {
 	public ResponseEntity<BaseResponse> update(@RequestBody UpdateCandidateRequest request) {
 		Candidate request2 = updateCandidateConverter.toModel(request);
 		Candidate request3 = candidateService.update(request2);
-		BaseResponse baseResponse = new BaseResponse();
 		baseResponse.setResponse(updateCandidateConverter.toContract(request3));
 		return ResponseEntity.ok().body(baseResponse);
 	}
@@ -167,6 +174,68 @@ public class CandidateController {
 				.body(resource);
 	}
 
+	@PostMapping("/getByHm")
+	public ResponseEntity<BaseResponse> getByHm(@RequestBody GetByHmCandidateRequest request) {
+		ValidationCheck.hasValidate(request);
+		LOGGING.INFO("Inside GetBy HiringManager Candidate Controller");
+		baseResponse
+		        .setResponse(getAllCandidateConverter
+		        		.toContracts(candidateService
+		        				.getByHm(request.getId())));
+		return ResponseEntity.ok().body(baseResponse);
+	}
 
+	@PostMapping("/getByRecuriter")
+	public ResponseEntity<BaseResponse> getByRecuriter(@RequestBody GetByHmCandidateRequest request) {
+		ValidationCheck.hasValidate(request);
+		LOGGING.INFO("Inside GetBy Recuriter Candidate Controller");
+		baseResponse
+				.setResponse(getAllCandidateConverter
+						.toContracts(candidateService
+								.getByRecuriter(request.getId())));
+		return ResponseEntity.ok().body(baseResponse);
+	}
+
+	
+	@PostMapping("/schedule-interview")
+	public ResponseEntity<BaseResponse> scheduleInterview(@RequestBody ScheduleInterviewCandidateRequest request) {
+		ValidationCheck.hasValidate(request);
+		LOGGING.INFO("Inside scheduleInterview Candidate Controller");
+		Candidate request3 = candidateService.scheduleInterview(request.getId(),request.getInterviewDate(),request.getMode(),request.getEndTime(),request.getStatus(),request.getStep(),request.getComment());
+		if(request3!=null) {
+			CandidateRecord candidateRecord = new CandidateRecord();
+			ObjectMapper Obj = new ObjectMapper();
+			InsertCandidateRequest request2 = new InsertCandidateRequest();
+			request2.setComment(request3.getComment());
+			request2.setHmId(request3.getUsers().getId());
+			request2.setStatus(request3.getStatus());
+			String jsonStr=null;
+			try {
+				jsonStr = Obj.writeValueAsString(request2);
+			} catch (JsonProcessingException e) {
+				e.printStackTrace();
+			}
+			candidateRecord.setcId(request3);
+			candidateRecord.setComment(request.getComment());
+			candidateRecord.setHmUserId(request3.getUsers());
+			candidateRecord.setrUserId(request3.getUsersr());
+			candidateRecord.setData(jsonStr);
+			candidateRecord.setDate(new Date());
+			candidateRecord.setStatus(request.getStatus());
+			candidateRecord.setSteps(request3.getStep());
+			CandidateRecord insert = candidateRecordService.insert(candidateRecord);			
+		}
+		baseResponse.setResponse(updateCandidateConverter.toContract(request3));
+		return ResponseEntity.ok().body(baseResponse);
+	}
+	
+	@PostMapping("/joining-date")
+	public ResponseEntity<BaseResponse> joiningDate(@RequestBody JoiningDateCandidateRequest request) {
+		ValidationCheck.hasValidate(request);
+		LOGGING.INFO("Inside joiningDate Candidate Controller");
+		Candidate request3 = candidateService.joiningDate(request.getDateOfJoining(), request.getId());
+		baseResponse.setResponse(updateCandidateConverter.toContract(request3));
+		return ResponseEntity.ok().body(baseResponse);
+	}
 
 }

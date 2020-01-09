@@ -36,18 +36,27 @@ public class GetAllCandidateConverterImpl implements GetAllCandidateConverter {
 		List<GetAllCandidateResponse> list = new ArrayList<>(objects.size());
 		
 		for(Candidate object : objects) {
-			GetAllCandidateResponse can = new GetAllCandidateResponse();			
-			can.setId(object.getId());
-			can.setId(object.getId());
-			can.setComment(object.getComment());
-			can.setEmail(object.getEmail());
-			can.setExperience(object.getExperience());
-			can.setName(object.getName());
-			can.setPhoneNo(object.getPhoneNo());
-			can.setSkills(object.getSkills());
-			can.setStatus(object.getStatus());
-			can.setManagerId(object.getUsers().getId());
-			list.add(can);
+			GetAllCandidateResponse res = new GetAllCandidateResponse();			
+			res.setId(object.getId());
+			res.setComment(object.getComment());
+			res.setEmail(object.getEmail());
+			res.setExperience(object.getExperience());
+			res.setName(object.getName());
+			res.setPhoneNo(object.getPhoneNo());
+			res.setSkills(object.getSkills());
+			res.setStatus(object.getStatus());
+			res.setManagerId(object.getUsers().getId());
+			res.setRecruiterId(object.getUsersr().getId());
+			res.setFileName(object.getFileName());
+			res.setFilesize(object.getFilesize());
+			res.setFileType(object.getFileType());
+			res.setSlot(object.getSlot());
+			res.setUploadDir(object.getUploadDir());
+			res.setInterviewDate(object.getInterviewDate());
+			res.setDateOfJoining(object.getDateOfJoining());
+			res.setModeOfInterview(object.getModeOfInterview());
+			res.setCin(object.getCin());			
+			list.add(res);
 		}		
 		return list;
 	}

@@ -1,5 +1,7 @@
 package com.anabatic.itAssets.endpoint.Response;
 
+import java.util.Date;
+
 public class GetAllCandidateResponse {
 	private Long id;
 	private String name;
@@ -10,7 +12,16 @@ public class GetAllCandidateResponse {
 	private Integer status;
 	private String comment;
 	private Long managerId;
-	
+	private Long recruiterId;
+	private String fileName;
+	private String uploadDir;
+	private String fileType;
+	private Long filesize;
+	private Date interviewDate;
+	private String modeOfInterview;
+	private String slot;
+	private Date dateOfJoining;
+	private String cin;
 	public Long getId() {
 		return id;
 	}
@@ -29,7 +40,6 @@ public class GetAllCandidateResponse {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
 	public String getPhoneNo() {
 		return phoneNo;
 	}
@@ -66,5 +76,67 @@ public class GetAllCandidateResponse {
 	public void setManagerId(Long managerId) {
 		this.managerId = managerId;
 	}
-
+	public Long getRecruiterId() {
+		return recruiterId;
+	}
+	public void setRecruiterId(Long recruiterId) {
+		this.recruiterId = recruiterId;
+	}
+	public String getFileName() {
+		return fileName;
+	}
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+	public String getUploadDir() {
+		return uploadDir;
+	}
+	public void setUploadDir(String uploadDir) {
+		this.uploadDir = uploadDir;
+	}
+	public String getFileType() {
+		return fileType;
+	}
+	public void setFileType(String fileType) {
+		this.fileType = fileType;
+	}
+	public Long getFilesize() {
+		return filesize;
+	}
+	public void setFilesize(Long filesize) {
+		this.filesize = filesize;
+	}
+	public Date getInterviewDate() {
+		return interviewDate;
+	}
+	public void setInterviewDate(Date interviewDate) {
+		this.interviewDate = interviewDate;
+	}
+	public String getModeOfInterview() {
+		return modeOfInterview;
+	}
+	public void setModeOfInterview(String modeOfInterview) {
+		this.modeOfInterview = modeOfInterview;
+	}
+	public String getSlot() {
+		return slot;
+	}
+	public void setSlot(String slot) {
+		this.slot = slot;
+	}
+	public Date getDateOfJoining() {
+		return dateOfJoining;
+	}
+	public void setDateOfJoining(Date dateOfJoining) {
+		this.dateOfJoining = dateOfJoining;
+	}
+	public String getCin() {
+		return cin;
+	}
+	public void setCin(String cin) {
+		this.cin = cin;
+	}
+	
+	
+	
 }

@@ -1,5 +1,7 @@
 package com.anabatic.itAssets.persistence.dao.impl;
 
+import java.sql.Time;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -33,9 +35,15 @@ public class CandidateDaoImpl implements CandidateDao {
 	}
 
 	@Override
-	public Candidate getById(Long can) {
-		Candidate response = manager.find(Candidate.class, can);
-		return response;
+	public Candidate getById(Long id) {
+		try {
+			LOGGING.INFO("getById Candidate Dao");
+			Candidate response = manager.find(Candidate.class, id);
+			return response;
+		} catch (Exception e) {
+			LOGGING.ERROR("getById Candidate Dao " + e.getMessage());
+			throw e;
+		}
 	}
 
 	@Override
@@ -49,8 +57,14 @@ public class CandidateDaoImpl implements CandidateDao {
 
 	@Override
 	public Candidate update(Candidate req) {
-		Candidate request = manager.merge(req);
-		return request;
+		try {
+			LOGGING.INFO("update Candidate Dao");
+			Candidate request = manager.merge(req);
+			return request;
+		} catch (Exception e) {
+			LOGGING.ERROR("update Candidate Dao " + e.getMessage());
+			throw e;
+		}
 	}
 
 	@Override
@@ -87,4 +101,80 @@ public class CandidateDaoImpl implements CandidateDao {
 		 * } catch (Exception e) { throw e; }
 		 */
 	}
+
+	@Override
+	public List<Candidate> getByHm(Long hmId) {
+		try {
+			LOGGING.INFO("GetBy Hiring Manager Candidate Dao");
+			@SuppressWarnings("unchecked")
+			List<Candidate> query = manager.createQuery("select c from Candidate c where manager_id =:hmId")
+					.setParameter("hmId", hmId).getResultList();
+			return query;
+		} catch (Exception e) {
+			LOGGING.ERROR("GetBy Hiring Manager Candidate Dao" + e.getMessage());
+			throw e;
+		}
+
+	}
+
+	@Override
+	public List<Candidate> getByRecuriter(Long id) {
+		try {
+			LOGGING.INFO("GetBy Recuriter Candidate Dao");
+			@SuppressWarnings("unchecked")
+			List<Candidate> query = manager.createQuery("select c from Candidate c where recruiter_id =:id")
+					.setParameter("id", id).getResultList();
+			return query;
+		} catch (Exception e) {
+			LOGGING.ERROR("GetBy Recuriter Candidate Dao" + e.getMessage());
+			throw e;
+		}
+	}
+
+	@Override
+	public Candidate scheduleInterview(Long id, Date interviewDate, String mode, Time time, Integer status,
+			Integer step, String comment) {
+		try {
+			LOGGING.INFO("scheduleInterview Candidate Dao");
+			Candidate candidate = getById(id);
+			if (candidate == null) {
+				UsersException exception = new UsersException(UsersErrorConstant.CANDIDATE);
+				exception.getError().getField().clear();
+				exception.getError().addField("id");
+				throw exception;
+			}
+			candidate.setInterviewDate(interviewDate);
+			candidate.setModeOfInterview(mode);
+			candidate.setInterviewEndTime(time);
+			candidate.setStatus(status);
+			candidate.setStep(step);
+			candidate.setComment(comment);
+			Candidate update = update(candidate);
+			return update;
+		} catch (Exception e) {
+			LOGGING.ERROR("scheduleInterview Candidate Dao" + e.getMessage());
+			throw e;
+		}
+	}
+
+	@Override
+	public Candidate joiningDate(Long id, Date dateOfJoining) {
+		try {
+			LOGGING.INFO("joiningDate Candidate Dao");
+			Candidate candidate = getById(id);
+			if (candidate == null) {
+				UsersException exception = new UsersException(UsersErrorConstant.CANDIDATE);
+				exception.getError().getField().clear();
+				exception.getError().addField("id");
+				throw exception;
+			}
+			candidate.setDateOfJoining(dateOfJoining);
+			Candidate update = update(candidate);
+			return update;
+		} catch (Exception e) {
+			LOGGING.ERROR("joiningDate Candidate Dao" + e.getMessage());
+			throw e;
+		}
+	}
+
 }

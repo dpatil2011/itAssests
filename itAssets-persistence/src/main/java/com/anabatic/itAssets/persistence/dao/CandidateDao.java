@@ -1,5 +1,7 @@
 package com.anabatic.itAssets.persistence.dao;
 
+import java.sql.Time;
+import java.util.Date;
 import java.util.List;
 
 import com.anabatic.itAssets.persistence.model.Candidate;
@@ -22,4 +24,13 @@ public interface CandidateDao {
 	public Boolean validatePhone(Candidate can);
 
 	public Boolean validateEmail(Candidate can);
+
+	public List<Candidate> getByHm(Long hmId);
+
+	public List<Candidate> getByRecuriter(Long id);
+
+	public Candidate scheduleInterview(Long id, Date interviewDate, String mode, Time time, Integer status, Integer step, String comment);
+
+	public Candidate joiningDate(Long id, Date dateOfJoining);
+
 }

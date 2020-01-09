@@ -1,6 +1,7 @@
 
 package com.anabatic.itAssets.persistence.model;
 
+import java.sql.Time;
 import java.util.Date;
 import java.util.List;
 
@@ -68,6 +69,9 @@ public class Candidate {
 	@Column(name = "interview_date")
 	private Date interviewDate;
 	
+	@Column(name="interview_end_time")
+	private Time interviewEndTime;
+	
 	@Column(name = "mode")
 	private String modeOfInterview;
 	
@@ -78,11 +82,39 @@ public class Candidate {
 	private Date dateOfJoining;
 	
 	@Column(name = "cin")
-	private String CIN;
+	private String cin;
+	
+	@Column(name = "step")
+	private Integer step;
 		
+	public Integer getStep() {
+		return step;
+	}
+
+	public void setStep(Integer step) {
+		this.step = step;
+	}
+
 	@OneToMany(mappedBy = "cId", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<CandidateRecord> candidateRecord;
 	
+
+	public Time getInterviewEndTime() {
+		return interviewEndTime;
+	}
+
+	public void setInterviewEndTime(Time interviewEndTime) {
+		this.interviewEndTime = interviewEndTime;
+	}
+
+	public String getCin() {
+		return cin;
+	}
+
+	public void setCin(String cin) {
+		this.cin = cin;
+	}
+
 	public Date getInterviewDate() {
 		return interviewDate;
 	}
@@ -115,13 +147,7 @@ public class Candidate {
 		this.dateOfJoining = dateOfJoining;
 	}
 
-	public String getCIN() {
-		return CIN;
-	}
 
-	public void setCIN(String cIN) {
-		CIN = cIN;
-	}
 
 	public Users getUsersr() {
 		return usersr;
