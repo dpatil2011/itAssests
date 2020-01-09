@@ -95,7 +95,8 @@ public class CandidateController {
 			@RequestParam(value = "status", required = true) final Integer status,
 			@RequestParam(value = "comment", required = true) final String comment,
 			@RequestParam(value = "hmId", required = true) final Long hmId,
-			@RequestParam(value = "rId", required = true) final Long recruiterId) {
+			@RequestParam(value = "rId", required = true) final Long recruiterId)		
+	{
 		String fileName = fileStorageService.storeFile(file);
 		String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath().path("/candidate/").path(fileName)
 				.toUriString();
@@ -109,6 +110,7 @@ public class CandidateController {
 		request.setPhoneNo(phoneNo);
 		request.setSkills(skills);
 		request.setStatus(status);
+		request.setStep(0);
 
 		Candidate can = insertCandidateConverter.toModel(request);
 		can.setFileName(fileName);

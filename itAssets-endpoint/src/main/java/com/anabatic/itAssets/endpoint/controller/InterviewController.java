@@ -1,0 +1,68 @@
+package com.anabatic.itAssets.endpoint.controller;
+
+import java.util.Date;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.anabatic.generic.endpoint.contract.BaseResponse;
+import com.anabatic.itAssets.endpoint.Request.HmApproveRequest;
+import com.anabatic.itAssets.endpoint.converter.InsertCandidateConverter;
+import com.anabatic.itAssets.endpoint.converter.InsertCandidateRecordConverter;
+import com.anabatic.itAssets.persistence.model.Candidate;
+import com.anabatic.itAssets.persistence.model.CandidateRecord;
+import com.anabatic.itAssets.services.service.CandidateRecordService;
+import com.anabatic.itAssets.services.service.CandidateService;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+@CrossOrigin(origins = "*", allowedHeaders = "*")
+@RestController
+@RequestMapping("/interview")
+public class InterviewController {
+
+	@Autowired
+	private CandidateService candidateService;
+
+	@Autowired
+	private InsertCandidateConverter insertCandidateConverter;
+
+	@Autowired
+	private CandidateRecordService candidateRecordService;
+
+	@Autowired
+	private InsertCandidateRecordConverter insertCandidateRecordConverter;
+
+	@PostMapping("")
+	public ResponseEntity<BaseResponse> HmApprove(@RequestBody HmApproveRequest request) {
+		Candidate candidate = candidateService.getById(request.getcId());
+		candidate.setStep(request.getStep());
+		candidate.setStatus(request.getStatus());
+		candidateService.update(candidate);
+		ObjectMapper objectMapper = new ObjectMapper();
+		String string = null;
+		try {
+			string = objectMapper.writeValueAsString(candidate);
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
+		CandidateRecord record = new CandidateRecord();
+		record.setcId(candidate);
+		record.setComment(request.getComment());
+		record.setData(string);
+		record.setDate(new Date());
+		Integer step = request.getStep();
+		Integer recordStep = step - 1;
+		record.setSteps(recordStep);
+		record.setHmUserId(candidate.getUsers());
+		CandidateRecord record2 = candidateRecordService.insert(record);
+		BaseResponse baseResponse = new BaseResponse();
+		baseResponse.setResponse(insertCandidateRecordConverter.toContract(record2));
+		return ResponseEntity.ok(baseResponse);
+	}
+}
