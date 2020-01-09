@@ -30,9 +30,6 @@ public class InterviewController {
 	private CandidateService candidateService;
 
 	@Autowired
-	private InsertCandidateConverter insertCandidateConverter;
-
-	@Autowired
 	private CandidateRecordService candidateRecordService;
 
 	@Autowired
