@@ -10,6 +10,7 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.ImportResource;
+import org.springframework.jms.annotation.EnableJms;
 
 import com.anabatic.generic.endpoint.controlleradvice.GenericControllerAdvice;
 import com.anabatic.itAssets.persistence.model.FileStorageProperties;

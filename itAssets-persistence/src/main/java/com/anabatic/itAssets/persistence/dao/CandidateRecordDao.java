@@ -14,4 +14,12 @@ public interface CandidateRecordDao {
 
 	public void delete(CandidateRecord record);
 
+	public List<CandidateRecord> getByStatus(Integer status);
+
+	public List<CandidateRecord> getByStep(CandidateRecord req);
+
+	
+
+	public List<CandidateRecord> getBy(CandidateRecord can);
+
 }

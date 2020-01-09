@@ -74,6 +74,8 @@
 
 	<bean id="getByIdCandidateConverter"
 		class="com.anabatic.itAssets.endpoint.converter.impl.GetByIdCandidateConverterImpl" />
+	<bean id="getByCINCandidateConverter"
+		class="com.anabatic.itAssets.endpoint.converter.impl.GetByCINCandidateConverterImpl" />
 	<bean id="getAllCandidateConverter"
 		class="com.anabatic.itAssets.endpoint.converter.impl.GetAllCandidateConverterImpl" />
 	<bean id="updateCandidateConverter"
@@ -90,6 +92,12 @@
 
 	<bean id="getByIdCandidateRecordConverter"
 		class="com.anabatic.itAssets.endpoint.converter.impl.GetByIdCandidateRecordConverterImpl" />
+	
+	<bean id="getByStatusCandidateRecordConverter"
+		class="com.anabatic.itAssets.endpoint.converter.impl.GetByStatusCandidateRecordConverterImpl" />
+	
+	<bean id="getByStepCandidateRecordConverter"
+		class="com.anabatic.itAssets.endpoint.converter.impl.GetByStepCandidateRecordConverterImpl" />
 
 	<bean id="updateCandidateRecordConverter"
 		class="com.anabatic.itAssets.endpoint.converter.impl.UpdateCandidateRecordConverterImpl" />

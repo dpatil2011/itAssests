@@ -1,6 +1,11 @@
 
 package com.anabatic.itAssets.persistence.model;
 
+import java.sql.Time;
+import java.util.Date;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -9,6 +14,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.anabatic.generic.persistence.annotation.IsRequired;
@@ -32,7 +38,7 @@ public class Candidate {
 
 	@IsRequired
 	@Column(name = "phone_number")
-	private Integer phoneNo;
+	private String phoneNo;
 
 	@Column(name = "skills")
 	private String skills;
@@ -40,6 +46,10 @@ public class Candidate {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "manager_id")
 	private Users users;
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "recruiter_id")
+	private Users usersr;
 
 	@Column(name = "comment")
 	private String comment;
@@ -55,6 +65,108 @@ public class Candidate {
 	
 	@Column(name = "file_size")
 	private Long filesize;
+	
+	@Column(name = "interview_date")
+	private Date interviewDate;
+	
+	@Column(name="interview_start_time")
+	private Time interviewStartTime;
+	
+	@Column(name="interview_end_time")
+	private Time interviewEndTime;
+	
+	@Column(name = "mode")
+	private String modeOfInterview;
+	
+	@Column(name = "slot")
+	private String slot;
+	
+	@Column(name = "date_of_joining")
+	private Date dateOfJoining;
+	
+	@Column(name = "cin")
+	private String cin;
+	
+	@Column(name = "step")
+	private Integer step;
+		
+	public Integer getStep() {
+		return step;
+	}
+
+	public void setStep(Integer step) {
+		this.step = step;
+	}
+
+	@OneToMany(mappedBy = "cId", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<CandidateRecord> candidateRecord;
+	
+
+	public Time getInterviewEndTime() {
+		return interviewEndTime;
+	}
+
+	public void setInterviewEndTime(Time interviewEndTime) {
+		this.interviewEndTime = interviewEndTime;
+	}
+
+	public String getCin() {
+		return cin;
+	}
+
+	public void setCin(String cin) {
+		this.cin = cin;
+	}
+
+	public Date getInterviewDate() {
+		return interviewDate;
+	}
+
+	public void setInterviewDate(Date interviewDate) {
+		this.interviewDate = interviewDate;
+	}
+
+	public String getModeOfInterview() {
+		return modeOfInterview;
+	}
+
+	public void setModeOfInterview(String modeOfInterview) {
+		this.modeOfInterview = modeOfInterview;
+	}
+
+	public String getSlot() {
+		return slot;
+	}
+
+	public void setSlot(String slot) {
+		this.slot = slot;
+	}
+
+	public Date getDateOfJoining() {
+		return dateOfJoining;
+	}
+
+	public void setDateOfJoining(Date dateOfJoining) {
+		this.dateOfJoining = dateOfJoining;
+	}
+
+
+
+	public Users getUsersr() {
+		return usersr;
+	}
+
+	public void setUsersr(Users usersr) {
+		this.usersr = usersr;
+	}
+
+	public List<CandidateRecord> getCandidateRecord() {
+		return candidateRecord;
+	}
+
+	public void setCandidateRecord(List<CandidateRecord> candidateRecord) {
+		this.candidateRecord = candidateRecord;
+	}
 
 	public String getFileName() {
 		return fileName;
@@ -126,11 +238,13 @@ public class Candidate {
 		this.email = email;
 	}
 
-	public Integer getPhoneNo() {
+	
+
+	public String getPhoneNo() {
 		return phoneNo;
 	}
 
-	public void setPhoneNo(Integer phoneNo) {
+	public void setPhoneNo(String phoneNo) {
 		this.phoneNo = phoneNo;
 	}
 
@@ -164,6 +278,14 @@ public class Candidate {
 
 	public void setComment(String comment) {
 		this.comment = comment;
+	}
+
+	public Time getInterviewStartTime() {
+		return interviewStartTime;
+	}
+
+	public void setInterviewStartTime(Time interviewStartTime) {
+		this.interviewStartTime = interviewStartTime;
 	}
 
 	

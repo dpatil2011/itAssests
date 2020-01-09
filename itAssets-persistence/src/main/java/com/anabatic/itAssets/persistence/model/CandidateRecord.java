@@ -1,7 +1,6 @@
 package com.anabatic.itAssets.persistence.model;
 
 import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -19,12 +18,67 @@ public class CandidateRecord {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
-	
 	private Long id;
+	
+	public Integer getSteps() {
+		return steps;
+	}
 
+	public void setSteps(Integer steps) {
+		this.steps = steps;
+	}
+
+	@Column(name = "steps")
+	private Integer steps;
+	
+	
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "userId")
-	private Users userId;
+	@JoinColumn(name = "r_id")
+	private Users rUserId;
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "hm_id")
+	private Users hmUserId;
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "c_id")
+	private Candidate cId;
+	
+	@Column(name = "comments")
+	private String comment;
+
+
+	public String getComment() {
+		return comment;
+	}
+
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
+
+	public Candidate getcId() {
+		return cId;
+	}
+
+	public void setcId(Candidate cId) {
+		this.cId = cId;
+	}
+
+	public Users getrUserId() {
+		return rUserId;
+	}
+
+	public void setrUserId(Users rUserId) {
+		this.rUserId = rUserId;
+	}
+
+	public Users getHmUserId() {
+		return hmUserId;
+	}
+
+	public void setHmUserId(Users hmUserId) {
+		this.hmUserId = hmUserId;
+	}
 
 	@Column(name = "status")
 	private Integer status;
@@ -43,13 +97,7 @@ public class CandidateRecord {
 		this.id = id;
 	}
 
-	public Users getUserId() {
-		return userId;
-	}
-
-	public void setUserId(Users userId) {
-		this.userId = userId;
-	}
+	
 
 	public Integer getStatus() {
 		return status;

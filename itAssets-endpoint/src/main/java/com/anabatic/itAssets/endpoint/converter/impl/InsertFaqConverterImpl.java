@@ -1,5 +1,6 @@
 package com.anabatic.itAssets.endpoint.converter.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import com.anabatic.itAssets.endpoint.Request.InsertFaqRequest;
@@ -15,12 +16,14 @@ public class InsertFaqConverterImpl implements InsertFaqConverter {
 		Faq faq = new Faq();
 		faq.setQuestion(object.getQuestion());
 		faq.setQuestionTo(object.getQuestionTo());
-		faq.setAnswer(object.getAnswer());
+	
 		Users users = new Users();
 		users.setId(object.getUserId());
 		faq.setUserId(users);
 		faq.setStatus(object.getStatus());
 		faq.setIdentifier(object.getIdentifier());
+		Date d=new Date();
+		faq.setDor(d);
 		return faq;
 	}
 

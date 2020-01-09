@@ -13,7 +13,6 @@ public class InsertCandidateConverterImpl implements InsertCandidateConverter {
 	@Override
 	public Candidate toModel(InsertCandidateRequest object) {
 		Candidate c=new Candidate();
-		c.setId(object.getId());
 		c.setComment(object.getComment());
 		c.setEmail(object.getEmail());
 		c.setExperience(object.getExperience());
@@ -21,6 +20,18 @@ public class InsertCandidateConverterImpl implements InsertCandidateConverter {
 		c.setPhoneNo(object.getPhoneNo());
 		c.setSkills(object.getSkills());
 		c.setStatus(object.getStatus());
+		c.setCin(object.getCin());
+		c.setStep(object.getStep());
+		c.setStatus(object.getStatus());
+		c.setDateOfJoining(object.getDoj());
+		c.setInterviewDate(object.getInterviewDate());
+		c.setInterviewStartTime(object.getInterviewStartTime());
+		c.setInterviewEndTime(object.getInterviewEndTime());
+		c.setModeOfInterview(object.getModeOfInterview());
+		c.setUploadDir(object.getUploadDir());
+		c.setFileName(object.getFileName());
+		c.setFileType(object.getFileType());
+		c.setFilesize(object.getFileSize());
 		Users u = new Users();
 		u.setId(object.getManagerId());
 		c.setUsers(u);

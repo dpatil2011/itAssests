@@ -9,42 +9,38 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.anabatic.itAssets.persistence.dao.PrivilegeDao;
 import com.anabatic.itAssets.persistence.model.Privilege;
+import com.anabatic.itAssets.persistence.model.Users;
 import com.anabatic.itAssets.services.service.PrivilegeService;
 
-public class PrivilegeServiceImpl  implements PrivilegeService{
-	
-	@PersistenceContext
+public class PrivilegeServiceImpl implements PrivilegeService {
+
+    @PersistenceContext
     EntityManager entityManager;
-	
-	@Autowired
-	private PrivilegeDao privilegeDao;
 
+    @Autowired
+    private PrivilegeDao privilegeDao;
 
-	@Override
-	public List<Privilege> getByStatus(Privilege p,Long priviId) {
-		// TODO Auto-generated method stub
-		return privilegeDao.getByStatus(p, priviId);
-	}
+    @Override
+    public List<Privilege> getByStatus(Privilege p, Long priviId) {
+        // TODO Auto-generated method stub
+        return privilegeDao.getByStatus(p, priviId);
+    }
 
+    @Override
+    public Privilege insert(Privilege model) {
+        // TODO Auto-generated method stub
+        return privilegeDao.insert(model);
+    }
 
-	@Override
-	public Privilege insert(Privilege model) {
-		// TODO Auto-generated method stub
-		return privilegeDao.insert(model);
-	}
+    @Override
+    public Privilege removePrivilege(Privilege model) {
 
-
-	@Override
-	public Privilege removePrivilege(Privilege model) {
-		
-		// TODO Auto-generated method stub
-		return privilegeDao.removePrivilege(model);
-	}
-
+        // TODO Auto-generated method stub
+        return privilegeDao.removePrivilege(model);
+    }
 
     @Override
     public List<Privilege> recents() {
         return privilegeDao.recents();
     }
-
 }
