@@ -41,4 +41,10 @@ public class PrivilegeServiceImpl  implements PrivilegeService{
 		return privilegeDao.removePrivilege(model);
 	}
 
+
+    @Override
+    public List<Privilege> recents() {
+        return privilegeDao.recents();
+    }
+
 }

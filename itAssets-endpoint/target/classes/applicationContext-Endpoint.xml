@@ -12,6 +12,9 @@
 
 	<bean id="assetsCategoryConverter"
 		class="com.anabatic.itAssets.endpoint.converter.impl.AssetsCategoryConverterImpl" />
+		
+	<bean id="userInitiationConverter"
+	class="com.anabatic.itAssets.endpoint.converter.impl.UserInitiationConverterImpl" />
 
 	<bean id="availableAssetConverter"
 		class="com.anabatic.itAssets.endpoint.converter.impl.AvailableAssetConverterImpl" />

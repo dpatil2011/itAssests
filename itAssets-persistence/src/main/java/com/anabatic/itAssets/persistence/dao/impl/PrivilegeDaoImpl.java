@@ -47,10 +47,19 @@ public class PrivilegeDaoImpl  implements PrivilegeDao{
 	public Privilege insert(Privilege model) {
 		// TODO Auto-generated method stub
 		try {
-			Privilege merge = entityManager.merge(model);
-			return merge;
+		    Query query = entityManager
+                    .createQuery("SELECT u FROM Privilege u where user_id =:id and  privilegetype_id =:priviId and u.status=1");
+            query.setParameter("id", model.getUsers().getId());
+            query.setParameter("priviId",model.getPrivilegeType().getId());
+            List<Privilege> p =  query.getResultList();
+            if(p.isEmpty()){
+                Privilege merge = entityManager.merge(model);
+                return merge;
+            }
+			
 		}
 		catch(Exception e) {
+		    System.out.println("MSG");
 			e.printStackTrace();			
 		}
 		return null;
@@ -85,5 +94,20 @@ public class PrivilegeDaoImpl  implements PrivilegeDao{
       }
       return null;
 	}
+
+
+
+    @Override
+    public List<Privilege> recents() {
+        try {
+                Query query = entityManager
+                        .createQuery("SELECT u FROM Privilege u where u.status = 1 ORDER BY u.id DESC");  
+                query.setMaxResults(10);
+                return query.getResultList();
+             
+        } catch (Exception e) {
+            throw e;
+        }
+    }
 
 }

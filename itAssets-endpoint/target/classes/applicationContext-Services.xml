@@ -17,6 +17,9 @@
 
 	<bean id="assetsCategoryService"
 		class="com.anabatic.itAssets.services.service.impl.AssetsCategoryServiceImpl" />
+	
+	<bean id="userInitiationService"
+		class="com.anabatic.itAssets.services.service.impl.UserInitiationServiceImpl" />
 
 	<bean id="usersService"
 		class="com.anabatic.itAssets.services.service.impl.UsersServiceImpl" />

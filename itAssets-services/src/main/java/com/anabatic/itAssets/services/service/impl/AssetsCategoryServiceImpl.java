@@ -48,7 +48,4 @@ public class AssetsCategoryServiceImpl
         
         return assetsCategoryDao.belongsTo(belongsTo);
     }
-
-   
-   
-}
+   }

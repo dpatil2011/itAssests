@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.boot.CommandLineRunner;
 
 import com.anabatic.itAssets.persistence.model.Login;
+import com.anabatic.itAssets.persistence.model.Users;
 
 public interface LoginDao {
 
@@ -16,6 +17,8 @@ public interface LoginDao {
 
 	Login update(Login request2);
 
-	Login login(String userName, String password);
+	Login login(String userName, String password,String role);
+	
+	Long userLogin(String username, String password,Long privi);
 
 }

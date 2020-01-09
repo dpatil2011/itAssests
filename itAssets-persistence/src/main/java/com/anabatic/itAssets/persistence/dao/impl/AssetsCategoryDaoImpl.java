@@ -7,12 +7,8 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 
-import org.itAssests.core.constant.UsersErrorConstant;
-import org.itAssests.core.exception.UsersException;
-
 import com.anabatic.itAssets.persistence.dao.AssetsCategoryDao;
 import com.anabatic.itAssets.persistence.model.AssetsCategory;
-import com.anabatic.itAssets.persistence.model.Users;
 
 /**
  * !place your description here!

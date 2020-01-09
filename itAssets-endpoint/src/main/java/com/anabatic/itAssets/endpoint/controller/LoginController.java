@@ -14,11 +14,15 @@ import org.springframework.web.bind.annotation.RestController;
 import com.anabatic.generic.endpoint.contract.BaseResponse;
 import com.anabatic.itAssets.endpoint.Request.LoginVarificationRequest;
 import com.anabatic.itAssets.endpoint.Request.UpdateLoginRequest;
+import com.anabatic.itAssets.endpoint.Request.UserLogin;
+import com.anabatic.itAssets.endpoint.Response.GetByIdUsersResponse;
 import com.anabatic.itAssets.endpoint.Response.LoginResponse;
+import com.anabatic.itAssets.endpoint.converter.GetByIdUsersConverter;
 import com.anabatic.itAssets.endpoint.converter.InsertLoginConverter;
 import com.anabatic.itAssets.endpoint.converter.LoginConverter;
 import com.anabatic.itAssets.endpoint.converter.UpdateLoginConverter;
 import com.anabatic.itAssets.persistence.model.Login;
+import com.anabatic.itAssets.persistence.model.Users;
 import com.anabatic.itAssets.services.service.LoginService;
 
 @CrossOrigin(origins="*",allowedHeaders="*")
@@ -38,6 +42,8 @@ public class LoginController {
 	@Autowired
 	private UpdateLoginConverter updateLoginConverter;
 	
+	@Autowired
+    private GetByIdUsersConverter getByIdUsersConverter;
 	
 	    @GetMapping(value = "/get", consumes = "application/json", produces = "application/json")
 	    public ResponseEntity<List<LoginResponse>> getAll() {
@@ -64,16 +70,24 @@ public class LoginController {
 	    
 	    @PostMapping("/login")
 		public ResponseEntity<BaseResponse> insert(@RequestBody LoginVarificationRequest request) {
-			Login can = insertLoginConverter.toModel(request);
-			
-			Login can1 = loginService.login(
-					can.getUserName(), can.getPassword());
+			Login can1 = loginService.login(request.getUserName(),request.getPassword(),request.getRole());
 		
 			BaseResponse baseResponse = new BaseResponse();
 			baseResponse.setResponse(insertLoginConverter.toContract(can1));
 			return ResponseEntity.ok().body(baseResponse);
 		}
 	    
+	    @PostMapping("/user-login")
+        public ResponseEntity<BaseResponse> userLogin(@RequestBody UserLogin request) {
+            Users login = loginService.userLogin(request.getUsername(),request.getPassword(),request.getPrivi());
+        
+            BaseResponse baseResponse = new BaseResponse();
+            GetByIdUsersResponse response = getByIdUsersConverter
+                    .toContract(login);
+            baseResponse.setResponse(response);
+            return ResponseEntity.ok().body(baseResponse);
+        }
+        
 	    @PostMapping("/update")
 		public ResponseEntity<BaseResponse> update(@RequestBody UpdateLoginRequest request) {
 	    	Login request2 = updateLoginConverter.toModel(request);

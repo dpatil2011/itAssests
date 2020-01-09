@@ -48,7 +48,7 @@ public class PrivilegeController {
     @Autowired
     private RemovePrivilegeConverter removePrivilegeConverter;
 	
-	@RequestMapping(value = "/getbystatus", method = RequestMethod.GET)
+	@RequestMapping(value = "/getbystatus", method = RequestMethod.POST)
 
 	public ResponseEntity<BaseResponse> getByStatus(@RequestBody GetByStatusPrivilegeRequest request) {
 		Privilege p = getByStatusPrivilegeConverter.toModel(request);
@@ -57,6 +57,13 @@ public class PrivilegeController {
 		baseResponse.setResponse(getByStatusPrivilegeConverter.toContracts(response));
 		return ResponseEntity.ok().body(baseResponse);
 	}
+	@RequestMapping(value = "/recents", method = RequestMethod.GET)
+	public ResponseEntity<BaseResponse> recents() {
+        List<Privilege> response = privilegeService.recents();
+        BaseResponse baseResponse = new BaseResponse();
+        baseResponse.setResponse(getByStatusPrivilegeConverter.toContracts(response));
+        return ResponseEntity.ok().body(baseResponse);
+    }
 	
 	  @PostMapping(value = "/insert", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	    public ResponseEntity<BaseResponse> insert(

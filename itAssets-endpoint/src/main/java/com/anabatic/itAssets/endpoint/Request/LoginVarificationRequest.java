@@ -6,7 +6,7 @@ public class LoginVarificationRequest {
 	
 	private String userName;	
 	private String password;	
-	
+	private String role;
 
 	public String getUserName() {
 		return userName;
@@ -23,6 +23,14 @@ public class LoginVarificationRequest {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
 
 	
 

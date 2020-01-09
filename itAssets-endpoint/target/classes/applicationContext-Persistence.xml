@@ -11,6 +11,9 @@
 
 	<bean id="assetsCategoryDao"
 		class="com.anabatic.itAssets.persistence.dao.impl.AssetsCategoryDaoImpl" />
+		
+	<bean id="userInitiationDao"
+		class="com.anabatic.itAssets.persistence.dao.impl.UserInitiationDaoImpl" />
 
 	<bean id="assetFormDao"
 		class="com.anabatic.itAssets.persistence.dao.impl.AssetFormDaoImpl" />

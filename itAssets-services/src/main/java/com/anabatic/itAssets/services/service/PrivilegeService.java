@@ -8,6 +8,8 @@ public interface PrivilegeService {
 
 	List<Privilege> getByStatus(Privilege p,Long priviId);
 
+	List<Privilege> recents();
+	
 	Privilege insert(Privilege model);
 
 	Privilege removePrivilege(Privilege model);
