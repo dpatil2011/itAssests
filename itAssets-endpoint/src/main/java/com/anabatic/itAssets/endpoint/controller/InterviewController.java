@@ -42,13 +42,13 @@ public class InterviewController {
 		candidate.setStep(request.getStep());
 		candidate.setStatus(request.getStatus());
 		candidateService.update(candidate);
-		CandidateBean bean=new CandidateBean();
+		CandidateBean bean = new CandidateBean();
 		bean.setName(candidate.getName());
 		bean.setEmail(candidate.getEmail());
 		bean.setPhoneNo(candidate.getPhoneNo());
 		bean.setSkills(candidate.getSkills());
-		bean.setUsers(candidate.getUsers());
-		bean.setUsersr(candidate.getUsersr());
+		bean.setUsers(candidate.getUsers().getId());
+		bean.setUsersr(candidate.getUsersr().getId());
 		bean.setComment(candidate.getComment());
 		bean.setFileName(candidate.getFileName());
 		bean.setUploadDir(candidate.getUploadDir());
@@ -61,7 +61,7 @@ public class InterviewController {
 		bean.setSlot(candidate.getSlot());
 		bean.setDateOfJoining(candidate.getDateOfJoining());
 		bean.setCin(candidate.getCin());
-		bean.setStep(candidate.getStep());	
+		bean.setStep(candidate.getStep());
 		ObjectMapper objectMapper = new ObjectMapper();
 		String string = null;
 		try {
