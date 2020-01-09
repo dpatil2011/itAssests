@@ -177,4 +177,13 @@ public class CandidateDaoImpl implements CandidateDao {
 		}
 	}
 
+	public Candidate getByCIN(String cin) {
+		try {
+		Query query = manager.createQuery("select u from Candidate u where u.cin =:cin");
+		query.setParameter("cin", cin);
+		return (Candidate) query.getSingleResult();
+				}  catch (Exception e) {
+					throw e;
+				}
+	}
 }

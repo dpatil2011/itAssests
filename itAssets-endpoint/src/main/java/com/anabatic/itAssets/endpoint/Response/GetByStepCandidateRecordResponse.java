@@ -4,7 +4,7 @@ import java.util.Date;
 
 
 
-public class GetAllCandidateRecordResponse {
+public class GetByStepCandidateRecordResponse {
 	
 	private Long id;
 	private Long userId;

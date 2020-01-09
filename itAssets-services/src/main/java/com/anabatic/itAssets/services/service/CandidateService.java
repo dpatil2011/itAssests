@@ -25,5 +25,6 @@ public interface CandidateService {
 	Candidate joiningDate(Date dateOfJoining, Long id);
 
 
+	Candidate getByCIN(String cin);
 
 }

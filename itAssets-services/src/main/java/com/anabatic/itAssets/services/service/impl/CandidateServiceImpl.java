@@ -78,6 +78,9 @@ public class CandidateServiceImpl implements CandidateService {
 		return candidateDao.joiningDate(id,dateOfJoining);
 	}
 
-	
+		public Candidate getByCIN(String cin) {
+		Candidate response = candidateDao.getByCIN(cin);
+        return response;
+}
 
 }

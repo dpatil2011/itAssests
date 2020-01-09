@@ -33,4 +33,5 @@ public interface CandidateDao {
 
 	public Candidate joiningDate(Long id, Date dateOfJoining);
 
+	public Candidate getByCIN(String cin);
 }

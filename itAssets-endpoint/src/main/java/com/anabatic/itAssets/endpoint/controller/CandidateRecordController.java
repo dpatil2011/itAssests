@@ -14,11 +14,15 @@ import org.springframework.web.bind.annotation.RestController;
 import com.anabatic.generic.endpoint.contract.BaseResponse;
 import com.anabatic.itAssets.endpoint.Request.DeleteCandidateRecordRequest;
 import com.anabatic.itAssets.endpoint.Request.GetByIdCandidateRecordRequest;
+import com.anabatic.itAssets.endpoint.Request.GetByStatusCandidateRecordRequest;
+import com.anabatic.itAssets.endpoint.Request.GetByStepCandidateRecordRequest;
 import com.anabatic.itAssets.endpoint.Request.InsertCandidateRecordRequest;
 import com.anabatic.itAssets.endpoint.Request.UpdateCandidateRecordRequest;
 import com.anabatic.itAssets.endpoint.converter.DeleteCandidateRecordConverter;
 import com.anabatic.itAssets.endpoint.converter.GetAllCandidateRecordConverter;
 import com.anabatic.itAssets.endpoint.converter.GetByIdCandidateRecordConverter;
+import com.anabatic.itAssets.endpoint.converter.GetByStatusCandidateRecordConverter;
+import com.anabatic.itAssets.endpoint.converter.GetByStepCandidateRecordConverter;
 import com.anabatic.itAssets.endpoint.converter.InsertCandidateRecordConverter;
 import com.anabatic.itAssets.endpoint.converter.UpdateCandidateRecordConverter;
 import com.anabatic.itAssets.persistence.model.CandidateRecord;
@@ -36,6 +40,12 @@ public class CandidateRecordController {
 	
 	@Autowired
 	private GetByIdCandidateRecordConverter getByIdCandidateRecordConverter;
+	
+	@Autowired
+	private GetByStatusCandidateRecordConverter getByStatusCandidateRecordConverter;
+	
+	@Autowired
+	private GetByStepCandidateRecordConverter getByStepCandidateRecordConverter;
 	
 	@Autowired
 	private UpdateCandidateRecordConverter updateCandidateRecordConverter;
@@ -66,6 +76,15 @@ public class CandidateRecordController {
 		return ResponseEntity.ok().body(baseResponse);
 	}
 	
+	@PostMapping("/getBy")
+	public ResponseEntity<BaseResponse> getBy(@RequestBody GetByStatusCandidateRecordRequest request) {
+		CandidateRecord can = getByStatusCandidateRecordConverter.toModel(request);
+		List<CandidateRecord> can1 = candidateRecordService.getBy(can);
+		BaseResponse baseResponse = new BaseResponse();
+		baseResponse.setResponse(getByStatusCandidateRecordConverter.toContracts(can1));
+		return ResponseEntity.ok().body(baseResponse);
+	}
+	
 	@PostMapping("/update")
 	public ResponseEntity<BaseResponse> update(@RequestBody UpdateCandidateRecordRequest request) {
 		CandidateRecord request2 = updateCandidateRecordConverter.toModel(request);
@@ -82,7 +101,7 @@ public class CandidateRecordController {
 	        baseResponse.setResponse(getAllCandidateRecordConverter.toContracts(response));
 	        return ResponseEntity.ok().body(baseResponse);
 	    }
-	 
+
 	 @PostMapping("/delete")
 	    public ResponseEntity<BaseResponse> delete(
 	            @RequestBody DeleteCandidateRecordRequest request) {
@@ -92,5 +111,21 @@ public class CandidateRecordController {
 	        baseResponse.setResponse("Operation performed Successfully");
 	        return ResponseEntity.ok().body(baseResponse);
 	    }
-	
+	 @PostMapping("/getByStatus")
+	 public ResponseEntity<BaseResponse> getByStatus(@RequestBody GetByStatusCandidateRecordRequest request) {
+			CandidateRecord req = getByStatusCandidateRecordConverter.toModel(request);
+			List<CandidateRecord> can = candidateRecordService.getByStatus(req);
+			BaseResponse baseResponse = new BaseResponse();
+			baseResponse.setResponse(getByStatusCandidateRecordConverter.toContracts(can));
+			return ResponseEntity.ok().body(baseResponse);
+	 }
+	 
+	 @PostMapping("/getByStep")
+	 public ResponseEntity<BaseResponse> getByStep(@RequestBody GetByStepCandidateRecordRequest request) {
+			CandidateRecord req = getByStepCandidateRecordConverter.toModel(request);
+			List<CandidateRecord> can = candidateRecordService.getByStep(req);
+			BaseResponse baseResponse = new BaseResponse();
+			baseResponse.setResponse(getByStatusCandidateRecordConverter.toContracts(can));
+			return ResponseEntity.ok().body(baseResponse);
+	 }
 }

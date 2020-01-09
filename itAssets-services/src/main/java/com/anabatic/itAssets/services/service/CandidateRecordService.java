@@ -16,4 +16,10 @@ public interface CandidateRecordService {
 
 	public void delete(CandidateRecord record);
 
+	public List<CandidateRecord> getByStatus(CandidateRecord req);
+	
+	public List<CandidateRecord> getByStep(CandidateRecord req);
+
+	public List<CandidateRecord> getBy(CandidateRecord can);
+
 }

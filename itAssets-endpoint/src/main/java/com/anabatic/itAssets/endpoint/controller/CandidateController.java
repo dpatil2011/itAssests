@@ -26,12 +26,14 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.anabatic.generic.endpoint.contract.BaseResponse;
 import com.anabatic.generic.persistence.validator.field.ValidationCheck;
 import com.anabatic.itAssets.endpoint.Request.GetByHmCandidateRequest;
+import com.anabatic.itAssets.endpoint.Request.GetByCINCandidateRequest;
 import com.anabatic.itAssets.endpoint.Request.GetByIdCandidateRequest;
 import com.anabatic.itAssets.endpoint.Request.InsertCandidateRequest;
 import com.anabatic.itAssets.endpoint.Request.JoiningDateCandidateRequest;
 import com.anabatic.itAssets.endpoint.Request.ScheduleInterviewCandidateRequest;
 import com.anabatic.itAssets.endpoint.Request.UpdateCandidateRequest;
 import com.anabatic.itAssets.endpoint.converter.GetAllCandidateConverter;
+import com.anabatic.itAssets.endpoint.converter.GetByCINCandidateConverter;
 import com.anabatic.itAssets.endpoint.converter.GetByIdCandidateConverter;
 import com.anabatic.itAssets.endpoint.converter.InsertCandidateConverter;
 import com.anabatic.itAssets.endpoint.converter.InsertCandidateRecordConverter;
@@ -62,6 +64,9 @@ public class CandidateController {
 
 	@Autowired
 	private GetByIdCandidateConverter getByIdCandidateConverter;
+	
+	@Autowired
+	private GetByCINCandidateConverter getByCINCandidateConverter;
 
 	@Autowired
 	private GetAllCandidateConverter getAllCandidateConverter;
@@ -174,6 +179,7 @@ public class CandidateController {
 				.body(resource);
 	}
 
+
 	@PostMapping("/getByHm")
 	public ResponseEntity<BaseResponse> getByHm(@RequestBody GetByHmCandidateRequest request) {
 		ValidationCheck.hasValidate(request);
@@ -196,6 +202,7 @@ public class CandidateController {
 		return ResponseEntity.ok().body(baseResponse);
 	}
 
+	
 	
 	@PostMapping("/schedule-interview")
 	public ResponseEntity<BaseResponse> scheduleInterview(@RequestBody ScheduleInterviewCandidateRequest request) {
@@ -228,13 +235,23 @@ public class CandidateController {
 		baseResponse.setResponse(updateCandidateConverter.toContract(request3));
 		return ResponseEntity.ok().body(baseResponse);
 	}
-	
+
 	@PostMapping("/joining-date")
 	public ResponseEntity<BaseResponse> joiningDate(@RequestBody JoiningDateCandidateRequest request) {
 		ValidationCheck.hasValidate(request);
 		LOGGING.INFO("Inside joiningDate Candidate Controller");
 		Candidate request3 = candidateService.joiningDate(request.getDateOfJoining(), request.getId());
 		baseResponse.setResponse(updateCandidateConverter.toContract(request3));
+		return ResponseEntity.ok().body(baseResponse);
+	}
+	
+	@PostMapping("/getByCIN")
+	public ResponseEntity<BaseResponse> getByCIN(@RequestBody GetByCINCandidateRequest request) {
+        ValidationCheck.hasValidate(request);
+		Candidate can = getByCINCandidateConverter.toModel(request);
+		Candidate can1 = candidateService.getByCIN(can.getCin());
+		BaseResponse baseResponse = new BaseResponse();
+		baseResponse.setResponse(getByCINCandidateConverter.toContract(can1));
 		return ResponseEntity.ok().body(baseResponse);
 	}
 
