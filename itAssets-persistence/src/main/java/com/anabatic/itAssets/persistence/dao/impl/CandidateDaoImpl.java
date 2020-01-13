@@ -202,4 +202,17 @@ public class CandidateDaoImpl implements CandidateDao {
 	
 		return null;
 	}
+
+	@Override
+	public List<Candidate> getByStatusAndStep(Integer status, Integer step) {
+		LOGGING.INFO("getByStatusAndStep Of Candidate Dao");
+		try {
+			Query query = manager.createQuery("select u from Candidate u where u.status =:status and u.step =:step");
+			query.setParameter("status", status);
+			query.setParameter("step", step);
+			return query.getResultList();
+					}  catch (Exception e) {
+						throw e;
+					}
+	}
 }

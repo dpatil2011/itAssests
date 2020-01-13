@@ -13,6 +13,7 @@ public class UpdateCandidateRequest {
 	private Long managerId;
 	private String slot;
 	
+	
 
 	public String getSlot() {
 		return slot;

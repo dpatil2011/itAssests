@@ -28,6 +28,7 @@ import com.anabatic.generic.persistence.validator.field.ValidationCheck;
 import com.anabatic.itAssets.endpoint.Request.GetByHmCandidateRequest;
 import com.anabatic.itAssets.endpoint.Request.GetByCINCandidateRequest;
 import com.anabatic.itAssets.endpoint.Request.GetByIdCandidateRequest;
+import com.anabatic.itAssets.endpoint.Request.GetByStatusAndStepCandidateRequest;
 import com.anabatic.itAssets.endpoint.Request.InsertCandidateRequest;
 import com.anabatic.itAssets.endpoint.Request.JoiningDateCandidateRequest;
 import com.anabatic.itAssets.endpoint.Request.ScheduleInterviewCandidateRequest;
@@ -264,5 +265,17 @@ public class CandidateController {
 		baseResponse.setResponse(getByCINCandidateConverter.toContract(can1));
 		return ResponseEntity.ok().body(baseResponse);
 	}
+	
+	@PostMapping("/getByStatusAndStep")
+	public ResponseEntity<BaseResponse> getByStatusAndStep(@RequestBody GetByStatusAndStepCandidateRequest request) {
+        ValidationCheck.hasValidate(request);
+		//Candidate can = getByCINCandidateConverter.toModel(request);
+		List<Candidate> can1 = candidateService.getByStatusAndStep(request.getStatus(),request.getStep());
+		BaseResponse baseResponse = new BaseResponse();
+		baseResponse.setResponse(getAllCandidateConverter.toContracts(can1));
+		return ResponseEntity.ok().body(baseResponse);
+	}
+	
+	
 
 }

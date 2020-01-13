@@ -69,22 +69,6 @@ public class CandidateBean {
 
 	
 
-	public Long getUsers() {
-		return users;
-	}
-
-	public void setUsers(Long users) {
-		this.users = users;
-	}
-
-	public Long getUsersr() {
-		return usersr;
-	}
-
-	public void setUsersr(Long usersr) {
-		this.usersr = usersr;
-	}
-
 	public String getComment() {
 		return comment;
 	}
@@ -187,6 +171,22 @@ public class CandidateBean {
 
 	public void setStep(Integer step) {
 		this.step = step;
+	}
+
+	public Long getUsers() {
+		return users;
+	}
+
+	public void setUsers(Long users) {
+		this.users = users;
+	}
+
+	public Long getUsersr() {
+		return usersr;
+	}
+
+	public void setUsersr(Long usersr) {
+		this.usersr = usersr;
 	}
 
 }
