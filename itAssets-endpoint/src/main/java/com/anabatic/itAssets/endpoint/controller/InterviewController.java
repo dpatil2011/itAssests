@@ -47,8 +47,8 @@ public class InterviewController {
 		bean.setEmail(candidate.getEmail());
 		bean.setPhoneNo(candidate.getPhoneNo());
 		bean.setSkills(candidate.getSkills());
-		bean.setUsers(candidate.getUsers());
-		bean.setUsersr(candidate.getUsersr());
+		bean.setUsers(candidate.getUsers().getId());
+		bean.setUsersr(candidate.getUsersr().getId());
 		bean.setComment(candidate.getComment());
 		bean.setFileName(candidate.getFileName());
 		bean.setUploadDir(candidate.getUploadDir());

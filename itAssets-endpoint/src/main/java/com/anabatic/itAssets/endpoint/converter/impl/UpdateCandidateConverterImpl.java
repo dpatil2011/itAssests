@@ -1,5 +1,6 @@
 package com.anabatic.itAssets.endpoint.converter.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.anabatic.itAssets.endpoint.Request.UpdateCandidateRequest;
@@ -30,8 +31,24 @@ public class UpdateCandidateConverterImpl implements UpdateCandidateConverter {
 
 	@Override
 	public List<Candidate> toModels(List<UpdateCandidateRequest> objects) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Candidate> candidateList = new ArrayList<>(); 
+       for (UpdateCandidateRequest updateCandidateRequest : objects) {
+    	   Candidate c=new Candidate();
+   		c.setId(updateCandidateRequest.getId());
+   		c.setComment(updateCandidateRequest.getComment());
+   		c.setEmail(updateCandidateRequest.getEmail());
+   		c.setExperience(updateCandidateRequest.getExperience());
+   		c.setName(updateCandidateRequest.getName());
+   		c.setPhoneNo(updateCandidateRequest.getPhoneNo());
+   		c.setSkills(updateCandidateRequest.getSkills());
+   		c.setStatus(updateCandidateRequest.getStatus());
+   		c.setSlot(updateCandidateRequest.getSlot());
+   		Users u = new Users();
+   		u.setId(updateCandidateRequest.getManagerId());
+   		c.setUsers(u);
+   		candidateList.add(c);
+	}
+		return candidateList;
 	}
 
 	@Override

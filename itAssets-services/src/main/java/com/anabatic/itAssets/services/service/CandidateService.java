@@ -27,4 +27,6 @@ public interface CandidateService {
 
 	Candidate getByCIN(String cin);
 
+	List<Candidate> update(List<Candidate> request2);
+
 }

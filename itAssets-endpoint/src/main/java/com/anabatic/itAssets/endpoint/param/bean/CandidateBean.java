@@ -11,8 +11,8 @@ public class CandidateBean {
 	private String email;
 	private String phoneNo;
 	private String skills;
-	private Users users;
-	private Users usersr;
+	private Long users;
+	private Long usersr;
 	private String comment;
 	private String fileName;
 	private String uploadDir;
@@ -67,19 +67,21 @@ public class CandidateBean {
 		this.skills = skills;
 	}
 
-	public Users getUsers() {
+	
+
+	public Long getUsers() {
 		return users;
 	}
 
-	public void setUsers(Users users) {
+	public void setUsers(Long users) {
 		this.users = users;
 	}
 
-	public Users getUsersr() {
+	public Long getUsersr() {
 		return usersr;
 	}
 
-	public void setUsersr(Users usersr) {
+	public void setUsersr(Long usersr) {
 		this.usersr = usersr;
 	}
 

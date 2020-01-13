@@ -186,4 +186,20 @@ public class CandidateDaoImpl implements CandidateDao {
 					throw e;
 				}
 	}
+
+	@Override
+	public List<Candidate> update(List<Candidate> request2) {
+		LOGGING.INFO("Update List Of Candidate Dao");
+		for (Candidate candidate : request2) {
+			try {
+				Candidate byId = getById(candidate.getId());
+				byId.setSlot(candidate.getSlot());
+			Candidate merge = manager.merge(byId);
+			} catch(Exception e) {
+				throw e;
+			}
+		}
+	
+		return null;
+	}
 }

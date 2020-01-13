@@ -11,6 +11,16 @@ public class UpdateCandidateRequest {
 	private Integer status;
 	private String comment;
 	private Long managerId;
+	private String slot;
+	
+
+	public String getSlot() {
+		return slot;
+	}
+
+	public void setSlot(String slot) {
+		this.slot = slot;
+	}
 
 	public Long getId() {
 		return id;

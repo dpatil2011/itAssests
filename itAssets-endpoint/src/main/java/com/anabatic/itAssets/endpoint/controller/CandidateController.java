@@ -139,6 +139,15 @@ public class CandidateController {
 
 		return ResponseEntity.ok().body(baseResponse);
 	}
+	
+	@PostMapping("/update-list")
+	public ResponseEntity<BaseResponse> updateList(@RequestBody List<UpdateCandidateRequest> request) {
+		List<Candidate> request2 = updateCandidateConverter.toModels(request);
+		List<Candidate> request3 = candidateService.update(request2);
+		baseResponse.setResponse(updateCandidateConverter.toContracts(request3));
+		return ResponseEntity.ok().body(baseResponse);
+	}
+
 
 	@PostMapping("/getById")
 	public ResponseEntity<BaseResponse> getById(@RequestBody GetByIdCandidateRequest request) {
