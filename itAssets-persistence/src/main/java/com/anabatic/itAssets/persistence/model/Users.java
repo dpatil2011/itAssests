@@ -221,6 +221,9 @@ public class Users {
 	@OneToMany(mappedBy = "users", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Skills> skills;
 	
+	@OneToMany(mappedBy = "users", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<UserDocument> userDocument;
+	
 	@OneToMany(mappedBy = "users", fetch = FetchType.LAZY)
 	private List<Privilege> privilege;
 	
