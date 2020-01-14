@@ -26,7 +26,7 @@ import com.anabatic.itAssets.services.service.CandidateService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-@CrossOrigin(origins = "*", allowedHeaders = "*")
+@CrossOrigin(origins = "", allowedHeaders = "")
 @RestController
 @RequestMapping("/interview")
 public class InterviewController {
@@ -43,10 +43,9 @@ public class InterviewController {
 	@Autowired
 	private InsertCandidateRecordConverter insertCandidateRecordConverter;
 
-	@PostMapping("HmApprove")
+	@PostMapping("/HmApprove")
 	public ResponseEntity<BaseResponse> HmApprove(@RequestBody HmApproveRequest request) {
 		Candidate candidate = candidateService.getById(request.getcId());
-		candidate.setStep(request.getStep());
 		candidate.setStatus(request.getStatus());
 		candidate.setComment(request.getComment());
 		Candidate candidate2 = candidateService.update(candidate);
@@ -56,12 +55,15 @@ public class InterviewController {
 
 	}
 
-	@PostMapping("update")
+	@PostMapping("/update")
 	public ResponseEntity<BaseResponse> update(@RequestBody List<BulkStatusChangeRequest> requests) {
 		List<BulkStatusChangeResponse> responses = new ArrayList<>();
 		for (BulkStatusChangeRequest request : requests) {
-			Candidate candidate = candidateService.getById(request.getId());
-			candidate.setSelectinStatus(1);
+			Candidate candidate1 = candidateService.getById(request.getId());
+			Integer cStep = candidate1.getStep();
+			candidate1.setSelectinStatus(1);
+			candidate1.setStep(cStep);
+			Candidate candidate = candidateService.update(candidate1);
 			CandidateBean bean = new CandidateBean();
 			bean.setName(candidate.getName());
 			bean.setEmail(candidate.getEmail());
@@ -95,15 +97,18 @@ public class InterviewController {
 			record.setData(string);
 			record.setDate(new Date());
 			Integer step = candidate.getStep();
-			Integer recordStep = step - 1;
+			if (step != 0) {
+				step = step - 1;
+			}
 			record.setStatus(candidate.getStatus());
-			record.setSteps(recordStep);
+			record.setSteps(step);
 			record.setHmUserId(candidate.getUsers());
 			record.setrUserId(candidate.getUsersr());
 			CandidateRecord record2 = candidateRecordService.insert(record);
 			BulkStatusChangeResponse response = new BulkStatusChangeResponse();
 			response.setcRId(record2.getId());
 			response.setId(candidate.getId());
+			responses.add(response);
 
 		}
 		BaseResponse baseResponse = new BaseResponse();

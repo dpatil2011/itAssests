@@ -1,9 +1,6 @@
 package com.anabatic.itAssets.endpoint.Request;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 public class BulkStatusChangeRequest {
-	@JsonProperty
 	private Long id;
 
 	public Long getId() {
