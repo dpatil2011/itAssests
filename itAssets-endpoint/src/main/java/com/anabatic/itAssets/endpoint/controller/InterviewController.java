@@ -62,6 +62,7 @@ public class InterviewController {
 			Candidate candidate1 = candidateService.getById(request.getId());
 			Integer cStep = candidate1.getStep();
 			candidate1.setStatus(candidate1.getSelectinStatus());
+			candidate1.setSelectinStatus(0);
 			if (candidate1.getStatus() == 1) {
 				candidate1.setStep(cStep + 1);
 			} else {
