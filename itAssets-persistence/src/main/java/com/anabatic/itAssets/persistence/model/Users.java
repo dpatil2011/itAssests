@@ -52,7 +52,6 @@ public class Users {
 	@Column(name = "mother_dateOfBirth")
 	private Date motherDateOfBirth;
 
-
 	@Column(name = "sibling1")
 	private String sibling1;
 
@@ -220,13 +219,12 @@ public class Users {
 
 	@OneToMany(mappedBy = "users", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Skills> skills;
-	
+
 	@OneToMany(mappedBy = "users", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<UserDocument> userDocument;
-	
+
 	@OneToMany(mappedBy = "users", fetch = FetchType.LAZY)
 	private List<Privilege> privilege;
-	
 
 	@OneToMany(mappedBy = "userId", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Request> request;
@@ -234,8 +232,14 @@ public class Users {
 	@OneToMany(mappedBy = "users", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Candidate> candidate;
 
-	
-	
+	public List<UserDocument> getUserDocument() {
+		return userDocument;
+	}
+
+	public void setUserDocument(List<UserDocument> userDocument) {
+		this.userDocument = userDocument;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -1074,7 +1078,7 @@ public class Users {
 				return false;
 		} else if (!postGraduationStartYear.equals(other.postGraduationStartYear))
 			return false;
-		
+
 		if (religion == null) {
 			if (other.religion != null)
 				return false;
@@ -1127,8 +1131,7 @@ public class Users {
 				+ secondaryStartYear + ", secondaryEndYear=" + secondaryEndYear + ", secondarygrade=" + secondarygrade
 				+ ", postGraduation=" + postGraduation + ", postGraduationStartYear=" + postGraduationStartYear
 				+ ", postGraduationEndYear=" + postGraduationEndYear + ", postGraduationMajor=" + postGraduationMajor
-				+ ", postGraduationGrade=" + postGraduationGrade + ", skills=" + skills + ", privilege=" 
-				+ "]";
+				+ ", postGraduationGrade=" + postGraduationGrade + ", skills=" + skills + ", privilege=" + "]";
 	}
 
 }

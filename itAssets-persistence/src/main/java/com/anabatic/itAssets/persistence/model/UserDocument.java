@@ -20,19 +20,19 @@ public class UserDocument {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private Long id;
-	
+
 	@Column(name = "name")
 	private String name;
-	
+
 	@Column(name = "fileName")
 	private String fileName;
-	
+
 	@Column(name = "comment")
 	private String comment;
-	
+
 	@Column(name = "docType")
 	private String docType;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "user_id", referencedColumnName = "id")
 	private Users users;
@@ -84,7 +84,5 @@ public class UserDocument {
 	public void setDocType(String docType) {
 		this.docType = docType;
 	}
-	
-	
 
 }
