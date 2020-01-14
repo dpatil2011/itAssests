@@ -239,7 +239,22 @@ public class CandidateDaoImpl implements CandidateDao {
 			return query.getResultList();
 					}  catch (Exception e) {
 						throw e;
-					}	}
+					}	
+		}
+
+	@Override
+	public Candidate updateStepAndStatus(Integer status, Integer step, Long id) {
+		LOGGING.INFO("updateStepAndStatus Of Candidate Dao");
+		try {
+			Candidate byId = getById(id);
+			byId.setStatus(status);
+			byId.setStep(step);
+			return manager.merge(byId);
+					}  catch (Exception e) {
+						throw e;
+					}
+		
+	}
 
 	
 }

@@ -35,6 +35,7 @@ import com.anabatic.itAssets.endpoint.Request.JoiningDateCandidateRequest;
 import com.anabatic.itAssets.endpoint.Request.ScheduleInterviewCandidateRequest;
 import com.anabatic.itAssets.endpoint.Request.SelectionCandidateRequest;
 import com.anabatic.itAssets.endpoint.Request.UpdateCandidateRequest;
+import com.anabatic.itAssets.endpoint.Request.UpdateStepAndStatusCandidateRequest;
 import com.anabatic.itAssets.endpoint.converter.GetAllCandidateConverter;
 import com.anabatic.itAssets.endpoint.converter.GetByCINCandidateConverter;
 import com.anabatic.itAssets.endpoint.converter.GetByIdCandidateConverter;
@@ -280,12 +281,17 @@ public class CandidateController {
 	@PostMapping("/getByStep")
 	public ResponseEntity<BaseResponse> getByStep(@RequestBody GetByStepCandidateRequest request) {
         ValidationCheck.hasValidate(request);
-		//Candidate can = getByCINCandidateConverter.toModel(request);
 		List<Candidate> can1 = candidateService.getByStep(request.getStep());
 		BaseResponse baseResponse = new BaseResponse();
 		baseResponse.setResponse(getAllCandidateConverter.toContracts(can1));
 		return ResponseEntity.ok().body(baseResponse);
 	}
 	
+	@PostMapping("/update-step-status")
+	public ResponseEntity<BaseResponse> updateStepAndStatus(@RequestBody UpdateStepAndStatusCandidateRequest request) {
+		Candidate request3 = candidateService.updateStepAndStatus(request.getStatus(),request.getStep(), request.getId());
+		baseResponse.setResponse(updateCandidateConverter.toContract(request3));
+		return ResponseEntity.ok().body(baseResponse);
+	}
 
 }
