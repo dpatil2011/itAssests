@@ -55,9 +55,9 @@ public class GetAllCandidateConverterImpl implements GetAllCandidateConverter {
 			res.setInterviewDate(object.getInterviewDate());
 			res.setDateOfJoining(object.getDateOfJoining());
 			res.setModeOfInterview(object.getModeOfInterview());
-			res.setCin(object.getCin());			
+			res.setSelection(object.getSelectinStatus());
+			res.setCin(object.getCin());
 			list.add(res);
-
 		}		
 		return list;
 	}

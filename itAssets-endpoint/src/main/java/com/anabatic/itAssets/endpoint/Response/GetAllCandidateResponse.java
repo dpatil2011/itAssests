@@ -22,6 +22,7 @@ public class GetAllCandidateResponse {
 	private String slot;
 	private Date dateOfJoining;
 	private String cin;
+	private Integer selection;
 	public Long getId() {
 		return id;
 	}
@@ -135,6 +136,12 @@ public class GetAllCandidateResponse {
 	}
 	public void setCin(String cin) {
 		this.cin = cin;
+	}
+	public Integer getSelection() {
+		return selection;
+	}
+	public void setSelection(Integer selection) {
+		this.selection = selection;
 	}
 	
 	
