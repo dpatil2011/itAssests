@@ -227,7 +227,7 @@ public class CandidateController {
 	public ResponseEntity<BaseResponse> scheduleInterview(@RequestBody ScheduleInterviewCandidateRequest request) {
 		ValidationCheck.hasValidate(request);
 		LOGGING.INFO("Inside scheduleInterview Candidate Controller");
-		Candidate request3 = candidateService.scheduleInterview(request.getId(),request.getInterviewDate(),request.getMode(),request.getEndTime(),request.getStatus(),request.getStep(),request.getComment());
+		Candidate request3 = candidateService.scheduleInterview(request.getcId(),request.getInterviewDate(),request.getMode(),request.getEndTime(),request.getStatus(),request.getStep(),request.getComment());
 		if(request3!=null) {
 			CandidateRecord candidateRecord = new CandidateRecord();
 			ObjectMapper Obj = new ObjectMapper();

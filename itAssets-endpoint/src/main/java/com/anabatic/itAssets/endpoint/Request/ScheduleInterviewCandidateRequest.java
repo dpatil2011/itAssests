@@ -8,8 +8,6 @@ import com.anabatic.generic.persistence.annotation.IsRequired;
 public class ScheduleInterviewCandidateRequest {
 
 	@IsRequired
-	private Long id;
-	@IsRequired
 	private Date interviewDate;
 	@IsRequired
 	private String mode;
@@ -56,14 +54,6 @@ public class ScheduleInterviewCandidateRequest {
 
 	public void setEndTime(Time endTime) {
 		this.endTime = endTime;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 	public Date getInterviewDate() {
