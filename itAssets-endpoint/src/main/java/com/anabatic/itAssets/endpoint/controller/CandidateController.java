@@ -282,7 +282,7 @@ public class CandidateController {
 	public ResponseEntity<BaseResponse> getByStep(@RequestBody GetByStepCandidateRequest request) {
         ValidationCheck.hasValidate(request);
 		List<Candidate> can1 = candidateService.getByStep(request.getStep());
-		BaseResponse baseResponse = new BaseResponse();
+	    baseResponse = new BaseResponse();
 		baseResponse.setResponse(getAllCandidateConverter.toContracts(can1));
 		return ResponseEntity.ok().body(baseResponse);
 	}
