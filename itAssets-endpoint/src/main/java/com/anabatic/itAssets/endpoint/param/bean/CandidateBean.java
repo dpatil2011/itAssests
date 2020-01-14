@@ -67,6 +67,7 @@ public class CandidateBean {
 		this.skills = skills;
 	}
 
+	
 
 	public String getComment() {
 		return comment;

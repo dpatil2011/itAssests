@@ -13,9 +13,12 @@ import javax.transaction.Transactional;
 import org.itAssests.core.constant.UsersErrorConstant;
 import org.itAssests.core.exception.UsersException;
 import org.springframework.beans.Mergeable;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.anabatic.itAssets.persistence.dao.CandidateDao;
+import com.anabatic.itAssets.persistence.dao.UsersDao;
 import com.anabatic.itAssets.persistence.model.Candidate;
+import com.anabatic.itAssets.persistence.model.Users;
 import com.anabatic.logging.executor.Logging;
 
 @Transactional
@@ -24,6 +27,8 @@ public class CandidateDaoImpl implements CandidateDao {
 	private static final Logging LOGGING = new Logging(CandidateDaoImpl.class);
 	@PersistenceContext
 	EntityManager manager;
+	@Autowired
+	UsersDao usersdao;
 
 	@Override
 	public Candidate insert(Candidate candidate) {
@@ -197,12 +202,31 @@ public class CandidateDaoImpl implements CandidateDao {
 			try {
 				Candidate byId = getById(candidate.getId());
 				byId.setSlot(candidate.getSlot());
-				byId.setName(candidate.getName());
+				if(candidate.getUsers()!=null) {
+					Users manager = usersdao.getById(candidate.getUsers().getId());
+					if(manager==null) {
+						throw new UsersException(UsersErrorConstant.USER_NOT_FOUND);
+					}
+					byId.setUsers(manager);
+				}
 			 merge.add(manager.merge(byId));
 			} catch(Exception e) {
 				throw e;
 			}
 		}
 		return merge;
+	}
+
+	@Override
+	public List<Candidate> getByStatusAndStep(Integer status, Integer step) {
+		LOGGING.INFO("getByStatusAndStep Of Candidate Dao");
+		try {
+			Query query = manager.createQuery("select u from Candidate u where u.status =:status and u.step =:step");
+			query.setParameter("status", status);
+			query.setParameter("step", step);
+			return query.getResultList();
+					}  catch (Exception e) {
+						throw e;
+					}
 	}
 }

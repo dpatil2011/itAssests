@@ -1,18 +1,23 @@
 package com.anabatic.itAssets.endpoint.converter.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.anabatic.itAssets.endpoint.Request.InsertCandidateRequest;
 import com.anabatic.itAssets.endpoint.Response.InsertCandidateResponse;
 import com.anabatic.itAssets.endpoint.converter.InsertCandidateConverter;
+import com.anabatic.itAssets.endpoint.param.bean.CommentBean;
 import com.anabatic.itAssets.persistence.model.Candidate;
 import com.anabatic.itAssets.persistence.model.Users;
+
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 
 public class InsertCandidateConverterImpl implements InsertCandidateConverter {
 
 	@Override
 	public Candidate toModel(InsertCandidateRequest object) {
-		Candidate c=new Candidate();
+		Candidate c = new Candidate();
 		c.setComment(object.getComment());
 		c.setEmail(object.getEmail());
 		c.setExperience(object.getExperience());
@@ -33,8 +38,11 @@ public class InsertCandidateConverterImpl implements InsertCandidateConverter {
 		c.setFileType(object.getFileType());
 		c.setFilesize(object.getFileSize());
 		Users u = new Users();
-		u.setId(object.getManagerId());
+		u.setId(object.getHmId());
 		c.setUsers(u);
+		Users users= new Users();
+		users.setId(object.getrId());
+		c.setUsersr(users);
 		return c;
 	}
 
@@ -47,7 +55,7 @@ public class InsertCandidateConverterImpl implements InsertCandidateConverter {
 	@Override
 	public InsertCandidateResponse toContract(Candidate object) {
 		// TODO Auto-generated method stub
-		InsertCandidateResponse res=new InsertCandidateResponse();
+		InsertCandidateResponse res = new InsertCandidateResponse();
 		res.setId(object.getId());
 		res.setComment(object.getComment());
 		res.setEmail(object.getEmail());
