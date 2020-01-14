@@ -1,6 +1,7 @@
 package com.anabatic.itAssets.services.service.impl;
 
 import java.sql.Time;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -9,13 +10,20 @@ import org.itAssests.core.exception.UsersException;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.anabatic.itAssets.persistence.dao.CandidateDao;
+import com.anabatic.itAssets.persistence.dao.UsersDao;
+import com.anabatic.itAssets.persistence.dto.BulkUpdateCandidateFailedDto;
+import com.anabatic.itAssets.persistence.dto.BulkUpdateCandidateResponseDto;
 import com.anabatic.itAssets.persistence.model.Candidate;
+import com.anabatic.itAssets.persistence.model.Users;
 import com.anabatic.itAssets.services.service.CandidateService;
+import com.anabatic.logging.executor.Logging;
 
 public class CandidateServiceImpl implements CandidateService {
-	
+	private static final Logging LOGGING = new Logging(CandidateServiceImpl.class);
 	@Autowired
 	private CandidateDao candidateDao;
+	@Autowired
+	UsersDao usersdao;
 
 	@Override
 	public Candidate insert(Candidate can) {
@@ -83,10 +91,37 @@ public class CandidateServiceImpl implements CandidateService {
         return response;
 }
 
-		@Override
-		public List<Candidate> update(List<Candidate> request2) {
-			return candidateDao.update(request2);
+	@Override
+	public BulkUpdateCandidateResponseDto update(List<Candidate> request2) {
+		LOGGING.INFO("Bulk Update Candidate Service Method Accessed");
+		List<Candidate> successfulRecords = new ArrayList<>();
+		List<BulkUpdateCandidateFailedDto> failedRecords = new ArrayList<>();
+
+		for (Candidate candidate : request2) {
+			try {
+				Candidate existingCandidate = candidateDao.getById(candidate.getId());
+				existingCandidate.setSlot(candidate.getSlot());
+				if (candidate.getUsers() != null) {
+					Users manager = usersdao.getById(candidate.getUsers().getId());
+					if (manager == null) {
+						throw new UsersException(UsersErrorConstant.USER_NOT_FOUND);
+					}
+					existingCandidate.setUsers(manager);
+				}
+				successfulRecords.add(candidateDao.update(existingCandidate));
+			} catch (Exception e) {
+				BulkUpdateCandidateFailedDto bUCF = new BulkUpdateCandidateFailedDto();
+				bUCF.setId(candidate.getId());
+				failedRecords.add(bUCF);
+			}
 		}
+		BulkUpdateCandidateResponseDto response = new BulkUpdateCandidateResponseDto();
+		response.setTotalRecords(request2.size());
+		response.setFailed(failedRecords.size());
+		response.setFailedRecords(failedRecords);
+		response.setSuccessful(successfulRecords.size());
+		return response;
+	}
 
 		@Override
 		public List<Candidate> getByStatusAndStep(Integer status, Integer step) {

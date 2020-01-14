@@ -195,29 +195,6 @@ public class CandidateDaoImpl implements CandidateDao {
 	}
 
 	@Override
-	public List<Candidate> update(List<Candidate> request2) {
-		LOGGING.INFO("Update List Of Candidate Dao");
-		List<Candidate> merge = new ArrayList<Candidate>();
-		for (Candidate candidate : request2) {
-			try {
-				Candidate byId = getById(candidate.getId());
-				byId.setSlot(candidate.getSlot());
-				if(candidate.getUsers()!=null) {
-					Users manager = usersdao.getById(candidate.getUsers().getId());
-					if(manager==null) {
-						throw new UsersException(UsersErrorConstant.USER_NOT_FOUND);
-					}
-					byId.setUsers(manager);
-				}
-			 merge.add(manager.merge(byId));
-			} catch(Exception e) {
-				throw e;
-			}
-		}
-		return merge;
-	}
-
-	@Override
 	public List<Candidate> getByStatusAndStep(Integer status, Integer step) {
 		LOGGING.INFO("getByStatusAndStep Of Candidate Dao");
 		try {

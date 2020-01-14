@@ -35,7 +35,5 @@ public interface CandidateDao {
 
 	public Candidate getByCIN(String cin);
 
-	public List<Candidate> update(List<Candidate> request2);
-
 	public List<Candidate> getByStatusAndStep(Integer status, Integer step);
 }

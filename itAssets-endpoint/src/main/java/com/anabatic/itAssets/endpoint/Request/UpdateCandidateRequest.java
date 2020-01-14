@@ -1,7 +1,10 @@
 package com.anabatic.itAssets.endpoint.Request;
 
+import com.anabatic.generic.persistence.annotation.IsRequired;
+
 public class UpdateCandidateRequest {
 
+	@IsRequired
 	private Long id;
 	private String name;
 	private String email;
@@ -10,6 +13,7 @@ public class UpdateCandidateRequest {
 	private Float experience;
 	private Integer status;
 	private String comment;
+	@IsRequired
 	private Long managerId;
 	private String slot;
 

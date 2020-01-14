@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.itAssests.core.constant.UsersErrorConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
@@ -39,6 +40,7 @@ import com.anabatic.itAssets.endpoint.converter.GetByIdCandidateConverter;
 import com.anabatic.itAssets.endpoint.converter.InsertCandidateConverter;
 import com.anabatic.itAssets.endpoint.converter.InsertCandidateRecordConverter;
 import com.anabatic.itAssets.endpoint.converter.UpdateCandidateConverter;
+import com.anabatic.itAssets.persistence.dto.BulkUpdateCandidateResponseDto;
 import com.anabatic.itAssets.persistence.model.Candidate;
 import com.anabatic.itAssets.persistence.model.CandidateRecord;
 import com.anabatic.itAssets.persistence.model.Users;
@@ -166,9 +168,12 @@ public class CandidateController {
 
 	@PostMapping("/update-list")
 	public ResponseEntity<BaseResponse> updateList(@RequestBody List<UpdateCandidateRequest> request) {
+		LOGGING.INFO("Accessed Bulk Update Candidate Controller Accesed");
+		ValidationCheck.hasValidate(request, UsersErrorConstant.class);
 		List<Candidate> request2 = updateCandidateConverter.toModels(request);
-		List<Candidate> request3 = candidateService.update(request2);
-		baseResponse.setResponse(updateCandidateConverter.toContracts(request3));
+		BulkUpdateCandidateResponseDto response = candidateService.update(request2);
+		//baseResponse.setResponse(updateCandidateConverter.toContracts(request3));
+		baseResponse.setResponse(response);
 		return ResponseEntity.ok().body(baseResponse);
 	}
 	

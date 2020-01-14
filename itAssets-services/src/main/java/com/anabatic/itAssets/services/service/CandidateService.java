@@ -4,6 +4,7 @@ import java.sql.Time;
 import java.util.Date;
 import java.util.List;
 
+import com.anabatic.itAssets.persistence.dto.BulkUpdateCandidateResponseDto;
 import com.anabatic.itAssets.persistence.model.Candidate;
 
 public interface CandidateService {
@@ -27,7 +28,7 @@ public interface CandidateService {
 
 	Candidate getByCIN(String cin);
 
-	public List<Candidate> update(List<Candidate> request2);
+	public BulkUpdateCandidateResponseDto update(List<Candidate> request2);
 
 	List<Candidate> getByStatusAndStep(Integer status, Integer step);
 
