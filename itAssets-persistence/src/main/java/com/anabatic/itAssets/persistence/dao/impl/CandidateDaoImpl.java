@@ -1,6 +1,7 @@
 package com.anabatic.itAssets.persistence.dao.impl;
 
 import java.sql.Time;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -11,6 +12,7 @@ import javax.transaction.Transactional;
 
 import org.itAssests.core.constant.UsersErrorConstant;
 import org.itAssests.core.exception.UsersException;
+import org.springframework.beans.Mergeable;
 
 import com.anabatic.itAssets.persistence.dao.CandidateDao;
 import com.anabatic.itAssets.persistence.model.Candidate;
@@ -185,5 +187,22 @@ public class CandidateDaoImpl implements CandidateDao {
 				}  catch (Exception e) {
 					throw e;
 				}
+	}
+
+	@Override
+	public List<Candidate> update(List<Candidate> request2) {
+		LOGGING.INFO("Update List Of Candidate Dao");
+		List<Candidate> merge = new ArrayList<Candidate>();
+		for (Candidate candidate : request2) {
+			try {
+				Candidate byId = getById(candidate.getId());
+				byId.setSlot(candidate.getSlot());
+				byId.setName(candidate.getName());
+			 merge.add(manager.merge(byId));
+			} catch(Exception e) {
+				throw e;
+			}
+		}
+		return merge;
 	}
 }

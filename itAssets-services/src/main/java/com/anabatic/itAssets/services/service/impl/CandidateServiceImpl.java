@@ -83,4 +83,10 @@ public class CandidateServiceImpl implements CandidateService {
         return response;
 }
 
+		@Override
+		public List<Candidate> update(List<Candidate> request2) {
+			
+			return candidateDao.update(request2);
+		}
+
 }
