@@ -46,7 +46,7 @@ public class InterviewController {
 	@PostMapping("/HmApprove")
 	public ResponseEntity<BaseResponse> HmApprove(@RequestBody HmApproveRequest request) {
 		Candidate candidate = candidateService.getById(request.getcId());
-		candidate.setStatus(request.getStatus());
+		candidate.setSelectinStatus(request.getStatus());
 		candidate.setComment(request.getComment());
 		Candidate candidate2 = candidateService.update(candidate);
 		BaseResponse baseResponse = new BaseResponse();
@@ -61,8 +61,13 @@ public class InterviewController {
 		for (BulkStatusChangeRequest request : requests) {
 			Candidate candidate1 = candidateService.getById(request.getId());
 			Integer cStep = candidate1.getStep();
-			candidate1.setSelectinStatus(1);
-			candidate1.setStep(cStep);
+			candidate1.setStatus(candidate1.getSelectinStatus());
+			candidate1.setSelectinStatus(0);
+			if (candidate1.getStatus() == 1) {
+				candidate1.setStep(cStep + 1);
+			} else {
+				candidate1.setStep(cStep);
+			}
 			Candidate candidate = candidateService.update(candidate1);
 			CandidateBean bean = new CandidateBean();
 			bean.setName(candidate.getName());
@@ -97,8 +102,10 @@ public class InterviewController {
 			record.setData(string);
 			record.setDate(new Date());
 			Integer step = candidate.getStep();
-			if (step != 0) {
-				step = step - 1;
+			if (candidate.getStatus() == 1) {
+				record.setSteps(step - 1);
+			} else {
+				record.setSteps(cStep);
 			}
 			record.setStatus(candidate.getStatus());
 			record.setSteps(step);

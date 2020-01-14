@@ -52,7 +52,6 @@ public class Users {
 	@Column(name = "mother_dateOfBirth")
 	private Date motherDateOfBirth;
 
-
 	@Column(name = "sibling1")
 	private String sibling1;
 
@@ -220,10 +219,12 @@ public class Users {
 
 	@OneToMany(mappedBy = "users", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Skills> skills;
-	
+
+	@OneToMany(mappedBy = "users", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<UserDocument> userDocument;
+
 	@OneToMany(mappedBy = "users", fetch = FetchType.LAZY)
 	private List<Privilege> privilege;
-	
 
 	@OneToMany(mappedBy = "userId", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Request> request;
@@ -231,8 +232,14 @@ public class Users {
 	@OneToMany(mappedBy = "users", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Candidate> candidate;
 
-	
-	
+	public List<UserDocument> getUserDocument() {
+		return userDocument;
+	}
+
+	public void setUserDocument(List<UserDocument> userDocument) {
+		this.userDocument = userDocument;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -1071,7 +1078,7 @@ public class Users {
 				return false;
 		} else if (!postGraduationStartYear.equals(other.postGraduationStartYear))
 			return false;
-		
+
 		if (religion == null) {
 			if (other.religion != null)
 				return false;
@@ -1107,25 +1114,67 @@ public class Users {
 
 	@Override
 	public String toString() {
-		return "Users [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", employeeId=" + employeeId
-				+ ", gender=" + gender + ", dateofbirth=" + dateofbirth + ", birthPlace=" + birthPlace
-				+ ", nationality=" + nationality + ", currentAddress=" + currentAddress + ", city=" + city
-				+ ", pincode=" + pincode + ", religion=" + religion + ", maritalStatus=" + maritalStatus
-				+ ", dateOfMarriage=" + dateOfMarriage + ", phoneNumber=" + phoneNumber + ", drivingLicense="
-				+ drivingLicense + ", passportNumber=" + passportNumber + ", pan=" + pan + ", aadhar=" + aadhar
-				+ ", personalEmail=" + personalEmail + ", officalEmail=" + officalEmail + ", reportingManager="
-				+ reportingManager + ", department=" + department + ", jobTitle=" + jobTitle + ", dateOfJoin="
-				+ dateOfJoin + ", permanetAddress=" + permanetAddress + ", photo=" + photo + ", bloodGroup="
-				+ bloodGroup + ", dlGroup=" + dlGroup + ", corpId=" + corpId + ", atiplId=" + atiplId + ", password="
-				+ password + ", hrPassword=" + hrPassword + ", graduation=" + graduation + ", graduationStartYear="
-				+ graduationStartYear + ", graduationEndYear=" + graduationEndYear + ", graduationMajor="
-				+ graduationMajor + ", graduationgrade=" + graduationgrade + ", matricStartYear=" + matricStartYear
-				+ ", matricEndYear=" + matricEndYear + ", matricgrade=" + matricgrade + ", secondaryStartYear="
-				+ secondaryStartYear + ", secondaryEndYear=" + secondaryEndYear + ", secondarygrade=" + secondarygrade
-				+ ", postGraduation=" + postGraduation + ", postGraduationStartYear=" + postGraduationStartYear
-				+ ", postGraduationEndYear=" + postGraduationEndYear + ", postGraduationMajor=" + postGraduationMajor
-				+ ", postGraduationGrade=" + postGraduationGrade + ", skills=" + skills + ", privilege=" 
-				+ "]";
+		return "Users [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", fullName=" + fullName
+				+ ", fatherName=" + fatherName + ", fatherAddar=" + fatherAddar + ", fatherDateOfBirth="
+				+ fatherDateOfBirth + ", motherName=" + motherName + ", motherAddar=" + motherAddar
+				+ ", motherDateOfBirth=" + motherDateOfBirth + ", sibling1=" + sibling1 + ", sibling1DateOfBirth="
+				+ sibling1DateOfBirth + ", sibling2=" + sibling2 + ", sibling2DateOfBirth=" + sibling2DateOfBirth
+				+ ", sibling3=" + sibling3 + ", sibling3DateOfBirth=" + sibling3DateOfBirth + ", employeeId="
+				+ employeeId + ", spouceName=" + spouceName + ", spouceAdhar=" + spouceAdhar + ", gender=" + gender
+				+ ", dateofbirth=" + dateofbirth + ", birthPlace=" + birthPlace + ", nationality=" + nationality
+				+ ", currentAddress=" + currentAddress + ", city=" + city + ", pincode=" + pincode + ", religion="
+				+ religion + ", maritalStatus=" + maritalStatus + ", dateOfMarriage=" + dateOfMarriage
+				+ ", phoneNumber=" + phoneNumber + ", drivingLicense=" + drivingLicense + ", passportNumber="
+				+ passportNumber + ", pan=" + pan + ", aadhar=" + aadhar + ", personalEmail=" + personalEmail
+				+ ", officalEmail=" + officalEmail + ", reportingManager=" + reportingManager + ", department="
+				+ department + ", jobTitle=" + jobTitle + ", dateOfJoin=" + dateOfJoin + ", permanetAddress="
+				+ permanetAddress + ", photo=" + photo + ", bloodGroup=" + bloodGroup + ", dlGroup=" + dlGroup
+				+ ", corpId=" + corpId + ", atiplId=" + atiplId + ", password=" + password + ", hrPassword="
+				+ hrPassword + ", graduation=" + graduation + ", graduationStartYear=" + graduationStartYear
+				+ ", graduationEndYear=" + graduationEndYear + ", graduationMajor=" + graduationMajor
+				+ ", graduationgrade=" + graduationgrade + ", matricStartYear=" + matricStartYear + ", matricEndYear="
+				+ matricEndYear + ", matricgrade=" + matricgrade + ", secondaryStartYear=" + secondaryStartYear
+				+ ", secondaryEndYear=" + secondaryEndYear + ", secondarygrade=" + secondarygrade + ", postGraduation="
+				+ postGraduation + ", postGraduationStartYear=" + postGraduationStartYear + ", postGraduationEndYear="
+				+ postGraduationEndYear + ", postGraduationMajor=" + postGraduationMajor + ", postGraduationGrade="
+				+ postGraduationGrade + ", status=" + status + ", skills=" + skills + ", userDocument=" + userDocument
+				+ ", privilege=" + privilege + ", request=" + request + ", candidate=" + candidate
+				+ ", getUserDocument()=" + getUserDocument() + ", getId()=" + getId() + ", getFirstName()="
+				+ getFirstName() + ", getLastName()=" + getLastName() + ", getFullName()=" + getFullName()
+				+ ", getFatherName()=" + getFatherName() + ", getFatherAddar()=" + getFatherAddar()
+				+ ", getFatherDateOfBirth()=" + getFatherDateOfBirth() + ", getMotherName()=" + getMotherName()
+				+ ", getMotherAddar()=" + getMotherAddar() + ", getMotherDateOfBirth()=" + getMotherDateOfBirth()
+				+ ", getSibling1()=" + getSibling1() + ", getSibling1DateOfBirth()=" + getSibling1DateOfBirth()
+				+ ", getSibling2()=" + getSibling2() + ", getSibling2DateOfBirth()=" + getSibling2DateOfBirth()
+				+ ", getSibling3()=" + getSibling3() + ", getSibling3DateOfBirth()=" + getSibling3DateOfBirth()
+				+ ", getEmployeeId()=" + getEmployeeId() + ", getSpouceName()=" + getSpouceName()
+				+ ", getSpouceAdhar()=" + getSpouceAdhar() + ", getGender()=" + getGender() + ", getDateofbirth()="
+				+ getDateofbirth() + ", getBirthPlace()=" + getBirthPlace() + ", getNationality()=" + getNationality()
+				+ ", getCurrentAddress()=" + getCurrentAddress() + ", getCity()=" + getCity() + ", getPincode()="
+				+ getPincode() + ", getReligion()=" + getReligion() + ", getMaritalStatus()=" + getMaritalStatus()
+				+ ", getDateOfMarriage()=" + getDateOfMarriage() + ", getPhoneNumber()=" + getPhoneNumber()
+				+ ", getDrivingLicense()=" + getDrivingLicense() + ", getPassportNumber()=" + getPassportNumber()
+				+ ", getPan()=" + getPan() + ", getAadhar()=" + getAadhar() + ", getPersonalEmail()="
+				+ getPersonalEmail() + ", getOfficalEmail()=" + getOfficalEmail() + ", getReportingManager()="
+				+ getReportingManager() + ", getDepartment()=" + getDepartment() + ", getJobTitle()=" + getJobTitle()
+				+ ", getDateOfJoin()=" + getDateOfJoin() + ", getPermanetAddress()=" + getPermanetAddress()
+				+ ", getPhoto()=" + getPhoto() + ", getBloodGroup()=" + getBloodGroup() + ", getDlGroup()="
+				+ getDlGroup() + ", getCorpId()=" + getCorpId() + ", getAtiplId()=" + getAtiplId() + ", getPassword()="
+				+ getPassword() + ", getHrPassword()=" + getHrPassword() + ", getGraduation()=" + getGraduation()
+				+ ", getGraduationStartYear()=" + getGraduationStartYear() + ", getGraduationEndYear()="
+				+ getGraduationEndYear() + ", getGraduationMajor()=" + getGraduationMajor() + ", getGraduationgrade()="
+				+ getGraduationgrade() + ", getMatricStartYear()=" + getMatricStartYear() + ", getMatricEndYear()="
+				+ getMatricEndYear() + ", getMatricgrade()=" + getMatricgrade() + ", getSecondaryStartYear()="
+				+ getSecondaryStartYear() + ", getSecondaryEndYear()=" + getSecondaryEndYear()
+				+ ", getSecondarygrade()=" + getSecondarygrade() + ", getPostGraduation()=" + getPostGraduation()
+				+ ", getPostGraduationStartYear()=" + getPostGraduationStartYear() + ", getPostGraduationEndYear()="
+				+ getPostGraduationEndYear() + ", getPostGraduationMajor()=" + getPostGraduationMajor()
+				+ ", getPostGraduationGrade()=" + getPostGraduationGrade() + ", getStatus()=" + getStatus()
+				+ ", getSkills()=" + getSkills() + ", getPrivilege()=" + getPrivilege() + ", getRequest()="
+				+ getRequest() + ", getCandidate()=" + getCandidate() + ", hashCode()=" + hashCode() + ", getClass()="
+				+ getClass() + ", toString()=" + super.toString() + "]";
 	}
+
+	
 
 }
