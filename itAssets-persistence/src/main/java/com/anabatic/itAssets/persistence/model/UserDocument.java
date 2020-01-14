@@ -37,6 +37,12 @@ public class UserDocument {
 	@JoinColumn(name = "user_id", referencedColumnName = "id")
 	private Users users;
 
+	@Override
+	public String toString() {
+		return "UserDocument [id=" + id + ", name=" + name + ", fileName=" + fileName + ", comment=" + comment
+				+ ", docType=" + docType + ", users=" + users + "]";
+	}
+
 	public Users getUsers() {
 		return users;
 	}
