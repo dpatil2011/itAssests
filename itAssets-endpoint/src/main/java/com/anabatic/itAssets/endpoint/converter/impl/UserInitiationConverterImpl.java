@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.anabatic.itAssets.endpoint.Request.UserInitiationRequest;
+import com.anabatic.itAssets.endpoint.Response.UserInitiationResponse;
 import com.anabatic.itAssets.endpoint.converter.UserInitiationConverter;
 import com.anabatic.itAssets.persistence.model.UserInitiation;
 
@@ -17,11 +18,13 @@ public class UserInitiationConverterImpl implements UserInitiationConverter{
     @Override
     public UserInitiation toModel(UserInitiationRequest object) {
         UserInitiation response = new UserInitiation();
-        response.setActiveFrom(object.getDate());
+        response.setActiveFrom(object.getActiveFrom());
         response.setCinNumber(object.getCinNumber());
         response.setEmail(object.getEmail());
-        response.setLink(object.getLink());
+        response.setExpireOn(object.getExpireOn());
         response.setId(object.getId());
+        response.setLink(object.getLink());
+        response.setUserData(object.getUserData());
         return response;
     }
 
@@ -32,14 +35,21 @@ public class UserInitiationConverterImpl implements UserInitiationConverter{
     }
 
     @Override
-    public String toContract(UserInitiation object) {
-        // TODO Auto-generated method stub
-        return object.getLink();
+    public UserInitiationResponse toContract(UserInitiation object) {
+        UserInitiationResponse response = new UserInitiationResponse();
+        response.setActiveFrom(object.getActiveFrom());
+        response.setCinNumber(object.getCinNumber());
+        response.setEmail(object.getEmail());
+        response.setExpireOn(object.getExpireOn());
+        response.setId(object.getId());
+        response.setLink(object.getLink());
+        response.setUserData(object.getUserData());
+        return response;
     }
 
     @Override
-    public List<String> toContracts(List<UserInitiation> objects) {
-        List<String> list = new ArrayList<>();
+    public List<UserInitiationResponse> toContracts(List<UserInitiation> objects) {
+        List<UserInitiationResponse> list = new ArrayList<>();
         objects.forEach(x -> list.add(toContract(x)));
         return list;
     }

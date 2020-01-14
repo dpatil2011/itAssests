@@ -1,14 +1,14 @@
-package com.anabatic.itAssets.endpoint.Request;
+package com.anabatic.itAssets.endpoint.Response;
 
 import java.util.Date;
 
 /**
  * !place your description here!
  *
- * @author yeshwantk (&copy;09-Jan-2020) 
+ * @author yeshwantk (&copy;14-Jan-2020) 
  */
-public class UserInitiationRequest {
-
+public class UserInitiationResponse {
+    
     private Long id;
     private String link;
     private Date activeFrom;
@@ -58,6 +58,5 @@ public class UserInitiationRequest {
     public void setUserData(String userData) {
         this.userData = userData;
     }
-    
-    
+
 }
