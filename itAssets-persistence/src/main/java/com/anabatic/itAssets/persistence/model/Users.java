@@ -231,6 +231,12 @@ public class Users {
 
 	@OneToMany(mappedBy = "users", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Candidate> candidate;
+	
+	@OneToMany(mappedBy = "users", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<Certification> certification;
+	
+	@OneToMany(mappedBy = "users", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<Experience> experience;
 
 	public List<UserDocument> getUserDocument() {
 		return userDocument;
@@ -792,6 +798,22 @@ public class Users {
 		this.candidate = candidate;
 	}
 
+	public List<Certification> getCertification() {
+		return certification;
+	}
+
+	public void setCertification(List<Certification> certification) {
+		this.certification = certification;
+	}
+
+	public List<Experience> getExperience() {
+		return experience;
+	}
+
+	public void setExperience(List<Experience> experience) {
+		this.experience = experience;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -800,6 +822,8 @@ public class Users {
 		result = prime * result + ((atiplId == null) ? 0 : atiplId.hashCode());
 		result = prime * result + ((birthPlace == null) ? 0 : birthPlace.hashCode());
 		result = prime * result + ((bloodGroup == null) ? 0 : bloodGroup.hashCode());
+		result = prime * result + ((candidate == null) ? 0 : candidate.hashCode());
+		result = prime * result + ((certification == null) ? 0 : certification.hashCode());
 		result = prime * result + ((city == null) ? 0 : city.hashCode());
 		result = prime * result + ((corpId == null) ? 0 : corpId.hashCode());
 		result = prime * result + ((currentAddress == null) ? 0 : currentAddress.hashCode());
@@ -810,7 +834,12 @@ public class Users {
 		result = prime * result + ((dlGroup == null) ? 0 : dlGroup.hashCode());
 		result = prime * result + ((drivingLicense == null) ? 0 : drivingLicense.hashCode());
 		result = prime * result + ((employeeId == null) ? 0 : employeeId.hashCode());
+		result = prime * result + ((experience == null) ? 0 : experience.hashCode());
+		result = prime * result + ((fatherAddar == null) ? 0 : fatherAddar.hashCode());
+		result = prime * result + ((fatherDateOfBirth == null) ? 0 : fatherDateOfBirth.hashCode());
+		result = prime * result + ((fatherName == null) ? 0 : fatherName.hashCode());
 		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
+		result = prime * result + ((fullName == null) ? 0 : fullName.hashCode());
 		result = prime * result + ((gender == null) ? 0 : gender.hashCode());
 		result = prime * result + ((graduation == null) ? 0 : graduation.hashCode());
 		result = prime * result + ((graduationEndYear == null) ? 0 : graduationEndYear.hashCode());
@@ -825,6 +854,9 @@ public class Users {
 		result = prime * result + ((matricEndYear == null) ? 0 : matricEndYear.hashCode());
 		result = prime * result + ((matricStartYear == null) ? 0 : matricStartYear.hashCode());
 		result = prime * result + ((matricgrade == null) ? 0 : matricgrade.hashCode());
+		result = prime * result + ((motherAddar == null) ? 0 : motherAddar.hashCode());
+		result = prime * result + ((motherDateOfBirth == null) ? 0 : motherDateOfBirth.hashCode());
+		result = prime * result + ((motherName == null) ? 0 : motherName.hashCode());
 		result = prime * result + ((nationality == null) ? 0 : nationality.hashCode());
 		result = prime * result + ((officalEmail == null) ? 0 : officalEmail.hashCode());
 		result = prime * result + ((pan == null) ? 0 : pan.hashCode());
@@ -840,12 +872,24 @@ public class Users {
 		result = prime * result + ((postGraduationGrade == null) ? 0 : postGraduationGrade.hashCode());
 		result = prime * result + ((postGraduationMajor == null) ? 0 : postGraduationMajor.hashCode());
 		result = prime * result + ((postGraduationStartYear == null) ? 0 : postGraduationStartYear.hashCode());
+		result = prime * result + ((privilege == null) ? 0 : privilege.hashCode());
 		result = prime * result + ((religion == null) ? 0 : religion.hashCode());
 		result = prime * result + ((reportingManager == null) ? 0 : reportingManager.hashCode());
+		result = prime * result + ((request == null) ? 0 : request.hashCode());
 		result = prime * result + ((secondaryEndYear == null) ? 0 : secondaryEndYear.hashCode());
 		result = prime * result + ((secondaryStartYear == null) ? 0 : secondaryStartYear.hashCode());
 		result = prime * result + ((secondarygrade == null) ? 0 : secondarygrade.hashCode());
+		result = prime * result + ((sibling1 == null) ? 0 : sibling1.hashCode());
+		result = prime * result + ((sibling1DateOfBirth == null) ? 0 : sibling1DateOfBirth.hashCode());
+		result = prime * result + ((sibling2 == null) ? 0 : sibling2.hashCode());
+		result = prime * result + ((sibling2DateOfBirth == null) ? 0 : sibling2DateOfBirth.hashCode());
+		result = prime * result + ((sibling3 == null) ? 0 : sibling3.hashCode());
+		result = prime * result + ((sibling3DateOfBirth == null) ? 0 : sibling3DateOfBirth.hashCode());
 		result = prime * result + ((skills == null) ? 0 : skills.hashCode());
+		result = prime * result + ((spouceAdhar == null) ? 0 : spouceAdhar.hashCode());
+		result = prime * result + ((spouceName == null) ? 0 : spouceName.hashCode());
+		result = prime * result + ((status == null) ? 0 : status.hashCode());
+		result = prime * result + ((userDocument == null) ? 0 : userDocument.hashCode());
 		return result;
 	}
 
@@ -877,6 +921,16 @@ public class Users {
 			if (other.bloodGroup != null)
 				return false;
 		} else if (!bloodGroup.equals(other.bloodGroup))
+			return false;
+		if (candidate == null) {
+			if (other.candidate != null)
+				return false;
+		} else if (!candidate.equals(other.candidate))
+			return false;
+		if (certification == null) {
+			if (other.certification != null)
+				return false;
+		} else if (!certification.equals(other.certification))
 			return false;
 		if (city == null) {
 			if (other.city != null)
@@ -928,10 +982,35 @@ public class Users {
 				return false;
 		} else if (!employeeId.equals(other.employeeId))
 			return false;
+		if (experience == null) {
+			if (other.experience != null)
+				return false;
+		} else if (!experience.equals(other.experience))
+			return false;
+		if (fatherAddar == null) {
+			if (other.fatherAddar != null)
+				return false;
+		} else if (!fatherAddar.equals(other.fatherAddar))
+			return false;
+		if (fatherDateOfBirth == null) {
+			if (other.fatherDateOfBirth != null)
+				return false;
+		} else if (!fatherDateOfBirth.equals(other.fatherDateOfBirth))
+			return false;
+		if (fatherName == null) {
+			if (other.fatherName != null)
+				return false;
+		} else if (!fatherName.equals(other.fatherName))
+			return false;
 		if (firstName == null) {
 			if (other.firstName != null)
 				return false;
 		} else if (!firstName.equals(other.firstName))
+			return false;
+		if (fullName == null) {
+			if (other.fullName != null)
+				return false;
+		} else if (!fullName.equals(other.fullName))
 			return false;
 		if (gender == null) {
 			if (other.gender != null)
@@ -1002,6 +1081,21 @@ public class Users {
 			if (other.matricgrade != null)
 				return false;
 		} else if (!matricgrade.equals(other.matricgrade))
+			return false;
+		if (motherAddar == null) {
+			if (other.motherAddar != null)
+				return false;
+		} else if (!motherAddar.equals(other.motherAddar))
+			return false;
+		if (motherDateOfBirth == null) {
+			if (other.motherDateOfBirth != null)
+				return false;
+		} else if (!motherDateOfBirth.equals(other.motherDateOfBirth))
+			return false;
+		if (motherName == null) {
+			if (other.motherName != null)
+				return false;
+		} else if (!motherName.equals(other.motherName))
 			return false;
 		if (nationality == null) {
 			if (other.nationality != null)
@@ -1078,7 +1172,11 @@ public class Users {
 				return false;
 		} else if (!postGraduationStartYear.equals(other.postGraduationStartYear))
 			return false;
-
+		if (privilege == null) {
+			if (other.privilege != null)
+				return false;
+		} else if (!privilege.equals(other.privilege))
+			return false;
 		if (religion == null) {
 			if (other.religion != null)
 				return false;
@@ -1088,6 +1186,11 @@ public class Users {
 			if (other.reportingManager != null)
 				return false;
 		} else if (!reportingManager.equals(other.reportingManager))
+			return false;
+		if (request == null) {
+			if (other.request != null)
+				return false;
+		} else if (!request.equals(other.request))
 			return false;
 		if (secondaryEndYear == null) {
 			if (other.secondaryEndYear != null)
@@ -1104,10 +1207,60 @@ public class Users {
 				return false;
 		} else if (!secondarygrade.equals(other.secondarygrade))
 			return false;
+		if (sibling1 == null) {
+			if (other.sibling1 != null)
+				return false;
+		} else if (!sibling1.equals(other.sibling1))
+			return false;
+		if (sibling1DateOfBirth == null) {
+			if (other.sibling1DateOfBirth != null)
+				return false;
+		} else if (!sibling1DateOfBirth.equals(other.sibling1DateOfBirth))
+			return false;
+		if (sibling2 == null) {
+			if (other.sibling2 != null)
+				return false;
+		} else if (!sibling2.equals(other.sibling2))
+			return false;
+		if (sibling2DateOfBirth == null) {
+			if (other.sibling2DateOfBirth != null)
+				return false;
+		} else if (!sibling2DateOfBirth.equals(other.sibling2DateOfBirth))
+			return false;
+		if (sibling3 == null) {
+			if (other.sibling3 != null)
+				return false;
+		} else if (!sibling3.equals(other.sibling3))
+			return false;
+		if (sibling3DateOfBirth == null) {
+			if (other.sibling3DateOfBirth != null)
+				return false;
+		} else if (!sibling3DateOfBirth.equals(other.sibling3DateOfBirth))
+			return false;
 		if (skills == null) {
 			if (other.skills != null)
 				return false;
 		} else if (!skills.equals(other.skills))
+			return false;
+		if (spouceAdhar == null) {
+			if (other.spouceAdhar != null)
+				return false;
+		} else if (!spouceAdhar.equals(other.spouceAdhar))
+			return false;
+		if (spouceName == null) {
+			if (other.spouceName != null)
+				return false;
+		} else if (!spouceName.equals(other.spouceName))
+			return false;
+		if (status == null) {
+			if (other.status != null)
+				return false;
+		} else if (!status.equals(other.status))
+			return false;
+		if (userDocument == null) {
+			if (other.userDocument != null)
+				return false;
+		} else if (!userDocument.equals(other.userDocument))
 			return false;
 		return true;
 	}
@@ -1138,43 +1291,8 @@ public class Users {
 				+ postGraduation + ", postGraduationStartYear=" + postGraduationStartYear + ", postGraduationEndYear="
 				+ postGraduationEndYear + ", postGraduationMajor=" + postGraduationMajor + ", postGraduationGrade="
 				+ postGraduationGrade + ", status=" + status + ", skills=" + skills + ", userDocument=" + userDocument
-				+ ", privilege=" + privilege + ", request=" + request + ", candidate=" + candidate
-				+ ", getUserDocument()=" + getUserDocument() + ", getId()=" + getId() + ", getFirstName()="
-				+ getFirstName() + ", getLastName()=" + getLastName() + ", getFullName()=" + getFullName()
-				+ ", getFatherName()=" + getFatherName() + ", getFatherAddar()=" + getFatherAddar()
-				+ ", getFatherDateOfBirth()=" + getFatherDateOfBirth() + ", getMotherName()=" + getMotherName()
-				+ ", getMotherAddar()=" + getMotherAddar() + ", getMotherDateOfBirth()=" + getMotherDateOfBirth()
-				+ ", getSibling1()=" + getSibling1() + ", getSibling1DateOfBirth()=" + getSibling1DateOfBirth()
-				+ ", getSibling2()=" + getSibling2() + ", getSibling2DateOfBirth()=" + getSibling2DateOfBirth()
-				+ ", getSibling3()=" + getSibling3() + ", getSibling3DateOfBirth()=" + getSibling3DateOfBirth()
-				+ ", getEmployeeId()=" + getEmployeeId() + ", getSpouceName()=" + getSpouceName()
-				+ ", getSpouceAdhar()=" + getSpouceAdhar() + ", getGender()=" + getGender() + ", getDateofbirth()="
-				+ getDateofbirth() + ", getBirthPlace()=" + getBirthPlace() + ", getNationality()=" + getNationality()
-				+ ", getCurrentAddress()=" + getCurrentAddress() + ", getCity()=" + getCity() + ", getPincode()="
-				+ getPincode() + ", getReligion()=" + getReligion() + ", getMaritalStatus()=" + getMaritalStatus()
-				+ ", getDateOfMarriage()=" + getDateOfMarriage() + ", getPhoneNumber()=" + getPhoneNumber()
-				+ ", getDrivingLicense()=" + getDrivingLicense() + ", getPassportNumber()=" + getPassportNumber()
-				+ ", getPan()=" + getPan() + ", getAadhar()=" + getAadhar() + ", getPersonalEmail()="
-				+ getPersonalEmail() + ", getOfficalEmail()=" + getOfficalEmail() + ", getReportingManager()="
-				+ getReportingManager() + ", getDepartment()=" + getDepartment() + ", getJobTitle()=" + getJobTitle()
-				+ ", getDateOfJoin()=" + getDateOfJoin() + ", getPermanetAddress()=" + getPermanetAddress()
-				+ ", getPhoto()=" + getPhoto() + ", getBloodGroup()=" + getBloodGroup() + ", getDlGroup()="
-				+ getDlGroup() + ", getCorpId()=" + getCorpId() + ", getAtiplId()=" + getAtiplId() + ", getPassword()="
-				+ getPassword() + ", getHrPassword()=" + getHrPassword() + ", getGraduation()=" + getGraduation()
-				+ ", getGraduationStartYear()=" + getGraduationStartYear() + ", getGraduationEndYear()="
-				+ getGraduationEndYear() + ", getGraduationMajor()=" + getGraduationMajor() + ", getGraduationgrade()="
-				+ getGraduationgrade() + ", getMatricStartYear()=" + getMatricStartYear() + ", getMatricEndYear()="
-				+ getMatricEndYear() + ", getMatricgrade()=" + getMatricgrade() + ", getSecondaryStartYear()="
-				+ getSecondaryStartYear() + ", getSecondaryEndYear()=" + getSecondaryEndYear()
-				+ ", getSecondarygrade()=" + getSecondarygrade() + ", getPostGraduation()=" + getPostGraduation()
-				+ ", getPostGraduationStartYear()=" + getPostGraduationStartYear() + ", getPostGraduationEndYear()="
-				+ getPostGraduationEndYear() + ", getPostGraduationMajor()=" + getPostGraduationMajor()
-				+ ", getPostGraduationGrade()=" + getPostGraduationGrade() + ", getStatus()=" + getStatus()
-				+ ", getSkills()=" + getSkills() + ", getPrivilege()=" + getPrivilege() + ", getRequest()="
-				+ getRequest() + ", getCandidate()=" + getCandidate() + ", hashCode()=" + hashCode() + ", getClass()="
-				+ getClass() + ", toString()=" + super.toString() + "]";
+				+ ", privilege=" + privilege + ", request=" + request + ", candidate=" + candidate + ", certification="
+				+ certification + ", experience=" + experience + "]";
 	}
-
-	
 
 }
