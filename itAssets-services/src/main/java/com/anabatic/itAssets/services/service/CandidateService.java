@@ -31,4 +31,7 @@ public interface CandidateService {
 
 	List<Candidate> getByStatusAndStep(Integer status, Integer step);
 
+	List<Candidate> getByStep(Integer step);
+
+
 }
