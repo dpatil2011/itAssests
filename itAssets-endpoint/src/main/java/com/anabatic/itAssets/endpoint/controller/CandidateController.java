@@ -28,6 +28,7 @@ import com.anabatic.generic.persistence.validator.field.ValidationCheck;
 import com.anabatic.itAssets.endpoint.Request.GetByHmCandidateRequest;
 import com.anabatic.itAssets.endpoint.Request.GetByCINCandidateRequest;
 import com.anabatic.itAssets.endpoint.Request.GetByIdCandidateRequest;
+import com.anabatic.itAssets.endpoint.Request.GetByStatusAndStepCandidateRequest;
 import com.anabatic.itAssets.endpoint.Request.InsertCandidateRequest;
 import com.anabatic.itAssets.endpoint.Request.JoiningDateCandidateRequest;
 import com.anabatic.itAssets.endpoint.Request.ScheduleInterviewCandidateRequest;
@@ -163,6 +164,14 @@ public class CandidateController {
 		return ResponseEntity.ok().body(baseResponse);
 	}
 
+	@PostMapping("/update-list")
+	public ResponseEntity<BaseResponse> updateList(@RequestBody List<UpdateCandidateRequest> request) {
+		List<Candidate> request2 = updateCandidateConverter.toModels(request);
+		List<Candidate> request3 = candidateService.update(request2);
+		baseResponse.setResponse(updateCandidateConverter.toContracts(request3));
+		return ResponseEntity.ok().body(baseResponse);
+	}
+	
 	@GetMapping("/{fileName:.+}")
 	public ResponseEntity<Resource> downloadFile(@PathVariable String fileName, HttpServletRequest request) {
 
@@ -214,13 +223,12 @@ public class CandidateController {
 		if(request3!=null) {
 			CandidateRecord candidateRecord = new CandidateRecord();
 			ObjectMapper Obj = new ObjectMapper();
-			InsertCandidateRequest request2 = new InsertCandidateRequest();
-			request2.setComment(request3.getComment());
-			request2.setHmId(request3.getUsers().getId());
-			request2.setStatus(request3.getStatus());
+			Candidate candidate=candidateService.getById(request.getcId());
+			candidate.setComment(request.getComment());
+			candidate.setStep(request.getStep());
 			String jsonStr=null;
 			try {
-				jsonStr = Obj.writeValueAsString(request2);
+				jsonStr = Obj.writeValueAsString(candidate);
 			} catch (JsonProcessingException e) {
 				e.printStackTrace();
 			}
@@ -256,5 +264,17 @@ public class CandidateController {
 		baseResponse.setResponse(getByCINCandidateConverter.toContract(can1));
 		return ResponseEntity.ok().body(baseResponse);
 	}
+	
+	@PostMapping("/getByStatusAndStep")
+	public ResponseEntity<BaseResponse> getByStatusAndStep(@RequestBody GetByStatusAndStepCandidateRequest request) {
+        ValidationCheck.hasValidate(request);
+		//Candidate can = getByCINCandidateConverter.toModel(request);
+		List<Candidate> can1 = candidateService.getByStatusAndStep(request.getStatus(),request.getStep());
+		BaseResponse baseResponse = new BaseResponse();
+		baseResponse.setResponse(getAllCandidateConverter.toContracts(can1));
+		return ResponseEntity.ok().body(baseResponse);
+	}
+	
+	
 
 }

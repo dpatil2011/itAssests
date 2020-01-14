@@ -42,54 +42,54 @@ public class Candidate {
 
 	@Column(name = "skills")
 	private String skills;
-	
+
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "manager_id")
 	private Users users;
-	
+
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "recruiter_id")
 	private Users usersr;
 
 	@Column(name = "comment")
 	private String comment;
-	
+
 	@Column(name = "file_name")
 	private String fileName;
-	
+
 	@Column(name = "upload_dir")
 	private String uploadDir;
-	
+
 	@Column(name = "file_type")
 	private String fileType;
-	
+
 	@Column(name = "file_size")
 	private Long filesize;
-	
+
 	@Column(name = "interview_date")
 	private Date interviewDate;
-	
-	@Column(name="interview_start_time")
+
+	@Column(name = "interview_start_time")
 	private Time interviewStartTime;
-	
-	@Column(name="interview_end_time")
+
+	@Column(name = "interview_end_time")
 	private Time interviewEndTime;
-	
+
 	@Column(name = "mode")
 	private String modeOfInterview;
-	
+
 	@Column(name = "slot")
 	private String slot;
-	
+
 	@Column(name = "date_of_joining")
 	private Date dateOfJoining;
-	
+
 	@Column(name = "cin")
 	private String cin;
-	
+
 	@Column(name = "step")
 	private Integer step;
-		
+
 	public Integer getStep() {
 		return step;
 	}
@@ -100,7 +100,6 @@ public class Candidate {
 
 	@OneToMany(mappedBy = "cId", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<CandidateRecord> candidateRecord;
-	
 
 	public Time getInterviewEndTime() {
 		return interviewEndTime;
@@ -149,8 +148,6 @@ public class Candidate {
 	public void setDateOfJoining(Date dateOfJoining) {
 		this.dateOfJoining = dateOfJoining;
 	}
-
-
 
 	public Users getUsersr() {
 		return usersr;
@@ -214,6 +211,9 @@ public class Candidate {
 	@Column(name = "status")
 	private Integer status;
 
+	@Column(name = "selection")
+	private Integer selectinStatus;
+
 	public Long getId() {
 		return id;
 	}
@@ -237,8 +237,6 @@ public class Candidate {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
-	
 
 	public String getPhoneNo() {
 		return phoneNo;
@@ -288,6 +286,12 @@ public class Candidate {
 		this.interviewStartTime = interviewStartTime;
 	}
 
-	
+	public Integer getSelectinStatus() {
+		return selectinStatus;
+	}
+
+	public void setSelectinStatus(Integer selectinStatus) {
+		this.selectinStatus = selectinStatus;
+	}
 
 }

@@ -1,5 +1,6 @@
 package com.anabatic.itAssets.endpoint.converter.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.anabatic.itAssets.endpoint.Request.InsertCandidateRecordRequest;
@@ -53,8 +54,9 @@ public class InsertCandidateRecordConverterImpl implements InsertCandidateRecord
 
 	@Override
 	public List<InsertCandidateRecordResponse> toContracts(List<CandidateRecord> objects) {
-		// TODO Auto-generated method stub
-		return null;
+		List<InsertCandidateRecordResponse> list=new ArrayList<>();
+		objects.forEach(x -> list.add(toContract(x)));
+		return list;
 	}
 
 }
