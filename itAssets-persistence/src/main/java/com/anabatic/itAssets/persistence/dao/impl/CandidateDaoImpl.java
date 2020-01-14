@@ -1,6 +1,7 @@
 package com.anabatic.itAssets.persistence.dao.impl;
 
 import java.sql.Time;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -11,9 +12,13 @@ import javax.transaction.Transactional;
 
 import org.itAssests.core.constant.UsersErrorConstant;
 import org.itAssests.core.exception.UsersException;
+import org.springframework.beans.Mergeable;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.anabatic.itAssets.persistence.dao.CandidateDao;
+import com.anabatic.itAssets.persistence.dao.UsersDao;
 import com.anabatic.itAssets.persistence.model.Candidate;
+import com.anabatic.itAssets.persistence.model.Users;
 import com.anabatic.logging.executor.Logging;
 
 @Transactional
@@ -22,6 +27,8 @@ public class CandidateDaoImpl implements CandidateDao {
 	private static final Logging LOGGING = new Logging(CandidateDaoImpl.class);
 	@PersistenceContext
 	EntityManager manager;
+	@Autowired
+	UsersDao usersdao;
 
 	@Override
 	public Candidate insert(Candidate candidate) {
@@ -190,17 +197,24 @@ public class CandidateDaoImpl implements CandidateDao {
 	@Override
 	public List<Candidate> update(List<Candidate> request2) {
 		LOGGING.INFO("Update List Of Candidate Dao");
+		List<Candidate> merge = new ArrayList<Candidate>();
 		for (Candidate candidate : request2) {
 			try {
 				Candidate byId = getById(candidate.getId());
 				byId.setSlot(candidate.getSlot());
-			Candidate merge = manager.merge(byId);
+				if(candidate.getUsers()!=null) {
+					Users manager = usersdao.getById(candidate.getUsers().getId());
+					if(manager==null) {
+						throw new UsersException(UsersErrorConstant.USER_NOT_FOUND);
+					}
+					byId.setUsers(manager);
+				}
+			 merge.add(manager.merge(byId));
 			} catch(Exception e) {
 				throw e;
 			}
 		}
-	
-		return null;
+		return merge;
 	}
 
 	@Override

@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.anabatic.itAssets.endpoint.Request.UpdateCandidateRequest;
-import com.anabatic.itAssets.endpoint.Response.InsertCandidateResponse;
 import com.anabatic.itAssets.endpoint.Response.UpdateCandidateResponse;
 import com.anabatic.itAssets.endpoint.converter.UpdateCandidateConverter;
 import com.anabatic.itAssets.persistence.model.Candidate;
@@ -23,32 +22,20 @@ public class UpdateCandidateConverterImpl implements UpdateCandidateConverter {
 		c.setPhoneNo(object.getPhoneNo());
 		c.setSkills(object.getSkills());
 		c.setStatus(object.getStatus());
+		c.setSlot(object.getSlot());
 		Users u = new Users();
 		u.setId(object.getManagerId());
 		c.setUsers(u);
 		return c;
 	}
-
+	
 	@Override
 	public List<Candidate> toModels(List<UpdateCandidateRequest> objects) {
-		List<Candidate> candidateList = new ArrayList<>(); 
-       for (UpdateCandidateRequest updateCandidateRequest : objects) {
-    	   Candidate c=new Candidate();
-   		c.setId(updateCandidateRequest.getId());
-   		c.setComment(updateCandidateRequest.getComment());
-   		c.setEmail(updateCandidateRequest.getEmail());
-   		c.setExperience(updateCandidateRequest.getExperience());
-   		c.setName(updateCandidateRequest.getName());
-   		c.setPhoneNo(updateCandidateRequest.getPhoneNo());
-   		c.setSkills(updateCandidateRequest.getSkills());
-   		c.setStatus(updateCandidateRequest.getStatus());
-   		c.setSlot(updateCandidateRequest.getSlot());
-   		Users u = new Users();
-   		u.setId(updateCandidateRequest.getManagerId());
-   		c.setUsers(u);
-   		candidateList.add(c);
-	}
-		return candidateList;
+		List<Candidate> models = new ArrayList<>();
+		objects.forEach(object->{
+			models.add(toModel(object));
+		});
+		return models;
 	}
 
 	@Override
@@ -69,8 +56,11 @@ public class UpdateCandidateConverterImpl implements UpdateCandidateConverter {
 
 	@Override
 	public List<UpdateCandidateResponse> toContracts(List<Candidate> objects) {
-		// TODO Auto-generated method stub
-		return null;
+		List<UpdateCandidateResponse> contracts = new ArrayList<>();
+		objects.forEach(object->{
+			contracts.add(toContract(object));
+		});
+		return contracts;
 	}
 
 }

@@ -41,4 +41,5 @@ public interface CandidateDao {
 
 	public List<Candidate> getByStatusAndStep(Integer step);
 
+
 }

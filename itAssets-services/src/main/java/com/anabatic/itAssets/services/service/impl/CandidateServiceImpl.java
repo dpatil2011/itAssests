@@ -85,7 +85,6 @@ public class CandidateServiceImpl implements CandidateService {
 
 		@Override
 		public List<Candidate> update(List<Candidate> request2) {
-			// TODO Auto-generated method stub
 			return candidateDao.update(request2);
 		}
 

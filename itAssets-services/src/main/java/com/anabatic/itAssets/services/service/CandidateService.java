@@ -27,7 +27,7 @@ public interface CandidateService {
 
 	Candidate getByCIN(String cin);
 
-	List<Candidate> update(List<Candidate> request2);
+	public List<Candidate> update(List<Candidate> request2);
 
 	List<Candidate> getByStatusAndStep(Integer status, Integer step);
 

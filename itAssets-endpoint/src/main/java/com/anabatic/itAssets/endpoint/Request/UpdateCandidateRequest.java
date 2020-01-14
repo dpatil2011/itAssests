@@ -12,16 +12,6 @@ public class UpdateCandidateRequest {
 	private String comment;
 	private Long managerId;
 	private String slot;
-	
-	
-
-	public String getSlot() {
-		return slot;
-	}
-
-	public void setSlot(String slot) {
-		this.slot = slot;
-	}
 
 	public Long getId() {
 		return id;
@@ -94,6 +84,14 @@ public class UpdateCandidateRequest {
 
 	public void setManagerId(Long managerId) {
 		this.managerId = managerId;
+	}
+
+	public String getSlot() {
+		return slot;
+	}
+
+	public void setSlot(String slot) {
+		this.slot = slot;
 	}
 
 }

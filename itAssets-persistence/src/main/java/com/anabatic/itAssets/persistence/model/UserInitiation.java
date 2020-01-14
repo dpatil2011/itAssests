@@ -35,6 +35,12 @@ public class UserInitiation {
     @Column(name="active_from")
     private Date activeFrom;
     
+    @Column(name="expire_on")
+    private Date expireOn;
+    
+    @Column(name = "user_data", columnDefinition = "text")
+    private String userData;
+    
     public Long getId() {
         return id;
     }
@@ -73,6 +79,23 @@ public class UserInitiation {
 
     public void setActiveFrom(Date activeFrom) {
         this.activeFrom = activeFrom;
+    }
+
+
+    public Date getExpireOn() {
+        return expireOn;
+    }
+
+    public void setExpireOn(Date expireOn) {
+        this.expireOn = expireOn;
+    }
+
+    public String getUserData() {
+        return userData;
+    }
+
+    public void setUserData(String userData) {
+        this.userData = userData;
     }
     
 }
