@@ -36,5 +36,7 @@ public interface CandidateService {
 
 	Candidate updateStepAndStatus(Integer status, Integer step, Long id);
 
+	public void deleteById(Long id);
+
 
 }

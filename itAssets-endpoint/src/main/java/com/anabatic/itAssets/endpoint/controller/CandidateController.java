@@ -26,15 +26,15 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.anabatic.generic.endpoint.contract.BaseResponse;
 import com.anabatic.generic.persistence.validator.field.ValidationCheck;
-import com.anabatic.itAssets.endpoint.Request.GetByHmCandidateRequest;
+import com.anabatic.itAssets.endpoint.Request.DeleteCandidateByIdRequest;
 import com.anabatic.itAssets.endpoint.Request.GetByCINCandidateRequest;
+import com.anabatic.itAssets.endpoint.Request.GetByHmCandidateRequest;
 import com.anabatic.itAssets.endpoint.Request.GetByIdCandidateRequest;
 import com.anabatic.itAssets.endpoint.Request.GetByStatusAndStepCandidateRequest;
 import com.anabatic.itAssets.endpoint.Request.GetByStepCandidateRequest;
 import com.anabatic.itAssets.endpoint.Request.InsertCandidateRequest;
 import com.anabatic.itAssets.endpoint.Request.JoiningDateCandidateRequest;
 import com.anabatic.itAssets.endpoint.Request.ScheduleInterviewCandidateRequest;
-import com.anabatic.itAssets.endpoint.Request.SelectionCandidateRequest;
 import com.anabatic.itAssets.endpoint.Request.UpdateCandidateRequest;
 import com.anabatic.itAssets.endpoint.Request.UpdateStepAndStatusCandidateRequest;
 import com.anabatic.itAssets.endpoint.converter.GetAllCandidateConverter;
@@ -296,6 +296,13 @@ public class CandidateController {
 	public ResponseEntity<BaseResponse> updateStepAndStatus(@RequestBody UpdateStepAndStatusCandidateRequest request) {
 		Candidate request3 = candidateService.updateStepAndStatus(request.getStatus(),request.getStep(), request.getId());
 		baseResponse.setResponse(updateCandidateConverter.toContract(request3));
+		return ResponseEntity.ok().body(baseResponse);
+	}
+	
+	@PostMapping("/deleteById")
+	public ResponseEntity<BaseResponse> deleteById(@RequestBody DeleteCandidateByIdRequest request) {
+		ValidationCheck.hasValidate(request);
+		candidateService.deleteById(request.getId());
 		return ResponseEntity.ok().body(baseResponse);
 	}
 

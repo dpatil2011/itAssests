@@ -141,6 +141,11 @@ public class CandidateServiceImpl implements CandidateService {
 			return candidateDao.updateStepAndStatus(status,step, id);
 		}
 
+		@Override
+		public void deleteById(Long id) {
+			candidateDao.deleteById(id);	
+		}
+
 	
 
 }

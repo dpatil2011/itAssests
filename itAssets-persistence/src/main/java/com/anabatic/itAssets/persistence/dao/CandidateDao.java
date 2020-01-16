@@ -41,5 +41,7 @@ public interface CandidateDao {
 
 	public Candidate updateStepAndStatus(Integer status, Integer step, Long id);
 
+	public void deleteById(Long id);
+
 
 }

@@ -233,5 +233,15 @@ public class CandidateDaoImpl implements CandidateDao {
 		
 	}
 
+	@Override
+	public void deleteById(Long id) {
+		try {
+		Candidate candidate = getById(id);
+		manager.remove(candidate);
+		}catch(Exception e) {
+			throw new UsersException(UsersErrorConstant.CANDIDATE);
+		}
+	}
+
 	
 }
