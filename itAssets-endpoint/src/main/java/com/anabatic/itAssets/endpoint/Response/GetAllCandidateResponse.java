@@ -23,6 +23,8 @@ public class GetAllCandidateResponse {
 	private Date dateOfJoining;
 	private String cin;
 	private Integer selection;
+	private String managerName;
+	private String recruiteName;
 	public Long getId() {
 		return id;
 	}
@@ -142,6 +144,18 @@ public class GetAllCandidateResponse {
 	}
 	public void setSelection(Integer selection) {
 		this.selection = selection;
+	}
+	public String getManagerName() {
+		return managerName;
+	}
+	public void setManagerName(String managerName) {
+		this.managerName = managerName;
+	}
+	public String getRecruiteName() {
+		return recruiteName;
+	}
+	public void setRecruiteName(String recruiteName) {
+		this.recruiteName = recruiteName;
 	}
 	
 	

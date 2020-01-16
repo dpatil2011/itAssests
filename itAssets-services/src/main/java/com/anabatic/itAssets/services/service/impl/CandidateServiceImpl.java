@@ -77,8 +77,8 @@ public class CandidateServiceImpl implements CandidateService {
 	}
 
 	@Override
-	public Candidate scheduleInterview(Long id, Date interviewDate, String mode, Time time, Integer status, Integer step,String comment) {
-		return candidateDao.scheduleInterview(id,interviewDate,mode,time,status,step,comment);
+	public Candidate scheduleInterview(Long id, Date interviewDate, String mode, Time time, Integer status,String comment) {
+		return candidateDao.scheduleInterview(id,interviewDate,mode,time,status,comment);
 	}
 
 	@Override

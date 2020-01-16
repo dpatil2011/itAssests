@@ -21,7 +21,7 @@ public interface CandidateService {
 
 	List<Candidate> getByRecuriter(Long id);
 
-	Candidate scheduleInterview(Long id, Date interviewDate, String mode, Time time, Integer status, Integer step, String comment);
+	Candidate scheduleInterview(Long id, Date interviewDate, String mode, Time time, Integer status, String comment);
 
 	Candidate joiningDate(Date dateOfJoining, Long id);
 
