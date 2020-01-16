@@ -36,6 +36,7 @@ import com.anabatic.itAssets.endpoint.Request.JoiningDateCandidateRequest;
 import com.anabatic.itAssets.endpoint.Request.ScheduleInterviewCandidateRequest;
 import com.anabatic.itAssets.endpoint.Request.SelectionCandidateRequest;
 import com.anabatic.itAssets.endpoint.Request.UpdateCandidateRequest;
+import com.anabatic.itAssets.endpoint.Request.UpdateSelectionCandidateRequest;
 import com.anabatic.itAssets.endpoint.Request.UpdateStepAndStatusCandidateRequest;
 import com.anabatic.itAssets.endpoint.converter.GetAllCandidateConverter;
 import com.anabatic.itAssets.endpoint.converter.GetByCINCandidateConverter;
@@ -282,6 +283,15 @@ public class CandidateController {
 		baseResponse.setResponse(getAllCandidateConverter.toContracts(can1));
 		return ResponseEntity.ok().body(baseResponse);
 	}
+	@PostMapping("/getByStatusStepSelection")
+	public ResponseEntity<BaseResponse> getByStatusStepSelection(@RequestBody GetByStatusAndStepCandidateRequest request) {
+        ValidationCheck.hasValidate(request);
+		//Candidate can = getByCINCandidateConverter.toModel(request);
+		List<Candidate> can1 = candidateService.getByStatusStepSelection(request.getStatus(),request.getStep(),request.getSelection());
+		BaseResponse baseResponse = new BaseResponse();
+		baseResponse.setResponse(getAllCandidateConverter.toContracts(can1));
+		return ResponseEntity.ok().body(baseResponse);
+	}
 	
 	@PostMapping("/getByStep")
 	public ResponseEntity<BaseResponse> getByStep(@RequestBody GetByStepCandidateRequest request) {
@@ -298,5 +308,13 @@ public class CandidateController {
 		baseResponse.setResponse(updateCandidateConverter.toContract(request3));
 		return ResponseEntity.ok().body(baseResponse);
 	}
+	
+	@PostMapping("/update-selection")
+	public ResponseEntity<BaseResponse> updateSelection(@RequestBody UpdateSelectionCandidateRequest request) {
+		Candidate request3 = candidateService.updateSelection(request.getId(),request.getSelection());
+		baseResponse.setResponse(updateCandidateConverter.toContract(request3));
+		return ResponseEntity.ok().body(baseResponse);
+	}
+
 
 }

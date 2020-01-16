@@ -141,6 +141,17 @@ public class CandidateServiceImpl implements CandidateService {
 			return candidateDao.updateStepAndStatus(status,step, id);
 		}
 
+		@Override
+		public Candidate updateSelection(Long id, Integer selection) {
+			// TODO Auto-generated method stub
+			return candidateDao.updateSelection(id,selection);
+		}
+
+		@Override
+		public List<Candidate> getByStatusStepSelection(Integer status, Integer step, Integer selection) {
+			return candidateDao.getByStatusStepSelection(status,step,selection);
+		}
+
 	
 
 }

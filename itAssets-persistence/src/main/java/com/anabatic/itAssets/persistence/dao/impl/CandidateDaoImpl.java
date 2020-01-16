@@ -233,5 +233,32 @@ public class CandidateDaoImpl implements CandidateDao {
 		
 	}
 
+	@Override
+	public Candidate updateSelection(Long id, Integer selection) {
+		LOGGING.INFO("updateStepAndStatus Of Candidate Dao");
+		try {
+			Candidate byId = getById(id);
+			byId.setSelectinStatus(selection);
+			return manager.merge(byId);
+					}  catch (Exception e) {
+						throw e;
+					}
+	}
+
+	@Override
+	public List<Candidate> getByStatusStepSelection(Integer status, Integer step, Integer selection) {
+		LOGGING.INFO("getByStatusStepSelection Of Candidate Dao");
+		try {
+			Query query = manager.createQuery("select u from Candidate u where u.status =:status and u.step =:step and u.selectinStatus =:selection");
+			query.setParameter("status", status);
+			query.setParameter("step", step);
+			query.setParameter("selection", selection);
+
+			return query.getResultList();
+					}  catch (Exception e) {
+						throw e;
+					}
+	}
+
 	
 }

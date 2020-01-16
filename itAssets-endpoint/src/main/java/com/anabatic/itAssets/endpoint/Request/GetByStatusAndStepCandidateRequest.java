@@ -10,6 +10,14 @@ public class GetByStatusAndStepCandidateRequest {
 	private Integer status;
 	@IsRequired
 	private Integer step;
+	private Integer selection;
+	
+	public Integer getSelection() {
+		return selection;
+	}
+	public void setSelection(Integer selection) {
+		this.selection = selection;
+	}
 	public Integer getStatus() {
 		return status;
 	}

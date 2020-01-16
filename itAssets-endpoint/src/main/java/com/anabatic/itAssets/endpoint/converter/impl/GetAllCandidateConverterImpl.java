@@ -57,6 +57,8 @@ public class GetAllCandidateConverterImpl implements GetAllCandidateConverter {
 			res.setModeOfInterview(object.getModeOfInterview());
 			res.setSelection(object.getSelectinStatus());
 			res.setCin(object.getCin());
+			res.setStartTime(object.getInterviewStartTime());
+			res.setEndTime(object.getInterviewEndTime());
 			list.add(res);
 		}		
 		return list;

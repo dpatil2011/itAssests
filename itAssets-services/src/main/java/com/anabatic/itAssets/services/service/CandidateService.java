@@ -36,5 +36,9 @@ public interface CandidateService {
 
 	Candidate updateStepAndStatus(Integer status, Integer step, Long id);
 
+	Candidate updateSelection(Long id, Integer selection);
+
+	List<Candidate> getByStatusStepSelection(Integer status, Integer step, Integer selection);
+
 
 }

@@ -26,7 +26,7 @@ import com.anabatic.itAssets.services.service.CandidateService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-@CrossOrigin(origins = "", allowedHeaders = "")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/interview")
 public class InterviewController {
@@ -61,13 +61,18 @@ public class InterviewController {
 		for (BulkStatusChangeRequest request : requests) {
 			Candidate candidate1 = candidateService.getById(request.getId());
 			Integer cStep = candidate1.getStep();
-			candidate1.setStatus(candidate1.getSelectinStatus());
-			candidate1.setSelectinStatus(0);
-			if (candidate1.getStatus() == 1) {
-				candidate1.setStep(cStep + 1);
+			candidate1.setStatus(request.getStatus());
+			candidate1.setStep(request.getStep());
+			if(candidate1.getSelectinStatus()==41) {
+				candidate1.setSelectinStatus(41);
 			} else {
-				candidate1.setStep(cStep);
+			candidate1.setSelectinStatus(0);
 			}
+//			if (candidate1.getStatus()==10) {
+//				candidate1.setStep(cStep + 1);
+//			} else {
+//				candidate1.setStep(cStep);
+//			}
 			Candidate candidate = candidateService.update(candidate1);
 			CandidateBean bean = new CandidateBean();
 			bean.setName(candidate.getName());
