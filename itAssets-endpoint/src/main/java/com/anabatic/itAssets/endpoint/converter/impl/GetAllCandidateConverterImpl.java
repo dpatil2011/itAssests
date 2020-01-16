@@ -22,21 +22,21 @@ public class GetAllCandidateConverterImpl implements GetAllCandidateConverter {
 
 	@Override
 	public List<Candidate> toModels(List<InsertCandidateRequest> objects) {
-		
+
 		return null;
 	}
 
 	@Override
-	public GetAllCandidateResponse  toContract(Candidate object) {
+	public GetAllCandidateResponse toContract(Candidate object) {
 		return null;
 	}
 
 	@Override
 	public List<GetAllCandidateResponse> toContracts(List<Candidate> objects) {
 		List<GetAllCandidateResponse> list = new ArrayList<>(objects.size());
-		
-		for(Candidate object : objects) {
-			GetAllCandidateResponse res = new GetAllCandidateResponse();			
+
+		for (Candidate object : objects) {
+			GetAllCandidateResponse res = new GetAllCandidateResponse();
 			res.setId(object.getId());
 			res.setComment(object.getComment());
 			res.setEmail(object.getEmail());
@@ -46,6 +46,8 @@ public class GetAllCandidateConverterImpl implements GetAllCandidateConverter {
 			res.setSkills(object.getSkills());
 			res.setStatus(object.getStatus());
 			res.setManagerId(object.getUsers().getId());
+			res.setManagerName(object.getUsers().getFirstName());
+			res.setRecruiteName(object.getUsersr().getFirstName());
 			res.setRecruiterId(object.getUsersr().getId());
 			res.setFileName(object.getFileName());
 			res.setFilesize(object.getFilesize());
@@ -61,6 +63,8 @@ public class GetAllCandidateConverterImpl implements GetAllCandidateConverter {
 			res.setEndTime(object.getInterviewEndTime());
 			list.add(res);
 		}		
+			
+		
 		return list;
 	}
 

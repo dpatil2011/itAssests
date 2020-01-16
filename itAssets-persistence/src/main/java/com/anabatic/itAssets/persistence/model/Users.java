@@ -237,14 +237,9 @@ public class Users {
 	
 	@OneToMany(mappedBy = "users", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Experience> experience;
-
-	public List<UserDocument> getUserDocument() {
-		return userDocument;
-	}
-
-	public void setUserDocument(List<UserDocument> userDocument) {
-		this.userDocument = userDocument;
-	}
+	
+	@OneToMany(mappedBy = "users", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<Children> children;
 
 	public Long getId() {
 		return id;
@@ -774,6 +769,14 @@ public class Users {
 		this.skills = skills;
 	}
 
+	public List<UserDocument> getUserDocument() {
+		return userDocument;
+	}
+
+	public void setUserDocument(List<UserDocument> userDocument) {
+		this.userDocument = userDocument;
+	}
+
 	public List<Privilege> getPrivilege() {
 		return privilege;
 	}
@@ -814,6 +817,14 @@ public class Users {
 		this.experience = experience;
 	}
 
+	public List<Children> getChildren() {
+		return children;
+	}
+
+	public void setChildren(List<Children> children) {
+		this.children = children;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -824,6 +835,7 @@ public class Users {
 		result = prime * result + ((bloodGroup == null) ? 0 : bloodGroup.hashCode());
 		result = prime * result + ((candidate == null) ? 0 : candidate.hashCode());
 		result = prime * result + ((certification == null) ? 0 : certification.hashCode());
+		result = prime * result + ((children == null) ? 0 : children.hashCode());
 		result = prime * result + ((city == null) ? 0 : city.hashCode());
 		result = prime * result + ((corpId == null) ? 0 : corpId.hashCode());
 		result = prime * result + ((currentAddress == null) ? 0 : currentAddress.hashCode());
@@ -931,6 +943,11 @@ public class Users {
 			if (other.certification != null)
 				return false;
 		} else if (!certification.equals(other.certification))
+			return false;
+		if (children == null) {
+			if (other.children != null)
+				return false;
+		} else if (!children.equals(other.children))
 			return false;
 		if (city == null) {
 			if (other.city != null)
@@ -1292,7 +1309,7 @@ public class Users {
 				+ postGraduationEndYear + ", postGraduationMajor=" + postGraduationMajor + ", postGraduationGrade="
 				+ postGraduationGrade + ", status=" + status + ", skills=" + skills + ", userDocument=" + userDocument
 				+ ", privilege=" + privilege + ", request=" + request + ", candidate=" + candidate + ", certification="
-				+ certification + ", experience=" + experience + "]";
+				+ certification + ", experience=" + experience + ", children=" + children + "]";
 	}
 
 }
