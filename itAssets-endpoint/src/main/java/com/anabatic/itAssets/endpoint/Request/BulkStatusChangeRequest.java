@@ -4,6 +4,15 @@ public class BulkStatusChangeRequest {
 	private Long id;
 	private Integer status;
 	private Integer step;
+	private Integer selection;
+
+	public Integer getSelection() {
+		return selection;
+	}
+
+	public void setSelection(Integer selection) {
+		this.selection = selection;
+	}
 
 	public Integer getStatus() {
 		return status;

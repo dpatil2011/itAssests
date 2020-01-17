@@ -41,5 +41,7 @@ public interface CandidateService {
 	List<Candidate> getByStatusStepSelection(Integer status, Integer step, Integer selection);
 	public void deleteById(Long id);
 
+	Candidate joiningDate(Date dateOfJoining, Long id, String comment, Integer selection, Integer status, Integer step);
+
 
 }

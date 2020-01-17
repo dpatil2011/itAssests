@@ -268,5 +268,30 @@ public class CandidateDaoImpl implements CandidateDao {
 		}
 	}
 
+	@Override
+	public Candidate joiningDate(Long id, Date dateOfJoining, String comment, Integer selection, Integer status,
+			Integer step) {
+		try {
+			LOGGING.INFO("joiningDate Candidate Dao");
+			Candidate candidate = getById(id);
+			if (candidate == null) {
+				UsersException exception = new UsersException(UsersErrorConstant.CANDIDATE);
+				exception.getError().getField().clear();
+				exception.getError().addField("id");
+				throw exception;
+			}
+			candidate.setDateOfJoining(dateOfJoining);
+			candidate.setComment(comment);
+			candidate.setSelectinStatus(selection);
+			candidate.setStatus(status);
+			candidate.setStep(step);
+			Candidate update = update(candidate);
+			return update;
+		} catch (Exception e) {
+			LOGGING.ERROR("joiningDate Candidate Dao" + e.getMessage());
+			throw e;
+		}
+	}
+
 	
 }
