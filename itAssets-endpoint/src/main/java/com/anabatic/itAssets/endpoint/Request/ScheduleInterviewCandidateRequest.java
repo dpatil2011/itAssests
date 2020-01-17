@@ -11,11 +11,9 @@ public class ScheduleInterviewCandidateRequest {
 	private Date interviewDate;
 	@IsRequired
 	private String mode;
-	@IsRequired
 	private Time startTime;
 	@IsRequired
 	private Time endTime;
-	@IsRequired
 	private Integer step;
 	@IsRequired
 	private Integer status;
@@ -78,6 +76,14 @@ public class ScheduleInterviewCandidateRequest {
 
 	public void setcId(Long cId) {
 		this.cId = cId;
+	}
+
+	public Time getStartTime() {
+		return startTime;
+	}
+
+	public void setStartTime(Time startTime) {
+		this.startTime = startTime;
 	}
 
 }

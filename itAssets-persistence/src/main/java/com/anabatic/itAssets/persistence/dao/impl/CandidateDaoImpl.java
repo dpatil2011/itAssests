@@ -153,7 +153,7 @@ public class CandidateDaoImpl implements CandidateDao {
 			candidate.setInterviewDate(interviewDate);
 			candidate.setModeOfInterview(mode);
 			candidate.setInterviewEndTime(time);
-			candidate.setStatus(status);
+			candidate.setSelectinStatus(status);
 	
 			candidate.setComment(comment);
 			Candidate update = update(candidate);
