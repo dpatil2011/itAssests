@@ -46,5 +46,8 @@ public interface CandidateDao {
 	public List<Candidate> getByStatusStepSelection(Integer status, Integer step, Integer selection);
 	public void deleteById(Long id);
 
+	public Candidate joiningDate(Long id, Date dateOfJoining, String comment, Integer selection, Integer status,
+			Integer step);
+
 
 }

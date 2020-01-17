@@ -156,6 +156,12 @@ public class CandidateServiceImpl implements CandidateService {
 			candidateDao.deleteById(id);	
 		}
 
+		@Override
+		public Candidate joiningDate(Date dateOfJoining, Long id, String comment, Integer selection, Integer status,
+				Integer step) {
+			return candidateDao.joiningDate(id,dateOfJoining,comment,selection,status,step);
+		}
+
 	
 
 }

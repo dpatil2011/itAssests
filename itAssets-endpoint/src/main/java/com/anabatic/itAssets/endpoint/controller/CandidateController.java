@@ -259,7 +259,7 @@ public class CandidateController {
 	public ResponseEntity<BaseResponse> joiningDate(@RequestBody JoiningDateCandidateRequest request) {
 		ValidationCheck.hasValidate(request);
 		LOGGING.INFO("Inside joiningDate Candidate Controller");
-		Candidate request3 = candidateService.joiningDate(request.getDateOfJoining(), request.getId());
+		Candidate request3 = candidateService.joiningDate(request.getDateOfJoining(), request.getId(), request.getComment(),request.getSelection(),request.getStatus(),request.getStep());
 		baseResponse.setResponse(updateCandidateConverter.toContract(request3));
 		return ResponseEntity.ok().body(baseResponse);
 	}
