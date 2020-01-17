@@ -21,6 +21,7 @@ public class GetByCandidateConverterimpl implements GetByCandidateConverter {
 		for (CandidateRecord candidateRecord : objects) {
 			GetByCandidateCandidateRecordResponse response=new GetByCandidateCandidateRecordResponse();
 			response.setComment(candidateRecord.getComment());
+			response.setcDate(candidateRecord.getDate());
 			Integer step=candidateRecord.getSteps();
 			if(step==1 || step==3 || step ==5) {
 				response.setCommentedBy(candidateRecord.getHmUserId().getFirstName());
