@@ -29,13 +29,22 @@ public interface CandidateDao {
 
 	public List<Candidate> getByRecuriter(Long id);
 
-	public Candidate scheduleInterview(Long id, Date interviewDate, String mode, Time time, Integer status, Integer step, String comment);
+	public Candidate scheduleInterview(Long id, Date interviewDate, String mode, Time time, Integer status, String comment);
 
 	public Candidate joiningDate(Long id, Date dateOfJoining);
 
 	public Candidate getByCIN(String cin);
 
-	public List<Candidate> update(List<Candidate> request2);
-
 	public List<Candidate> getByStatusAndStep(Integer status, Integer step);
+
+	public List<Candidate> getByStatusAndStep(Integer step);
+
+	public Candidate updateStepAndStatus(Integer status, Integer step, Long id);
+
+	public Candidate updateSelection(Long id, Integer selection);
+
+	public List<Candidate> getByStatusStepSelection(Integer status, Integer step, Integer selection);
+	public void deleteById(Long id);
+
+
 }

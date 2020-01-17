@@ -49,7 +49,6 @@ public class PrivilegeController {
     private RemovePrivilegeConverter removePrivilegeConverter;
 	
 	@RequestMapping(value = "/getbystatus", method = RequestMethod.POST)
-
 	public ResponseEntity<BaseResponse> getByStatus(@RequestBody GetByStatusPrivilegeRequest request) {
 		Privilege p = getByStatusPrivilegeConverter.toModel(request);
 		List<Privilege> response = privilegeService.getByStatus(p,request.getPriviId());

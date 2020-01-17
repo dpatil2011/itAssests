@@ -6,13 +6,14 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.itAssests.core.constant.UsersErrorConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,20 +28,25 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.anabatic.generic.endpoint.contract.BaseResponse;
 import com.anabatic.generic.persistence.validator.field.ValidationCheck;
-import com.anabatic.itAssets.endpoint.Request.GetByHmCandidateRequest;
+import com.anabatic.itAssets.endpoint.Request.DeleteCandidateByIdRequest;
 import com.anabatic.itAssets.endpoint.Request.GetByCINCandidateRequest;
+import com.anabatic.itAssets.endpoint.Request.GetByHmCandidateRequest;
 import com.anabatic.itAssets.endpoint.Request.GetByIdCandidateRequest;
 import com.anabatic.itAssets.endpoint.Request.GetByStatusAndStepCandidateRequest;
+import com.anabatic.itAssets.endpoint.Request.GetByStepCandidateRequest;
 import com.anabatic.itAssets.endpoint.Request.InsertCandidateRequest;
 import com.anabatic.itAssets.endpoint.Request.JoiningDateCandidateRequest;
 import com.anabatic.itAssets.endpoint.Request.ScheduleInterviewCandidateRequest;
 import com.anabatic.itAssets.endpoint.Request.UpdateCandidateRequest;
+import com.anabatic.itAssets.endpoint.Request.UpdateSelectionCandidateRequest;
+import com.anabatic.itAssets.endpoint.Request.UpdateStepAndStatusCandidateRequest;
 import com.anabatic.itAssets.endpoint.converter.GetAllCandidateConverter;
 import com.anabatic.itAssets.endpoint.converter.GetByCINCandidateConverter;
 import com.anabatic.itAssets.endpoint.converter.GetByIdCandidateConverter;
 import com.anabatic.itAssets.endpoint.converter.InsertCandidateConverter;
 import com.anabatic.itAssets.endpoint.converter.InsertCandidateRecordConverter;
 import com.anabatic.itAssets.endpoint.converter.UpdateCandidateConverter;
+import com.anabatic.itAssets.persistence.dto.BulkUpdateCandidateResponseDto;
 import com.anabatic.itAssets.persistence.model.Candidate;
 import com.anabatic.itAssets.persistence.model.CandidateRecord;
 import com.anabatic.itAssets.persistence.model.Users;
@@ -56,8 +62,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @RequestMapping("/candidate")
 public class CandidateController {
 
-    private static final Logging LOGGING = new Logging(
-            CandidateController.class);
+    private static final Logging LOGGING = new Logging(CandidateController.class);
     private BaseResponse baseResponse = new BaseResponse();
 
     @Autowired
@@ -68,7 +73,7 @@ public class CandidateController {
 
     @Autowired
     private GetByIdCandidateConverter getByIdCandidateConverter;
-
+    
     @Autowired
     private GetByCINCandidateConverter getByCINCandidateConverter;
 
@@ -85,13 +90,13 @@ public class CandidateController {
 
     @Autowired
     private InsertCandidateRecordConverter insertCandidateRecordConverter;
-
+    
     @Autowired
     private JavaMailSender javaMailSender;
+    
 
     @PostMapping("/insert")
-    public ResponseEntity<BaseResponse> insert(
-            @RequestParam("file") MultipartFile file,
+    public ResponseEntity<BaseResponse> insert(@RequestParam("file") MultipartFile file,
             @RequestParam(value = "name", required = true) final String name,
             @RequestParam(value = "email", required = true) final String email,
             @RequestParam(value = "phoneNo", required = true) final String phoneNo,
@@ -100,10 +105,10 @@ public class CandidateController {
             @RequestParam(value = "status", required = true) final Integer status,
             @RequestParam(value = "comment", required = true) final String comment,
             @RequestParam(value = "hmId", required = true) final Long hmId,
-            @RequestParam(value = "rId", required = true) final Long recruiterId) {
+            @RequestParam(value = "rId", required = true) final Long recruiterId)       
+    {
         String fileName = fileStorageService.storeFile(file);
-        String fileDownloadUri = ServletUriComponentsBuilder
-                .fromCurrentContextPath().path("/candidate/").path(fileName)
+        String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath().path("/candidate/").path(fileName)
                 .toUriString();
         InsertCandidateRequest request = new InsertCandidateRequest();
         request.setName(name);
@@ -134,8 +139,7 @@ public class CandidateController {
         // c.setHmUserId(can1.getHmUsers());
         // c.setcId(can1);
         // c.setSteps(1);
-        // SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy
-        // HH:mm:ss");
+        // SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         Date date = new Date();
         c.setDate(date);
         c.setData(can1.getComment());
@@ -147,8 +151,7 @@ public class CandidateController {
     }
 
     @PostMapping("/getById")
-    public ResponseEntity<BaseResponse> getById(
-            @RequestBody GetByIdCandidateRequest request) {
+    public ResponseEntity<BaseResponse> getById(@RequestBody GetByIdCandidateRequest request) {
         Candidate can = getByIdCandidateConverter.toModel(request);
         Candidate can1 = candidateService.getById(can.getId());
         baseResponse.setResponse(getByIdCandidateConverter.toContract(can1));
@@ -158,14 +161,12 @@ public class CandidateController {
     @RequestMapping(value = "/getAll", method = RequestMethod.GET)
     public ResponseEntity<BaseResponse> getAll() {
         List<Candidate> response = candidateService.getAll();
-        baseResponse
-                .setResponse(getAllCandidateConverter.toContracts(response));
+        baseResponse.setResponse(getAllCandidateConverter.toContracts(response));
         return ResponseEntity.ok().body(baseResponse);
     }
 
     @PostMapping("/update")
-    public ResponseEntity<BaseResponse> update(
-            @RequestBody UpdateCandidateRequest request) {
+    public ResponseEntity<BaseResponse> update(@RequestBody UpdateCandidateRequest request) {
         Candidate request2 = updateCandidateConverter.toModel(request);
         Candidate request3 = candidateService.update(request2);
         baseResponse.setResponse(updateCandidateConverter.toContract(request3));
@@ -173,108 +174,101 @@ public class CandidateController {
     }
 
     @PostMapping("/update-list")
-    public ResponseEntity<BaseResponse> updateList(
-            @RequestBody List<UpdateCandidateRequest> request) {
+    public ResponseEntity<BaseResponse> updateList(@RequestBody List<UpdateCandidateRequest> request) {
+        LOGGING.INFO("Accessed Bulk Update Candidate Controller Accesed");
+        ValidationCheck.hasValidate(request, UsersErrorConstant.class);
         List<Candidate> request2 = updateCandidateConverter.toModels(request);
-        List<Candidate> request3 = candidateService.update(request2);
-        baseResponse
-                .setResponse(updateCandidateConverter.toContracts(request3));
+        BulkUpdateCandidateResponseDto response = candidateService.update(request2);
+        //baseResponse.setResponse(updateCandidateConverter.toContracts(request3));
+        baseResponse.setResponse(response);
         return ResponseEntity.ok().body(baseResponse);
     }
-
+    
     @GetMapping("/{fileName:.+}")
-    public ResponseEntity<Resource> downloadFile(@PathVariable String fileName,
-            HttpServletRequest request) {
+    public ResponseEntity<Resource> downloadFile(@PathVariable String fileName, HttpServletRequest request) {
 
         Resource resource = fileStorageService.loadFileAsResource(fileName);
         String contentType = null;
         try {
-            contentType = request.getServletContext()
-                    .getMimeType(resource.getFile().getAbsolutePath());
+            contentType = request.getServletContext().getMimeType(resource.getFile().getAbsolutePath());
         } catch (IOException ex) {
             ex.printStackTrace();
         }
         if (contentType == null) {
             contentType = "application/octet-stream";
         }
-        return ResponseEntity.ok()
-                .contentType(MediaType.parseMediaType(contentType))
-                .header(HttpHeaders.CONTENT_DISPOSITION,
-                        "attachment; filename=\"" + resource.getFilename()
-                                + "\"")
+        return ResponseEntity.ok().contentType(MediaType.parseMediaType(contentType))
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"")
                 .body(resource);
     }
 
+
     @PostMapping("/getByHm")
-    public ResponseEntity<BaseResponse> getByHm(
-            @RequestBody GetByHmCandidateRequest request) {
+    public ResponseEntity<BaseResponse> getByHm(@RequestBody GetByHmCandidateRequest request) {
         ValidationCheck.hasValidate(request);
         LOGGING.INFO("Inside GetBy HiringManager Candidate Controller");
-        baseResponse.setResponse(getAllCandidateConverter
-                .toContracts(candidateService.getByHm(request.getId())));
+        baseResponse
+                .setResponse(getAllCandidateConverter
+                        .toContracts(candidateService
+                                .getByHm(request.getId())));
         return ResponseEntity.ok().body(baseResponse);
     }
 
     @PostMapping("/getByRecuriter")
-    public ResponseEntity<BaseResponse> getByRecuriter(
-            @RequestBody GetByHmCandidateRequest request) {
+    public ResponseEntity<BaseResponse> getByRecuriter(@RequestBody GetByHmCandidateRequest request) {
         ValidationCheck.hasValidate(request);
         LOGGING.INFO("Inside GetBy Recuriter Candidate Controller");
-        baseResponse.setResponse(getAllCandidateConverter
-                .toContracts(candidateService.getByRecuriter(request.getId())));
+        baseResponse
+                .setResponse(getAllCandidateConverter
+                        .toContracts(candidateService
+                                .getByRecuriter(request.getId())));
         return ResponseEntity.ok().body(baseResponse);
     }
 
+    
+    
     @PostMapping("/schedule-interview")
-    public ResponseEntity<BaseResponse> scheduleInterview(
-            @RequestBody ScheduleInterviewCandidateRequest request) {
+    public ResponseEntity<BaseResponse> scheduleInterview(@RequestBody ScheduleInterviewCandidateRequest request) {
         ValidationCheck.hasValidate(request);
         LOGGING.INFO("Inside scheduleInterview Candidate Controller");
-        Candidate request3 = candidateService.scheduleInterview(request.getId(),
-                request.getInterviewDate(), request.getMode(),
-                request.getEndTime(), request.getStatus(), request.getStep(),
-                request.getComment());
-        if (request3 != null) {
-            CandidateRecord candidateRecord = new CandidateRecord();
-            ObjectMapper Obj = new ObjectMapper();
-            Candidate candidate = candidateService.getById(request.getcId());
-            candidate.setComment(request.getComment());
-            candidate.setStep(request.getStep());
-            String jsonStr = null;
-            try {
-                jsonStr = Obj.writeValueAsString(candidate);
-            } catch (JsonProcessingException e) {
-                e.printStackTrace();
-            }
-            candidateRecord.setcId(request3);
-            candidateRecord.setComment(request.getComment());
-            candidateRecord.setHmUserId(request3.getUsers());
-            candidateRecord.setrUserId(request3.getUsersr());
-            candidateRecord.setData(jsonStr);
-            candidateRecord.setDate(new Date());
-            candidateRecord.setStatus(request.getStatus());
-            candidateRecord.setSteps(request3.getStep());
-            CandidateRecord insert = candidateRecordService
-                    .insert(candidateRecord);
-        }
+        Candidate request3 = candidateService.scheduleInterview(request.getcId(),request.getInterviewDate(),request.getMode(),request.getEndTime(),request.getStatus(),request.getComment());
+//      if(request3!=null) {
+//          CandidateRecord candidateRecord = new CandidateRecord();
+//          ObjectMapper Obj = new ObjectMapper();
+//          Candidate candidate=candidateService.getById(request.getcId());
+//          candidate.setComment(request.getComment());
+//          candidate.setStep(request.getStep());
+//          String jsonStr=null;
+//          try {
+//              jsonStr = Obj.writeValueAsString(candidate);
+//          } catch (JsonProcessingException e) {
+//              e.printStackTrace();
+//          }
+//          candidateRecord.setcId(request3);
+//          candidateRecord.setComment(request.getComment());
+//          candidateRecord.setHmUserId(request3.getUsers());
+//          candidateRecord.setrUserId(request3.getUsersr());
+//          candidateRecord.setData(jsonStr);
+//          candidateRecord.setDate(new Date());
+//          candidateRecord.setStatus(request.getStatus());
+//          candidateRecord.setSteps(request3.getStep());
+//          CandidateRecord insert = candidateRecordService.insert(candidateRecord);            
+//      }
         baseResponse.setResponse(updateCandidateConverter.toContract(request3));
         return ResponseEntity.ok().body(baseResponse);
     }
 
     @PostMapping("/joining-date")
-    public ResponseEntity<BaseResponse> joiningDate(
-            @RequestBody JoiningDateCandidateRequest request) {
+    public ResponseEntity<BaseResponse> joiningDate(@RequestBody JoiningDateCandidateRequest request) {
         ValidationCheck.hasValidate(request);
         LOGGING.INFO("Inside joiningDate Candidate Controller");
-        Candidate request3 = candidateService
-                .joiningDate(request.getDateOfJoining(), request.getId());
+        Candidate request3 = candidateService.joiningDate(request.getDateOfJoining(), request.getId());
         baseResponse.setResponse(updateCandidateConverter.toContract(request3));
         return ResponseEntity.ok().body(baseResponse);
     }
-
+    
     @PostMapping("/getByCIN")
-    public ResponseEntity<BaseResponse> getByCIN(
-            @RequestBody GetByCINCandidateRequest request) {
+    public ResponseEntity<BaseResponse> getByCIN(@RequestBody GetByCINCandidateRequest request) {
         ValidationCheck.hasValidate(request);
         Candidate can = getByCINCandidateConverter.toModel(request);
         Candidate can1 = candidateService.getByCIN(can.getCin());
@@ -282,28 +276,65 @@ public class CandidateController {
         baseResponse.setResponse(getByCINCandidateConverter.toContract(can1));
         return ResponseEntity.ok().body(baseResponse);
     }
-
+    
     @PostMapping("/getByStatusAndStep")
-    public ResponseEntity<BaseResponse> getByStatusAndStep(
-            @RequestBody GetByStatusAndStepCandidateRequest request) {
+    public ResponseEntity<BaseResponse> getByStatusAndStep(@RequestBody GetByStatusAndStepCandidateRequest request) {
         ValidationCheck.hasValidate(request);
-        // Candidate can = getByCINCandidateConverter.toModel(request);
-        List<Candidate> can1 = candidateService
-                .getByStatusAndStep(request.getStatus(), request.getStep());
+        //Candidate can = getByCINCandidateConverter.toModel(request);
+        List<Candidate> can1 = candidateService.getByStatusAndStep(request.getStatus(),request.getStep());
         BaseResponse baseResponse = new BaseResponse();
         baseResponse.setResponse(getAllCandidateConverter.toContracts(can1));
+        return ResponseEntity.ok().body(baseResponse);
+    }
+    @PostMapping("/getByStatusStepSelection")
+    public ResponseEntity<BaseResponse> getByStatusStepSelection(@RequestBody GetByStatusAndStepCandidateRequest request) {
+        ValidationCheck.hasValidate(request);
+        //Candidate can = getByCINCandidateConverter.toModel(request);
+        List<Candidate> can1 = candidateService.getByStatusStepSelection(request.getStatus(),request.getStep(),request.getSelection());
+        BaseResponse baseResponse = new BaseResponse();
+        baseResponse.setResponse(getAllCandidateConverter.toContracts(can1));
+        return ResponseEntity.ok().body(baseResponse);
+    }
+    
+    @PostMapping("/getByStep")
+    public ResponseEntity<BaseResponse> getByStep(@RequestBody GetByStepCandidateRequest request) {
+        ValidationCheck.hasValidate(request);
+        List<Candidate> can1 = candidateService.getByStep(request.getStep());
+        baseResponse = new BaseResponse();
+        baseResponse.setResponse(getAllCandidateConverter.toContracts(can1));
+        return ResponseEntity.ok().body(baseResponse);
+    }
+    
+    @PostMapping("/update-step-status")
+    public ResponseEntity<BaseResponse> updateStepAndStatus(@RequestBody UpdateStepAndStatusCandidateRequest request) {
+        Candidate request3 = candidateService.updateStepAndStatus(request.getStatus(),request.getStep(), request.getId());
+        baseResponse.setResponse(updateCandidateConverter.toContract(request3));
+        return ResponseEntity.ok().body(baseResponse);
+    }
+    
+    @PostMapping("/update-selection")
+    public ResponseEntity<BaseResponse> updateSelection(@RequestBody UpdateSelectionCandidateRequest request) {
+        Candidate request3 = candidateService.updateSelection(request.getId(),request.getSelection());
+        baseResponse.setResponse(updateCandidateConverter.toContract(request3));
+        return ResponseEntity.ok().body(baseResponse);
+    }
+
+    @PostMapping("/deleteById")
+    public ResponseEntity<BaseResponse> deleteById(@RequestBody DeleteCandidateByIdRequest request) {
+        ValidationCheck.hasValidate(request);
+        candidateService.deleteById(request.getId());
         return ResponseEntity.ok().body(baseResponse);
     }
 
     @PostMapping("/sendmail")
     public void main1() {
         SimpleMailMessage msg = new SimpleMailMessage();
-        // can be send for multiple user
+        //can be send for multiple user
         msg.setTo("dpatil2011@gmail.com");
 
         msg.setSubject("Testing from Akshaya");
         msg.setText("Hello World \n Spring Boot Email");
         javaMailSender.send(msg);
     }
-
+    
 }

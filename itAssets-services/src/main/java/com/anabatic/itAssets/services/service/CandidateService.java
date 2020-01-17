@@ -4,6 +4,7 @@ import java.sql.Time;
 import java.util.Date;
 import java.util.List;
 
+import com.anabatic.itAssets.persistence.dto.BulkUpdateCandidateResponseDto;
 import com.anabatic.itAssets.persistence.model.Candidate;
 
 public interface CandidateService {
@@ -20,15 +21,25 @@ public interface CandidateService {
 
 	List<Candidate> getByRecuriter(Long id);
 
-	Candidate scheduleInterview(Long id, Date interviewDate, String mode, Time time, Integer status, Integer step, String comment);
+	Candidate scheduleInterview(Long id, Date interviewDate, String mode, Time time, Integer status, String comment);
 
 	Candidate joiningDate(Date dateOfJoining, Long id);
 
 
 	Candidate getByCIN(String cin);
 
-	public List<Candidate> update(List<Candidate> request2);
+	public BulkUpdateCandidateResponseDto update(List<Candidate> request2);
 
 	List<Candidate> getByStatusAndStep(Integer status, Integer step);
+
+	List<Candidate> getByStep(Integer step);
+
+	Candidate updateStepAndStatus(Integer status, Integer step, Long id);
+
+	Candidate updateSelection(Long id, Integer selection);
+
+	List<Candidate> getByStatusStepSelection(Integer status, Integer step, Integer selection);
+	public void deleteById(Long id);
+
 
 }

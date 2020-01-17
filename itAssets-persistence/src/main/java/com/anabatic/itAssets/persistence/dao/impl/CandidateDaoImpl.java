@@ -140,7 +140,7 @@ public class CandidateDaoImpl implements CandidateDao {
 
 	@Override
 	public Candidate scheduleInterview(Long id, Date interviewDate, String mode, Time time, Integer status,
-			Integer step, String comment) {
+	 String comment) {
 		try {
 			LOGGING.INFO("scheduleInterview Candidate Dao");
 			Candidate candidate = getById(id);
@@ -154,7 +154,7 @@ public class CandidateDaoImpl implements CandidateDao {
 			candidate.setModeOfInterview(mode);
 			candidate.setInterviewEndTime(time);
 			candidate.setStatus(status);
-			candidate.setStep(step);
+	
 			candidate.setComment(comment);
 			Candidate update = update(candidate);
 			return update;
@@ -195,29 +195,6 @@ public class CandidateDaoImpl implements CandidateDao {
 	}
 
 	@Override
-	public List<Candidate> update(List<Candidate> request2) {
-		LOGGING.INFO("Update List Of Candidate Dao");
-		List<Candidate> merge = new ArrayList<Candidate>();
-		for (Candidate candidate : request2) {
-			try {
-				Candidate byId = getById(candidate.getId());
-				byId.setSlot(candidate.getSlot());
-				if(candidate.getUsers()!=null) {
-					Users manager = usersdao.getById(candidate.getUsers().getId());
-					if(manager==null) {
-						throw new UsersException(UsersErrorConstant.USER_NOT_FOUND);
-					}
-					byId.setUsers(manager);
-				}
-			 merge.add(manager.merge(byId));
-			} catch(Exception e) {
-				throw e;
-			}
-		}
-		return merge;
-	}
-
-	@Override
 	public List<Candidate> getByStatusAndStep(Integer status, Integer step) {
 		LOGGING.INFO("getByStatusAndStep Of Candidate Dao");
 		try {
@@ -229,4 +206,67 @@ public class CandidateDaoImpl implements CandidateDao {
 						throw e;
 					}
 	}
+
+	@Override
+	public List<Candidate> getByStatusAndStep(Integer step) {
+		LOGGING.INFO("getByStatusAndStep Of Candidate Dao");
+		try {
+			Query query = manager.createQuery("select u from Candidate u where u.step =:step");
+			query.setParameter("step", step);
+			return query.getResultList();
+					}  catch (Exception e) {
+						throw e;
+					}	
+		}
+
+	@Override
+	public Candidate updateStepAndStatus(Integer status, Integer step, Long id) {
+		LOGGING.INFO("updateStepAndStatus Of Candidate Dao");
+		try {
+			Candidate byId = getById(id);
+			byId.setStatus(status);
+			byId.setStep(step);
+			return manager.merge(byId);
+					}  catch (Exception e) {
+						throw e;
+					}
+		
+	}
+
+	@Override
+	public Candidate updateSelection(Long id, Integer selection) {
+		LOGGING.INFO("updateStepAndStatus Of Candidate Dao");
+		try {
+			Candidate byId = getById(id);
+			byId.setSelectinStatus(selection);
+			return manager.merge(byId);
+					}  catch (Exception e) {
+						throw e;
+					}
+	}
+
+	@Override
+	public List<Candidate> getByStatusStepSelection(Integer status, Integer step, Integer selection) {
+		LOGGING.INFO("getByStatusStepSelection Of Candidate Dao");
+		try {
+			Query query = manager.createQuery("select u from Candidate u where u.status =:status and u.step =:step and u.selectinStatus =:selection");
+			query.setParameter("status", status);
+			query.setParameter("step", step);
+			query.setParameter("selection", selection);
+
+			return query.getResultList();
+					}  catch (Exception e) {
+						throw e;
+					}
+	}
+	public void deleteById(Long id) {
+		try {
+		Candidate candidate = getById(id);
+		manager.remove(candidate);
+		}catch(Exception e) {
+			throw new UsersException(UsersErrorConstant.CANDIDATE);
+		}
+	}
+
+	
 }

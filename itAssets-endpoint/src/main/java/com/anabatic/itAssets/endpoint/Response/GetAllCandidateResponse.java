@@ -1,5 +1,6 @@
 package com.anabatic.itAssets.endpoint.Response;
 
+import java.sql.Time;
 import java.util.Date;
 
 public class GetAllCandidateResponse {
@@ -22,6 +23,24 @@ public class GetAllCandidateResponse {
 	private String slot;
 	private Date dateOfJoining;
 	private String cin;
+	private Integer selection;
+	private Time startTime;
+	private Time endTime;
+	
+	public Time getStartTime() {
+		return startTime;
+	}
+	public void setStartTime(Time startTime) {
+		this.startTime = startTime;
+	}
+	public Time getEndTime() {
+		return endTime;
+	}
+	public void setEndTime(Time endTime) {
+		this.endTime = endTime;
+	}
+	private String managerName;
+	private String recruiteName;
 	public Long getId() {
 		return id;
 	}
@@ -135,6 +154,24 @@ public class GetAllCandidateResponse {
 	}
 	public void setCin(String cin) {
 		this.cin = cin;
+	}
+	public Integer getSelection() {
+		return selection;
+	}
+	public void setSelection(Integer selection) {
+		this.selection = selection;
+	}
+	public String getManagerName() {
+		return managerName;
+	}
+	public void setManagerName(String managerName) {
+		this.managerName = managerName;
+	}
+	public String getRecruiteName() {
+		return recruiteName;
+	}
+	public void setRecruiteName(String recruiteName) {
+		this.recruiteName = recruiteName;
 	}
 	
 	

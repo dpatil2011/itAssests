@@ -52,7 +52,6 @@ public class Users {
 	@Column(name = "mother_dateOfBirth")
 	private Date motherDateOfBirth;
 
-
 	@Column(name = "sibling1")
 	private String sibling1;
 
@@ -220,19 +219,28 @@ public class Users {
 
 	@OneToMany(mappedBy = "users", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Skills> skills;
-	
+
+	@OneToMany(mappedBy = "users", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<UserDocument> userDocument;
+
 	@OneToMany(mappedBy = "users", fetch = FetchType.LAZY)
 	private List<Privilege> privilege;
-	
 
 	@OneToMany(mappedBy = "userId", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Request> request;
 
 	@OneToMany(mappedBy = "users", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Candidate> candidate;
+	
+	@OneToMany(mappedBy = "users", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<Certification> certification;
+	
+	@OneToMany(mappedBy = "users", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<Experience> experience;
+	
+	@OneToMany(mappedBy = "users", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<Children> children;
 
-	
-	
 	public Long getId() {
 		return id;
 	}
@@ -761,6 +769,14 @@ public class Users {
 		this.skills = skills;
 	}
 
+	public List<UserDocument> getUserDocument() {
+		return userDocument;
+	}
+
+	public void setUserDocument(List<UserDocument> userDocument) {
+		this.userDocument = userDocument;
+	}
+
 	public List<Privilege> getPrivilege() {
 		return privilege;
 	}
@@ -785,6 +801,30 @@ public class Users {
 		this.candidate = candidate;
 	}
 
+	public List<Certification> getCertification() {
+		return certification;
+	}
+
+	public void setCertification(List<Certification> certification) {
+		this.certification = certification;
+	}
+
+	public List<Experience> getExperience() {
+		return experience;
+	}
+
+	public void setExperience(List<Experience> experience) {
+		this.experience = experience;
+	}
+
+	public List<Children> getChildren() {
+		return children;
+	}
+
+	public void setChildren(List<Children> children) {
+		this.children = children;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -793,6 +833,9 @@ public class Users {
 		result = prime * result + ((atiplId == null) ? 0 : atiplId.hashCode());
 		result = prime * result + ((birthPlace == null) ? 0 : birthPlace.hashCode());
 		result = prime * result + ((bloodGroup == null) ? 0 : bloodGroup.hashCode());
+		result = prime * result + ((candidate == null) ? 0 : candidate.hashCode());
+		result = prime * result + ((certification == null) ? 0 : certification.hashCode());
+		result = prime * result + ((children == null) ? 0 : children.hashCode());
 		result = prime * result + ((city == null) ? 0 : city.hashCode());
 		result = prime * result + ((corpId == null) ? 0 : corpId.hashCode());
 		result = prime * result + ((currentAddress == null) ? 0 : currentAddress.hashCode());
@@ -803,7 +846,12 @@ public class Users {
 		result = prime * result + ((dlGroup == null) ? 0 : dlGroup.hashCode());
 		result = prime * result + ((drivingLicense == null) ? 0 : drivingLicense.hashCode());
 		result = prime * result + ((employeeId == null) ? 0 : employeeId.hashCode());
+		result = prime * result + ((experience == null) ? 0 : experience.hashCode());
+		result = prime * result + ((fatherAddar == null) ? 0 : fatherAddar.hashCode());
+		result = prime * result + ((fatherDateOfBirth == null) ? 0 : fatherDateOfBirth.hashCode());
+		result = prime * result + ((fatherName == null) ? 0 : fatherName.hashCode());
 		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
+		result = prime * result + ((fullName == null) ? 0 : fullName.hashCode());
 		result = prime * result + ((gender == null) ? 0 : gender.hashCode());
 		result = prime * result + ((graduation == null) ? 0 : graduation.hashCode());
 		result = prime * result + ((graduationEndYear == null) ? 0 : graduationEndYear.hashCode());
@@ -818,6 +866,9 @@ public class Users {
 		result = prime * result + ((matricEndYear == null) ? 0 : matricEndYear.hashCode());
 		result = prime * result + ((matricStartYear == null) ? 0 : matricStartYear.hashCode());
 		result = prime * result + ((matricgrade == null) ? 0 : matricgrade.hashCode());
+		result = prime * result + ((motherAddar == null) ? 0 : motherAddar.hashCode());
+		result = prime * result + ((motherDateOfBirth == null) ? 0 : motherDateOfBirth.hashCode());
+		result = prime * result + ((motherName == null) ? 0 : motherName.hashCode());
 		result = prime * result + ((nationality == null) ? 0 : nationality.hashCode());
 		result = prime * result + ((officalEmail == null) ? 0 : officalEmail.hashCode());
 		result = prime * result + ((pan == null) ? 0 : pan.hashCode());
@@ -833,12 +884,24 @@ public class Users {
 		result = prime * result + ((postGraduationGrade == null) ? 0 : postGraduationGrade.hashCode());
 		result = prime * result + ((postGraduationMajor == null) ? 0 : postGraduationMajor.hashCode());
 		result = prime * result + ((postGraduationStartYear == null) ? 0 : postGraduationStartYear.hashCode());
+		result = prime * result + ((privilege == null) ? 0 : privilege.hashCode());
 		result = prime * result + ((religion == null) ? 0 : religion.hashCode());
 		result = prime * result + ((reportingManager == null) ? 0 : reportingManager.hashCode());
+		result = prime * result + ((request == null) ? 0 : request.hashCode());
 		result = prime * result + ((secondaryEndYear == null) ? 0 : secondaryEndYear.hashCode());
 		result = prime * result + ((secondaryStartYear == null) ? 0 : secondaryStartYear.hashCode());
 		result = prime * result + ((secondarygrade == null) ? 0 : secondarygrade.hashCode());
+		result = prime * result + ((sibling1 == null) ? 0 : sibling1.hashCode());
+		result = prime * result + ((sibling1DateOfBirth == null) ? 0 : sibling1DateOfBirth.hashCode());
+		result = prime * result + ((sibling2 == null) ? 0 : sibling2.hashCode());
+		result = prime * result + ((sibling2DateOfBirth == null) ? 0 : sibling2DateOfBirth.hashCode());
+		result = prime * result + ((sibling3 == null) ? 0 : sibling3.hashCode());
+		result = prime * result + ((sibling3DateOfBirth == null) ? 0 : sibling3DateOfBirth.hashCode());
 		result = prime * result + ((skills == null) ? 0 : skills.hashCode());
+		result = prime * result + ((spouceAdhar == null) ? 0 : spouceAdhar.hashCode());
+		result = prime * result + ((spouceName == null) ? 0 : spouceName.hashCode());
+		result = prime * result + ((status == null) ? 0 : status.hashCode());
+		result = prime * result + ((userDocument == null) ? 0 : userDocument.hashCode());
 		return result;
 	}
 
@@ -870,6 +933,21 @@ public class Users {
 			if (other.bloodGroup != null)
 				return false;
 		} else if (!bloodGroup.equals(other.bloodGroup))
+			return false;
+		if (candidate == null) {
+			if (other.candidate != null)
+				return false;
+		} else if (!candidate.equals(other.candidate))
+			return false;
+		if (certification == null) {
+			if (other.certification != null)
+				return false;
+		} else if (!certification.equals(other.certification))
+			return false;
+		if (children == null) {
+			if (other.children != null)
+				return false;
+		} else if (!children.equals(other.children))
 			return false;
 		if (city == null) {
 			if (other.city != null)
@@ -921,10 +999,35 @@ public class Users {
 				return false;
 		} else if (!employeeId.equals(other.employeeId))
 			return false;
+		if (experience == null) {
+			if (other.experience != null)
+				return false;
+		} else if (!experience.equals(other.experience))
+			return false;
+		if (fatherAddar == null) {
+			if (other.fatherAddar != null)
+				return false;
+		} else if (!fatherAddar.equals(other.fatherAddar))
+			return false;
+		if (fatherDateOfBirth == null) {
+			if (other.fatherDateOfBirth != null)
+				return false;
+		} else if (!fatherDateOfBirth.equals(other.fatherDateOfBirth))
+			return false;
+		if (fatherName == null) {
+			if (other.fatherName != null)
+				return false;
+		} else if (!fatherName.equals(other.fatherName))
+			return false;
 		if (firstName == null) {
 			if (other.firstName != null)
 				return false;
 		} else if (!firstName.equals(other.firstName))
+			return false;
+		if (fullName == null) {
+			if (other.fullName != null)
+				return false;
+		} else if (!fullName.equals(other.fullName))
 			return false;
 		if (gender == null) {
 			if (other.gender != null)
@@ -995,6 +1098,21 @@ public class Users {
 			if (other.matricgrade != null)
 				return false;
 		} else if (!matricgrade.equals(other.matricgrade))
+			return false;
+		if (motherAddar == null) {
+			if (other.motherAddar != null)
+				return false;
+		} else if (!motherAddar.equals(other.motherAddar))
+			return false;
+		if (motherDateOfBirth == null) {
+			if (other.motherDateOfBirth != null)
+				return false;
+		} else if (!motherDateOfBirth.equals(other.motherDateOfBirth))
+			return false;
+		if (motherName == null) {
+			if (other.motherName != null)
+				return false;
+		} else if (!motherName.equals(other.motherName))
 			return false;
 		if (nationality == null) {
 			if (other.nationality != null)
@@ -1071,7 +1189,11 @@ public class Users {
 				return false;
 		} else if (!postGraduationStartYear.equals(other.postGraduationStartYear))
 			return false;
-		
+		if (privilege == null) {
+			if (other.privilege != null)
+				return false;
+		} else if (!privilege.equals(other.privilege))
+			return false;
 		if (religion == null) {
 			if (other.religion != null)
 				return false;
@@ -1081,6 +1203,11 @@ public class Users {
 			if (other.reportingManager != null)
 				return false;
 		} else if (!reportingManager.equals(other.reportingManager))
+			return false;
+		if (request == null) {
+			if (other.request != null)
+				return false;
+		} else if (!request.equals(other.request))
 			return false;
 		if (secondaryEndYear == null) {
 			if (other.secondaryEndYear != null)
@@ -1097,35 +1224,92 @@ public class Users {
 				return false;
 		} else if (!secondarygrade.equals(other.secondarygrade))
 			return false;
+		if (sibling1 == null) {
+			if (other.sibling1 != null)
+				return false;
+		} else if (!sibling1.equals(other.sibling1))
+			return false;
+		if (sibling1DateOfBirth == null) {
+			if (other.sibling1DateOfBirth != null)
+				return false;
+		} else if (!sibling1DateOfBirth.equals(other.sibling1DateOfBirth))
+			return false;
+		if (sibling2 == null) {
+			if (other.sibling2 != null)
+				return false;
+		} else if (!sibling2.equals(other.sibling2))
+			return false;
+		if (sibling2DateOfBirth == null) {
+			if (other.sibling2DateOfBirth != null)
+				return false;
+		} else if (!sibling2DateOfBirth.equals(other.sibling2DateOfBirth))
+			return false;
+		if (sibling3 == null) {
+			if (other.sibling3 != null)
+				return false;
+		} else if (!sibling3.equals(other.sibling3))
+			return false;
+		if (sibling3DateOfBirth == null) {
+			if (other.sibling3DateOfBirth != null)
+				return false;
+		} else if (!sibling3DateOfBirth.equals(other.sibling3DateOfBirth))
+			return false;
 		if (skills == null) {
 			if (other.skills != null)
 				return false;
 		} else if (!skills.equals(other.skills))
+			return false;
+		if (spouceAdhar == null) {
+			if (other.spouceAdhar != null)
+				return false;
+		} else if (!spouceAdhar.equals(other.spouceAdhar))
+			return false;
+		if (spouceName == null) {
+			if (other.spouceName != null)
+				return false;
+		} else if (!spouceName.equals(other.spouceName))
+			return false;
+		if (status == null) {
+			if (other.status != null)
+				return false;
+		} else if (!status.equals(other.status))
+			return false;
+		if (userDocument == null) {
+			if (other.userDocument != null)
+				return false;
+		} else if (!userDocument.equals(other.userDocument))
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Users [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", employeeId=" + employeeId
-				+ ", gender=" + gender + ", dateofbirth=" + dateofbirth + ", birthPlace=" + birthPlace
-				+ ", nationality=" + nationality + ", currentAddress=" + currentAddress + ", city=" + city
-				+ ", pincode=" + pincode + ", religion=" + religion + ", maritalStatus=" + maritalStatus
-				+ ", dateOfMarriage=" + dateOfMarriage + ", phoneNumber=" + phoneNumber + ", drivingLicense="
-				+ drivingLicense + ", passportNumber=" + passportNumber + ", pan=" + pan + ", aadhar=" + aadhar
-				+ ", personalEmail=" + personalEmail + ", officalEmail=" + officalEmail + ", reportingManager="
-				+ reportingManager + ", department=" + department + ", jobTitle=" + jobTitle + ", dateOfJoin="
-				+ dateOfJoin + ", permanetAddress=" + permanetAddress + ", photo=" + photo + ", bloodGroup="
-				+ bloodGroup + ", dlGroup=" + dlGroup + ", corpId=" + corpId + ", atiplId=" + atiplId + ", password="
-				+ password + ", hrPassword=" + hrPassword + ", graduation=" + graduation + ", graduationStartYear="
-				+ graduationStartYear + ", graduationEndYear=" + graduationEndYear + ", graduationMajor="
-				+ graduationMajor + ", graduationgrade=" + graduationgrade + ", matricStartYear=" + matricStartYear
-				+ ", matricEndYear=" + matricEndYear + ", matricgrade=" + matricgrade + ", secondaryStartYear="
-				+ secondaryStartYear + ", secondaryEndYear=" + secondaryEndYear + ", secondarygrade=" + secondarygrade
-				+ ", postGraduation=" + postGraduation + ", postGraduationStartYear=" + postGraduationStartYear
-				+ ", postGraduationEndYear=" + postGraduationEndYear + ", postGraduationMajor=" + postGraduationMajor
-				+ ", postGraduationGrade=" + postGraduationGrade + ", skills=" + skills + ", privilege=" 
-				+ "]";
+		return "Users [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", fullName=" + fullName
+				+ ", fatherName=" + fatherName + ", fatherAddar=" + fatherAddar + ", fatherDateOfBirth="
+				+ fatherDateOfBirth + ", motherName=" + motherName + ", motherAddar=" + motherAddar
+				+ ", motherDateOfBirth=" + motherDateOfBirth + ", sibling1=" + sibling1 + ", sibling1DateOfBirth="
+				+ sibling1DateOfBirth + ", sibling2=" + sibling2 + ", sibling2DateOfBirth=" + sibling2DateOfBirth
+				+ ", sibling3=" + sibling3 + ", sibling3DateOfBirth=" + sibling3DateOfBirth + ", employeeId="
+				+ employeeId + ", spouceName=" + spouceName + ", spouceAdhar=" + spouceAdhar + ", gender=" + gender
+				+ ", dateofbirth=" + dateofbirth + ", birthPlace=" + birthPlace + ", nationality=" + nationality
+				+ ", currentAddress=" + currentAddress + ", city=" + city + ", pincode=" + pincode + ", religion="
+				+ religion + ", maritalStatus=" + maritalStatus + ", dateOfMarriage=" + dateOfMarriage
+				+ ", phoneNumber=" + phoneNumber + ", drivingLicense=" + drivingLicense + ", passportNumber="
+				+ passportNumber + ", pan=" + pan + ", aadhar=" + aadhar + ", personalEmail=" + personalEmail
+				+ ", officalEmail=" + officalEmail + ", reportingManager=" + reportingManager + ", department="
+				+ department + ", jobTitle=" + jobTitle + ", dateOfJoin=" + dateOfJoin + ", permanetAddress="
+				+ permanetAddress + ", photo=" + photo + ", bloodGroup=" + bloodGroup + ", dlGroup=" + dlGroup
+				+ ", corpId=" + corpId + ", atiplId=" + atiplId + ", password=" + password + ", hrPassword="
+				+ hrPassword + ", graduation=" + graduation + ", graduationStartYear=" + graduationStartYear
+				+ ", graduationEndYear=" + graduationEndYear + ", graduationMajor=" + graduationMajor
+				+ ", graduationgrade=" + graduationgrade + ", matricStartYear=" + matricStartYear + ", matricEndYear="
+				+ matricEndYear + ", matricgrade=" + matricgrade + ", secondaryStartYear=" + secondaryStartYear
+				+ ", secondaryEndYear=" + secondaryEndYear + ", secondarygrade=" + secondarygrade + ", postGraduation="
+				+ postGraduation + ", postGraduationStartYear=" + postGraduationStartYear + ", postGraduationEndYear="
+				+ postGraduationEndYear + ", postGraduationMajor=" + postGraduationMajor + ", postGraduationGrade="
+				+ postGraduationGrade + ", status=" + status + ", skills=" + skills + ", userDocument=" + userDocument
+				+ ", privilege=" + privilege + ", request=" + request + ", candidate=" + candidate + ", certification="
+				+ certification + ", experience=" + experience + ", children=" + children + "]";
 	}
 
 }

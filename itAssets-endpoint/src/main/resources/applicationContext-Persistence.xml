@@ -41,6 +41,13 @@
 		class="com.anabatic.itAssets.persistence.dao.impl.CandidateRecordDaoImpl" />
 	<bean id="privilegeDao"
 		class="com.anabatic.itAssets.persistence.dao.impl.PrivilegeDaoImpl" />
+		
+	<bean id="childrenDao"
+		class="com.anabatic.itAssets.persistence.dao.impl.ChildrenDaoImpl" />
+	<bean id="experienceDao"
+		class="com.anabatic.itAssets.persistence.dao.impl.ExperienceDaoImpl" />
+	<bean id="certificationDao"
+		class="com.anabatic.itAssets.persistence.dao.impl.CertificationDaoImpl" />
 
 
 
