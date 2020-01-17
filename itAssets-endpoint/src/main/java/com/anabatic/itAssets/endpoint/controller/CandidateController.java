@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -83,6 +85,8 @@ public class CandidateController {
 	@Autowired
 	private InsertCandidateRecordConverter insertCandidateRecordConverter;
 	
+	@Autowired
+    private JavaMailSender javaMailSender;
 	
 	
 
@@ -275,6 +279,16 @@ public class CandidateController {
 		return ResponseEntity.ok().body(baseResponse);
 	}
 	
+	@PostMapping("/sendmail")
+    public void main1() {
+        SimpleMailMessage msg = new SimpleMailMessage();
+        //can be send for multiple user
+        msg.setTo("dpatil2011@gmail.com");
+
+        msg.setSubject("Testing from Akshaya");
+        msg.setText("Hello World \n Spring Boot Email");
+        javaMailSender.send(msg);
+    }
 	
 
 }

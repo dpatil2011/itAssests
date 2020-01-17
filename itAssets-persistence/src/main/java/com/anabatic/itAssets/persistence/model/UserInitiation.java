@@ -35,7 +35,7 @@ public class UserInitiation {
     @Column(name="active_from")
     private Date activeFrom;
     
-    @Column(name="active_from")
+    @Column(name="expire_on")
     private Date expireOn;
     
     @Column(name = "user_data", columnDefinition = "text")
