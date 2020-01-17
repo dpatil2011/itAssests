@@ -4,9 +4,11 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.transaction.Transactional;
 
 import com.anabatic.itAssets.persistence.dao.UserInitiationDao;
+import com.anabatic.itAssets.persistence.model.AssetsCategory;
 import com.anabatic.itAssets.persistence.model.UserInitiation;
 
 /**
@@ -30,6 +32,7 @@ class UserInitiationDaoImpl implements UserInitiationDao{
     public UserInitiation getById(Long request) {
         UserInitiation response = manager.find(UserInitiation.class, request);
         return response;
+        
     }
 
     @Override
@@ -47,5 +50,18 @@ class UserInitiationDaoImpl implements UserInitiationDao{
         UserInitiation response = manager.find(UserInitiation.class, request);
         manager.remove(response);
         return null;
+    }
+
+    @Override
+    public UserInitiation linkValidation(String email, String cinNumber) {
+        try {
+            Query query = manager
+                    .createQuery("select k from UserInitiation k where k.email =:email and k.cinNumber =:cinNumber");
+            query.setParameter("email", email);
+            query.setParameter("cinNumber", cinNumber);
+            return (UserInitiation) query.getSingleResult();
+        } catch (Exception e) {
+            throw e;
+        }
     }
 }

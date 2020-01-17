@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.anabatic.generic.endpoint.contract.BaseResponse;
+import com.anabatic.itAssets.endpoint.Request.RegLinkRequest;
 import com.anabatic.itAssets.endpoint.Request.RequestId;
 import com.anabatic.itAssets.endpoint.Request.UserInitiationRequest;
 import com.anabatic.itAssets.endpoint.converter.UserInitiationConverter;
@@ -66,6 +67,15 @@ public class UserInitiationController {
         userInitiationService.delete(request.getId());
         BaseResponse baseResponse = new BaseResponse();
         baseResponse.setResponse("Operation performed Successfully");
+        return ResponseEntity.ok().body(baseResponse);
+    }
+    
+    @RequestMapping(value="/link-validation", method=RequestMethod.POST)
+    public ResponseEntity<BaseResponse> linkValidation(
+            @RequestBody RegLinkRequest request) {
+        UserInitiation response = userInitiationService.linkValidation(request.getEmail(),request.getCinNumber());
+        BaseResponse baseResponse = new BaseResponse();
+        baseResponse.setResponse(userInitiationConverter.toContract(response));
         return ResponseEntity.ok().body(baseResponse);
     }
     

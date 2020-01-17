@@ -19,4 +19,6 @@ public interface UserInitiationDao {
 
     public UserInitiation delete(Long request);
     
+    public UserInitiation linkValidation(String email,String cinNumber);
+    
 }
