@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.anabatic.itAssets.persistence.dao.CandidateRecordDao;
+import com.anabatic.itAssets.persistence.model.Candidate;
 import com.anabatic.itAssets.persistence.model.CandidateRecord;
 import com.anabatic.itAssets.services.service.CandidateRecordService;
 
@@ -59,4 +60,9 @@ public class CandidateRecordServiceImpl implements CandidateRecordService {
 		List<CandidateRecord> list = candidateRecordDao.getBy(can);
 		return list;
 	}
+	@Override
+    public List<CandidateRecord> getByCandidate(Long cId) {
+        List<CandidateRecord> record2 = candidateRecordDao.getByCandidate(cId);
+        return record2;
+    }
 }

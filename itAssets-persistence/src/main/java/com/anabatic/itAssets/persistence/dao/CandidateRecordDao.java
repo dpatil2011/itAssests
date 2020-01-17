@@ -22,4 +22,6 @@ public interface CandidateRecordDao {
 
 	public List<CandidateRecord> getBy(CandidateRecord can);
 
+    List<CandidateRecord> getByCandidate(Long cId);
+
 }

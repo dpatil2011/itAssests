@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.anabatic.generic.endpoint.contract.BaseResponse;
 import com.anabatic.itAssets.endpoint.Request.DeleteCandidateRecordRequest;
 import com.anabatic.itAssets.endpoint.Request.GetByIdCandidateRecordRequest;
+import com.anabatic.itAssets.endpoint.Request.GetByIdCandidateRequest;
 import com.anabatic.itAssets.endpoint.Request.GetByStatusCandidateRecordRequest;
 import com.anabatic.itAssets.endpoint.Request.GetByStepCandidateRecordRequest;
 import com.anabatic.itAssets.endpoint.Request.InsertCandidateRecordRequest;
@@ -128,4 +129,11 @@ public class CandidateRecordController {
 			baseResponse.setResponse(getByStatusCandidateRecordConverter.toContracts(can));
 			return ResponseEntity.ok().body(baseResponse);
 	 }
+	 @PostMapping("/getByCandidate")
+     public ResponseEntity<BaseResponse> getByCandidate(@RequestBody  GetByIdCandidateRequest request) {
+            List<CandidateRecord> can = candidateRecordService.getByCandidate(request.getId());
+            BaseResponse baseResponse = new BaseResponse();
+            baseResponse.setResponse(getByStatusCandidateRecordConverter.toContracts(can));
+            return ResponseEntity.ok().body(baseResponse);
+     }
 }
