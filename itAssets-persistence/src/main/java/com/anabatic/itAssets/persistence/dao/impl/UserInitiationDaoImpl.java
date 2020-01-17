@@ -32,6 +32,7 @@ class UserInitiationDaoImpl implements UserInitiationDao{
     public UserInitiation getById(Long request) {
         UserInitiation response = manager.find(UserInitiation.class, request);
         return response;
+        
     }
 
     @Override
