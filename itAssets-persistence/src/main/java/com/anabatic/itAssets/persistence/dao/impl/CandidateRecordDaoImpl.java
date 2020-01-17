@@ -93,5 +93,19 @@ public class CandidateRecordDaoImpl implements CandidateRecordDao {
 			throw e;
 		}
 	}
+	
+	@Override
+    public List<CandidateRecord> getByCandidate(Long cId) {
+        try {
+            //return manager.createNativeQuery("SELECT * FROM faq where ", Faq.class).getResultList();
+            Query query = entityManager.createQuery("select u from CandidateRecord u where c_id =: cId");
+            query.setParameter("cId", cId);
+            List<CandidateRecord> resultList = query.getResultList();
+    //  return null;
+            return query.getResultList();
+        } catch (Exception e) {
+            throw e;
+        }
+    }
 
 }

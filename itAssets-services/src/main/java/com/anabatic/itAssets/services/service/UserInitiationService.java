@@ -18,4 +18,6 @@ public interface UserInitiationService {
     public List<UserInitiation> getAll();
 
     public UserInitiation delete(Long request);
+
+    public UserInitiation linkValidation(String email, String cinNumber);
 }
