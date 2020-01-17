@@ -41,5 +41,11 @@ public class UserInitiationServiceImpl implements UserInitiationService {
         
         return userInitiationDao.delete(request);
     }
+    
+    @Override
+    public UserInitiation linkValidation(String email,String cinNumber) {
+        
+        return userInitiationDao.linkValidation(email,cinNumber);
+    }
 
 }
