@@ -36,6 +36,7 @@ import com.anabatic.itAssets.endpoint.Request.GetByStatusAndStepCandidateRequest
 import com.anabatic.itAssets.endpoint.Request.GetByStepCandidateRequest;
 import com.anabatic.itAssets.endpoint.Request.InsertCandidateRequest;
 import com.anabatic.itAssets.endpoint.Request.JoiningDateCandidateRequest;
+import com.anabatic.itAssets.endpoint.Request.MailRequest;
 import com.anabatic.itAssets.endpoint.Request.ScheduleInterviewCandidateRequest;
 import com.anabatic.itAssets.endpoint.Request.UpdateCandidateRequest;
 import com.anabatic.itAssets.endpoint.Request.UpdateSelectionCandidateRequest;
@@ -327,14 +328,15 @@ public class CandidateController {
     }
 
     @PostMapping("/sendmail")
-    public void main1() {
+    public ResponseEntity<BaseResponse> sendMail(@RequestBody MailRequest request) {
         SimpleMailMessage msg = new SimpleMailMessage();
         //can be send for multiple user
-        msg.setTo("dpatil2011@gmail.com");
-
-        msg.setSubject("Testing from Akshaya");
-        msg.setText("Hello World \n Spring Boot Email");
+        msg.setTo(request.getToMail());
+        msg.setSubject(request.getSubject());
+        msg.setText(request.getBody());
         javaMailSender.send(msg);
+        baseResponse.setResponse("Email sent successfully");
+        return ResponseEntity.ok().body(baseResponse);
     }
     
 }
