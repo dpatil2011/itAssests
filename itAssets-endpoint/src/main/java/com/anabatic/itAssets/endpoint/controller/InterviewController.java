@@ -64,21 +64,21 @@ public class InterviewController {
 			Integer cStep = candidate1.getStep();
 			candidate1.setStatus(request.getStatus());
 			candidate1.setStep(request.getStep());
-			if(candidate1.getDateOfJoining()==null&&candidate1.getStep()==3&&candidate1.getStatus()==30&&candidate1.getSelectinStatus()==40) {
+			if (candidate1.getDateOfJoining() == null && candidate1.getStep() == 3 && candidate1.getStatus() == 30
+					&& candidate1.getSelectinStatus() == 40) {
 				selection = 40;
 			}
-			if(candidate1.getSelectinStatus()==41) {
+			if (candidate1.getSelectinStatus() == 41) {
 				candidate1.setSelectinStatus(41);
 			} else {
-			candidate1.setSelectinStatus(selection);
+				candidate1.setSelectinStatus(selection);
 			}
-			
-			
-//			if (candidate1.getStatus()==10) {
-//				candidate1.setStep(cStep + 1);
-//			} else {
-//				candidate1.setStep(cStep);
-//			}
+
+			// if (candidate1.getStatus()==10) {
+			// candidate1.setStep(cStep + 1);
+			// } else {
+			// candidate1.setStep(cStep);
+			// }
 			Candidate candidate = candidateService.update(candidate1);
 			CandidateBean bean = new CandidateBean();
 			bean.setName(candidate.getName());
