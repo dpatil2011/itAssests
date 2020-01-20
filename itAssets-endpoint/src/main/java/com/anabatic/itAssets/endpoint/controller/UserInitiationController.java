@@ -25,7 +25,7 @@ import com.anabatic.itAssets.services.service.UserInitiationService;
  * @author yeshwantk (&copy;09-Jan-2020) 
  */
 
-@CrossOrigin(origins="*",allowedHeaders="*")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/user-initiation")
 public class UserInitiationController {

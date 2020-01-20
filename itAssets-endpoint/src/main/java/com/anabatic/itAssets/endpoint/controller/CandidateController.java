@@ -1,6 +1,7 @@
 package com.anabatic.itAssets.endpoint.controller;
 
 import java.io.IOException;
+import java.util.Random;
 import java.util.Date;
 import java.util.List;
 
@@ -95,6 +96,22 @@ public class CandidateController {
     @Autowired
     private JavaMailSender javaMailSender;
     
+    public String random() {
+    	 Random rand = new Random(); 
+         String a = "CIN";
+         int rand_int1 = rand.nextInt(10000); 
+         String b = a+rand_int1;
+       
+         Candidate random = candidateService.checkCin(b);
+         if(random==null) {
+        	 return b;
+         } else {
+        	 return null;
+         }
+		
+    	
+    }
+    
 
     @PostMapping("/insert")
     public ResponseEntity<BaseResponse> insert(@RequestParam("file") MultipartFile file,
@@ -108,6 +125,7 @@ public class CandidateController {
             @RequestParam(value = "hmId", required = true) final Long hmId,
             @RequestParam(value = "rId", required = true) final Long recruiterId)       
     {
+    	 String random2 = null;
         String fileName = fileStorageService.storeFile(file);
         String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath().path("/candidate/").path(fileName)
                 .toUriString();
@@ -131,6 +149,11 @@ public class CandidateController {
         Users user = new Users();
         user.setId(request.getrId());
         can.setUsers(user);
+       
+        if(random2==null) {
+        	random2 = random();
+        }
+        can.setCin(random2);
         Candidate can1 = candidateService.insert(can);
 
         CandidateRecord c = new CandidateRecord();

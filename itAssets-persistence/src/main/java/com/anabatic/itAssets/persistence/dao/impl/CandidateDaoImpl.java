@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
@@ -291,6 +292,20 @@ public class CandidateDaoImpl implements CandidateDao {
 			LOGGING.ERROR("joiningDate Candidate Dao" + e.getMessage());
 			throw e;
 		}
+	}
+
+	@Override
+	public Candidate checkCin(String cin) {
+		LOGGING.INFO("getByStatusStepSelection Of Candidate Dao");
+		try {
+			Query query = manager.createQuery("select u from Candidate u where u.cin =:cin");
+			query.setParameter("cin", cin);
+			return  (Candidate) query.getSingleResult();
+					}  catch (NoResultException e) {
+						return null;
+					} catch (Exception e) {
+						throw e;
+					}
 	}
 
 	

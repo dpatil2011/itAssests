@@ -43,5 +43,8 @@ public interface CandidateService {
 
 	Candidate joiningDate(Date dateOfJoining, Long id, String comment, Integer selection, Integer status, Integer step);
 
+	Candidate checkCin(String random2);
+
+
 
 }

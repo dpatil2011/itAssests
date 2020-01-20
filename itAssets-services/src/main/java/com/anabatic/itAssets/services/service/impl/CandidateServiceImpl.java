@@ -162,6 +162,12 @@ public class CandidateServiceImpl implements CandidateService {
 			return candidateDao.joiningDate(id,dateOfJoining,comment,selection,status,step);
 		}
 
+		@Override
+		public Candidate checkCin(String random2) {
+			// TODO Auto-generated method stub
+			 return candidateDao.checkCin(random2);
+		}
+
 	
 
 }

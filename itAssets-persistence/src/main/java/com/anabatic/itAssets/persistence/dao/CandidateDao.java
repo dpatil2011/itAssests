@@ -49,5 +49,7 @@ public interface CandidateDao {
 	public Candidate joiningDate(Long id, Date dateOfJoining, String comment, Integer selection, Integer status,
 			Integer step);
 
+	public Candidate checkCin(String random2);
+
 
 }
