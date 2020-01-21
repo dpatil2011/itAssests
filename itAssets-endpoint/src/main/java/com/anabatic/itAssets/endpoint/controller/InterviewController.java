@@ -68,8 +68,10 @@ public class InterviewController {
 					&& candidate1.getSelectinStatus() == 40) {
 				selection = 40;
 			}
-			if (candidate1.getSelectinStatus() == 41) {
+			if (candidate1.getSelectinStatus() == 41&&candidate1.getDateOfJoining()!=null) {
 				candidate1.setSelectinStatus(41);
+				candidate1.setStatus(30);
+				candidate1.setStep(3);
 			} else {
 				candidate1.setSelectinStatus(selection);
 			}

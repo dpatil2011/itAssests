@@ -29,6 +29,7 @@ public class CandidateServiceImpl implements CandidateService {
 	public Candidate insert(Candidate can) {
 		Boolean validEmail=candidateDao.validateEmail(can);
 		Boolean validPhone = candidateDao.validatePhone(can);
+	
 		Candidate can1= new Candidate();
 		 if ((validPhone && validEmail)) {
 				throw new UsersException(UsersErrorConstant.CANDIDATE_EXISTS); 
@@ -101,6 +102,7 @@ public class CandidateServiceImpl implements CandidateService {
 			try {
 				Candidate existingCandidate = candidateDao.getById(candidate.getId());
 				existingCandidate.setSlot(candidate.getSlot());
+				
 				if (candidate.getUsers() != null) {
 					Users manager = usersdao.getById(candidate.getUsers().getId());
 					if (manager == null) {

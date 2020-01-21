@@ -114,7 +114,7 @@ public class CandidateController {
     
 
     @PostMapping("/insert")
-    public ResponseEntity<BaseResponse> insert(@RequestParam("file") MultipartFile file,
+    public ResponseEntity<BaseResponse> insert(@RequestParam(value="file", required = true) MultipartFile file,
             @RequestParam(value = "name", required = true) final String name,
             @RequestParam(value = "email", required = true) final String email,
             @RequestParam(value = "phoneNo", required = true) final String phoneNo,
@@ -167,6 +167,7 @@ public class CandidateController {
         Date date = new Date();
         c.setDate(date);
         c.setData(can1.getComment());
+        c.setcId(can1);
         candidateRecordService.insert(c);
 
         baseResponse.setResponse(insertCandidateConverter.toContract(can1));

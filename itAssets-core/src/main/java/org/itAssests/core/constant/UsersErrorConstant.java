@@ -17,7 +17,7 @@ public class UsersErrorConstant extends ErrorConstant{
 
 
 
-	public static final com.anabatic.generic.core.exception.Error PHONE_NO = new Error("user-100","Invalid employeID or password ", "Invalid employeID or password ");
+	public static final com.anabatic.generic.core.exception.Error PHONE_NO = new Error("user-100","Phone No already exists", "Phone No already exists");
 
 	
 	public static final com.anabatic.generic.core.exception.Error USER_LOGIN_VALIDATION = new Error("user-100","Invalid employeID or password ", "Invalid employeID or password ");
@@ -25,7 +25,7 @@ public class UsersErrorConstant extends ErrorConstant{
 	public static final com.anabatic.generic.core.exception.Error USER_NOT_FOUND = new Error("user-102","User not found", "User not found");
 	public static final com.anabatic.generic.core.exception.Error EMPLOYEE_ID = new Error("user-103","EMPLOYEE_ID already assign to other user", "EMPLOYEE_ID already assign to other user");
 	public static final com.anabatic.generic.core.exception.Error INVALID_PHONE = new Error("candidate-101","PHONE_NO already in use", "PHONE_NO already in use");
-	public static final com.anabatic.generic.core.exception.Error EMAIL_ID = new Error("candidate-102","EMAIL_ID already in use", "EMAIL_ID already in use");
+	public static final com.anabatic.generic.core.exception.Error EMAIL_ID = new Error("candidate-102","EmailId already in use", "EMAIL_ID already in use");
 	public static final com.anabatic.generic.core.exception.Error CANDIDATE_EXISTS = new Error("candidate-100","candidate with same EMAIL_ID and PHONE_NO already exists", "candidate with same EMAIL_ID and PHONE_NO already exists");
 	public static final com.anabatic.generic.core.exception.Error CANDIDATE = new Error("candidate-107","Candidate not present", "candidate not present please check candidate id");
 
