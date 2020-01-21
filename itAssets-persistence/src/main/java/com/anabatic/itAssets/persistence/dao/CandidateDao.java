@@ -58,4 +58,6 @@ public interface CandidateDao {
 
 	public void createSequence(String sequenceName);
 
+	public Candidate updateSelectionAndComment(Long id, String comment, Integer selection);
+
 }

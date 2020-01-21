@@ -187,5 +187,9 @@ public class CandidateServiceImpl implements CandidateService {
 		// TODO Auto-generated method stub
 		return candidateDao.checkCin(random2);
 	}
-
+	
+	@Override
+	public Candidate updateSelectionAndComment(Long id,String comment,Integer selection) {
+		return candidateDao.updateSelectionAndComment(id, comment, selection);
+	}
 }

@@ -248,6 +248,17 @@ public class CandidateDaoImpl implements CandidateDao {
 			throw e;
 		}
 	}
+	@Override
+	public Candidate updateSelectionAndComment(Long id,String comment,Integer selection) {
+		try {
+			Candidate candidate=getById(id);
+			candidate.setComment(comment);
+			candidate.setSelectinStatus(selection);
+		return manager.merge(candidate);
+		}catch (Exception e) {
+			throw e;
+		}
+	}
 
 	@Override
 	public List<Candidate> getByStatusStepSelection(Integer status, Integer step, Integer selection) {

@@ -40,6 +40,7 @@ import com.anabatic.itAssets.endpoint.Request.JoiningDateCandidateRequest;
 import com.anabatic.itAssets.endpoint.Request.MailRequest;
 import com.anabatic.itAssets.endpoint.Request.ScheduleInterviewCandidateRequest;
 import com.anabatic.itAssets.endpoint.Request.UpdateCandidateRequest;
+import com.anabatic.itAssets.endpoint.Request.UpdateSelectionAndCommentRequest;
 import com.anabatic.itAssets.endpoint.Request.UpdateSelectionCandidateRequest;
 import com.anabatic.itAssets.endpoint.Request.UpdateStepAndStatusCandidateRequest;
 import com.anabatic.itAssets.endpoint.converter.GetAllCandidateConverter;
@@ -354,6 +355,16 @@ public class CandidateController {
 		msg.setText(request.getBody());
 		javaMailSender.send(msg);
 		baseResponse.setResponse("Email sent successfully");
+		return ResponseEntity.ok().body(baseResponse);
+	}
+
+	@PostMapping("/updateSelectionAndComment")
+	public ResponseEntity<BaseResponse> updateSelectionAndComment(
+			@RequestBody UpdateSelectionAndCommentRequest request) {
+		ValidationCheck.hasValidate(request);
+		BaseResponse baseResponse = new BaseResponse();
+		baseResponse.setResponse(candidateService.updateSelectionAndComment(request.getId(), request.getComment(),
+				request.getSelection()));
 		return ResponseEntity.ok().body(baseResponse);
 	}
 
