@@ -29,7 +29,8 @@ public interface CandidateDao {
 
 	public List<Candidate> getByRecuriter(Long id);
 
-	public Candidate scheduleInterview(Long id, Date interviewDate, String mode, Time time, Integer status, String comment);
+	public Candidate scheduleInterview(Long id, Date interviewDate, String mode, Time time, Integer status,
+			String comment);
 
 	public Candidate joiningDate(Long id, Date dateOfJoining);
 
@@ -39,17 +40,17 @@ public interface CandidateDao {
 
 	public List<Candidate> getByStatusAndStep(Integer step);
 
-	public Candidate updateStepAndStatus(Integer status, Integer step, Long id);
+	public Candidate updateStepAndStatus(Integer status, Integer step, Long id, Integer selection);
 
 	public Candidate updateSelection(Long id, Integer selection);
 
 	public List<Candidate> getByStatusStepSelection(Integer status, Integer step, Integer selection);
+
 	public void deleteById(Long id);
 
 	public Candidate joiningDate(Long id, Date dateOfJoining, String comment, Integer selection, Integer status,
 			Integer step);
 
 	public Candidate checkCin(String random2);
-
 
 }

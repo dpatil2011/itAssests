@@ -333,7 +333,7 @@ public class CandidateController {
     
     @PostMapping("/update-step-status")
     public ResponseEntity<BaseResponse> updateStepAndStatus(@RequestBody UpdateStepAndStatusCandidateRequest request) {
-        Candidate request3 = candidateService.updateStepAndStatus(request.getStatus(),request.getStep(), request.getId());
+        Candidate request3 = candidateService.updateStepAndStatus(request.getStatus(),request.getStep(), request.getId(),request.getSelection());
         baseResponse.setResponse(updateCandidateConverter.toContract(request3));
         return ResponseEntity.ok().body(baseResponse);
     }

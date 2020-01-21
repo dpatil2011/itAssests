@@ -27,23 +27,21 @@ public class CandidateServiceImpl implements CandidateService {
 
 	@Override
 	public Candidate insert(Candidate can) {
-		Boolean validEmail=candidateDao.validateEmail(can);
+		Boolean validEmail = candidateDao.validateEmail(can);
 		Boolean validPhone = candidateDao.validatePhone(can);
-		Candidate can1= new Candidate();
-		 if ((validPhone && validEmail)) {
-				throw new UsersException(UsersErrorConstant.CANDIDATE_EXISTS); 
-		 }
-		 /*else if(validEmail) {
-			throw new UsersException(UsersErrorConstant.EMAIL_ID);
-//			throw new UsersException(UsersErrorConstant.INVALID_EMAIL_KEY);
+		Candidate can1 = new Candidate();
+		if ((validPhone && validEmail)) {
+			throw new UsersException(UsersErrorConstant.CANDIDATE_EXISTS);
 		}
-		else if (validPhone) {
-			throw new UsersException(UsersErrorConstant.PHONE_NO);
-		}*/
-		
+		/*
+		 * else if(validEmail) { throw new UsersException(UsersErrorConstant.EMAIL_ID);
+		 * // throw new UsersException(UsersErrorConstant.INVALID_EMAIL_KEY); } else if
+		 * (validPhone) { throw new UsersException(UsersErrorConstant.PHONE_NO); }
+		 */
+
 		else {
-			 can1=candidateDao.insert(can);
-			
+			can1 = candidateDao.insert(can);
+
 		}
 		return can1;
 	}
@@ -51,12 +49,12 @@ public class CandidateServiceImpl implements CandidateService {
 	@Override
 	public Candidate getById(Long can) {
 		Candidate response = candidateDao.getById(can);
-	        return response;
+		return response;
 	}
 
 	@Override
 	public List<Candidate> getAll() {
-		 return candidateDao.getAll();
+		return candidateDao.getAll();
 	}
 
 	@Override
@@ -67,7 +65,7 @@ public class CandidateServiceImpl implements CandidateService {
 
 	@Override
 	public List<Candidate> getByHm(Long hmId) {
-		
+
 		return candidateDao.getByHm(hmId);
 	}
 
@@ -77,19 +75,20 @@ public class CandidateServiceImpl implements CandidateService {
 	}
 
 	@Override
-	public Candidate scheduleInterview(Long id, Date interviewDate, String mode, Time time, Integer status,String comment) {
-		return candidateDao.scheduleInterview(id,interviewDate,mode,time,status,comment);
+	public Candidate scheduleInterview(Long id, Date interviewDate, String mode, Time time, Integer status,
+			String comment) {
+		return candidateDao.scheduleInterview(id, interviewDate, mode, time, status, comment);
 	}
 
 	@Override
 	public Candidate joiningDate(Date dateOfJoining, Long id) {
-		return candidateDao.joiningDate(id,dateOfJoining);
+		return candidateDao.joiningDate(id, dateOfJoining);
 	}
 
-		public Candidate getByCIN(String cin) {
+	public Candidate getByCIN(String cin) {
 		Candidate response = candidateDao.getByCIN(cin);
-        return response;
-}
+		return response;
+	}
 
 	@Override
 	public BulkUpdateCandidateResponseDto update(List<Candidate> request2) {
@@ -123,51 +122,50 @@ public class CandidateServiceImpl implements CandidateService {
 		return response;
 	}
 
-		@Override
-		public List<Candidate> getByStatusAndStep(Integer status, Integer step) {
-			// TODO Auto-generated method stub
-			return candidateDao.getByStatusAndStep(status,step);
-		}
+	@Override
+	public List<Candidate> getByStatusAndStep(Integer status, Integer step) {
+		// TODO Auto-generated method stub
+		return candidateDao.getByStatusAndStep(status, step);
+	}
 
-		@Override
-		public List<Candidate> getByStep(Integer step) {
-			// TODO Auto-generated method stub
-			return candidateDao.getByStatusAndStep(step);
-		}
+	@Override
+	public List<Candidate> getByStep(Integer step) {
+		// TODO Auto-generated method stub
+		return candidateDao.getByStatusAndStep(step);
+	}
 
-		@Override
-		public Candidate updateStepAndStatus(Integer status, Integer step, Long id) {
-			// TODO Auto-generated method stub
-			return candidateDao.updateStepAndStatus(status,step, id);
-		}
+	@Override
+	public Candidate updateStepAndStatus(Integer status, Integer step, Long id, Integer selection) {
+		// TODO Auto-generated method stub
+		return candidateDao.updateStepAndStatus(status, step, id, selection);
+	}
 
-		@Override
-		public Candidate updateSelection(Long id, Integer selection) {
-			// TODO Auto-generated method stub
-			return candidateDao.updateSelection(id,selection);
-		}
+	@Override
+	public Candidate updateSelection(Long id, Integer selection) {
+		// TODO Auto-generated method stub
+		return candidateDao.updateSelection(id, selection);
+	}
 
-		@Override
-		public List<Candidate> getByStatusStepSelection(Integer status, Integer step, Integer selection) {
-			return candidateDao.getByStatusStepSelection(status,step,selection);
-		}
-		@Override
-		public void deleteById(Long id) {
-			candidateDao.deleteById(id);	
-		}
+	@Override
+	public List<Candidate> getByStatusStepSelection(Integer status, Integer step, Integer selection) {
+		return candidateDao.getByStatusStepSelection(status, step, selection);
+	}
 
-		@Override
-		public Candidate joiningDate(Date dateOfJoining, Long id, String comment, Integer selection, Integer status,
-				Integer step) {
-			return candidateDao.joiningDate(id,dateOfJoining,comment,selection,status,step);
-		}
+	@Override
+	public void deleteById(Long id) {
+		candidateDao.deleteById(id);
+	}
 
-		@Override
-		public Candidate checkCin(String random2) {
-			// TODO Auto-generated method stub
-			 return candidateDao.checkCin(random2);
-		}
+	@Override
+	public Candidate joiningDate(Date dateOfJoining, Long id, String comment, Integer selection, Integer status,
+			Integer step) {
+		return candidateDao.joiningDate(id, dateOfJoining, comment, selection, status, step);
+	}
 
-	
+	@Override
+	public Candidate checkCin(String random2) {
+		// TODO Auto-generated method stub
+		return candidateDao.checkCin(random2);
+	}
 
 }

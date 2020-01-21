@@ -221,12 +221,13 @@ public class CandidateDaoImpl implements CandidateDao {
 		}
 
 	@Override
-	public Candidate updateStepAndStatus(Integer status, Integer step, Long id) {
+	public Candidate updateStepAndStatus(Integer status, Integer step, Long id,Integer selection) {
 		LOGGING.INFO("updateStepAndStatus Of Candidate Dao");
 		try {
 			Candidate byId = getById(id);
 			byId.setStatus(status);
 			byId.setStep(step);
+			byId.setSelectinStatus(selection);
 			return manager.merge(byId);
 					}  catch (Exception e) {
 						throw e;

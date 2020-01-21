@@ -25,7 +25,6 @@ public interface CandidateService {
 
 	Candidate joiningDate(Date dateOfJoining, Long id);
 
-
 	Candidate getByCIN(String cin);
 
 	public BulkUpdateCandidateResponseDto update(List<Candidate> request2);
@@ -34,17 +33,16 @@ public interface CandidateService {
 
 	List<Candidate> getByStep(Integer step);
 
-	Candidate updateStepAndStatus(Integer status, Integer step, Long id);
+	Candidate updateStepAndStatus(Integer status, Integer step, Long id, Integer selection);
 
 	Candidate updateSelection(Long id, Integer selection);
 
 	List<Candidate> getByStatusStepSelection(Integer status, Integer step, Integer selection);
+
 	public void deleteById(Long id);
 
 	Candidate joiningDate(Date dateOfJoining, Long id, String comment, Integer selection, Integer status, Integer step);
 
 	Candidate checkCin(String random2);
-
-
 
 }
