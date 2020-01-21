@@ -1,5 +1,6 @@
 package com.anabatic.itAssets.persistence.dao;
 
+import java.math.BigInteger;
 import java.sql.Time;
 import java.util.Date;
 import java.util.List;
@@ -40,7 +41,7 @@ public interface CandidateDao {
 
 	public List<Candidate> getByStatusAndStep(Integer step);
 
-	public Candidate updateStepAndStatus(Integer status, Integer step, Long id, Integer selection);
+	public Candidate updateStepAndStatus(Integer status, Integer step, Long id, Integer selection, String comment);
 
 	public Candidate updateSelection(Long id, Integer selection);
 
@@ -52,5 +53,9 @@ public interface CandidateDao {
 			Integer step);
 
 	public Candidate checkCin(String random2);
+
+	public BigInteger getNextSequence(String sequenceName);
+
+	public void createSequence(String sequenceName);
 
 }

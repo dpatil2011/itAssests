@@ -33,7 +33,7 @@ public interface CandidateService {
 
 	List<Candidate> getByStep(Integer step);
 
-	Candidate updateStepAndStatus(Integer status, Integer step, Long id, Integer selection);
+	Candidate updateStepAndStatus(Integer status, Integer step, Long id, Integer selection, String comment);
 
 	Candidate updateSelection(Long id, Integer selection);
 

@@ -5,6 +5,7 @@ public class UpdateStepAndStatusCandidateRequest {
 	private Integer step;
 	private Integer status;
 	private Integer selection;
+	private String comment;
 	
 	public Long getId() {
 		return id;
@@ -29,6 +30,12 @@ public class UpdateStepAndStatusCandidateRequest {
 	}
 	public void setSelection(Integer selection) {
 		this.selection = selection;
+	}
+	public String getComment() {
+		return comment;
+	}
+	public void setComment(String comment) {
+		this.comment = comment;
 	}
 	
 	

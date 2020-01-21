@@ -1,6 +1,9 @@
 package com.anabatic.itAssets.services.service.impl;
 
+import java.math.BigInteger;
 import java.sql.Time;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -33,6 +36,7 @@ public class CandidateServiceImpl implements CandidateService {
 		if ((validPhone && validEmail)) {
 			throw new UsersException(UsersErrorConstant.CANDIDATE_EXISTS);
 		}
+
 		/*
 		 * else if(validEmail) { throw new UsersException(UsersErrorConstant.EMAIL_ID);
 		 * // throw new UsersException(UsersErrorConstant.INVALID_EMAIL_KEY); } else if
@@ -40,10 +44,26 @@ public class CandidateServiceImpl implements CandidateService {
 		 */
 
 		else {
+			can.setCin(generateSequence());
 			can1 = candidateDao.insert(can);
 
 		}
 		return can1;
+	}
+
+	public String generateSequence() {
+		String cin = "";
+		LocalDate localDate = LocalDate.now();
+		String dateformat = DateTimeFormatter.ofPattern("yyMMdd").format(localDate);
+		String sequenceName = "C" + dateformat;
+		candidateDao.createSequence(sequenceName);
+		BigInteger sequence = candidateDao.getNextSequence(sequenceName);
+		if (sequence.compareTo(new BigInteger("10")) < 0) {
+			cin = sequenceName + String.format("%02d", sequence);
+		} else {
+			cin = sequenceName + sequence;
+		}
+		return cin;
 	}
 
 	@Override
@@ -135,9 +155,9 @@ public class CandidateServiceImpl implements CandidateService {
 	}
 
 	@Override
-	public Candidate updateStepAndStatus(Integer status, Integer step, Long id, Integer selection) {
+	public Candidate updateStepAndStatus(Integer status, Integer step, Long id, Integer selection, String comment) {
 		// TODO Auto-generated method stub
-		return candidateDao.updateStepAndStatus(status, step, id, selection);
+		return candidateDao.updateStepAndStatus(status, step, id, selection, comment);
 	}
 
 	@Override
