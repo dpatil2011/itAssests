@@ -49,12 +49,14 @@ import com.anabatic.itAssets.endpoint.converter.GetByIdCandidateConverter;
 import com.anabatic.itAssets.endpoint.converter.InsertCandidateConverter;
 import com.anabatic.itAssets.endpoint.converter.InsertCandidateRecordConverter;
 import com.anabatic.itAssets.endpoint.converter.UpdateCandidateConverter;
+import com.anabatic.itAssets.endpoint.param.bean.CandidateBean;
 import com.anabatic.itAssets.persistence.dto.BulkUpdateCandidateResponseDto;
 import com.anabatic.itAssets.persistence.model.Candidate;
 import com.anabatic.itAssets.persistence.model.CandidateRecord;
 import com.anabatic.itAssets.persistence.model.Users;
 import com.anabatic.itAssets.services.service.CandidateRecordService;
 import com.anabatic.itAssets.services.service.CandidateService;
+import com.anabatic.itAssets.services.service.UsersService;
 import com.anabatic.itAssets.services.service.impl.FileStorageService;
 import com.anabatic.logging.executor.Logging;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -97,20 +99,10 @@ public class CandidateController {
 	@Autowired
 	private JavaMailSender javaMailSender;
 	
-	public String random() {
-		Random rand = new Random();
-		String a = "CIN";
-		int rand_int1 = rand.nextInt(10000);
-		String b = a + rand_int1;
-
-		Candidate random = candidateService.checkCin(b);
-		if (random == null) {
-			return b;
-		} else {
-			return null;
-		}
-
-	}
+	@Autowired
+	private UsersService usersService;
+	
+	
 	
 	@PostMapping("/insert")
 	public ResponseEntity<BaseResponse> insert(@RequestParam("file") MultipartFile file,
@@ -204,6 +196,48 @@ public class CandidateController {
 		LOGGING.INFO("Accessed Bulk Update Candidate Controller Accesed");
 		ValidationCheck.hasValidate(request, UsersErrorConstant.class);
 		List<Candidate> request2 = updateCandidateConverter.toModels(request);
+		for (UpdateCandidateRequest request1 : request) {
+			Candidate candidate=candidateService.getById(request1.getId());
+			CandidateRecord record=new CandidateRecord();
+			record.setcId(candidate);
+			record.setComment(candidate.getComment());
+			record.setDate(new Date());
+			record.setStatus(candidate.getStatus());
+			record.setSteps(0);
+			record.setrUserId(candidate.getUsersr());
+			record.setHmUserId(candidate.getUsers());
+			CandidateBean bean = new CandidateBean();
+			bean.setId(candidate.getId());
+			bean.setName(candidate.getName());
+			bean.setEmail(candidate.getEmail());
+			bean.setPhoneNo(candidate.getPhoneNo());
+			bean.setSkills(candidate.getSkills());
+			bean.setUsers(candidate.getUsers().getId());
+			Users users=usersService.getById(request1.getManagerId());
+			bean.setUsersr(users.getId());
+			bean.setComment(candidate.getComment());
+			bean.setFileName(candidate.getFileName());
+			bean.setUploadDir(candidate.getUploadDir());
+			bean.setFileType(candidate.getFileType());
+			bean.setFilesize(candidate.getFilesize());
+			bean.setInterviewDate(candidate.getInterviewDate());
+			bean.setInterviewStartTime(candidate.getInterviewStartTime());
+			bean.setInterviewEndTime(candidate.getInterviewEndTime());
+			bean.setModeOfInterview(candidate.getModeOfInterview());
+			bean.setSlot(candidate.getSlot());
+			bean.setDateOfJoining(candidate.getDateOfJoining());
+			bean.setCin(candidate.getCin());
+			bean.setStep(candidate.getStep());
+			ObjectMapper objectMapper = new ObjectMapper();
+			String string = null;
+			try {
+				string = objectMapper.writeValueAsString(bean);
+			} catch (JsonProcessingException e) {
+				e.printStackTrace();
+			}
+			record.setData(string);
+			candidateRecordService.insert(record);
+		}
 		BulkUpdateCandidateResponseDto response = candidateService.update(request2);
 		// baseResponse.setResponse(updateCandidateConverter.toContracts(request3));
 		baseResponse.setResponse(response);
