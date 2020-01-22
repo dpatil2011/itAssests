@@ -2,7 +2,6 @@ package com.anabatic.itAssets.persistence.dao.impl;
 
 import java.math.BigInteger;
 import java.sql.Time;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -14,13 +13,11 @@ import javax.transaction.Transactional;
 
 import org.itAssests.core.constant.UsersErrorConstant;
 import org.itAssests.core.exception.UsersException;
-import org.springframework.beans.Mergeable;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.anabatic.itAssets.persistence.dao.CandidateDao;
 import com.anabatic.itAssets.persistence.dao.UsersDao;
 import com.anabatic.itAssets.persistence.model.Candidate;
-import com.anabatic.itAssets.persistence.model.Users;
 import com.anabatic.logging.executor.Logging;
 
 @Transactional
@@ -248,6 +245,17 @@ public class CandidateDaoImpl implements CandidateDao {
 			throw e;
 		}
 	}
+	@Override
+	public Candidate updateSelectionAndComment(Long id,String comment,Integer selection) {
+		try {
+			Candidate candidate=getById(id);
+			candidate.setComment(comment);
+			candidate.setSelectinStatus(selection);
+		return manager.merge(candidate);
+		}catch (Exception e) {
+			throw e;
+		}
+	}
 
 	@Override
 	public List<Candidate> getByStatusStepSelection(Integer status, Integer step, Integer selection) {
@@ -320,7 +328,7 @@ public class CandidateDaoImpl implements CandidateDao {
 			Query q = manager.createNativeQuery(str);
 			return (BigInteger) q.getSingleResult();
 		} catch (Exception e) {
-			throw e;
+			throw new UsersException(UsersErrorConstant.SEQUENCE);
 		}
 	}
 

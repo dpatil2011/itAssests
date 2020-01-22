@@ -206,4 +206,9 @@ public class CandidateServiceImpl implements CandidateService {
 		return candidateDao.getByStatusStepHm(status,step,hmId);
 	}
 
+	
+	@Override
+	public Candidate updateSelectionAndComment(Long id,String comment,Integer selection) {
+		return candidateDao.updateSelectionAndComment(id, comment, selection);
+	}
 }

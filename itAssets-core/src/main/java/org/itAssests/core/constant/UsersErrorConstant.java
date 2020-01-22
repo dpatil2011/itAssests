@@ -14,7 +14,7 @@ public class UsersErrorConstant extends ErrorConstant{
 	public static final String INVALID_PHONE_KEY = "INVALID_PHONE";
 	public static final String INVALID_EMAIL_KEY = "EMAIL_ID";
 	public static final String INVALID_CANDIDATE_KEY = "CANDIDATE_EXISTS";
-
+	public static final String SEQUENCE_KEY = "SEQUENCE_EXISTS";
 
 
 	public static final com.anabatic.generic.core.exception.Error PHONE_NO = new Error("user-100","Phone No already exists", "Phone No already exists");
@@ -28,7 +28,7 @@ public class UsersErrorConstant extends ErrorConstant{
 	public static final com.anabatic.generic.core.exception.Error EMAIL_ID = new Error("candidate-102","EmailId already in use", "EMAIL_ID already in use");
 	public static final com.anabatic.generic.core.exception.Error CANDIDATE_EXISTS = new Error("candidate-100","candidate with same EMAIL_ID and PHONE_NO already exists", "candidate with same EMAIL_ID and PHONE_NO already exists");
 	public static final com.anabatic.generic.core.exception.Error CANDIDATE = new Error("candidate-107","Candidate not present", "candidate not present please check candidate id");
-
+	public static final com.anabatic.generic.core.exception.Error SEQUENCE = new Error("sequence-108","Exeecding more than 99 record", "Exeecding more than 99 record");
 	static  {
 		
 		errors.put(PHONE_NO_KEY, PHONE_NO);
@@ -40,7 +40,7 @@ public class UsersErrorConstant extends ErrorConstant{
 		errors.put(INVALID_PHONE_KEY, INVALID_PHONE);
 		errors.put(INVALID_EMAIL_KEY, EMAIL_ID);
 		errors.put(INVALID_CANDIDATE_KEY, CANDIDATE_EXISTS);
-
+		errors.put(SEQUENCE_KEY,SEQUENCE);
 
 	}
 

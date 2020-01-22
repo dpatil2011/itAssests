@@ -41,9 +41,12 @@ public interface CandidateService {
 
 	public void deleteById(Long id);
 
-	Candidate joiningDate(Date dateOfJoining, Long id, String comment, Integer selection, Integer status, Integer step);
+	public Candidate joiningDate(Date dateOfJoining, Long id, String comment, Integer selection, Integer status,
+			Integer step);
 
-	Candidate checkCin(String random2);
+	public Candidate checkCin(String random2);
+
+	public Candidate updateSelectionAndComment(Long id, String comment, Integer selection);
 
 
 	List<Candidate> getByStatusStepHm(Integer status, Integer step, Long hmId);

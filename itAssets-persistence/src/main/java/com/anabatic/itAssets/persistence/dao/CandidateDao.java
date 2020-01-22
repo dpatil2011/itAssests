@@ -60,5 +60,6 @@ public interface CandidateDao {
 
 
 	public List<Candidate> getByStatusStepHm(Integer status, Integer step, Long hmId);
+	public Candidate updateSelectionAndComment(Long id, String comment, Integer selection);
 
 }
