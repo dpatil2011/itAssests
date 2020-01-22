@@ -1,15 +1,21 @@
 package com.anabatic.itAssets.endpoint.converter.impl;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.anabatic.itAssets.endpoint.Request.UpdateCandidateRequest;
 import com.anabatic.itAssets.endpoint.Response.UpdateCandidateResponse;
 import com.anabatic.itAssets.endpoint.converter.UpdateCandidateConverter;
 import com.anabatic.itAssets.persistence.model.Candidate;
+import com.anabatic.itAssets.persistence.model.CandidateRecord;
 import com.anabatic.itAssets.persistence.model.Users;
+import com.anabatic.itAssets.services.service.CandidateRecordService;
 
 public class UpdateCandidateConverterImpl implements UpdateCandidateConverter {
+	
 
 	@Override
 	public Candidate toModel(UpdateCandidateRequest object) {

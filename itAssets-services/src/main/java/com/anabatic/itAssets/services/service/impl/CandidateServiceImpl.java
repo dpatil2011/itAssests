@@ -17,6 +17,7 @@ import com.anabatic.itAssets.persistence.dao.UsersDao;
 import com.anabatic.itAssets.persistence.dto.BulkUpdateCandidateFailedDto;
 import com.anabatic.itAssets.persistence.dto.BulkUpdateCandidateResponseDto;
 import com.anabatic.itAssets.persistence.model.Candidate;
+import com.anabatic.itAssets.persistence.model.CandidateRecord;
 import com.anabatic.itAssets.persistence.model.Users;
 import com.anabatic.itAssets.services.service.CandidateService;
 import com.anabatic.logging.executor.Logging;
