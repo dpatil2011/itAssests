@@ -21,10 +21,9 @@ public interface CandidateService {
 
 	List<Candidate> getByRecuriter(Long id);
 
-	Candidate scheduleInterview(Long id, Date interviewDate, String mode, Time time, Integer status, String comment);
+	Candidate scheduleInterview(Long id, Date interviewDate, String mode, Time time, Integer status, String comment, Time time2);
 
 	Candidate joiningDate(Date dateOfJoining, Long id);
-
 
 	Candidate getByCIN(String cin);
 
@@ -34,11 +33,12 @@ public interface CandidateService {
 
 	List<Candidate> getByStep(Integer step);
 
-	Candidate updateStepAndStatus(Integer status, Integer step, Long id);
+	Candidate updateStepAndStatus(Integer status, Integer step, Long id, Integer selection, String comment);
 
 	Candidate updateSelection(Long id, Integer selection);
 
 	List<Candidate> getByStatusStepSelection(Integer status, Integer step, Integer selection);
+
 	public void deleteById(Long id);
 
 	Candidate joiningDate(Date dateOfJoining, Long id, String comment, Integer selection, Integer status, Integer step);
@@ -46,5 +46,6 @@ public interface CandidateService {
 	Candidate checkCin(String random2);
 
 
+	List<Candidate> getByStatusStepHm(Integer status, Integer step, Long hmId);
 
 }

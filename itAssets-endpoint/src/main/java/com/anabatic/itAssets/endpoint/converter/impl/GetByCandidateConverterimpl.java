@@ -27,6 +27,8 @@ public class GetByCandidateConverterimpl implements GetByCandidateConverter {
 				response.setCommentedBy(candidateRecord.getHmUserId().getFirstName());
 			}else if(step==2 || step==4) {
 				response.setCommentedBy(candidateRecord.getrUserId().getFirstName());
+			} else if(step==0) {
+				response.setCommentedBy(candidateRecord.getHmUserId().getFirstName());
 			}
 			responses.add(response);
 		}

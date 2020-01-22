@@ -1,5 +1,6 @@
 package com.anabatic.itAssets.persistence.dao.impl;
 
+import java.math.BigInteger;
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Date;
@@ -141,7 +142,7 @@ public class CandidateDaoImpl implements CandidateDao {
 
 	@Override
 	public Candidate scheduleInterview(Long id, Date interviewDate, String mode, Time time, Integer status,
-	 String comment) {
+			String comment, Time startTime) {
 		try {
 			LOGGING.INFO("scheduleInterview Candidate Dao");
 			Candidate candidate = getById(id);
@@ -155,7 +156,7 @@ public class CandidateDaoImpl implements CandidateDao {
 			candidate.setModeOfInterview(mode);
 			candidate.setInterviewEndTime(time);
 			candidate.setSelectinStatus(status);
-	
+			candidate.setInterviewStartTime(startTime);
 			candidate.setComment(comment);
 			Candidate update = update(candidate);
 			return update;
@@ -187,51 +188,53 @@ public class CandidateDaoImpl implements CandidateDao {
 
 	public Candidate getByCIN(String cin) {
 		try {
-		Query query = manager.createQuery("select u from Candidate u where u.cin =:cin");
-		query.setParameter("cin", cin);
-		return (Candidate) query.getSingleResult();
-				}  catch (Exception e) {
-					throw e;
-				}
+			Query query = manager.createQuery("select u from Candidate u where u.cin =:cin");
+			query.setParameter("cin", cin);
+			return (Candidate) query.getSingleResult();
+		} catch (Exception e) {
+			throw e;
+		}
 	}
 
 	@Override
 	public List<Candidate> getByStatusAndStep(Integer status, Integer step) {
 		LOGGING.INFO("getByStatusAndStep Of Candidate Dao");
 		try {
-			Query query = manager.createQuery("select u from Candidate u where u.status =:status and u.step =:step");
+			Query query = manager.createQuery("select u from Candidate u where u.status =:status and u.step =:step ORDER BY id");
 			query.setParameter("status", status);
 			query.setParameter("step", step);
 			return query.getResultList();
-					}  catch (Exception e) {
-						throw e;
-					}
+		} catch (Exception e) {
+			throw e;
+		}
 	}
 
 	@Override
 	public List<Candidate> getByStatusAndStep(Integer step) {
 		LOGGING.INFO("getByStatusAndStep Of Candidate Dao");
 		try {
-			Query query = manager.createQuery("select u from Candidate u where u.step =:step");
+			Query query = manager.createQuery("select u from Candidate u where u.step =:step ORDER BY id");
 			query.setParameter("step", step);
 			return query.getResultList();
-					}  catch (Exception e) {
-						throw e;
-					}	
+		} catch (Exception e) {
+			throw e;
 		}
+	}
 
 	@Override
-	public Candidate updateStepAndStatus(Integer status, Integer step, Long id) {
+	public Candidate updateStepAndStatus(Integer status, Integer step, Long id, Integer selection, String comment) {
 		LOGGING.INFO("updateStepAndStatus Of Candidate Dao");
 		try {
 			Candidate byId = getById(id);
 			byId.setStatus(status);
 			byId.setStep(step);
+			byId.setSelectinStatus(selection);
+			byId.setComment(comment);
 			return manager.merge(byId);
-					}  catch (Exception e) {
-						throw e;
-					}
-		
+		} catch (Exception e) {
+			throw e;
+		}
+
 	}
 
 	@Override
@@ -241,30 +244,32 @@ public class CandidateDaoImpl implements CandidateDao {
 			Candidate byId = getById(id);
 			byId.setSelectinStatus(selection);
 			return manager.merge(byId);
-					}  catch (Exception e) {
-						throw e;
-					}
+		} catch (Exception e) {
+			throw e;
+		}
 	}
 
 	@Override
 	public List<Candidate> getByStatusStepSelection(Integer status, Integer step, Integer selection) {
 		LOGGING.INFO("getByStatusStepSelection Of Candidate Dao");
 		try {
-			Query query = manager.createQuery("select u from Candidate u where u.status =:status and u.step =:step and u.selectinStatus =:selection");
+			Query query = manager.createQuery(
+					"select u from Candidate u where u.status =:status and u.step =:step and u.selectinStatus =:selection ORDER BY id");
 			query.setParameter("status", status);
 			query.setParameter("step", step);
 			query.setParameter("selection", selection);
 
 			return query.getResultList();
-					}  catch (Exception e) {
-						throw e;
-					}
+		} catch (Exception e) {
+			throw e;
+		}
 	}
+
 	public void deleteById(Long id) {
 		try {
-		Candidate candidate = getById(id);
-		manager.remove(candidate);
-		}catch(Exception e) {
+			Candidate candidate = getById(id);
+			manager.remove(candidate);
+		} catch (Exception e) {
 			throw new UsersException(UsersErrorConstant.CANDIDATE);
 		}
 	}
@@ -300,13 +305,48 @@ public class CandidateDaoImpl implements CandidateDao {
 		try {
 			Query query = manager.createQuery("select u from Candidate u where u.cin =:cin");
 			query.setParameter("cin", cin);
-			return  (Candidate) query.getSingleResult();
-					}  catch (NoResultException e) {
-						return null;
-					} catch (Exception e) {
-						throw e;
-					}
+			return (Candidate) query.getSingleResult();
+		} catch (NoResultException e) {
+			return null;
+		} catch (Exception e) {
+			throw e;
+		}
+	}
+
+	@Override
+	public BigInteger getNextSequence(String sequenceName) {
+		try {
+			String str = "select nextval('" + sequenceName + "')";
+			Query q = manager.createNativeQuery(str);
+			return (BigInteger) q.getSingleResult();
+		} catch (Exception e) {
+			throw e;
+		}
+	}
+
+	@Override
+	@Transactional
+	public void createSequence(String sequenceName) {
+		String str = "CREATE SEQUENCE IF NOT EXISTS " + sequenceName + " MINVALUE 1 MAXVALUE 99 START 1 INCREMENT 1";
+		Query query = manager.createNativeQuery(str);
+		query.executeUpdate();
+	}
+
+	@Override
+	public List<Candidate> getByStatusStepHm(Integer status, Integer step, Long hmId) {
+		LOGGING.INFO("getByStatusStepHm Of Candidate Dao");
+		try {
+			Query query = manager.createQuery(
+					"select u from Candidate u where u.status =:status and u.step =:step and u.step =:step and manager_id =:hmId ORDER BY id");
+			query.setParameter("status", status);
+			query.setParameter("step", step);
+			query.setParameter("hmId", hmId);
+			return query.getResultList();
+		} catch (Exception e) {
+			throw e;
+		}
 	}
 
 	
+
 }

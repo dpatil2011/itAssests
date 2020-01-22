@@ -1,5 +1,6 @@
 package com.anabatic.itAssets.persistence.dao;
 
+import java.math.BigInteger;
 import java.sql.Time;
 import java.util.Date;
 import java.util.List;
@@ -29,7 +30,8 @@ public interface CandidateDao {
 
 	public List<Candidate> getByRecuriter(Long id);
 
-	public Candidate scheduleInterview(Long id, Date interviewDate, String mode, Time time, Integer status, String comment);
+	public Candidate scheduleInterview(Long id, Date interviewDate, String mode, Time time, Integer status,
+			String comment, Time startTime);
 
 	public Candidate joiningDate(Long id, Date dateOfJoining);
 
@@ -39,11 +41,12 @@ public interface CandidateDao {
 
 	public List<Candidate> getByStatusAndStep(Integer step);
 
-	public Candidate updateStepAndStatus(Integer status, Integer step, Long id);
+	public Candidate updateStepAndStatus(Integer status, Integer step, Long id, Integer selection, String comment);
 
 	public Candidate updateSelection(Long id, Integer selection);
 
 	public List<Candidate> getByStatusStepSelection(Integer status, Integer step, Integer selection);
+
 	public void deleteById(Long id);
 
 	public Candidate joiningDate(Long id, Date dateOfJoining, String comment, Integer selection, Integer status,
@@ -51,5 +54,11 @@ public interface CandidateDao {
 
 	public Candidate checkCin(String random2);
 
+	public BigInteger getNextSequence(String sequenceName);
+
+	public void createSequence(String sequenceName);
+
+
+	public List<Candidate> getByStatusStepHm(Integer status, Integer step, Long hmId);
 
 }
