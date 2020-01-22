@@ -6,7 +6,6 @@ import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-
 import org.itAssests.core.constant.UsersErrorConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
@@ -141,10 +140,14 @@ public class CandidateController {
 		request.setStep(0);
 
 		Candidate can = insertCandidateConverter.toModel(request);
+		if(file.getContentType()!="application/pdf"||file.getContentType()!="image/png") {
+			can.setFileType("application/docx");
+		} else {
+			can.setFileType(file.getContentType());
+		}
 		can.setFileName(fileName);
 		can.setUploadDir(fileDownloadUri);
 		can.setFilesize(file.getSize());
-		can.setFileType(file.getContentType());
 		Users user = new Users();
 		user.setId(request.getrId());
 		can.setUsers(user);

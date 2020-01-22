@@ -345,7 +345,7 @@ public class CandidateDaoImpl implements CandidateDao {
 		LOGGING.INFO("getByStatusStepHm Of Candidate Dao");
 		try {
 			Query query = manager.createQuery(
-					"select u from Candidate u where u.status =:status and u.step =:step and u.step =:step and manager_id =:hmId ORDER BY id");
+					"select u from Candidate u where u.status =:status and u.step =:step and u.step =:step and manager_id =:hmId ORDER BY selection DESC");
 			query.setParameter("status", status);
 			query.setParameter("step", step);
 			query.setParameter("hmId", hmId);
