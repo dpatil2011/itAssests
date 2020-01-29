@@ -132,11 +132,14 @@ public class CandidateController {
 		request.setStep(0);
 
 		Candidate can = insertCandidateConverter.toModel(request);
-		if(file.getContentType()!="application/pdf"||file.getContentType()!="image/png") {
-			can.setFileType("application/docx");
-		} else {
-			can.setFileType(file.getContentType());
-		}
+		can.setFileType(file.getContentType());
+//
+//		if(file.getContentType()=="application/pdf"||file.getContentType()=="image/png") {
+//			can.setFileType(file.getContentType());
+//		}
+//		else {
+//			can.setFileType("application/docx");
+//		}
 		can.setFileName(fileName);
 		can.setUploadDir(fileDownloadUri);
 		can.setFilesize(file.getSize());
@@ -284,7 +287,7 @@ public class CandidateController {
 		ValidationCheck.hasValidate(request);
 		LOGGING.INFO("Inside scheduleInterview Candidate Controller");
 		Candidate request3 = candidateService.scheduleInterview(request.getcId(), request.getInterviewDate(),
-				request.getMode(), request.getEndTime(), request.getStatus(), request.getComment(), request.getStartTime());
+				request.getMode(), request.getEndTime(), request.getStatus(), request.getComment(), request.getStartTime(), request.getLocation());
 		// if(request3!=null) {
 		// CandidateRecord candidateRecord = new CandidateRecord();
 		

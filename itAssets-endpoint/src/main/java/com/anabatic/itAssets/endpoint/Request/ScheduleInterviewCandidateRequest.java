@@ -21,6 +21,15 @@ public class ScheduleInterviewCandidateRequest {
 	private String comment;
 	@IsRequired
 	private Long cId;
+	private String location;
+
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
+	}
 
 	public String getComment() {
 		return comment;

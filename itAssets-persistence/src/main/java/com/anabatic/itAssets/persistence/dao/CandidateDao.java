@@ -31,7 +31,7 @@ public interface CandidateDao {
 	public List<Candidate> getByRecuriter(Long id);
 
 	public Candidate scheduleInterview(Long id, Date interviewDate, String mode, Time time, Integer status,
-			String comment, Time startTime);
+			String comment, Time startTime, String location);
 
 	public Candidate joiningDate(Long id, Date dateOfJoining);
 

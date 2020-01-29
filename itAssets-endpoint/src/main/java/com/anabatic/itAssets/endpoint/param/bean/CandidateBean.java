@@ -21,6 +21,7 @@ public class CandidateBean {
 	private Date interviewDate;
 	private Time interviewStartTime;
 	private Time interviewEndTime;
+	private String location;
 	private String modeOfInterview;
 	private String slot;
 	private Date dateOfJoining;
@@ -187,6 +188,14 @@ public class CandidateBean {
 
 	public void setUsersr(Long usersr) {
 		this.usersr = usersr;
+	}
+
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
 	}
 
 }

@@ -139,7 +139,7 @@ public class CandidateDaoImpl implements CandidateDao {
 
 	@Override
 	public Candidate scheduleInterview(Long id, Date interviewDate, String mode, Time time, Integer status,
-			String comment, Time startTime) {
+			String comment, Time startTime,  String location) {
 		try {
 			LOGGING.INFO("scheduleInterview Candidate Dao");
 			Candidate candidate = getById(id);
@@ -155,6 +155,7 @@ public class CandidateDaoImpl implements CandidateDao {
 			candidate.setSelectinStatus(status);
 			candidate.setInterviewStartTime(startTime);
 			candidate.setComment(comment);
+			candidate.setLocation(location);
 			Candidate update = update(candidate);
 			return update;
 		} catch (Exception e) {

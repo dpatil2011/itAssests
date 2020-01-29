@@ -98,6 +98,7 @@ public class InterviewController {
 			bean.setInterviewStartTime(candidate.getInterviewStartTime());
 			bean.setInterviewEndTime(candidate.getInterviewEndTime());
 			bean.setModeOfInterview(candidate.getModeOfInterview());
+			
 			bean.setSlot(candidate.getSlot());
 			bean.setDateOfJoining(candidate.getDateOfJoining());
 			bean.setCin(candidate.getCin());

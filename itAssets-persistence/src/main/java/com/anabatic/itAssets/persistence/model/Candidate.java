@@ -42,6 +42,17 @@ public class Candidate {
 
 	@Column(name = "skills")
 	private String skills;
+	
+	@Column(name = "location")
+	private String location;
+
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
+	}
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "manager_id")
